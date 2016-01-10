@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>JavaScript contribution layer for Spacemacs</title>
+<title>JavaScript layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">JavaScript contribution layer for Spacemacs</h1>
+<h1 class="title">JavaScript layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -212,13 +213,10 @@ This layer adds support for the JavaScript language using <a href="https://githu
 <h2 id="orgheadline3"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>javascript</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>javascript<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 
 <p>
 You will also need to install <code>tern</code> to use the auto-completion and
@@ -226,7 +224,7 @@ documentation features:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ npm install -g tern
+<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">tern</span>
 </pre>
 </div>
 
@@ -235,7 +233,7 @@ To use the formatting features, install <code>js-beautify</code>:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ npm install -g js-beautify
+<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">js-beautify</span>
 </pre>
 </div>
 
@@ -244,7 +242,7 @@ To activate error checking using flycheck install <code>JSHint</code>:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ npm install -g jshint
+<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">jshint</span>
 </pre>
 </div>
 </div>
@@ -259,7 +257,7 @@ To change how js2-mode indents code, set the variable <code>js2-basic-offset</co
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default js2-basic-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq-default</span> <span class="ATTRLIST">js2-basic-offset</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -269,7 +267,7 @@ Similarly, to change how js-mode indents JSON files, set the variable <code>js-i
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default js-indent-level <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq-default</span> <span class="ATTRLIST">js-indent-level</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -692,7 +690,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

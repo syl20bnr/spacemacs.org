@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Colors contribution layer for Spacemacs</title>
+<title>Colors layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Colors contribution layer for Spacemacs</h1>
+<h1 class="title">Colors layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -201,14 +202,10 @@ represent as background.</li>
 <h2 id="orgheadline4"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>colors</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>colors<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-3">
@@ -221,8 +218,8 @@ To enable the package <code>rainbow-identifiers</code> set the variable
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span> colors-enable-rainbow-identifiers t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">colors</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">colors-enable-rainbow-identifiers</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -239,7 +236,7 @@ Example:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>mytheme . <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">50</span> <span class="org-highlight-numbers-number">50</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> colors-theme-identifiers-sat&amp;light<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">mytheme</span> <span class="ATTRLIST-1">.</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-highlight-numbers-number">50</span> <span class="org-highlight-numbers-number">50</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span> <span class="ATTRLIST">colors-theme-identifiers-sat&amp;light</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -255,8 +252,8 @@ To enable the package <code>nyan-mode</code> set the variable
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span> colors-enable-nyan-cat-progress-bar t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">colors</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">colors-enable-nyan-cat-progress-bar</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -267,9 +264,9 @@ a quasi-quoted list:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  =<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>colors <span class="org-builtin">:variables</span>
-            colors-enable-nyan-cat-progress-bar ,<span class="org-rainbow-delimiters-depth-4">(</span>display-graphic-p<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-5">setq-default</span> <span class="ATTRLIST-4">dotspacemacs-configuration-layers</span>
+  <span class="ATTRLIST-3">=</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">colors</span> <span class="org-builtin">:variables</span>
+            <span class="ATTRLIST-1">colors-enable-nyan-cat-progress-bar</span> ,<span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST">display-graphic-p</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -397,7 +394,8 @@ Note that the toggle is local to the current buffer.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Cscope contribution layer for Spacemacs</title>
+<title>Cscope layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Cscope contribution layer for Spacemacs</h1>
+<h1 class="title">Cscope layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -198,14 +199,10 @@ This layer provides bindings for using <a href="http://cscope.sourceforge.net/">
 <h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>cscope</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>cscope<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -223,7 +220,7 @@ From package manager (for example, Ubuntu):
 
 <div class="org-src-container">
 
-<pre class="src src-sh">sudo apt-get install cscope
+<pre class="src src-sh"><span class="ATTRLIST-2">sudo</span> <span class="ATTRLIST-3">apt-get</span> <span class="ATTRLIST-1">install</span> <span class="ATTRLIST">cscope</span>
 </pre>
 </div>
 
@@ -233,11 +230,11 @@ From source:
 
 <div class="org-src-container">
 
-<pre class="src src-sh">tar xvf cscope-15.8b
-<span class="org-builtin">cd</span> cscope-15.8b
-./configure
-make
-sudo make install
+<pre class="src src-sh"><span class="ATTRLIST-3">tar</span> <span class="ATTRLIST-4">xvf</span> <span class="ATTRLIST-3">cscope-15.8b</span>
+<span class="org-builtin">cd</span> <span class="ATTRLIST-3">cscope-15.8b</span>
+<span class="ATTRLIST-2">./configure</span>
+<span class="ATTRLIST-1">make</span>
+<span class="ATTRLIST-3">sudo</span> <span class="ATTRLIST-1">make</span> <span class="ATTRLIST">install</span>
 </pre>
 </div>
 </div>
@@ -252,7 +249,7 @@ Install PyCscope through pip:
 
 <div class="org-src-container">
 
-<pre class="src src-sh">pip install pycscope
+<pre class="src src-sh"><span class="ATTRLIST-1">pip</span> <span class="ATTRLIST-2">install</span> <span class="ATTRLIST">pycscope</span>
 </pre>
 </div>
 </div>
@@ -338,7 +335,8 @@ command <code>cscope/run-pycscope</code> for Python projects, bound to <code>SPC
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

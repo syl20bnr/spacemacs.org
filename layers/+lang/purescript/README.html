@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Purescript contribution layer for Spacemacs</title>
+<title>Purescript layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,21 +153,22 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Purescript contribution layer for Spacemacs</h1>
+<h1 class="title">Purescript layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">1. Description</a></li>
 <li><a href="#orgheadline2">2. Install</a></li>
-<li><a href="#orgheadline6">3. Key bindings</a>
+<li><a href="#orgheadline7">3. Key bindings</a>
 <ul>
-<li><a href="#orgheadline4">3.1. Purescript</a>
+<li><a href="#orgheadline5">3.1. Purescript</a>
 <ul>
 <li><a href="#orgheadline3">3.1.1. Imports</a></li>
+<li><a href="#orgheadline4">3.1.2. psc-ide</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5">3.2. REPL</a></li>
+<li><a href="#orgheadline6">3.2. REPL</a></li>
 </ul>
 </li>
 </ul>
@@ -188,6 +190,7 @@ thanks to the following packages:
 <ul class="org-ul">
 <li><a href="https://github.com/dysinger/purescript-mode">purescript-mode</a></li>
 <li><a href="https://github.com/ardumont/emacs-psci">psci</a></li>
+<li><a href="https://github.com/epost/psc-ide-emacs">psc-ide-emacs</a></li>
 </ul>
 </div>
 </div>
@@ -196,22 +199,22 @@ thanks to the following packages:
 <h2 id="orgheadline2"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>purescript</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
 
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>purescript<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
+<p>
+If you want to get autocompletions and type information you have to install <a href="https://github.com/kRITZCREEK/psc-ide">psc-ide</a>.
+</p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">3.1</span> Purescript</h3>
+</div><div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">3.1</span> Purescript</h3>
 <div class="outline-text-3" id="text-3-1">
 </div><div id="outline-container-orgheadline3" class="outline-4">
 <h4 id="orgheadline3"><span class="section-number-4">3.1.1</span> Imports</h4>
@@ -254,10 +257,47 @@ To use this contribution add it to your <code>~/.spacemacs</code>
 </table>
 </div>
 </div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">3.1.2</span> psc-ide</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h t</code></td>
+<td class="org-left">Show type at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m l</code></td>
+<td class="org-left">Load a module with its dependencies into psc-ide-server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m s</code></td>
+<td class="org-left">Start psc-ide-server</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">3.2</span> REPL</h3>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">3.2</span> REPL</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <a href="https://github.com/ardumont/emacs-psci">psci</a> provides a very basic REPL for purescript. The following key
@@ -305,7 +345,8 @@ bindings are available:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

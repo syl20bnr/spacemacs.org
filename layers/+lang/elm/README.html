@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:49 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Elm contribution layer for Spacemacs</title>
+<title>Elm layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Elm contribution layer for Spacemacs</h1>
+<h1 class="title">Elm layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -160,14 +161,14 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline1">1. Description</a></li>
 <li><a href="#orgheadline8">2. Install</a>
 <ul>
-<li><a href="#orgheadline5">2.1. Elm Platform</a>
+<li><a href="#orgheadline2">2.1. Layer</a></li>
+<li><a href="#orgheadline6">2.2. Elm Platform</a>
 <ul>
-<li><a href="#orgheadline2">2.1.1. OS X and Windows installers</a></li>
-<li><a href="#orgheadline3">2.1.2. Universal installer using npm</a></li>
-<li><a href="#orgheadline4">2.1.3. Source code</a></li>
+<li><a href="#orgheadline3">2.2.1. OS X and Windows installers</a></li>
+<li><a href="#orgheadline4">2.2.2. Universal installer using npm</a></li>
+<li><a href="#orgheadline5">2.2.3. Source code</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">2.2. elm-mode</a></li>
 <li><a href="#orgheadline7">2.3. elm-oracle</a></li>
 </ul>
 </li>
@@ -226,9 +227,20 @@ with using elm-oracle</li>
 <div id="outline-container-orgheadline8" class="outline-2">
 <h2 id="orgheadline8"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.1</span> Elm Platform</h3>
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>elm</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">2.2</span> Elm Platform</h3>
+<div class="outline-text-3" id="text-2-2">
 <p>
 The <code>elm-platform</code> is a bundle of tools, including the <code>elm-compiler</code>, <code>elm-make</code>,
 <code>elm-reactor</code>, <code>elm-repl</code> and <code>elm-package</code>. 
@@ -240,9 +252,9 @@ able to access commands such as <code>elm-reactor</code> or <code>elm-make</code
 </p>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-4">
-<h4 id="orgheadline2"><span class="section-number-4">2.1.1</span> OS X and Windows installers</h4>
-<div class="outline-text-4" id="text-2-1-1">
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3"><span class="section-number-4">2.2.1</span> OS X and Windows installers</h4>
+<div class="outline-text-4" id="text-2-2-1">
 <p>
 Official installers for these operating systems are available from:
 <a href="http://elm-lang.org/install"><a href="http://elm-lang.org/install">http://elm-lang.org/install</a></a>
@@ -250,16 +262,16 @@ Official installers for these operating systems are available from:
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">2.1.2</span> Universal installer using npm</h4>
-<div class="outline-text-4" id="text-2-1-2">
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">2.2.2</span> Universal installer using npm</h4>
+<div class="outline-text-4" id="text-2-2-2">
 <p>
 A npm based installer is available to, and provides pre-compiled binaries for
 certain operating system and architectures.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">npm install --global elm
+<pre class="src src-sh"><span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">--global</span> <span class="ATTRLIST">elm</span>
 </pre>
 </div>
 <p>
@@ -274,28 +286,13 @@ run, see this issue <a href="https://github.com/kevva/elm-bin/issues/28"><a href
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">2.1.3</span> Source code</h4>
-<div class="outline-text-4" id="text-2-1-3">
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">2.2.3</span> Source code</h4>
+<div class="outline-text-4" id="text-2-2-3">
 <p>
 To build from source, see instructions here:
 <a href="https://github.com/elm-lang/elm-platform"><a href="https://github.com/elm-lang/elm-platform">https://github.com/elm-lang/elm-platform</a></a>
 </p>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">2.2</span> elm-mode</h3>
-<div class="outline-text-3" id="text-2-2">
-<p>
-To use this contribution, add it to your <code>~/.spacemacs</code>
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>elm<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
 </div>
 </div>
 </div>
@@ -321,7 +318,7 @@ run this command:
 
 <div class="org-src-container">
 
-<pre class="src src-sh">npm install -g elm-oracle
+<pre class="src src-sh"><span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">elm-oracle</span>
 </pre>
 </div>
 </div>
@@ -371,9 +368,9 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
-     elm-reactor-port <span class="org-string">"3000"</span>          <span class="org-comment-delimiter">; </span><span class="org-comment">default 8000</span>
-     elm-reactor-address <span class="org-string">"0.0.0.0"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default 127.0.0.1</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">elm</span> <span class="org-builtin">:variables</span>
+     <span class="ATTRLIST">elm-reactor-port</span> <span class="org-string">"3000"</span>          <span class="org-comment-delimiter">; </span><span class="org-comment">default 8000</span>
+     <span class="ATTRLIST">elm-reactor-address</span> <span class="org-string">"0.0.0.0"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default 127.0.0.1</span>
 </pre>
 </div>
 </div>
@@ -627,7 +624,8 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:49</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

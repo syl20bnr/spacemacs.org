@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Helm Gtags contribution layer for Spacemacs</title>
+<title>Helm Gtags layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Helm Gtags contribution layer for Spacemacs</h1>
+<h1 class="title">Helm Gtags layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -218,7 +219,7 @@ You can install <code>helm-gtags</code> from the software repository of your OS.
 
 <div class="org-src-container">
 
-<pre class="src src-sh">sudo apt-get install global
+<pre class="src src-sh"><span class="ATTRLIST-2">sudo</span> <span class="ATTRLIST-3">apt-get</span> <span class="ATTRLIST-1">install</span> <span class="ATTRLIST">global</span>
 </pre>
 </div>
 
@@ -232,11 +233,11 @@ Download the latest tar.gz archive, then run these commands:
 
 <div class="org-src-container">
 
-<pre class="src src-sh">tar xvf global-6.4.tar.gz
-<span class="org-builtin">cd</span> global-6.4
-./configure
-make
-sudo make install
+<pre class="src src-sh"><span class="ATTRLIST-4">tar</span> <span class="ATTRLIST-5">xvf</span> <span class="ATTRLIST-3">global-6.4.tar.gz</span>
+<span class="org-builtin">cd</span> <span class="ATTRLIST-4">global-6.4</span>
+<span class="ATTRLIST-2">./configure</span>
+<span class="ATTRLIST-1">make</span>
+<span class="ATTRLIST-4">sudo</span> <span class="ATTRLIST-1">make</span> <span class="ATTRLIST">install</span>
 </pre>
 </div>
 
@@ -247,19 +248,15 @@ To be able to use <code>ctags</code> and other backends, you need to copy the sa
 
 <div class="org-src-container">
 
-<pre class="src src-sh">cp gtags.conf ~/.globalrc
+<pre class="src src-sh"><span class="ATTRLIST-1">cp</span> <span class="ATTRLIST-2">gtags.conf</span> <span class="ATTRLIST">~/.globalrc</span>
 </pre>
 </div>
 
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>gtags</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>gtags<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -281,8 +278,8 @@ can choose <code>ctags</code> or <code>pygment</code> as a backend to generate t
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="org-builtin">cd</span> /path/to/project/root
-gtags
+<pre class="src src-sh"><span class="org-builtin">cd</span> <span class="ATTRLIST-1">/path/to/project/root</span>
+<span class="ATTRLIST">gtags</span>
 </pre>
 </div>
 
@@ -292,7 +289,7 @@ If the language is not directly supported by <code>gtags</code> but <code>ctags<
 
 <div class="org-src-container">
 
-<pre class="src src-sh">gtags --gtagslabel=ctags
+<pre class="src src-sh"><span class="ATTRLIST-1">gtags</span> <span class="ATTRLIST-2">--gtagslabel</span>=<span class="ATTRLIST">ctags</span>
 </pre>
 </div>
 </div>
@@ -423,7 +420,8 @@ Since these modes have better Eldoc integration already.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

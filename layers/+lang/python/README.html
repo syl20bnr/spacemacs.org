@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Python contribution layer for Spacemacs</title>
+<title>Python layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Python contribution layer for Spacemacs</h1>
+<h1 class="title">Python layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -162,28 +163,29 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline1">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline9">2. Install</a>
+<li><a href="#orgheadline10">2. Install</a>
 <ul>
 <li><a href="#orgheadline3">2.1. Layer</a></li>
 <li><a href="#orgheadline4">2.2. Test runner</a></li>
 <li><a href="#orgheadline5">2.3. Anaconda dependencies</a></li>
 <li><a href="#orgheadline6">2.4. Automatic buffer formatting on save</a></li>
-<li><a href="#orgheadline7">2.5. autoflake</a></li>
-<li><a href="#orgheadline8">2.6. pylookup</a></li>
+<li><a href="#orgheadline7">2.5. Automatic activation of local pyenv version</a></li>
+<li><a href="#orgheadline8">2.6. autoflake</a></li>
+<li><a href="#orgheadline9">2.7. pylookup</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline15">3. Key Bindings</a>
+<li><a href="#orgheadline16">3. Key Bindings</a>
 <ul>
-<li><a href="#orgheadline10">3.1. Inferior REPL process</a></li>
-<li><a href="#orgheadline11">3.2. Running Python Script in shell</a></li>
-<li><a href="#orgheadline12">3.3. Testing</a></li>
-<li><a href="#orgheadline13">3.4. Refactoring</a></li>
-<li><a href="#orgheadline14">3.5. Other Python commands</a></li>
+<li><a href="#orgheadline11">3.1. Inferior REPL process</a></li>
+<li><a href="#orgheadline12">3.2. Running Python Script in shell</a></li>
+<li><a href="#orgheadline13">3.3. Testing</a></li>
+<li><a href="#orgheadline14">3.4. Refactoring</a></li>
+<li><a href="#orgheadline15">3.5. Other Python commands</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">4. Configuration</a>
+<li><a href="#orgheadline18">4. Configuration</a>
 <ul>
-<li><a href="#orgheadline16">4.1. Fill column</a></li>
+<li><a href="#orgheadline17">4.1. Fill column</a></li>
 </ul>
 </li>
 </ul>
@@ -221,21 +223,17 @@ This layer adds support for the Python language.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9"><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-orgheadline3" class="outline-3">
 <h3 id="orgheadline3"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>python</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>python<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -254,8 +252,8 @@ The root of the project is detected with a <code>.git</code> directory or a <cod
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-test-runner 'pytest<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">python</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">python-test-runner</span> '<span class="ATTRLIST">pytest</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -280,7 +278,7 @@ To fix this, install the <code>anaconda-mode</code> <a href="https://github.com/
 
 <div class="org-src-container">
 
-<pre class="src src-sh">pip install  <span class="org-variable-name">jedi</span>==<span class="org-highlight-numbers-number">0.8.1</span> json-rpc==<span class="org-highlight-numbers-number">1.8.1</span> <span class="org-variable-name">service_factory</span>==<span class="org-highlight-numbers-number">0.1.2</span>
+<pre class="src src-sh"><span class="ATTRLIST-3">pip</span> <span class="ATTRLIST-2">install</span>  <span class="org-variable-name"><span class="ATTRLIST-4">jedi</span></span>==<span class="org-highlight-numbers-number">0.8.1</span> <span class="ATTRLIST-1">json-rpc</span>==<span class="org-highlight-numbers-number">1.8.1</span> <span class="org-variable-name"><span class="ATTRLIST">service_factory</span></span>==<span class="org-highlight-numbers-number">0.1.2</span>
 </pre>
 </div>
 
@@ -306,31 +304,52 @@ To enable automatic buffer formatting on save with  <a href="https://github.com/
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-enable-yapf-format-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">python</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">python-enable-yapf-format-on-save</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">2.5</span> autoflake</h3>
+<h3 id="orgheadline7"><span class="section-number-3">2.5</span> Automatic activation of local pyenv version</h3>
 <div class="outline-text-3" id="text-2-5">
+<p>
+A project-specific pyenv version may be written to a file called
+<code>.python-version</code> using the <a href="https://github.com/yyuu/pyenv/blob/master/COMMANDS.md#pyenv-local">pyenv local</a> command.
+</p>
+
+<p>
+Spacemacs can search in parent directories for this file, and automatically set
+the pyenv version. The behavior can be set with the variable
+<code>python-auto-set-local-pyenv-version</code> to:
+</p>
+<ul class="org-ul">
+<li><code>on-visit</code> (default) set the version when you visit a python buffer,</li>
+<li><code>on-project-switch</code> set the version when you switch projects,</li>
+<li><code>nil</code> to disable.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">2.6</span> autoflake</h3>
+<div class="outline-text-3" id="text-2-6">
 <p>
 To be able to suppress unused imports easily, install <a href="https://github.com/myint/autoflake">autoflake</a>:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-sh">pip install autoflake
+<pre class="src src-sh"><span class="ATTRLIST-1">pip</span> <span class="ATTRLIST-2">install</span> <span class="ATTRLIST">autoflake</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">2.6</span> pylookup</h3>
-<div class="outline-text-3" id="text-2-6">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">2.7</span> pylookup</h3>
+<div class="outline-text-3" id="text-2-7">
 <p>
 To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the database first, using
 <code>SPC : pylookup-update</code>.
@@ -339,11 +358,11 @@ To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="orgheadline15"><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16"><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">3.1</span> Inferior REPL process</h3>
+</div><div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">3.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Start a Python or iPython inferior REPL process with <code>SPC m s i</code>.
@@ -421,8 +440,8 @@ Send code to inferior process commands:
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">3.2</span> Running Python Script in shell</h3>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">3.2</span> Running Python Script in shell</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 To run a Python script like you would in the shell press <code>SPC m c c</code>
@@ -465,8 +484,8 @@ compilation command.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">3.3</span> Testing</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">3.3</span> Testing</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Test commands start with <code>m t</code>:
@@ -558,8 +577,8 @@ Test commands start with <code>m t</code>:
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">3.4</span> Refactoring</h3>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">3.4</span> Refactoring</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -585,8 +604,8 @@ Test commands start with <code>m t</code>:
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">3.5</span> Other Python commands</h3>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">3.5</span> Other Python commands</h3>
 <div class="outline-text-3" id="text-3-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -662,11 +681,11 @@ Test commands start with <code>m t</code>:
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="orgheadline17"><span class="section-number-2">4</span> Configuration</h2>
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="orgheadline18"><span class="section-number-2">4</span> Configuration</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">4.1</span> Fill column</h3>
+</div><div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">4.1</span> Fill column</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 If you want to customize the fill column value, use something like this inside the <code>user-init</code> function in your <code>.spacemacs</code>:
@@ -674,7 +693,7 @@ If you want to customize the fill column value, use something like this inside t
 
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq python-fill-column <span class="org-highlight-numbers-number">99</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">python-fill-column</span> <span class="org-highlight-numbers-number">99</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -682,7 +701,8 @@ If you want to customize the fill column value, use something like this inside t
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

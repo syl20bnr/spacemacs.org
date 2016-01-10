@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:49 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>bepo contribution layer for Spacemacs</title>
+<title>Bépo layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,32 +153,23 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">bepo contribution layer for Spacemacs</h1>
+<h1 class="title">Bépo layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Mapping</a></li>
-<li><a href="#orgheadline3">3. Supported modes/packages/layer</a></li>
-<li><a href="#orgheadline4">4. Install</a></li>
-<li><a href="#orgheadline16">5. Key bindings</a>
+<li><a href="#orgheadline5">2. Install</a>
 <ul>
-<li><a href="#orgheadline5">5.1. company</a></li>
-<li><a href="#orgheadline6">5.2. evil</a></li>
-<li><a href="#orgheadline7">5.3. evil-escape</a></li>
-<li><a href="#orgheadline8">5.4. evil-surround</a></li>
-<li><a href="#orgheadline9">5.5. evil-window</a></li>
-<li><a href="#orgheadline10">5.6. helm</a></li>
-<li><a href="#orgheadline11">5.7. magit</a></li>
-<li><a href="#orgheadline12">5.8. neotree</a></li>
-<li><a href="#orgheadline13">5.9. org</a></li>
-<li><a href="#orgheadline14">5.10. ranger</a></li>
-<li><a href="#orgheadline15">5.11. spacemacs-specific</a></li>
+<li><a href="#orgheadline2">2.1. Variables</a></li>
+<li><a href="#orgheadline4">2.2. Customization</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">6. Contributors</a></li>
-<li><a href="#orgheadline18">7. Sources</a></li>
+<li><a href="#orgheadline6">3. Mapping</a></li>
+<li><a href="#orgheadline3">4. Configurations</a></li>
+<li><a href="#orgheadline7">5. Keybindings</a></li>
+<li><a href="#orgheadline8">6. Contributors</a></li>
+<li><a href="#orgheadline9">7. Sources</a></li>
 </ul>
 </div>
 </div>
@@ -205,13 +197,70 @@ try to correct the bugs introduced by these changes in other modes/packages.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Mapping</h2>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>bepo</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+
+<p>
+It is possible to customize the layer via some variables.
+</p>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Variables</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+This layer can be customized with two variables:
+</p>
+<ul class="org-ul">
+<li>bepo-set-enabled-configurations</li>
+<li>bepo-set-disabled-configurations</li>
+</ul>
+
+<p>
+The first one is used to set the list of configurations to activate, and the
+second one to prevent loading certain configurations. If the
+<code>bepo-set-enabled-configurations</code> is nil, all configurations are loaded.
+Otherwise, only the listed configurations are loaded. Any configuration listed
+in <code>bepo-set-disabled-configurations</code> will never be loaded, whether it is in the
+enabled list or not.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">bepo</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">bepo-set-disabled-configurations</span> '<span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">org</span> <span class="ATTRLIST">magit</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.2</span> Customization</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+It is possible to override the bindings or add new ones by defining in your own
+layer, or in the <code>user-init</code>, some functions named <code>bepo/pre-config-&lt;NAME&gt;</code> and
+<code>bepo/post-config-&lt;NAME&gt;</code>. They are respectively called just before and after
+the actual configuration of keybindings. <code>&lt;NAME&gt;</code> is the name of the
+configuration you want to customize, they are listed under <a href="#orgheadline3">4</a>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">3</span> Mapping</h2>
+<div class="outline-text-2" id="text-3">
+<p>
 The mapping correction is the one proposed for vim on the bepo's official <a href="http://bepo.fr/wiki/Vim#Principe">wiki</a>.
-This layer tries to do the following changes when the following letters are
-used for <b>doing a movement</b>:
+This layer tries to do the following changes when the following letters are used
+for <b>doing a movement</b>:
 </p>
 
 <ul class="org-ul">
@@ -233,8 +282,8 @@ used for <b>doing a movement</b>:
 </ul>
 
 <p>
-The equivalent remapping is also valid for uppercase letters when they are
-used te represent a movement, or to keep the mnemonic between the
+The equivalent remapping is also valid for uppercase letters, or <code>CTRL+KEY</code> when
+they are used to represent a movement, or to keep the mnemonic between the
 lower/upper-case consistent.
 </p>
 
@@ -265,7 +314,7 @@ defaults are changed:
 
 <ul class="org-ul">
 <li>Change <code>evil-escape</code> escape combination to something faster to type, while
-being nearly nonexistant in french or english words:
+being nearly nonexistent in French or English words:
 <ul class="org-ul">
 <li><code>fd → gq</code></li>
 </ul></li>
@@ -281,15 +330,15 @@ specified symbols.</li>
 </ul>
 
 <p>
-In some cases the key remapping will not follow these conventions, mainly because
-there are better alternatives, or because some moves don't make sense.
+In some cases the key remapping will not follow these conventions, mainly
+because there are better alternatives, or because some moves don't make sense.
 </p>
 
 <p class="verse">
-Example: In <code>magit</code> status, the <code>c</code> is used for <code>commit</code> by default, but if we<br  />
-want to follow the conventions, it should be remapped to "move left". As it is<br  />
-not useful to move left on <code>magit</code>, because operations are done on lines, the<br  />
-<code>c</code> is not remapped.<br  />
+Example: In the <code>magit</code> status buffer, the <code>c</code> is used for <code>commit</code> by default,<br  />
+but if we want to follow the conventions, it should be remapped to "move left".<br  />
+As it is not useful to move left on <code>magit</code>, because operations are done on<br  />
+lines, the <code>c</code> is not remapped.<br  />
 </p>
 
 <p>
@@ -301,16 +350,28 @@ already a <code>SPC w</code> key binding for working with windows.
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> Supported modes/packages/layer</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="orgheadline3"><span class="section-number-2">4</span> Configurations</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The available configurations are:
+</p>
+
 <ul class="org-ul">
+<li>ace-window</li>
 <li>avy</li>
+<li>buffer-move</li>
 <li>company</li>
 <li>evil</li>
 <li>evil-escape</li>
 <li>evil-surround</li>
+<li>evil-evilified-state</li>
 <li>evil-window</li>
+<li>eyebrowse</li>
+<li>flycheck-error-list</li>
 <li>helm</li>
+<li>helm-buffers</li>
+<li>helm-files</li>
+<li>helm-locate</li>
 <li>magit</li>
 <li>neotree</li>
 <li>org</li>
@@ -320,1074 +381,25 @@ already a <code>SPC w</code> key binding for working with windows.
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> Install</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-To use this contribution add it to your <code>~/.spacemacs</code>
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>bepo<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline16" class="outline-2">
-<h2 id="orgheadline16"><span class="section-number-2">5</span> Key bindings</h2>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">5</span> Keybindings</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-Thanks to `which-keys`, you shouldn't probably have to go through this list, the
-keys being shown after a small delay following a keypress.
+This layer is using functions that <i>automatically</i> remap keybindings in a lot of
+modes, so it's difficult to list all the keybindings changes.
 </p>
-</div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">5.1</span> company</h3>
-<div class="outline-text-3" id="text-5-1">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>C-t</code></td>
-<td class="org-left">Company next line</td>
-<td class="org-left"><code>C-j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-s</code></td>
-<td class="org-left">Company previous line</td>
-<td class="org-left"><code>C-k</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-r</code></td>
-<td class="org-left">Company complete selection</td>
-<td class="org-left"><code>C-l</code></td>
-</tr>
-</tbody>
-</table>
+<ul class="org-ul">
+<li>You chose to use a different keyboard layout.</li>
+<li>You chose to use the dark side by using evil (because they have :cookie: obviously).</li>
+<li>You chose to use a layer trying to solve the induced mess.</li>
+<li>The price you have to pay is the absence of a keybindings list.</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">5.2</span> evil</h3>
-<div class="outline-text-3" id="text-5-2">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>c</code></td>
-<td class="org-left">Move the cursor left</td>
-<td class="org-left"><code>h</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>t</code></td>
-<td class="org-left">Move the cursor down</td>
-<td class="org-left"><code>j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>s</code></td>
-<td class="org-left">Move the cursor up</td>
-<td class="org-left"><code>k</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>r</code></td>
-<td class="org-left">Move the cursor right</td>
-<td class="org-left"><code>l</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>C</code></td>
-<td class="org-left">Top of the window</td>
-<td class="org-left"><code>L</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>T</code></td>
-<td class="org-left">Join lines</td>
-<td class="org-left"><code>J</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>S</code></td>
-<td class="org-left">Smart doc lookup</td>
-<td class="org-left"><code>K</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>R</code></td>
-<td class="org-left">Bottom of the window</td>
-<td class="org-left"><code>H</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>h</code></td>
-<td class="org-left">Replace</td>
-<td class="org-left"><code>r</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>j</code></td>
-<td class="org-left">Until</td>
-<td class="org-left"><code>t</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>k</code></td>
-<td class="org-left">Substitute</td>
-<td class="org-left"><code>s</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>l</code></td>
-<td class="org-left">Change</td>
-<td class="org-left"><code>c</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>H</code></td>
-<td class="org-left">Replace mode</td>
-<td class="org-left"><code>R</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>J</code></td>
-<td class="org-left">Backward Until</td>
-<td class="org-left"><code>T</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>K</code></td>
-<td class="org-left">Substitute line</td>
-<td class="org-left"><code>S</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>L</code></td>
-<td class="org-left">Change line</td>
-<td class="org-left"><code>C</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>é</code></td>
-<td class="org-left">Word (without punctuation)</td>
-<td class="org-left"><code>w</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>É</code></td>
-<td class="org-left">WORD (with punctuation)</td>
-<td class="org-left"><code>W</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>»</code></td>
-<td class="org-left">Indent</td>
-<td class="org-left"><code>&gt;</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>«</code></td>
-<td class="org-left">Unindent</td>
-<td class="org-left"><code>&lt;</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">5.3</span> evil-escape</h3>
-<div class="outline-text-3" id="text-5-3">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>gq</code></td>
-<td class="org-left">Escape</td>
-<td class="org-left"><code>fd</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">5.4</span> evil-surround</h3>
-<div class="outline-text-3" id="text-5-4">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>k</code></td>
-<td class="org-left">Evil-surround functionalities</td>
-<td class="org-left"><code>s</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">5.5</span> evil-window</h3>
-<div class="outline-text-3" id="text-5-5">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC w c</code></td>
-<td class="org-left">Window left</td>
-<td class="org-left"><code>SPC w h</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w t</code></td>
-<td class="org-left">Window down</td>
-<td class="org-left"><code>SPC w j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w s</code></td>
-<td class="org-left">Window up</td>
-<td class="org-left"><code>SPC w k</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w r</code></td>
-<td class="org-left">Window right</td>
-<td class="org-left"><code>SPC w l</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC w C</code></td>
-<td class="org-left">Window move far left</td>
-<td class="org-left"><code>SPC w H</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w T</code></td>
-<td class="org-left">Window move very bottom</td>
-<td class="org-left"><code>SPC w J</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w S</code></td>
-<td class="org-left">Window move very top</td>
-<td class="org-left"><code>SPC w K</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w R</code></td>
-<td class="org-left">Window move far right</td>
-<td class="org-left"><code>SPC w L</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC w k</code></td>
-<td class="org-left">Split window below</td>
-<td class="org-left"><code>SPC w s</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w l</code></td>
-<td class="org-left">Delete window</td>
-<td class="org-left"><code>SPC w c</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC w H</code></td>
-<td class="org-left">Rotate windows</td>
-<td class="org-left"><code>SPC w R</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w K</code></td>
-<td class="org-left">Split window below and focus</td>
-<td class="org-left"><code>SPC w S</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w L</code></td>
-<td class="org-left">Ace delete window</td>
-<td class="org-left"><code>SPC w C</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC w é</code></td>
-<td class="org-left">Other window</td>
-<td class="org-left"><code>SPC w w</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC w q</code></td>
-<td class="org-left">Delete window</td>
-<td class="org-left"><code>SPC w c</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC é</code></td>
-<td class="org-left">Alias for <code>SPC w</code></td>
-<td class="org-left"><code>SPC w</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">5.6</span> helm</h3>
-<div class="outline-text-3" id="text-5-6">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>C-t</code></td>
-<td class="org-left">Helm next line</td>
-<td class="org-left"><code>C-j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-s</code></td>
-<td class="org-left">Helm previous line</td>
-<td class="org-left"><code>C-k</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>C-j</code></td>
-<td class="org-left">Helm toggle resplit and spawn windows</td>
-<td class="org-left"><code>C-t</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C-k</code></td>
-<td class="org-left">Helm find files run grep</td>
-<td class="org-left"><code>C-s</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">5.7</span> magit</h3>
-<div class="outline-text-3" id="text-5-7">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>t</code></td>
-<td class="org-left">Next line</td>
-<td class="org-left"><code>j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>s</code></td>
-<td class="org-left">Previous line</td>
-<td class="org-left"><code>k</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>k</code></td>
-<td class="org-left">Stage change</td>
-<td class="org-left"><code>s</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>j</code></td>
-<td class="org-left">Tag popup</td>
-<td class="org-left"><code>t</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>h</code></td>
-<td class="org-left">Discard change</td>
-<td class="org-left"><code>k</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">5.8</span> neotree</h3>
-<div class="outline-text-3" id="text-5-8">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>c</code></td>
-<td class="org-left">Spacemacs/neotree collapse or up</td>
-<td class="org-left"><code>h</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>t</code></td>
-<td class="org-left">Evil next visual line</td>
-<td class="org-left"><code>j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>s</code></td>
-<td class="org-left">Evil previous visual line</td>
-<td class="org-left"><code>k</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>r</code></td>
-<td class="org-left">Spacemacs/neotree expand or open</td>
-<td class="org-left"><code>l</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>C</code></td>
-<td class="org-left">Neotree select previous sibling node</td>
-<td class="org-left"><code>H</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>T</code></td>
-<td class="org-left">Neotree select down node</td>
-<td class="org-left"><code>J</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>S</code></td>
-<td class="org-left">Neotree select up node</td>
-<td class="org-left"><code>K</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>R</code></td>
-<td class="org-left">Neotree select next sibling node</td>
-<td class="org-left"><code>L</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>h</code></td>
-<td class="org-left">Neotree hidden file toggle</td>
-<td class="org-left"><code>l</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>k</code></td>
-<td class="org-left">Neotree rename node</td>
-<td class="org-left"><code>r</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>l</code></td>
-<td class="org-left">Neotree create node</td>
-<td class="org-left"><code>c</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>H</code></td>
-<td class="org-left">Neotree change root</td>
-<td class="org-left"><code>R</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">5.9</span> org</h3>
-<div class="outline-text-3" id="text-5-9">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>t</code></td>
-<td class="org-left">Evil next visual line</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>M c</code></td>
-<td class="org-left">Org metaleft</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M t</code></td>
-<td class="org-left">Org metadown</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M s</code></td>
-<td class="org-left">Org metaup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M r</code></td>
-<td class="org-left">Org metaright</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>M C</code></td>
-<td class="org-left">Org shiftmetaleft</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M T</code></td>
-<td class="org-left">Org shiftmetadown</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M S</code></td>
-<td class="org-left">Org shiftmetaup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M R</code></td>
-<td class="org-left">Org shiftmetaright</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m C</code></td>
-<td class="org-left">Org shiftleft</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m T</code></td>
-<td class="org-left">Org shiftdown</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m S</code></td>
-<td class="org-left">Org shiftup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m R</code></td>
-<td class="org-left">Org shiftright</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m s</code></td>
-<td class="org-left">Org schedule</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC j</code></td>
-<td class="org-left">Org todo</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>C S c</code></td>
-<td class="org-left">Org shiftcontrolleft</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C S t</code></td>
-<td class="org-left">Org shiftcontroldown</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C S s</code></td>
-<td class="org-left">Org shiftcontrolup</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>C S r</code></td>
-<td class="org-left">Org shiftcontrolright</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m t C</code></td>
-<td class="org-left">Org table move column left</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t T</code></td>
-<td class="org-left">Org table move row down</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t S</code></td>
-<td class="org-left">Org table move row up</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t R</code></td>
-<td class="org-left">Org table move column right</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m t c</code></td>
-<td class="org-left">Org table previous field</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t t</code></td>
-<td class="org-left">Org table next row</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t r</code></td>
-<td class="org-left">Org table next field</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC g t</code></td>
-<td class="org-left">Org forward heading same level</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC g s</code></td>
-<td class="org-left">Org backward heading same level</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>M h</code></td>
-<td class="org-left">Capitalize word</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M j</code></td>
-<td class="org-left">Transpose chars</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M l</code></td>
-<td class="org-left">Move to window line top bottom</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>M H</code></td>
-<td class="org-left">Capitalize word</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M J</code></td>
-<td class="org-left">Transpose chars</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>M L</code></td>
-<td class="org-left">Move to window line top bottom</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m H</code></td>
-<td class="org-left">Org refile</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m J</code></td>
-<td class="org-left">Org show todo tree</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m K r</code></td>
-<td class="org-left">Org demote subtree</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m K c</code></td>
-<td class="org-left">Org promote subtree</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m K t</code></td>
-<td class="org-left">Org move subtree down</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m K s</code></td>
-<td class="org-left">Org move subtree up</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m L</code></td>
-<td class="org-left">Evil org recompute clocks</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m t h</code></td>
-<td class="org-left">Org table recalculate</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t k</code></td>
-<td class="org-left">Org table sort lines</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t l</code></td>
-<td class="org-left">Org table convert</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t j f</code></td>
-<td class="org-left">Org table toggle formula debugger</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m t j o</code></td>
-<td class="org-left">Org table toggle coordinate overlays</td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC «</code></td>
-<td class="org-left">Org metaleft</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC »</code></td>
-<td class="org-left">Org metaright</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">5.10</span> ranger</h3>
-<div class="outline-text-3" id="text-5-10">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>c</code></td>
-<td class="org-left">Ranger up directory</td>
-<td class="org-left"><code>h</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>t</code></td>
-<td class="org-left">Ranger next file</td>
-<td class="org-left"><code>j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>s</code></td>
-<td class="org-left">Ranger prev file</td>
-<td class="org-left"><code>k</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>r</code></td>
-<td class="org-left">Ranger find file</td>
-<td class="org-left"><code>l</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>C</code></td>
-<td class="org-left">Ranger prev history</td>
-<td class="org-left"><code>H</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>T</code></td>
-<td class="org-left">Ranger next subdir</td>
-<td class="org-left"><code>J</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>S</code></td>
-<td class="org-left">Ranger prev subdir</td>
-<td class="org-left"><code>K</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>R</code></td>
-<td class="org-left">Ranger next history</td>
-<td class="org-left"><code>L</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>H</code></td>
-<td class="org-left">Dired do rename</td>
-<td class="org-left"><code>R</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>K</code></td>
-<td class="org-left">Eshell</td>
-<td class="org-left"><code>S</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">5.11</span> spacemacs-specific</h3>
-<div class="outline-text-3" id="text-5-11">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-<th scope="col" class="org-left">Replace/equivalent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC j c</code></td>
-<td class="org-left">Push mark and goto beginning of line</td>
-<td class="org-left"><code>SPC j h</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC j t</code></td>
-<td class="org-left">Sp newline</td>
-<td class="org-left"><code>SPC j j</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC j s</code></td>
-<td class="org-left">Evil goto next line and indent</td>
-<td class="org-left"><code>SPC j k</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC j r</code></td>
-<td class="org-left">Push mark and goto end of line</td>
-<td class="org-left"><code>SPC j l</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC j T</code></td>
-<td class="org-left">Split and new line</td>
-<td class="org-left"><code>SPC j J</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC i T</code></td>
-<td class="org-left">Insert line below no indent</td>
-<td class="org-left"><code>SPC i J</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC i t</code></td>
-<td class="org-left">Evil insert line below</td>
-<td class="org-left"><code>SPC i j</code></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC i y</code></td>
-<td class="org-left">Helm yas</td>
-<td class="org-left"><code>SPC i S</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC i Yc</code></td>
-<td class="org-left">Auto yasnippet create</td>
-<td class="org-left"><code>SPC i Sc</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC i Ye</code></td>
-<td class="org-left">Auto yasnippet expand</td>
-<td class="org-left"><code>SPC i Se</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC i Yw</code></td>
-<td class="org-left">Auto yasnippet persist snippet</td>
-<td class="org-left"><code>SPC i Sw</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="orgheadline17"><span class="section-number-2">6</span> Contributors</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">6</span> Contributors</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li>Fabien Dubosson</li>
@@ -1395,8 +407,8 @@ keys being shown after a small delay following a keypress.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">7</span> Sources</h2>
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9"><span class="section-number-2">7</span> Sources</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The bepo logo and the keymap image come from the <a href="http://bepo.fr/">bepo</a> official website. They are
@@ -1406,7 +418,8 @@ licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.e
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:49</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

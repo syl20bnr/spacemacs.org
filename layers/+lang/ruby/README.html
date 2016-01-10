@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Ruby contribution layer for Spacemacs</title>
+<title>Ruby layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Ruby contribution layer for Spacemacs</h1>
+<h1 class="title">Ruby layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -190,9 +191,14 @@ for the JavaScript code in this tag.
 <h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-This layer provides support for the Ruby language with <a href="https://github.com/zenspider/enhanced-ruby-mode">enh-ruby-mode</a> and <a href="https://github.com/dgutov/robe">robe-mode</a>.
-Optionally Enh Ruby Mode can be replaced with the built-in Emacs Ruby Mode.
+This layer provides support for the Ruby language with the following feature:
 </p>
+<ul class="org-ul">
+<li>version manager (rbenv, rvm or chruby)</li>
+<li>test runner (ruby-test and rspec)</li>
+<li>linter (rubocop)</li>
+<li>interactive REPL and code navigation (robe)</li>
+</ul>
 </div>
 </div>
 
@@ -200,14 +206,10 @@ Optionally Enh Ruby Mode can be replaced with the built-in Emacs Ruby Mode.
 <h2 id="orgheadline5"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>ruby</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>ruby<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 
 <p>
 This layer supports two different Ruby modes: Emacs' built-in Ruby Mode and
@@ -217,8 +219,8 @@ This layer supports two different Ruby modes: Emacs' built-in Ruby Mode and
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-enable-enh-ruby-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-4">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-3">dotspacemacs-configuration-layers</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">ruby</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">ruby-enable-enh-ruby-mode</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -245,7 +247,7 @@ adding them to the <code>Gemfile</code>, e.g.:
 
 <div class="org-src-container">
 
-<pre class="src src-ruby">gem <span class="org-string">'pry'</span>
+<pre class="src src-ruby"><span class="ATTRLIST">gem</span> <span class="org-string">'pry'</span>
 </pre>
 </div>
 
@@ -256,7 +258,7 @@ specific documentation for details and caveats):
 
 <div class="org-src-container">
 
-<pre class="src src-sh">gem install pry
+<pre class="src src-sh"><span class="ATTRLIST-1">gem</span> <span class="ATTRLIST-2">install</span> <span class="ATTRLIST">pry</span>
 </pre>
 </div>
 </div>
@@ -266,19 +268,28 @@ specific documentation for details and caveats):
 <h3 id="orgheadline3"><span class="section-number-3">2.2</span> Ruby version management</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
-This layer supports the use of <a href="https://rvm.io/">RVM</a> and <a href="https://github.com/sstephenson/rbenv">Rbenv</a>.
-To enable it, set the <code>ruby-version-manager</code> var in your <code>~/.spacemacs</code>:
+This layer supports <a href="https://rvm.io/">RVM</a>, <a href="https://github.com/sstephenson/rbenv">Rbenv</a>, and <a href="https://github.com/postmodern/chruby">Chruby</a>. You can choose the default version
+manager by setting the variable <code>ruby-version-manager</code> in your dotfile, for
+example:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-version-manager 'rbenv<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-4">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-3">dotspacemacs-configuration-layers</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">ruby</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">ruby-version-manager</span> '<span class="ATTRLIST">rvm</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-Possible values are <code>rbenv</code> and <code>rvm</code>.
+When a version manager is enabled it will use the currently activated ruby
+except if a <code>.ruby-version</code> file exists in which case the ruby version of
+this file is used.
+<code>rvm</code> will also try to look for a <code>.rvmrc</code> and <code>gemfile</code>, the priority order is
+<code>.rvmrc</code> then <code>.ruby-version</code> then <code>gemfile</code>.
+</p>
+
+<p>
+Note: Only one version manager at a time can be enabled.
 </p>
 </div>
 </div>
@@ -298,8 +309,8 @@ Example to set the test runner to <code>RSpec</code>:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs-configuration-layers</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>ruby <span class="org-builtin">:variables</span> ruby-test-runner 'rspec<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-3">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-2">dotspacemacs-configuration-layers</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">ruby</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST">ruby-test-runner</span> '<span class="ATTRLIST">rspec</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -333,7 +344,7 @@ directory local variables.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m '</code></td>
+<td class="org-left">~SPC m '~</td>
 <td class="org-left">toggle quotes of current string (only built-in mode)</td>
 </tr>
 
@@ -383,12 +394,12 @@ directory local variables.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x '</code></td>
+<td class="org-left">~SPC m x '~</td>
 <td class="org-left">Change symbol or " string to '</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m x "</code></td>
+<td class="org-left">~SPC m x "~</td>
 <td class="org-left">Change symbol or ' string to "</td>
 </tr>
 
@@ -489,8 +500,33 @@ When <code>ruby-test-runner</code> equals <code>rspec</code>.
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m t b</code></td>
+<td class="org-left">run current spec file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t c</code></td>
+<td class="org-left">run the current spec file and subsequent ones</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t e</code></td>
+<td class="org-left">mark example as pending</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t f</code></td>
+<td class="org-left">run method</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m t l</code></td>
 <td class="org-left">run last failed spec</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t m</code></td>
+<td class="org-left">run specs related to the current buffer</td>
 </tr>
 
 <tr>
@@ -546,7 +582,8 @@ When <code>ruby-test-runner</code> equals <code>ruby-test</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

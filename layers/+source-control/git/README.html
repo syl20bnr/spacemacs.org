@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Git contribution layer for Spacemacs</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -162,29 +163,27 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline1">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline10">2. Install</a>
+<li><a href="#orgheadline11">2. Install</a>
 <ul>
-<li><a href="#orgheadline4">2.1. Layer</a>
-<ul>
-<li><a href="#orgheadline3">2.1.1. Recommended Settings</a></li>
+<li><a href="#orgheadline3">2.1. Layer</a></li>
+<li><a href="#orgheadline4">2.2. Magit status fullscreen</a></li>
+<li><a href="#orgheadline5">2.3. Magit auto-complete</a></li>
+<li><a href="#orgheadline6">2.4. Magit SVN plugin</a></li>
+<li><a href="#orgheadline7">2.5. Global git commit mode</a></li>
+<li><a href="#orgheadline8">2.6. Git</a></li>
+<li><a href="#orgheadline9">2.7. Git-Flow</a></li>
+<li><a href="#orgheadline10">2.8. Org integration</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5">2.2. Magit status fullscreen</a></li>
-<li><a href="#orgheadline6">2.3. Magit auto-complete</a></li>
-<li><a href="#orgheadline7">2.4. Magit SVN plugin</a></li>
-<li><a href="#orgheadline8">2.5. Git</a></li>
-<li><a href="#orgheadline9">2.6. Git-Flow</a></li>
-</ul>
-</li>
-<li><a href="#orgheadline18">3. Working with Git</a>
+<li><a href="#orgheadline19">3. Working with Git</a>
 <ul>
-<li><a href="#orgheadline11">3.1. Magit</a></li>
-<li><a href="#orgheadline12">3.2. Staging lines</a></li>
-<li><a href="#orgheadline13">3.3. Commit message editing buffer</a></li>
-<li><a href="#orgheadline14">3.4. Interactive rebase buffer</a></li>
-<li><a href="#orgheadline15">3.5. Quick guide for recurring use cases in Magit</a></li>
-<li><a href="#orgheadline16">3.6. Git-Flow</a></li>
-<li><a href="#orgheadline17">3.7. Git time machine</a></li>
+<li><a href="#orgheadline12">3.1. Magit</a></li>
+<li><a href="#orgheadline13">3.2. Staging lines</a></li>
+<li><a href="#orgheadline14">3.3. Commit message editing buffer</a></li>
+<li><a href="#orgheadline15">3.4. Interactive rebase buffer</a></li>
+<li><a href="#orgheadline16">3.5. Quick guide for recurring use cases in Magit</a></li>
+<li><a href="#orgheadline17">3.6. Git-Flow</a></li>
+<li><a href="#orgheadline18">3.7. Git time machine</a></li>
 </ul>
 </li>
 </ul>
@@ -208,12 +207,13 @@ This layers adds extensive support for <a href="http://git-scm.com/">git</a>.
 <h3 id="orgheadline1"><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
-<li>git repository management the indispensable  <a href="http://magit.vc/">magit</a> package</li>
+<li>git repository management the indispensable <a href="http://magit.vc/">magit</a> package</li>
 <li><a href="https://github.com/jtatarik/magit-gitflow">git-flow</a> add-on for magit.</li>
 <li>quick in buffer history browsing with <a href="https://github.com/pidu/git-timemachine">git-timemachine</a>.</li>
 <li>quick in buffer last commit message per line with <a href="https://github.com/syohex/emacs-git-messenger">git-messenger</a></li>
 <li>colorize buffer line by age of commit with <a href="https://github.com/syohex/emacs-smeargle">smeargle</a></li>
 <li>gitignore generator with <a href="https://github.com/jupl/helm-gitignore">helm-gitignore</a></li>
+<li>org integration with magit via <a href="https://github.com/magit/orgit">orgit</a></li>
 </ul>
 
 <p>
@@ -223,49 +223,22 @@ New to Magit? Checkout the <a href="http://magit.vc/about.html">official intro</
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10"><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.1</span> Layer</h3>
+</div><div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>git<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">2.1.1</span> Recommended Settings</h4>
-<div class="outline-text-4" id="text-2-1-1">
-<p>
-Read the documentation for the <code>magit-push-always-verify</code> variable, then you may
-wish to set it to <code>nil</code> in your <code>dotspacemacs/user-config</code> function.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>setq magit-push-always-verify nil<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-The <code>nag</code> default is to prevent surprising behavior for newcomers, but causes
-the <code>PP</code>, <code>Po</code>, <code>Pe</code> (and more) push commands to nag you in the same way. Once
-you understand what they do, it is better simply to give the command you intend.
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>git</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
 </div>
 </div>
-</div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.2</span> Magit status fullscreen</h3>
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.2</span> Magit status fullscreen</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 To display the <code>magit status</code> buffer in fullscreen set the variable
@@ -274,16 +247,16 @@ To display the <code>magit status</code> buffer in fullscreen set the variable
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>setq-default git-magit-status-fullscreen t<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-4">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-3">dotspacemacs/user-init</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-2">setq-default</span> <span class="ATTRLIST-1">git-magit-status-fullscreen</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-2">)</span>
 <span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">2.3</span> Magit auto-complete</h3>
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">2.3</span> Magit auto-complete</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Magit auto-complete feature is enabled. For this feature to work best you
@@ -294,7 +267,7 @@ function, this is the folder where you keep all your git-controlled projects
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq magit-repository-directories '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"~/repos/"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">magit-repository-directories</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"~/repos/"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -304,8 +277,8 @@ For more information, see <a href="http://magit.vc/manual/magit.html#Status-buff
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">2.4</span> Magit SVN plugin</h3>
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">2.4</span> Magit SVN plugin</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 For convenience the magit SVN plugin can be activated directly in the Git
@@ -314,17 +287,34 @@ layer by setting the variable <code>git-enable-magit-svn-plugin</code> to <code>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-init</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>setq-default git-enable-magit-svn-plugin t<span class="org-rainbow-delimiters-depth-2">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-4">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-3">dotspacemacs/user-init</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-2">setq-default</span> <span class="ATTRLIST-1">git-enable-magit-svn-plugin</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-2">)</span>
 <span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">2.5</span> Git</h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">2.5</span> Global git commit mode</h3>
 <div class="outline-text-3" id="text-2-5">
+<p>
+Spacemacs can be used as the <code>$EDITOR</code> (or <code>$GIT_EDITOR</code>) for editing git
+commits messages. To enable this you have to add the following line to your
+<code>dotspacemacs/user-config</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">global-git-commit-mode</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">2.6</span> Git</h3>
+<div class="outline-text-3" id="text-2-6">
 <p>
 Of course if your OS does not ship with git (!) you'll have to install it
 on your machine. You can download it from the <a href="http://git-scm.com/downloads">download page</a>.
@@ -333,8 +323,8 @@ on your machine. You can download it from the <a href="http://git-scm.com/downlo
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">2.6</span> Git-Flow</h3>
-<div class="outline-text-3" id="text-2-6">
+<h3 id="orgheadline9"><span class="section-number-3">2.7</span> Git-Flow</h3>
+<div class="outline-text-3" id="text-2-7">
 <p>
 Git-flow is a standardized branching pattern for git repositories with the aim
 of making things more manageable. While there are tools to assist with making
@@ -347,10 +337,19 @@ Support requires installation of the git-flow extensions. Please reference their
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">2.8</span> Org integration</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+See the commentary section of the package <a href="https://github.com/magit/orgit/blob/master/orgit.el#L28">here</a>.
+</p>
+</div>
+</div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">3</span> Working with Git</h2>
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="orgheadline19"><span class="section-number-2">3</span> Working with Git</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Git commands (start with <code>g</code>):
@@ -496,8 +495,8 @@ Git commands (start with <code>g</code>):
 </ul>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">3.1</span> Magit</h3>
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">3.1</span> Magit</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Spacemacs uses <a href="http://magit.vc/">magit</a> to manage Git repositories.
@@ -564,8 +563,8 @@ Here are the often used bindings inside a <code>status buffer</code>:
 </tr>
 
 <tr>
-<td class="org-left"><code>F -r F</code></td>
-<td class="org-left">pull and rebase</td>
+<td class="org-left"><code>F (r) u</code></td>
+<td class="org-left">pull tracked branch and rebase</td>
 </tr>
 
 <tr>
@@ -614,8 +613,13 @@ Here are the often used bindings inside a <code>status buffer</code>:
 </tr>
 
 <tr>
-<td class="org-left"><code>P P</code></td>
-<td class="org-left">push</td>
+<td class="org-left"><code>P u</code></td>
+<td class="org-left">push to tracked branch</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>P m</code></td>
+<td class="org-left">push to matching branch  (e.g., upstream/develop to origin/develop)</td>
 </tr>
 
 <tr>
@@ -677,8 +681,8 @@ Here are the often used bindings inside a <code>status buffer</code>:
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">3.2</span> Staging lines</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">3.2</span> Staging lines</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Magit allows you to stage specific lines by selecting them in a diff and hitting
@@ -690,8 +694,8 @@ whole lines, in any case).
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">3.3</span> Commit message editing buffer</h3>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">3.3</span> Commit message editing buffer</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 In a commit message buffer press ~,c~ (if <code>dotspacemacs-major-mode-leader-key</code> is ~,~)
@@ -738,8 +742,8 @@ will discard the commit message.
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">3.4</span> Interactive rebase buffer</h3>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">3.4</span> Interactive rebase buffer</h3>
 <div class="outline-text-3" id="text-3-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -825,8 +829,8 @@ will discard the commit message.
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">3.5</span> Quick guide for recurring use cases in Magit</h3>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">3.5</span> Quick guide for recurring use cases in Magit</h3>
 <div class="outline-text-3" id="text-3-5">
 <ul class="org-ul">
 <li>Amend a commit:
@@ -866,8 +870,8 @@ only one to work on a repository it is ok - i.e. in your fork).</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">3.6</span> Git-Flow</h3>
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">3.6</span> Git-Flow</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
 <a href="https://github.com/jtatarik/magit-gitflow">magit-gitflow</a> provides git-flow commands in its own magit menu.
@@ -897,8 +901,8 @@ only one to work on a repository it is ok - i.e. in your fork).</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">3.7</span> Git time machine</h3>
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">3.7</span> Git time machine</h3>
 <div class="outline-text-3" id="text-3-7">
 <p>
 <a href="https://github.com/pidu/git-timemachine">git-timemachine</a> allows to quickly browse the commits of the current buffer.
@@ -960,7 +964,8 @@ only one to work on a repository it is ok - i.e. in your fork).</li>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

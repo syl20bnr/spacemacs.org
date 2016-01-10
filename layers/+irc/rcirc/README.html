@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:49 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>RCIRC contribution layer for Spacemacs</title>
+<title>RCIRC layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">RCIRC contribution layer for Spacemacs</h1>
+<h1 class="title">RCIRC layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -215,14 +216,10 @@ using the <code>emoji</code> layer or having a proper font) :clap:</li>
 <h3 id="orgheadline3"><span class="section-number-3">3.1</span> Layer</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>rcirc</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>rcirc<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -260,7 +257,7 @@ is convenient but not recommended.
 <ol class="org-ol"><li><a id="orgheadline4"></a>Example:<br  /><div class="outline-text-5" id="text-3-2-1-1">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq rcirc-server-alist
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">rcirc-server-alist</span>
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"irc.freenode.net"</span>
       <span class="org-builtin">:user</span> <span class="org-string">"spacemacs_user"</span>
       <span class="org-builtin">:port</span> <span class="org-string">"1337"</span>
@@ -291,7 +288,7 @@ recommended.
 <ol class="org-ol"><li><a id="orgheadline6"></a>Example:<br  /><div class="outline-text-5" id="text-3-2-2-1">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq rcirc-server-alist
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">rcirc-server-alist</span>
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"irc.freenode.net"</span>
       <span class="org-builtin">:user</span> <span class="org-string">"spacemacs_user"</span>
       <span class="org-builtin">:port</span> <span class="org-string">"1337"</span>
@@ -318,8 +315,8 @@ setting <code>rcirc-enable-authinfo-support</code> to <code>t</code> in your dot
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-authinfo-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">rcirc</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">rcirc-enable-authinfo-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div></li>
 
@@ -338,7 +335,7 @@ At last you need to provide your servers configuration in the
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq rcirc-server-alist
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">rcirc-server-alist</span>
 '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"irc.freenode.net"</span>
     <span class="org-builtin">:user</span> <span class="org-string">"spacemacs_user"</span>
     <span class="org-builtin">:port</span> <span class="org-string">"1337"</span>
@@ -386,8 +383,8 @@ your dotfile:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>rcirc <span class="org-builtin">:variables</span> rcirc-enable-znc-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">rcirc</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">rcirc-enable-znc-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div></li>
 
@@ -413,7 +410,7 @@ will be replaced by the credentials stored in your <code>~/.authinfo.gpg</code>.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq rcirc-server-alist
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">rcirc-server-alist</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">This will replace :auth with the correct thing, see the doc for that function</span>
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"freenode"</span>
      <span class="org-builtin">:host</span> <span class="org-string">"freenode.spacemacsserver.me"</span>
@@ -506,7 +503,8 @@ The rcirc documentation can be found <a href="http://www.gnu.org/software/emacs/
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:49</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Haskell contribution layer for Spacemacs</title>
+<title>Haskell layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Haskell contribution layer for Spacemacs</h1>
+<h1 class="title">Haskell layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -242,14 +243,10 @@ This layer adds support for the <a href="https://www.haskell.org/">Haskell</a> l
 <h3 id="orgheadline3"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>haskell</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>haskell<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -272,7 +269,7 @@ To install them, use following command (or the <code>stack</code> equivalent):
 
 <div class="org-src-container">
 
-<pre class="src src-sh">$ cabal install stylish-haskell hlint hasktags ghc-mod
+<pre class="src src-sh">$ <span class="ATTRLIST-2">cabal</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-2">stylish-haskell</span> <span class="ATTRLIST-1">hlint</span> <span class="ATTRLIST-2">hasktags</span> <span class="ATTRLIST">ghc-mod</span>
 </pre>
 </div>
 </div>
@@ -298,7 +295,7 @@ are using <code>stack</code> then it should be <code>~/.local/bin</code>.
 
 <p>
 For information about setting up <code>$PATH</code>, check out the corresponding section in
-the FAQ (<code>SPC f e h $PATH RET</code>).
+the FAQ (<code>SPC h SPC $PATH RET</code>).
 </p>
 </div>
 </div>
@@ -316,8 +313,8 @@ do it explicitly in your <code>.spacemacs</code> file.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-enable-ghc-mod-support nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-enable-ghc-mod-support</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -342,29 +339,29 @@ from sources.
 <div class="org-src-container">
 
 <pre class="src src-sh"><span class="org-comment-delimiter"># </span><span class="org-comment">clone cabal-helper</span>
-$ git clone https://github.com/DanielG/cabal-helper.git
+$ <span class="ATTRLIST-10">git</span> <span class="ATTRLIST-9">clone</span> <span class="ATTRLIST-8">https://github.com/DanielG/cabal-helper.git</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">cd into cloned repository</span>
-$ cd cabal-helper
+$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST-6">cabal-helper</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">init stack, so cabal-helper can be installed using stack</span>
-$ stack init
+$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-9">init</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">now install it</span>
-$ stack install
+$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-4">install</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">go back where you was</span>
-$ cd ..
+$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST-3">..</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">and remove cabal-helper repository since you don't need it</span>
-$ rm -rf cabal-helper
+$ <span class="ATTRLIST-2">rm</span> <span class="ATTRLIST-9">-rf</span> <span class="ATTRLIST-6">cabal-helper</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">now clone ghc-mod</span>
-$ git clone https://github.com/kazu-yamamoto/ghc-mod.git
+$ <span class="ATTRLIST-10">git</span> <span class="ATTRLIST-9">clone</span> <span class="ATTRLIST-1">https://github.com/kazu-yamamoto/ghc-mod.git</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">and cd into it</span>
-$ cd ghc-mod
+$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST">ghc-mod</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">again, let's init stack</span>
-$ stack init
+$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-9">init</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">now install it</span>
-$ stack install
+$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-4">install</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">go back</span>
-$ cd ...
+$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST-3">..</span>
 <span class="org-comment-delimiter"># </span><span class="org-comment">and remove ghc-mod since you don't need it</span>
-$ rm -rf ghc-mod
+$ <span class="ATTRLIST-2">rm</span> <span class="ATTRLIST-9">-rf</span> <span class="ATTRLIST">ghc-mod</span>
 </pre>
 </div>
 </div>
@@ -395,8 +392,8 @@ in <code>~/.ghci</code>), next set the layer variable:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-enable-ghci-ng-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-enable-ghci-ng-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -447,11 +444,11 @@ is to avoid mixing them. But, if you want mix them anyway, you'll need to set
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-process-type 'ghci<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-process-type</span> '<span class="ATTRLIST-1">ghci</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">or</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-process-type cabal-repl<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-process-type</span> <span class="ATTRLIST">cabal-repl</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -470,8 +467,8 @@ need to add following line in your <code>dotspacemacs/user-config</code>:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs/set-leader-keys-for-major-mode 'haskell-mode
-        <span class="org-string">"mht"</span>  'ghc-show-type<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">spacemacs/set-leader-keys-for-major-mode</span> '<span class="ATTRLIST-1">haskell-mode</span>
+        <span class="org-string">"mht"</span>  '<span class="ATTRLIST">ghc-show-type</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -501,8 +498,8 @@ To enable <code>shm</code> set the layer variable:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-enable-shm-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-enable-shm-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -591,8 +588,8 @@ See examples <a href="https://github.com/chrisdone/hindent#example">here</a>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-enable-hindent-style <span class="org-string">"johan-tibell"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST">haskell-enable-hindent-style</span> <span class="org-string">"johan-tibell"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -1071,8 +1068,8 @@ bring up. But if you are experiencing problems with it you can help
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-process-type 'stack-ghci<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-process-type</span> '<span class="ATTRLIST">stack-ghci</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1103,10 +1100,10 @@ just add following snippet to your <code>dotspacemacs/user-config</code> functio
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/layer-usedp 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-hook 'haskell-interactive-mode-hook
-            <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-4">()</span>
-              <span class="org-rainbow-delimiters-depth-4">(</span>setq-local evil-move-cursor-back nil<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-7">when</span></span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-6">configuration-layer/layer-usedp</span> '<span class="ATTRLIST-5">haskell</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-4">add-hook</span> '<span class="ATTRLIST-3">haskell-interactive-mode-hook</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword"><span class="ATTRLIST-4">lambda</span></span> <span class="org-rainbow-delimiters-depth-4">()</span>
+              <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">setq-local</span> <span class="ATTRLIST-1">evil-move-cursor-back</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1123,10 +1120,10 @@ could place following snippet in your <code>dotspacemacs/user-config</code> func
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/layer-usedp 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
-    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defadvice</span> <span class="org-function-name">haskell-interactive-switch</span> <span class="org-rainbow-delimiters-depth-3">(</span>after spacemacs/haskell-interactive-switch-advice activate<span class="org-rainbow-delimiters-depth-3">)</span>
-      <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-4">(</span>eq dotspacemacs-editing-style 'vim<span class="org-rainbow-delimiters-depth-4">)</span>
-        <span class="org-rainbow-delimiters-depth-4">(</span>call-interactively 'evil-insert<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-10">when</span></span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-9">configuration-layer/layer-usedp</span> '<span class="ATTRLIST-8">haskell</span><span class="org-rainbow-delimiters-depth-2">)</span>
+    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-7">defadvice</span></span> <span class="org-function-name"><span class="ATTRLIST-6">haskell-interactive-switch</span></span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-5">after</span> <span class="ATTRLIST-4">spacemacs/haskell-interactive-switch-advice</span> <span class="ATTRLIST-3">activate</span><span class="org-rainbow-delimiters-depth-3">)</span>
+      <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword"><span class="ATTRLIST-10">when</span></span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-7">eq</span> <span class="ATTRLIST-2">dotspacemacs-editing-style</span> '<span class="ATTRLIST-7">vim</span><span class="org-rainbow-delimiters-depth-4">)</span>
+        <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-1">call-interactively</span> '<span class="ATTRLIST">evil-insert</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -1151,15 +1148,15 @@ This is intended behavior in <code>haskell-indentation-mode</code>. If you want 
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">haskell-indentation-advice</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-3">(</span>and <span class="org-rainbow-delimiters-depth-4">(</span>&lt; <span class="org-highlight-numbers-number">1</span> <span class="org-rainbow-delimiters-depth-5">(</span>line-number-at-pos<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
-             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">save-excursion</span>
-               <span class="org-rainbow-delimiters-depth-5">(</span>forward-line <span class="org-highlight-numbers-number">-1</span><span class="org-rainbow-delimiters-depth-5">)</span>
-               <span class="org-rainbow-delimiters-depth-5">(</span>string= <span class="org-string">""</span> <span class="org-rainbow-delimiters-depth-6">(</span>s-trim <span class="org-rainbow-delimiters-depth-7">(</span>buffer-substring <span class="org-rainbow-delimiters-depth-8">(</span>line-beginning-position<span class="org-rainbow-delimiters-depth-8">)</span> <span class="org-rainbow-delimiters-depth-8">(</span>line-end-position<span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>delete-region <span class="org-rainbow-delimiters-depth-4">(</span>line-beginning-position<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span>point<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-6">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-5">haskell-indentation-advice</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-4">when</span></span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-5">and</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-5">&lt;</span> <span class="org-highlight-numbers-number">1</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-5">line-number-at-pos</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword"><span class="ATTRLIST-5">save-excursion</span></span>
+               <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-3">forward-line</span> <span class="org-highlight-numbers-number">-1</span><span class="org-rainbow-delimiters-depth-5">)</span>
+               <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-2">string=</span> <span class="org-string">""</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="ATTRLIST-5">s-trim</span> <span class="org-rainbow-delimiters-depth-7">(</span><span class="ATTRLIST-1">buffer-substring</span> <span class="org-rainbow-delimiters-depth-8">(</span><span class="ATTRLIST-5">line-beginning-position</span><span class="org-rainbow-delimiters-depth-8">)</span> <span class="org-rainbow-delimiters-depth-8">(</span><span class="ATTRLIST">line-end-position</span><span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-5">delete-region</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-5">line-beginning-position</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-5">point</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span>advice-add 'haskell-indentation-newline-and-indent
-            <span class="org-builtin">:after</span> 'haskell-indentation-advice<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-5">advice-add</span> '<span class="ATTRLIST-5">haskell-indentation-newline-and-indent</span>
+            <span class="org-builtin">:after</span> '<span class="ATTRLIST-5">haskell-indentation-advice</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -1167,7 +1164,8 @@ This is intended behavior in <code>haskell-indentation-mode</code>. If you want 
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

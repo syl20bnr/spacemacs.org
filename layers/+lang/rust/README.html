@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust contribution layer for Spacemacs</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -158,13 +159,14 @@ for the JavaScript code in this tag.
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline4">2. Install</a>
+<li><a href="#orgheadline5">2. Install</a>
 <ul>
 <li><a href="#orgheadline2">2.1. Layer</a></li>
 <li><a href="#orgheadline3">2.2. Cargo</a></li>
+<li><a href="#orgheadline4">2.3. Auto-completion</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline5">3. Key bindings</a></li>
+<li><a href="#orgheadline6">3. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -188,21 +190,17 @@ though Racer needs some additional configurations as described on their page.
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-orgheadline2" class="outline-3">
 <h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this layer, add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>rust</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>rust<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -215,10 +213,31 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 </p>
 </div>
 </div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">2.3</span> Auto-completion</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+To enable auto-completion, ensure that the <code>auto-completion</code> layer is enabled and
+add the following line to your <code>dotspacemacs/user-init</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq-default</span> <span class="ATTRLIST-1">rust-enable-racer</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">3</span> Key bindings</h2>
+<p>
+You have to install <a href="https://github.com/phildawes/racer">Racer</a> to use this. For more information on the installation
+procedure, look <a href="https://github.com/racer-rust/emacs-racer">here</a>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -259,13 +278,19 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 <td class="org-left"><code>SPC m c C</code></td>
 <td class="org-left">remove build artifacts with Cargo</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left">go jump to definition</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

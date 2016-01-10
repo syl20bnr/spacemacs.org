@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Chrome contribution layer for Spacemacs</title>
+<title>Chrome layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,14 +153,14 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Chrome contribution layer for Spacemacs</h1>
+<h1 class="title">Chrome layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline2">1. Description</a>
 <ul>
-<li><a href="#orgheadline1">1.1. Feature:</a></li>
+<li><a href="#orgheadline1">1.1. Features</a></li>
 </ul>
 </li>
 <li><a href="#orgheadline5">2. Install</a>
@@ -187,7 +188,7 @@ This layer provides some integration with the Google Chrome browser.
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Feature:</h3>
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Edit text boxes with Emacs using <a href="http://melpa.org/#/edit-server">edit-server</a></li>
@@ -203,14 +204,10 @@ This layer provides some integration with the Google Chrome browser.
 <h3 id="orgheadline3"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>chrome</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>chrome<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -241,11 +238,11 @@ function based on <code>edit-server-url</code>, or fall back to
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-2">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-1">dotspacemacs/user-config</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Open github text areas as org buffers</span>
 <span class="org-comment-delimiter">;; </span><span class="org-comment">currently they are opened as markdown</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>setq edit-server-url-major-mode-alist
-      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"github\\.com"</span> . org-mode<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST">setq</span> <span class="ATTRLIST-1">edit-server-url-major-mode-alist</span>
+      '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span><span class="org-string">"github\\.com"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST-1">org-mode</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -255,8 +252,8 @@ To change frame defaults (width, height, etc. use <code>edit-server-new-frame-al
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>width  . <span class="org-highlight-numbers-number">140</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'edit-server-new-frame-alist '<span class="org-rainbow-delimiters-depth-2">(</span>height . <span class="org-highlight-numbers-number">60</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">edit-server-new-frame-alist</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">width</span>  <span class="ATTRLIST">.</span> <span class="org-highlight-numbers-number">140</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">edit-server-new-frame-alist</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST">height</span> <span class="ATTRLIST">.</span> <span class="org-highlight-numbers-number">60</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -268,14 +265,15 @@ The following example works on OS X:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'edit-server-done-hook <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span>shell-command <span class="org-string">"open -a \"Google Chrome\""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">add-hook</span> '<span class="ATTRLIST-1">edit-server-done-hook</span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-1">lambda</span></span> <span class="org-rainbow-delimiters-depth-3">()</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST">shell-command</span> <span class="org-string">"open -a \"Google Chrome\""</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

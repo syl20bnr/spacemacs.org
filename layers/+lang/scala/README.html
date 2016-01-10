@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Scala contribution layer for Spacemacs</title>
+<title>Scala layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Scala contribution layer for Spacemacs</h1>
+<h1 class="title">Scala layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -167,21 +168,22 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgheadline6">4. Scalastyle</a></li>
 <li><a href="#orgheadline7">5. Automatically show the type of the symbol under the cursor</a></li>
-<li><a href="#orgheadline20">6. Key bindings</a>
+<li><a href="#orgheadline8">6. Automatically insert asterisk in multiline comments</a></li>
+<li><a href="#orgheadline21">7. Key bindings</a>
 <ul>
-<li><a href="#orgheadline19">6.1. Ensime key bindings</a>
+<li><a href="#orgheadline20">7.1. Ensime key bindings</a>
 <ul>
-<li><a href="#orgheadline8">6.1.1. Search</a></li>
-<li><a href="#orgheadline9">6.1.2. sbt</a></li>
-<li><a href="#orgheadline10">6.1.3. Typecheck</a></li>
-<li><a href="#orgheadline11">6.1.4. Debug</a></li>
-<li><a href="#orgheadline12">6.1.5. Errors</a></li>
-<li><a href="#orgheadline13">6.1.6. Goto</a></li>
-<li><a href="#orgheadline14">6.1.7. Documentation, Inspect</a></li>
-<li><a href="#orgheadline15">6.1.8. Server</a></li>
-<li><a href="#orgheadline16">6.1.9. Refactoring</a></li>
-<li><a href="#orgheadline17">6.1.10. Tests</a></li>
-<li><a href="#orgheadline18">6.1.11. REPL</a></li>
+<li><a href="#orgheadline9">7.1.1. Search</a></li>
+<li><a href="#orgheadline10">7.1.2. sbt</a></li>
+<li><a href="#orgheadline11">7.1.3. Typecheck</a></li>
+<li><a href="#orgheadline12">7.1.4. Debug</a></li>
+<li><a href="#orgheadline13">7.1.5. Errors</a></li>
+<li><a href="#orgheadline14">7.1.6. Goto</a></li>
+<li><a href="#orgheadline15">7.1.7. Documentation, Inspect</a></li>
+<li><a href="#orgheadline16">7.1.8. Server</a></li>
+<li><a href="#orgheadline17">7.1.9. Refactoring</a></li>
+<li><a href="#orgheadline18">7.1.10. Tests</a></li>
+<li><a href="#orgheadline19">7.1.11. REPL</a></li>
 </ul>
 </li>
 </ul>
@@ -207,14 +209,10 @@ client/server.
 <h2 id="orgheadline2"><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-Add this contribution to your <code>~/.spacemacs</code>.
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>scala</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>scala<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -235,26 +233,29 @@ provides an SBT plugin to generate these files.
 <div id="outline-container-orgheadline3" class="outline-3">
 <h3 id="orgheadline3"><span class="section-number-3">3.1</span> Installation</h3>
 <div class="outline-text-3" id="text-3-1">
-<ol class="org-ol">
-<li><p>
+<p>
 Configure the ENSIME sbt plugin by adding the following to
 <code>~/.sbt/0.13/plugins/plugins.sbt</code>:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-scala">resolvers += Resolver.sonatypeRepo("snapshots")
-
-addSbtPlugin("org.ensime" % "ensime-sbt" % "0.1.7-SNAPSHOT")
+<pre class="src src-scala">addSbtPlugin("org.ensime" % "ensime-sbt" % "0.2.3")
 </pre>
-</div></li>
-
-<li>Run <code>sbt</code> at the shell to download and install the plugin.</li>
-</ol>
+</div>
 
 <p>
-See the <a href="https://github.com/ensime/ensime-server/wiki/Quick-Start-Guide#installing-the-ensime-sbt-plugin">ENSIME quickstart</a> guide for further information.
+Please go to <a href="https://github.com/ensime/ensime-sbt">ensime-sbt Github Page</a> to check the latest version of <code>ensime-sbt</code> plugin.
 </p>
+
+<p>
+Please note your projects' <code>project/build.properties</code> need to use a version newer that <code>0.13.5</code> of sbt.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-scala">sbt.version=0.13.9
+</pre>
+</div>
 </div>
 </div>
 
@@ -300,7 +301,6 @@ See the <a href="http://flycheck.readthedocs.org/en/latest/guide/languages.html#
 </p>
 </div>
 </div>
-
 <div id="outline-container-orgheadline7" class="outline-2">
 <h2 id="orgheadline7"><span class="section-number-2">5</span> Automatically show the type of the symbol under the cursor</h2>
 <div class="outline-text-2" id="text-5">
@@ -310,8 +310,8 @@ To enable the feature <code>ensime-print-type-at-point</code> when cursor moves,
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
-  <span class="org-rainbow-delimiters-depth-3">(</span>scala <span class="org-builtin">:variables</span> scala-enable-eldoc-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">scala</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">scala-enable-eldoc-mode</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -321,15 +321,31 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-2">
-<h2 id="orgheadline20"><span class="section-number-2">6</span> Key bindings</h2>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">6</span> Automatically insert asterisk in multiline comments</h2>
 <div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">6.1</span> Ensime key bindings</h3>
-<div class="outline-text-3" id="text-6-1">
-</div><div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8"><span class="section-number-4">6.1.1</span> Search</h4>
-<div class="outline-text-4" id="text-6-1-1">
+<p>
+To insert a leading asterisk in multiline comments automatically, set the variable <code>scala-auto-insert-asterisk-in-comments</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">scala</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">scala-auto-insert-asterisk-in-comments</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-2">
+<h2 id="orgheadline21"><span class="section-number-2">7</span> Key bindings</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">7.1</span> Ensime key bindings</h3>
+<div class="outline-text-3" id="text-7-1">
+</div><div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">7.1.1</span> Search</h4>
+<div class="outline-text-4" id="text-7-1-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -359,9 +375,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9"><span class="section-number-4">6.1.2</span> sbt</h4>
-<div class="outline-text-4" id="text-6-1-2">
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">7.1.2</span> sbt</h4>
+<div class="outline-text-4" id="text-7-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -406,9 +422,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">6.1.3</span> Typecheck</h4>
-<div class="outline-text-4" id="text-6-1-3">
+<div id="outline-container-orgheadline11" class="outline-4">
+<h4 id="orgheadline11"><span class="section-number-4">7.1.3</span> Typecheck</h4>
+<div class="outline-text-4" id="text-7-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -438,9 +454,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">6.1.4</span> Debug</h4>
-<div class="outline-text-4" id="text-6-1-4">
+<div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">7.1.4</span> Debug</h4>
+<div class="outline-text-4" id="text-7-1-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -534,9 +550,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">6.1.5</span> Errors</h4>
-<div class="outline-text-4" id="text-6-1-5">
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">7.1.5</span> Errors</h4>
+<div class="outline-text-4" id="text-7-1-5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -571,9 +587,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">6.1.6</span> Goto</h4>
-<div class="outline-text-4" id="text-6-1-6">
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">7.1.6</span> Goto</h4>
+<div class="outline-text-4" id="text-7-1-6">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -608,9 +624,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">6.1.7</span> Documentation, Inspect</h4>
-<div class="outline-text-4" id="text-6-1-7">
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="orgheadline15"><span class="section-number-4">7.1.7</span> Documentation, Inspect</h4>
+<div class="outline-text-4" id="text-7-1-7">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -660,9 +676,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">6.1.8</span> Server</h4>
-<div class="outline-text-4" id="text-6-1-8">
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="orgheadline16"><span class="section-number-4">7.1.8</span> Server</h4>
+<div class="outline-text-4" id="text-7-1-8">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -697,9 +713,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="orgheadline16"><span class="section-number-4">6.1.9</span> Refactoring</h4>
-<div class="outline-text-4" id="text-6-1-9">
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="orgheadline17"><span class="section-number-4">7.1.9</span> Refactoring</h4>
+<div class="outline-text-4" id="text-7-1-9">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -764,9 +780,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="orgheadline17"><span class="section-number-4">6.1.10</span> Tests</h4>
-<div class="outline-text-4" id="text-6-1-10">
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="orgheadline18"><span class="section-number-4">7.1.10</span> Tests</h4>
+<div class="outline-text-4" id="text-7-1-10">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -801,9 +817,9 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18"><span class="section-number-4">6.1.11</span> REPL</h4>
-<div class="outline-text-4" id="text-6-1-11">
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="orgheadline19"><span class="section-number-4">7.1.11</span> REPL</h4>
+<div class="outline-text-4" id="text-7-1-11">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -856,7 +872,8 @@ Enabling this option can cause slow editor performance.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Theming layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -180,14 +181,10 @@ This layer allows for a simple way of modifying themes.
 <h2 id="orgheadline2"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>theming</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>theming<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -201,13 +198,13 @@ of the following form:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>theme1 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         ...<span class="org-rainbow-delimiters-depth-2">)</span>
- <span class="org-rainbow-delimiters-depth-2">(</span>theme2 <span class="org-rainbow-delimiters-depth-3">(</span>face1 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         <span class="org-rainbow-delimiters-depth-3">(</span>face2 attributes...<span class="org-rainbow-delimiters-depth-3">)</span>
-         ...<span class="org-rainbow-delimiters-depth-2">)</span>
- ...<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-5">theme1</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-4">face1</span> <span class="ATTRLIST-3">attributes...</span><span class="org-rainbow-delimiters-depth-3">)</span>
+         <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">face2</span> <span class="ATTRLIST-3">attributes...</span><span class="org-rainbow-delimiters-depth-3">)</span>
+         <span class="ATTRLIST-1">...</span><span class="org-rainbow-delimiters-depth-2">)</span>
+ <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST">theme2</span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-4">face1</span> <span class="ATTRLIST-3">attributes...</span><span class="org-rainbow-delimiters-depth-3">)</span>
+         <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">face2</span> <span class="ATTRLIST-3">attributes...</span><span class="org-rainbow-delimiters-depth-3">)</span>
+         <span class="ATTRLIST-1">...</span><span class="org-rainbow-delimiters-depth-2">)</span>
+ <span class="ATTRLIST-1">...</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -302,7 +299,8 @@ headings</dd>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:41</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

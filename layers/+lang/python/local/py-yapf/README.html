@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -174,9 +175,9 @@ Provides commands, which use the external <code>yapf</code> tool to tidy up the 
 
 <div class="org-src-container">
 
-<pre class="src src-bash">$ pip install git+https://github.com/google/yapf.git
-$ wget https://raw.githubusercontent.com/paetzke/py-yapf.el/master/py-yapf.el <span class="org-sh-escaped-newline">\</span>
-       -O /your/path/py-yapf.el
+<pre class="src src-bash">$ <span class="ATTRLIST-5">pip</span> <span class="ATTRLIST-6">install</span> <span class="ATTRLIST-4">git+https://github.com/google/yapf.git</span>
+$ <span class="ATTRLIST-3">wget</span> <span class="ATTRLIST-2">https://raw.githubusercontent.com/paetzke/py-yapf.el/master/py-yapf.el</span> <span class="org-sh-escaped-newline">\</span>
+       <span class="ATTRLIST-1">-O</span> <span class="ATTRLIST">/your/path/py-yapf.el</span>
 </pre>
 </div>
 
@@ -186,8 +187,8 @@ You can also install <code>py-yapf</code> with <i>MELPA</i>:
 
 <div class="org-src-container">
 
-<pre class="src src-lisp">M-x package-install RET
-py-yapf RET
+<pre class="src src-lisp"><span class="ATTRLIST-1">M-x</span> <span class="ATTRLIST-2">package-install</span> <span class="ATTRLIST-2">RET</span>
+<span class="ATTRLIST">py-yapf</span> <span class="ATTRLIST-2">RET</span>
 </pre>
 </div>
 
@@ -197,9 +198,9 @@ Add the save hook to your <code>~/.emacs</code>
 
 <div class="org-src-container">
 
-<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>add-to-list 'load-path <span class="org-string">"/your/path/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">py-yapf</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook 'py-yapf-enable-on-save<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-5">add-to-list</span> '<span class="ATTRLIST-4">load-path</span> <span class="org-string">"/your/path/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-3">require</span></span> '<span class="org-constant">py-yapf</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">add-hook</span> '<span class="ATTRLIST-1">python-mode-hook</span> '<span class="ATTRLIST">py-yapf-enable-on-save</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -210,7 +211,8 @@ Now every time you save your Python file <code>yapf</code> will be executed on t
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

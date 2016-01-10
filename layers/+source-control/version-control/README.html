@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-12-02 Wed 14:45 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Version-Control contribution layer for Spacemacs</title>
+<title>Version-Control layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,14 +153,14 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Version-Control contribution layer for Spacemacs</h1>
+<h1 class="title">Version-Control layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#orgheadline2">1. Description</a>
 <ul>
-<li><a href="#orgheadline1">1.1. Features:</a></li>
+<li><a href="#orgheadline1">1.1. Features</a></li>
 </ul>
 </li>
 <li><a href="#orgheadline4">2. Install</a>
@@ -169,7 +170,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgheadline6">3. Configuration</a>
 <ul>
-<li><a href="#orgheadline5">3.1. Differences between margin programs:</a></li>
+<li><a href="#orgheadline5">3.1. Differences between margin programs</a></li>
 </ul>
 </li>
 <li><a href="#orgheadline8">4. Key Bindings</a>
@@ -181,7 +182,6 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-
 <div id="outline-container-orgheadline2" class="outline-2">
 <h2 id="orgheadline2"><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-1">
@@ -192,7 +192,7 @@ It should work with all VC backends such as Git, Mercurial, Bazaar, SVN, etc&#x2
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Features:</h3>
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>highlights uncommitted changes in the fringe or margin with <a href="https://github.com/dgutov/diff-hl">diff-hl</a>,</li>
@@ -210,7 +210,6 @@ buffer hunks.
 </div>
 </div>
 
-
 <div id="outline-container-orgheadline4" class="outline-2">
 <h2 id="orgheadline4"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
@@ -218,18 +217,13 @@ buffer hunks.
 <h3 id="orgheadline3"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>version-control</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>version-control<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
 </div>
 </div>
 </div>
-</div>
-
 
 <div id="outline-container-orgheadline6" class="outline-2">
 <h2 id="orgheadline6"><span class="section-number-2">3</span> Configuration</h2>
@@ -241,8 +235,8 @@ by setting <code>version-control-diff-tool</code>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  version-control-diff-tool 'diff-hl<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">version-control</span> <span class="org-builtin">:variables</span>
+                  <span class="ATTRLIST-1">version-control-diff-tool</span> '<span class="ATTRLIST">diff-hl</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -253,14 +247,14 @@ To automatically enable diff margins in all buffers, set
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span>version-control <span class="org-builtin">:variables</span>
-                  verstion-control-global-margin t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp">'<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">version-control</span> <span class="org-builtin">:variables</span>
+                  <span class="ATTRLIST-1">version-control-global-margin</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">3.1</span> Differences between margin programs:</h3>
+<h3 id="orgheadline5"><span class="section-number-3">3.1</span> Differences between margin programs</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 This layer contains generalized mappings for three diff margin packages:
@@ -325,7 +319,6 @@ one over the other:
 </div>
 </div>
 </div>
-
 
 <div id="outline-container-orgheadline8" class="outline-2">
 <h2 id="orgheadline8"><span class="section-number-2">4</span> Key Bindings</h2>
@@ -393,6 +386,11 @@ one over the other:
 
 <tr>
 <td class="org-left"><code>SPC g . N</code></td>
+<td class="org-left">Previous hunk</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC g . p</code></td>
 <td class="org-left">Previous hunk</td>
 </tr>
 
@@ -467,7 +465,8 @@ one over the other:
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-12-02 Wed 14:45</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:49 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>React contribution layer for Spacemacs</title>
+<title>React layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">React contribution layer for Spacemacs</h1>
+<h1 class="title">React layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -215,14 +216,10 @@ It will automatically recognize <code>.jsx</code> and <code>.react.js</code> fil
 <h2 id="orgheadline3"><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>react</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>react<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 
 <p>
 You will also need to install <code>tern</code> to use the auto-completion and
@@ -230,7 +227,7 @@ documentation features:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ npm install -g tern
+<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">tern</span>
 </pre>
 </div>
 
@@ -239,7 +236,7 @@ To use the on-the-fly syntax checking, install <code>eslint</code> with babel an
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ npm install -g eslint babel-eslint eslint-plugin-react
+<pre class="src src-sh">$ <span class="ATTRLIST-4">npm</span> <span class="ATTRLIST-5">install</span> <span class="ATTRLIST-3">-g</span> <span class="ATTRLIST-2">eslint</span> <span class="ATTRLIST-1">babel-eslint</span> <span class="ATTRLIST">eslint-plugin-react</span>
 </pre>
 </div>
 
@@ -253,7 +250,7 @@ In order to use automatic code formatting you need to install <code>js-beautify<
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh">$ npm install -g js-beautify
+<pre class="src src-sh">$ <span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">js-beautify</span>
 </pre>
 </div>
 
@@ -262,29 +259,29 @@ Be sure to have the <code>e4x</code> option set to <code>true</code> on your <co
 </p>
 <div class="org-src-container">
 
-<pre class="src src-json"><span class="org-rainbow-delimiters-depth-1">{</span>
-  <span class="org-keyword">"indent_size"</span>: <span class="org-highlight-numbers-number">2</span>,
-  <span class="org-keyword">"indent_char"</span>: <span class="org-string">" "</span>,
-  <span class="org-keyword">"eol"</span>: <span class="org-string">"\n"</span>,
-  <span class="org-keyword">"indent_level"</span>: <span class="org-highlight-numbers-number">0</span>,
-  <span class="org-keyword">"indent_with_tabs"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"preserve_newlines"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"max_preserve_newlines"</span>: <span class="org-highlight-numbers-number">2</span>,
-  <span class="org-keyword">"jslint_happy"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"space_after_anon_function"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"brace_style"</span>: <span class="org-string">"collapse"</span>,
-  <span class="org-keyword">"keep_array_indentation"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"keep_function_indentation"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"space_before_conditional"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"break_chained_methods"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"eval_code"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"unescape_strings"</span>: <span class="org-constant">false</span>,
-  <span class="org-keyword">"wrap_line_length"</span>: <span class="org-highlight-numbers-number">80</span>,
-  <span class="org-keyword">"wrap_attributes"</span>: <span class="org-string">"auto"</span>,
-  <span class="org-keyword">"wrap_attributes_indent_size"</span>: <span class="org-highlight-numbers-number">2</span>,
-  <span class="org-keyword">"e4x"</span>: <span class="org-constant">true</span>,
-  <span class="org-keyword">"end_with_newline"</span>: <span class="org-constant">true</span>
-<span class="org-rainbow-delimiters-depth-1">}</span>
+<pre class="src src-json">{
+  "indent_size": 2,
+  "indent_char": " ",
+  "eol": "\n",
+  "indent_level": 0,
+  "indent_with_tabs": false,
+  "preserve_newlines": true,
+  "max_preserve_newlines": 2,
+  "jslint_happy": false,
+  "space_after_anon_function": false,
+  "brace_style": "collapse",
+  "keep_array_indentation": false,
+  "keep_function_indentation": false,
+  "space_before_conditional": true,
+  "break_chained_methods": true,
+  "eval_code": false,
+  "unescape_strings": false,
+  "wrap_line_length": 80,
+  "wrap_attributes": "auto",
+  "wrap_attributes_indent_size": 2,
+  "e4x": true,
+  "end_with_newline": true
+}
 </pre>
 </div>
 </div>
@@ -303,15 +300,15 @@ For example to have a consistent 2 spaces indenting both on <code>js</code> and 
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-6">setq-default</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">js2-mode</span>
- js2-basic-offset <span class="org-highlight-numbers-number">2</span>
+ <span class="ATTRLIST-5">js2-basic-offset</span> <span class="org-highlight-numbers-number">2</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">web-mode</span>
- css-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-markup-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-css-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-code-indent-offset <span class="org-highlight-numbers-number">2</span>
- web-mode-attr-indent-offset <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+ <span class="ATTRLIST-4">css-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
+ <span class="ATTRLIST-3">web-mode-markup-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
+ <span class="ATTRLIST-2">web-mode-css-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
+ <span class="ATTRLIST-1">web-mode-code-indent-offset</span> <span class="org-highlight-numbers-number">2</span>
+ <span class="ATTRLIST">web-mode-attr-indent-offset</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -320,10 +317,10 @@ And if you want to have 2 space indent also for element's attributes, concatenat
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'web-mode
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-args"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-concats"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-calls"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-5">with-eval-after-load</span></span> '<span class="ATTRLIST-4">web-mode</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">web-mode-indentation-params</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-args"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">web-mode-indentation-params</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-concats"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">web-mode-indentation-params</span> '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-calls"</span> <span class="ATTRLIST-1">.</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -742,7 +739,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:49</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -3,11 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-23 Mon 13:48 -->
+<!-- 2016-01-10 Sun 01:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>Eyebrowse contribution layer for Spacemacs</title>
+<title>Eyebrowse layer</title>
 <meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -152,7 +153,7 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
-<h1 class="title">Eyebrowse contribution layer for Spacemacs</h1>
+<h1 class="title">Eyebrowse layer</h1>
 <div id="table-of-contents">
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
@@ -180,21 +181,21 @@ This layer adds <a href="https://i3wm.org/">i3wm</a> like workspaces thanks to t
 </p>
 
 <p>
-Once the layer is activated a new number is added to the right side of the
+Once the layer is activated a new number is added to the left side of the
 mode-line. This number corresponds to the currently active workspace number.
 </p>
 
 <p>
 At startup, the workspace number 1 is active. Switching to a workspace will
 create it if it does not exist. For instance at startup you can press
-<code>SPC W 2</code> to create the workspace 2.
+<code>SPC l w 2</code> to create the workspace 2.
 </p>
 
 <p>
 The key bindings are registered in a micro-state displayed in the minibuffer.
 The docstring of the micro-state displays the existing workspaces and the
 currently active workspace has square brackets. Since this is a micro-state it
-is possible to just preview a workspace, for instance press <code>SPC W 2</code> to see
+is possible to just preview a workspace, for instance press <code>SPC l w 2</code> to see
 what's on the workspace 2 then press <code>TAB</code> to go back to the previously
 activated workspace.
 </p>
@@ -213,14 +214,10 @@ It is also possible to give a label to a the current workspace by pressing
 <h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-To use this contribution add it to your <code>~/.spacemacs</code>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>eyebrowse</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>eyebrowse<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
 </div>
 </div>
 
@@ -235,8 +232,8 @@ Set the variable <code>eyebrowse-display-help</code> to <code>nil</code>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>eyebrowse <span class="org-builtin">:variables</span> eyebrowse-display-help nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">eyebrowse</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">eyebrowse-display-help</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -272,82 +269,82 @@ Set the variable <code>eyebrowse-display-help</code> to <code>nil</code>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 1</code></td>
+<td class="org-left"><code>SPC l w 1</code></td>
 <td class="org-left">create or switch to workspace 1</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 2</code></td>
+<td class="org-left"><code>SPC l w 2</code></td>
 <td class="org-left">create or switch to workspace 2</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 3</code></td>
+<td class="org-left"><code>SPC l w 3</code></td>
 <td class="org-left">create or switch to workspace 3</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 4</code></td>
+<td class="org-left"><code>SPC l w 4</code></td>
 <td class="org-left">create or switch to workspace 4</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 5</code></td>
+<td class="org-left"><code>SPC l w 5</code></td>
 <td class="org-left">create or switch to workspace 5</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 6</code></td>
+<td class="org-left"><code>SPC l w 6</code></td>
 <td class="org-left">create or switch to workspace 6</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 7</code></td>
+<td class="org-left"><code>SPC l w 7</code></td>
 <td class="org-left">create or switch to workspace 7</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 8</code></td>
+<td class="org-left"><code>SPC l w 8</code></td>
 <td class="org-left">create or switch to workspace 8</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 9</code></td>
+<td class="org-left"><code>SPC l w 9</code></td>
 <td class="org-left">create or switch to workspace 9</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W 0</code></td>
+<td class="org-left"><code>SPC l w 0</code></td>
 <td class="org-left">create or switch to workspace 0</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W TAB</code></td>
+<td class="org-left"><code>SPC l w TAB</code></td>
 <td class="org-left">switch to last active workspace</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W c</code></td>
+<td class="org-left"><code>SPC l w c</code></td>
 <td class="org-left">close current workspace</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W n</code> or <code>SPC W l</code></td>
+<td class="org-left"><code>SPC l w n</code> or <code>SPC l w l</code></td>
 <td class="org-left">switch to next workspace</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W N</code> or <code>SPC W p</code> or <code>SPC W h</code></td>
+<td class="org-left"><code>SPC l w N</code> or <code>SPC l w p</code> or <code>SPC l w h</code></td>
 <td class="org-left">switch to previous workspace</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W r</code></td>
+<td class="org-left"><code>SPC l w r</code></td>
 <td class="org-left">set a tag to the current workspace</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC W s</code></td>
+<td class="org-left"><code>SPC l w w</code></td>
 <td class="org-left">switched to tagged workspace</td>
 </tr>
 </tbody>
@@ -356,7 +353,8 @@ Set the variable <code>eyebrowse-display-help</code> to <code>nil</code>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2015-11-23 Mon 13:48</p>
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-01-10 Sun 01:42</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
