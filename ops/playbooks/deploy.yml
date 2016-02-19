@@ -1,0 +1,9 @@
+---
+
+# Deploy a new version
+
+- hosts: webserver
+  become: yes
+  tasks:
+    - name: Ping server
+      ping:

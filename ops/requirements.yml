@@ -1,0 +1,6 @@
+---
+
+ # Install Erlang
+ - src: https://github.com/syl20bnr/ansible-elixir
+   version: master
+   name: install-erlang-elixir

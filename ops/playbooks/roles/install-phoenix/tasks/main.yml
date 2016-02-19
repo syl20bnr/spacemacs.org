@@ -1,0 +1,7 @@
+---
+
+- name: Phoenix | Install version {{ phoenix_version }}
+  command: mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new-{{ phoenix_version }}.ez --force
+  args:
+    creates: "~/.mix/archives/phoenix_new-{{ phoenix_version }}.ez"
+  become: yes

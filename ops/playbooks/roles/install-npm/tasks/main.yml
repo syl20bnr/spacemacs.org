@@ -1,0 +1,15 @@
+---
+
+- name: npm | Install npm and node
+  apt: pkg={{ item }} state=present
+  become: yes
+  with_items:
+    - nodejs-legacy
+    - npm
+
+- name: npm | Install brunch
+  become: yes
+  npm:
+    name: brunch
+    global: yes
+    state: present
