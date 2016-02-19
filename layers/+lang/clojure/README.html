@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-01-10 Sun 01:42 -->
+<!-- 2016-02-18 Thu 23:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Clojure layer</title>
@@ -198,6 +198,11 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
+<li><a href="#orgheadline27">5. Development Notes</a>
+<ul>
+<li><a href="#orgheadline26">5.1. Indentation</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -221,7 +226,7 @@ This layer adds support for <a href="http://clojure.org/">Clojure</a> language u
 <li>REPL via <a href="https://github.com/clojure-emacs/cider">CIDER</a></li>
 <li>Code formatting via <a href="https://github.com/clojure-emacs/cider">CIDER</a> using <a href="https://github.com/weavejester/cljfmt">Cljfmt</a></li>
 <li>Refactoring via <a href="https://github.com/clojure-emacs/clj-refactor.el">clj-refactor</a></li>
-<li>Aligning of code forms via <a href="https://github.com/gstamp/align-cljlet">align-cljlet</a></li>
+<li>Aligning of code forms via <a href="https://github.com/clojure-emacs/clojure-mode">clojure-mode</a></li>
 </ul>
 </div>
 </div>
@@ -284,14 +289,14 @@ Or set this variable when loading the configuration layer:
 
 <div class="org-src-container">
 
-<pre class="src src-clojure"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">require</span> '<span class="org-type">boot.repl</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-clojure">(require 'boot.repl)
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">swap!</span> <span class="org-type">boot.repl</span><span class="org-default">/</span><span class="org-variable-name">*default-dependencies*</span> <span class="ATTRLIST-1">conj</span>
-       '<span class="org-rainbow-delimiters-depth-2">[</span><span class="ATTRLIST">refactor-nrepl</span> <span class="org-string">"1.2.0-SNAPSHOT"</span><span class="org-rainbow-delimiters-depth-2">]</span>
-       '<span class="org-rainbow-delimiters-depth-2">[</span><span class="org-type">cider</span><span class="org-default">/</span>cider-nrepl <span class="org-string">"0.10.0-SNAPSHOT"</span><span class="org-rainbow-delimiters-depth-2">]</span><span class="org-rainbow-delimiters-depth-1">)</span>
+(swap! boot.repl/*default-dependencies* conj
+       '[refactor-nrepl "1.2.0-SNAPSHOT"]
+       '[cider/cider-nrepl "0.10.0-SNAPSHOT"])
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">swap!</span> <span class="org-type">boot.repl</span><span class="org-default">/</span><span class="org-variable-name">*default-middleware*</span> <span class="ATTRLIST-1">conj</span>
-       '<span class="org-type">refactor-nrepl.middleware</span><span class="org-default">/</span>wrap-refactor<span class="org-rainbow-delimiters-depth-1">)</span>
+(swap! boot.repl/*default-middleware* conj
+       'refactor-nrepl.middleware/wrap-refactor)
 </pre>
 </div>
 
@@ -311,10 +316,10 @@ Or set this variable when loading the configuration layer:
 
 <div class="org-src-container">
 
-<pre class="src src-clojure"><span class="org-rainbow-delimiters-depth-1">{</span><span class="org-clojure-keyword">:repl</span> <span class="org-rainbow-delimiters-depth-2">{</span><span class="org-clojure-keyword">:plugins</span> <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="org-type">cider</span><span class="org-default">/</span>cider-nrepl <span class="org-string">"0.10.0-SNAPSHOT"</span><span class="org-rainbow-delimiters-depth-4">]</span>
-                  <span class="org-rainbow-delimiters-depth-4">[</span><span class="ATTRLIST-1">refactor-nrepl</span> <span class="org-string">"2.0.0-SNAPSHOT"</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">]</span>
-        <span class="org-clojure-keyword">:dependencies</span> <span class="org-rainbow-delimiters-depth-3">[</span><span class="org-rainbow-delimiters-depth-4">[</span><span class="ATTRLIST">alembic</span> <span class="org-string">"0.3.2"</span><span class="org-rainbow-delimiters-depth-4">]</span>
-                       <span class="org-rainbow-delimiters-depth-4">[</span><span class="org-type">org.clojure</span><span class="org-default">/</span>tools.nrepl <span class="org-string">"0.2.12"</span><span class="org-rainbow-delimiters-depth-4">]</span><span class="org-rainbow-delimiters-depth-3">]</span><span class="org-rainbow-delimiters-depth-2">}</span><span class="org-rainbow-delimiters-depth-1">}</span>
+<pre class="src src-clojure">{:repl {:plugins [[cider/cider-nrepl "0.10.0-SNAPSHOT"]
+                  [refactor-nrepl "2.0.0-SNAPSHOT"]]
+        :dependencies [[alembic "0.3.2"]
+                       [org.clojure/tools.nrepl "0.2.12"]]}}
 </pre>
 </div>
 
@@ -932,26 +937,6 @@ As this state works the same for all files, the documentation is in global
 <div id="outline-container-orgheadline19" class="outline-4">
 <h4 id="orgheadline19"><span class="section-number-4">4.2.9</span> Reformatting</h4>
 <div class="outline-text-4" id="text-4-2-9">
-<p>
-Forms currently handled:
-</p>
-<ul class="org-ul">
-<li>let</li>
-<li>when-let</li>
-<li>if-let</li>
-<li>binding</li>
-<li>loop</li>
-<li>with-open</li>
-<li>literal hashes {}</li>
-<li>defroute</li>
-<li>cond</li>
-<li>condp (except :&gt;&gt; subforms)</li>
-</ul>
-
-<p>
-More info at <a href="https://github.com/gstamp/align-cljlet">align-cljlet</a>.
-</p>
-
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1212,10 +1197,26 @@ In general, <code>q</code> should always quit the popped up buffer.
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgheadline27" class="outline-2">
+<h2 id="orgheadline27"><span class="section-number-2">5</span> Development Notes</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">5.1</span> Indentation</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+With a <a href="https://github.com/clojure-emacs/cider/blob/master/doc/Indent-Spec.md#indent-specification">new</a> functionality of Cider to read the custom indentation rules from the
+var's metadata, it is better for consistency reasons to not add the custom
+indentation rules to Spacemacs, but to add them to the metadata of those
+specific vars.
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-01-10 Sun 01:42</p>
+<p class="date">Created: 2016-02-18 Thu 23:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

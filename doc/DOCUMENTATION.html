@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-01-10 Sun 01:41 -->
+<!-- 2016-02-18 Thu 23:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spacemacs documentation</title>
@@ -1359,7 +1359,8 @@ editing text, and provide their own keybindings for certain operations. These
 often conflict with Vim bindings. To make such buffers behave Vim-like in a
 consistent manner, they use a special state called <i>evilified</i> state. In
 evilified state, a handful of keys work as in Evil, namely <code>/</code>, <code>:</code>, <code>h</code>, <code>j</code>,
-<code>k</code>, <code>l</code>, <code>n</code>, <code>N</code>, <code>v</code>, <code>V</code>, <code>gg</code>, <code>G</code>, <code>C-f</code>, <code>C-b</code>, <code>C-d</code>, <code>C-u</code> and <code>C-z</code>.
+<code>k</code>, <code>l</code>, <code>n</code>, <code>N</code>, <code>v</code>, <code>V</code>, <code>gg</code>, <code>G</code>, <code>C-f</code>, <code>C-b</code>, <code>C-d</code>, <code>C-e</code>, <code>C-u</code>,
+<code>C-y</code> and <code>C-z</code>.
 All other keys work as intended by the underlying mode.
 </p>
 
@@ -3141,6 +3142,11 @@ thusly:
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC h d l</code></td>
+<td class="org-left">copy last pressed keys that you can paste in gitter chat</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC h d m</code></td>
 <td class="org-left">describe current modes</td>
 </tr>
@@ -3253,6 +3259,42 @@ Navigation key bindings in <code>help-mode</code>:
 </tr>
 </tbody>
 </table>
+
+<p>
+Reporting an issue:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC h I</code></td>
+<td class="org-left">Open a page for creating a new Spacemacs issue on GitHub with information pre-filled</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC u SPC h I</code></td>
+<td class="org-left">Open a page for creating a new Spacemacs issue on GitHub with information pre-filled</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<i>Note:</i> If these two bindings are used with the <code>*Backtrace*</code> buffer open, the
+backtrace is automatically included
+</p>
 </div>
 </div>
 
@@ -3574,8 +3616,9 @@ invocation of <code>avy</code> during motions.
 </p>
 
 <p>
-It is useful for deleting visually a set of lines, try the following sequence in
-a buffer containing some text: <code>d SPC y</code>
+For instance, it is useful for deleting a set of visual lines from the current line.
+Try the following sequence in a buffer containing some text: <code>d SPC j l</code>, followed by
+selecting an avy candidate.
 </p>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -3594,25 +3637,26 @@ a buffer containing some text: <code>d SPC y</code>
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC SPC</code></td>
+<td class="org-left"><code>SPC j j</code></td>
+<td class="org-left">initiate avy jump char</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC j w</code></td>
 <td class="org-left">initiate avy jump word</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC y</code></td>
+<td class="org-left"><code>SPC j l</code></td>
 <td class="org-left">initiate avy jump line</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC `</code></td>
+<td class="org-left"><code>SPC j u</code></td>
 <td class="org-left">go back to the previous location (before the jump)</td>
 </tr>
 </tbody>
 </table>
-
-<p>
-<b>Hint</b>: you may change to char mode by <code>C-c C-c</code> in word mode.
-</p>
 </div>
 
 <div id="outline-container-orgheadline99" class="outline-5">
@@ -7858,7 +7902,7 @@ To search in a project see <a href="#orgheadline132">project searching</a>.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC s p p</code></td>
+<td class="org-left"><code>SPC s t p</code></td>
 <td class="org-left">run <code>pt</code></td>
 </tr>
 </tbody>
@@ -8250,6 +8294,11 @@ server is to use the following bindings:
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC q r</code></td>
+<td class="org-left">Restart both Emacs and the server, prompting to save any changed buffers</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC q s</code></td>
 <td class="org-left">Save the buffers, quit Emacs and kill the server</td>
 </tr>
@@ -8540,6 +8589,11 @@ with <code>SPC : spacemacs/recompile-elpa</code>.
 <td class="org-left">5000th star!!!!!</td>
 <td class="org-left"><a href="https://github.com/StreakyCobra">StreakyCobra</a></td>
 </tr>
+
+<tr>
+<td class="org-left">6000th star!!!!!!</td>
+<td class="org-left"><a href="https://github.com/NJBS">NJBS</a></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -8708,7 +8762,7 @@ developers to elisp hackers!
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-01-10 Sun 01:41</p>
+<p class="date">Created: 2016-02-18 Thu 23:57</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
