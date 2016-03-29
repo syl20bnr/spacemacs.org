@@ -7,5 +7,5 @@ This is a **read-only repository**, development happens on
 
 It is served on [spacemacs.org][].
 
-develop: https://github.com/syl20bnr/develop.spacemacs.org
-spacemacs.org: spacemacs.org
+[develop]: https://github.com/syl20bnr/develop.spacemacs.org
+[spacemacs.org]: spacemacs.org
