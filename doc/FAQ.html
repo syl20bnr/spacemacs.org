@@ -167,67 +167,68 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline18">1. Common</a>
+<li><a href="#orgheadline19">1. Common</a>
 <ul>
 <li><a href="#orgheadline1">1.1. Which version of Spacemacs am I running?</a></li>
 <li><a href="#orgheadline2">1.2. What is the official pronunciation of Spacemacs?</a></li>
 <li><a href="#orgheadline3">1.3. Why are packages installed with <code>package-install</code> automatically deleted by Spacemacs when it boots?</a></li>
 <li><a href="#orgheadline4">1.4. How to fix package download errors when installing Spacemacs ?</a></li>
-<li><a href="#orgheadline5">1.5. The Spacemacs banner is ugly, what should I do?</a></li>
-<li><a href="#orgheadline6">1.6. The powerline separators are ugly, how can I fix them?</a></li>
-<li><a href="#orgheadline7">1.7. The powerline separators have no anti-aliasing, what can I do?</a></li>
-<li><a href="#orgheadline8">1.8. Why is after-init-hook not executed?</a></li>
-<li><a href="#orgheadline9">1.9. What is the difference between <code>spacemacs-base</code> and <code>spacemacs</code> distributions?</a></li>
-<li><a href="#orgheadline10">1.10. Should I place my settings in <code>user-init</code> or <code>user-config</code>?</a></li>
-<li><a href="#orgheadline11">1.11. Why do some of my <code>org</code>-related settings cause problems?</a></li>
-<li><a href="#orgheadline12">1.12. Why is Spacemacs hanging on startup?</a></li>
-<li><a href="#orgheadline13">1.13. Why does <code>helm-M-x</code> (<code>SPC SPC</code>) not accept the prefix argument?</a></li>
-<li><a href="#orgheadline14">1.14. Why does my color theme not render correctly in terminal mode?</a></li>
-<li><a href="#orgheadline15">1.15. Why do I get <code>(wrong-type-argument arrayp nil)</code> errors on startup?</a></li>
-<li><a href="#orgheadline16">1.16. Typing quickly <code>fd</code> takes me out of <code>insert state</code>. What is going on?</a></li>
-<li><a href="#orgheadline17">1.17. Why do I get files starting with .#?</a></li>
+<li><a href="#orgheadline5">1.5. How to fix <code>Symbol's value as variable is void</code> errors on startup?</a></li>
+<li><a href="#orgheadline6">1.6. How to fix <code>(wrong-type-argument arrayp nil)</code> errors on startup?</a></li>
+<li><a href="#orgheadline7">1.7. The Spacemacs banner is ugly, what should I do?</a></li>
+<li><a href="#orgheadline8">1.8. The powerline separators are ugly, how can I fix them?</a></li>
+<li><a href="#orgheadline9">1.9. The powerline separators have no anti-aliasing, what can I do?</a></li>
+<li><a href="#orgheadline10">1.10. Why is after-init-hook not executed?</a></li>
+<li><a href="#orgheadline11">1.11. What is the difference between <code>spacemacs-base</code> and <code>spacemacs</code> distributions?</a></li>
+<li><a href="#orgheadline12">1.12. Should I place my settings in <code>user-init</code> or <code>user-config</code>?</a></li>
+<li><a href="#orgheadline13">1.13. Why do some of my <code>org</code>-related settings cause problems?</a></li>
+<li><a href="#orgheadline14">1.14. Why is Spacemacs hanging on startup?</a></li>
+<li><a href="#orgheadline15">1.15. Why does <code>helm-M-x</code> (<code>SPC SPC</code>) not accept the prefix argument?</a></li>
+<li><a href="#orgheadline16">1.16. Why does my color theme not render correctly in terminal mode?</a></li>
+<li><a href="#orgheadline17">1.17. Typing quickly <code>fd</code> takes me out of <code>insert state</code>. What is going on?</a></li>
+<li><a href="#orgheadline18">1.18. Why do I get files starting with .#?</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline36">2. How do I&#x2026;</a>
+<li><a href="#orgheadline37">2. How do I&#x2026;</a>
 <ul>
-<li><a href="#orgheadline19">2.1. Install a package not provided by a layer?</a></li>
-<li><a href="#orgheadline20">2.2. Disable a package completely?</a></li>
-<li><a href="#orgheadline21">2.3. Disable a package only for a specific major-mode?</a></li>
-<li><a href="#orgheadline22">2.4. Disable company for a specific major-mode?</a></li>
-<li><a href="#orgheadline23">2.5. Change special buffer rules?</a></li>
-<li><a href="#orgheadline24">2.6. Enable navigation by visual lines?</a></li>
-<li><a href="#orgheadline25">2.7. Disable evilification of a mode?</a></li>
-<li><a href="#orgheadline26">2.8. Include underscores in word motions?</a></li>
-<li><a href="#orgheadline27">2.9. Setup <code>$PATH</code>?</a></li>
-<li><a href="#orgheadline28">2.10. Change or define an alias for a leader key?</a></li>
-<li><a href="#orgheadline29">2.11. Restore the sentence delimiter to two spaces?</a></li>
-<li><a href="#orgheadline30">2.12. Prevent the visual selection overriding my system clipboard?</a></li>
-<li><a href="#orgheadline31">2.13. Make spell-checking support curly quotes (or any other character)?</a></li>
-<li><a href="#orgheadline32">2.14. Use Spacemacs as the <code>$EDITOR</code> for git commits?</a></li>
-<li><a href="#orgheadline33">2.15. Try Spacemacs without modifying my existing Emacs configuration?</a></li>
-<li><a href="#orgheadline34">2.16. Make copy/paste working with the mouse in X11 terminals?</a></li>
-<li><a href="#orgheadline35">2.17. Use <code>helm-ag</code> to search only in files of a certain type?</a></li>
+<li><a href="#orgheadline20">2.1. Install a package not provided by a layer?</a></li>
+<li><a href="#orgheadline21">2.2. Disable a package completely?</a></li>
+<li><a href="#orgheadline22">2.3. Disable a package only for a specific major-mode?</a></li>
+<li><a href="#orgheadline23">2.4. Disable company for a specific major-mode?</a></li>
+<li><a href="#orgheadline24">2.5. Change special buffer rules?</a></li>
+<li><a href="#orgheadline25">2.6. Enable navigation by visual lines?</a></li>
+<li><a href="#orgheadline26">2.7. Disable evilification of a mode?</a></li>
+<li><a href="#orgheadline27">2.8. Include underscores in word motions?</a></li>
+<li><a href="#orgheadline28">2.9. Setup <code>$PATH</code>?</a></li>
+<li><a href="#orgheadline29">2.10. Change or define an alias for a leader key?</a></li>
+<li><a href="#orgheadline30">2.11. Restore the sentence delimiter to two spaces?</a></li>
+<li><a href="#orgheadline31">2.12. Prevent the visual selection overriding my system clipboard?</a></li>
+<li><a href="#orgheadline32">2.13. Make spell-checking support curly quotes (or any other character)?</a></li>
+<li><a href="#orgheadline33">2.14. Use Spacemacs as the <code>$EDITOR</code> for git commits?</a></li>
+<li><a href="#orgheadline34">2.15. Try Spacemacs without modifying my existing Emacs configuration?</a></li>
+<li><a href="#orgheadline35">2.16. Make copy/paste working with the mouse in X11 terminals?</a></li>
+<li><a href="#orgheadline36">2.17. Use <code>helm-ag</code> to search only in files of a certain type?</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline41">3. Windows</a>
+<li><a href="#orgheadline42">3. Windows</a>
 <ul>
-<li><a href="#orgheadline37">3.1. Why do the fonts look crappy on Windows?</a></li>
-<li><a href="#orgheadline38">3.2. Why is there no Spacemacs logo in the startup buffer?</a></li>
-<li><a href="#orgheadline39">3.3. Why are all packages unavailable?</a></li>
-<li><a href="#orgheadline40">3.4. The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code>.</a></li>
+<li><a href="#orgheadline38">3.1. Why do the fonts look crappy on Windows?</a></li>
+<li><a href="#orgheadline39">3.2. Why is there no Spacemacs logo in the startup buffer?</a></li>
+<li><a href="#orgheadline40">3.3. Why are all packages unavailable?</a></li>
+<li><a href="#orgheadline41">3.4. The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code>.</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline43">4. OS X</a>
+<li><a href="#orgheadline44">4. OS X</a>
 <ul>
-<li><a href="#orgheadline42">4.1. Why are the powerline colors not correct on OS X?</a></li>
+<li><a href="#orgheadline43">4.1. Why are the powerline colors not correct on OS X?</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">1</span> Common</h2>
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="orgheadline19"><span class="section-number-2">1</span> Common</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-orgheadline1" class="outline-3">
 <h3 id="orgheadline1"><span class="section-number-3">1.1</span> Which version of Spacemacs am I running?</h3>
@@ -273,8 +274,38 @@ dotfile to remove the need to start Emacs with <code>--insecure=</code> argument
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">1.5</span> The Spacemacs banner is ugly, what should I do?</h3>
+<h3 id="orgheadline5"><span class="section-number-3">1.5</span> How to fix <code>Symbol's value as variable is void</code> errors on startup?</h3>
 <div class="outline-text-3" id="text-1-5">
+<p>
+If Emacs reports an error that the symbol <code>closed</code> or <code>-</code> is unbound as a
+variable, it is probably because you are using HTTPS to download packages, but
+you shouldn't be. Try deleting your packages (the <code>.emacs.d/elpa</code> folder), and
+restart Emacs without HTTPS to download the packages again. There are two ways
+to do this:
+</p>
+
+<ul class="org-ul">
+<li>Run Emacs with the <code>--insecure</code> command line argument: <code>emacs --insecure</code>. You
+will have to do this again the next time you update your packages.</li>
+<li>Set the variable <code>dotspacemacs-elpa-https</code> to <code>nil</code> in your dotfile. This has
+the same effect as <code>--insecure</code>, but is persistent.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">1.6</span> How to fix <code>(wrong-type-argument arrayp nil)</code> errors on startup?</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+This is most likely caused by a corrupted package archive. Try deleting your
+<code>~/.emacs.d/elpa/archives/</code> folder and restart Emacs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">1.7</span> The Spacemacs banner is ugly, what should I do?</h3>
+<div class="outline-text-3" id="text-1-7">
 <p>
 Install the default font supported by Spacemacs or choose a fixed width font.
 More information in the font section of the <a href="DOCUMENTATION.html">documentation</a>.
@@ -282,9 +313,9 @@ More information in the font section of the <a href="DOCUMENTATION.html">documen
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">1.6</span> The powerline separators are ugly, how can I fix them?</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.8</span> The powerline separators are ugly, how can I fix them?</h3>
+<div class="outline-text-3" id="text-1-8">
 <p>
 Use the property <code>:powerline-scale</code> of the variable <code>dotspacemacs-default-font</code>.
 See font section of the <a href="DOCUMENTATION.html">documentation</a> for more details.
@@ -292,9 +323,9 @@ See font section of the <a href="DOCUMENTATION.html">documentation</a> for more 
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">1.7</span> The powerline separators have no anti-aliasing, what can I do?</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">1.9</span> The powerline separators have no anti-aliasing, what can I do?</h3>
+<div class="outline-text-3" id="text-1-9">
 <p>
 Emacs powerline uses XMP images to draw the separators in a graphical
 environment. You can have anti-aliasing if you use the <code>utf8</code> separator. Note
@@ -304,9 +335,9 @@ section in the font section of the <a href="DOCUMENTATION.html">documentation</a
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">1.8</span> Why is after-init-hook not executed?</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">1.10</span> Why is after-init-hook not executed?</h3>
+<div class="outline-text-3" id="text-1-10">
 <p>
 Don't launch Spacemacs with <code>emacs -q -l init.el</code> command. This command will run
 the hooked functions in <code>after-init-hook</code> before the evaluation of the passed
@@ -315,9 +346,9 @@ the hooked functions in <code>after-init-hook</code> before the evaluation of th
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">1.9</span> What is the difference between <code>spacemacs-base</code> and <code>spacemacs</code> distributions?</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">1.11</span> What is the difference between <code>spacemacs-base</code> and <code>spacemacs</code> distributions?</h3>
+<div class="outline-text-3" id="text-1-11">
 <p>
 The <code>distribution</code> concept was introduced in 0.104.x. You can now choose between
 two distributions <code>spacemacs</code> or <code>spacemacs-base</code>. <code>spacemacs-base</code> contains
@@ -334,9 +365,9 @@ the <code>layers/</code> directory.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">1.10</span> Should I place my settings in <code>user-init</code> or <code>user-config</code>?</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">1.12</span> Should I place my settings in <code>user-init</code> or <code>user-config</code>?</h3>
+<div class="outline-text-3" id="text-1-12">
 <p>
 Any variable that layer configuration code will <b>read</b> and <b>act on</b> must be set
 in <code>user-init</code>, and any variable that Spacemacs explicitly sets but you wish to
@@ -349,9 +380,9 @@ Anything that isn't just setting a variable should 99% be in <code>user-config</
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">1.11</span> Why do some of my <code>org</code>-related settings cause problems?</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">1.13</span> Why do some of my <code>org</code>-related settings cause problems?</h3>
+<div class="outline-text-3" id="text-1-13">
 <p>
 Since version 0.104, spacemacs uses the <code>org</code> version from the org ELPA
 repository instead of the one shipped with emacs. Then, any <code>org</code> related code
@@ -377,9 +408,9 @@ like this:
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">1.12</span> Why is Spacemacs hanging on startup?</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">1.14</span> Why is Spacemacs hanging on startup?</h3>
+<div class="outline-text-3" id="text-1-14">
 <p>
 This is probably related to Helm using Tramp which tries to figure out some
 SSH/DNS settings at startup. The root cause is probably your ISP redirecting
@@ -414,9 +445,9 @@ ControlPersist = no
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">1.13</span> Why does <code>helm-M-x</code> (<code>SPC SPC</code>) not accept the prefix argument?</h3>
-<div class="outline-text-3" id="text-1-13">
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">1.15</span> Why does <code>helm-M-x</code> (<code>SPC SPC</code>) not accept the prefix argument?</h3>
+<div class="outline-text-3" id="text-1-15">
 <p>
 If you try to run <code>helm-M-x</code> with the prefix argument (i.e. <code>SPC u SPC SPC</code>) it
 will fail with this message:
@@ -433,9 +464,9 @@ Instead, call <code>helm-M-x</code> first, select the command you want to run, a
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">1.14</span> Why does my color theme not render correctly in terminal mode?</h3>
-<div class="outline-text-3" id="text-1-14">
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">1.16</span> Why does my color theme not render correctly in terminal mode?</h3>
+<div class="outline-text-3" id="text-1-16">
 <p>
 In the terminal version of Emacs, color themes will not render correctly as
 colors are rendered by the terminal and not by emacs. You will probably have to
@@ -445,19 +476,9 @@ change your terminal color palette. More explanations can be found on
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">1.15</span> Why do I get <code>(wrong-type-argument arrayp nil)</code> errors on startup?</h3>
-<div class="outline-text-3" id="text-1-15">
-<p>
-This is most likely caused by a corrupted package archive. Try deleting your
-<code>~/.emacs.d/elpa/archives/</code> folder and restart Emacs.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">1.16</span> Typing quickly <code>fd</code> takes me out of <code>insert state</code>. What is going on?</h3>
-<div class="outline-text-3" id="text-1-16">
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">1.17</span> Typing quickly <code>fd</code> takes me out of <code>insert state</code>. What is going on?</h3>
+<div class="outline-text-3" id="text-1-17">
 <p>
 This is a feature of Spacemacs, enabling you to easily escape from a lot of
 situations, like escaping from <code>insert state</code> to <code>normal state</code>.
@@ -475,9 +496,9 @@ If you don't like this feature, you can deactivate it by adding <code>evil-escap
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">1.17</span> Why do I get files starting with .#?</h3>
-<div class="outline-text-3" id="text-1-17">
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">1.18</span> Why do I get files starting with .#?</h3>
+<div class="outline-text-3" id="text-1-18">
 <p>
 These are lockfiles, created by Emacs to prevent editing conflicts which occur
 when the same file is edited simultaneously by two different programs. To
@@ -493,11 +514,11 @@ disable this behaviour:
 </div>
 </div>
 
-<div id="outline-container-orgheadline36" class="outline-2">
-<h2 id="orgheadline36"><span class="section-number-2">2</span> How do I&#x2026;</h2>
+<div id="outline-container-orgheadline37" class="outline-2">
+<h2 id="orgheadline37"><span class="section-number-2">2</span> How do I&#x2026;</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">2.1</span> Install a package not provided by a layer?</h3>
+</div><div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">2.1</span> Install a package not provided by a layer?</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Spacemacs provides a variable in the <code>dotspacemacs/layers</code> function in
@@ -508,8 +529,8 @@ to the list and it will be installed when you reload your configuration with
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">2.2</span> Disable a package completely?</h3>
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">2.2</span> Disable a package completely?</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 To completely disable a package and effectively uninstalling it even if it is
@@ -525,8 +546,8 @@ in your dotfile and add the package name to it:
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">2.3</span> Disable a package only for a specific major-mode?</h3>
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">2.3</span> Disable a package only for a specific major-mode?</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 This is done by removing the hook added by Spacemacs. For example to remove
@@ -547,8 +568,8 @@ v major-mode RET</code>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">2.4</span> Disable company for a specific major-mode?</h3>
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">2.4</span> Disable company for a specific major-mode?</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 It may be handy to disable <code>company</code> for a given mode if you plan on configuring
@@ -565,8 +586,8 @@ dotfile. The following snippet disables company for <code>python-mode</code>:
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">2.5</span> Change special buffer rules?</h3>
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">2.5</span> Change special buffer rules?</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 To change the way spacemacs marks buffers as useless, you can customize
@@ -590,8 +611,8 @@ Examples:
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="orgheadline24"><span class="section-number-3">2.6</span> Enable navigation by visual lines?</h3>
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25"><span class="section-number-3">2.6</span> Enable navigation by visual lines?</h3>
 <div class="outline-text-3" id="text-2-6">
 <p>
 Add the following snippet to your <code>dostpacemacs/config</code> function:
@@ -610,8 +631,8 @@ Add the following snippet to your <code>dostpacemacs/config</code> function:
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="orgheadline25"><span class="section-number-3">2.7</span> Disable evilification of a mode?</h3>
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="orgheadline26"><span class="section-number-3">2.7</span> Disable evilification of a mode?</h3>
 <div class="outline-text-3" id="text-2-7">
 <p>
 You can ensure a mode opens in emacs state by using <code>evil-set-initial-state</code>.
@@ -650,8 +671,8 @@ binding in the mode's map, e.g. for <code>magit-status-mode</code>,
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="orgheadline26"><span class="section-number-3">2.8</span> Include underscores in word motions?</h3>
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">2.8</span> Include underscores in word motions?</h3>
 <div class="outline-text-3" id="text-2-8">
 <p>
 You can modify the syntax table of the mode in question. To do so you can
@@ -671,8 +692,8 @@ include this on your <code>dotspacemacs/user-config</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-3">
-<h3 id="orgheadline27"><span class="section-number-3">2.9</span> Setup <code>$PATH</code>?</h3>
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">2.9</span> Setup <code>$PATH</code>?</h3>
 <div class="outline-text-3" id="text-2-9">
 <p>
 Some layers require certain tools to be available on your <code>$PATH</code>. This means
@@ -747,8 +768,8 @@ In that case you have the option of updating the value of <code>exec-path</code>
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-3">
-<h3 id="orgheadline28"><span class="section-number-3">2.10</span> Change or define an alias for a leader key?</h3>
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">2.10</span> Change or define an alias for a leader key?</h3>
 <div class="outline-text-3" id="text-2-10">
 <p>
 It is possible to change a leader key by binding its keymap to another sequence.
@@ -783,8 +804,8 @@ management), you can use this:
 </div>
 </div>
 
-<div id="outline-container-orgheadline29" class="outline-3">
-<h3 id="orgheadline29"><span class="section-number-3">2.11</span> Restore the sentence delimiter to two spaces?</h3>
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30"><span class="section-number-3">2.11</span> Restore the sentence delimiter to two spaces?</h3>
 <div class="outline-text-3" id="text-2-11">
 <p>
 To restore the sentence delimiter to two spaces, add the following code to the
@@ -799,8 +820,8 @@ To restore the sentence delimiter to two spaces, add the following code to the
 </div>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-3">
-<h3 id="orgheadline30"><span class="section-number-3">2.12</span> Prevent the visual selection overriding my system clipboard?</h3>
+<div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">2.12</span> Prevent the visual selection overriding my system clipboard?</h3>
 <div class="outline-text-3" id="text-2-12">
 <p>
 On some operating systems, there is only one clipboard for both <b>copied</b> and
@@ -819,8 +840,8 @@ adding the following code to the <code>dotspacemacs/user-config</code> of your
 </div>
 </div>
 
-<div id="outline-container-orgheadline31" class="outline-3">
-<h3 id="orgheadline31"><span class="section-number-3">2.13</span> Make spell-checking support curly quotes (or any other character)?</h3>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">2.13</span> Make spell-checking support curly quotes (or any other character)?</h3>
 <div class="outline-text-3" id="text-2-13">
 <p>
 To have spell-checking support curly quotes (or any other character), you need
@@ -848,8 +869,8 @@ to use the dictionary supporting your newly added characters.
 </div>
 </div>
 
-<div id="outline-container-orgheadline32" class="outline-3">
-<h3 id="orgheadline32"><span class="section-number-3">2.14</span> Use Spacemacs as the <code>$EDITOR</code> for git commits?</h3>
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">2.14</span> Use Spacemacs as the <code>$EDITOR</code> for git commits?</h3>
 <div class="outline-text-3" id="text-2-14">
 <p>
 Spacemacs can be used as the <code>$EDITOR</code> (or <code>$GIT_EDITOR</code>) for editing git
@@ -865,8 +886,8 @@ commits messages. To enable this you have to add the following line to your
 </div>
 </div>
 
-<div id="outline-container-orgheadline33" class="outline-3">
-<h3 id="orgheadline33"><span class="section-number-3">2.15</span> Try Spacemacs without modifying my existing Emacs configuration?</h3>
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><span class="section-number-3">2.15</span> Try Spacemacs without modifying my existing Emacs configuration?</h3>
 <div class="outline-text-3" id="text-2-15">
 <p>
 Emacs' ability to use any directory as the home for launching it allows us to
@@ -890,8 +911,8 @@ If you're on Fish shell, you will need to modify the last command to:
 </div>
 </div>
 
-<div id="outline-container-orgheadline34" class="outline-3">
-<h3 id="orgheadline34"><span class="section-number-3">2.16</span> Make copy/paste working with the mouse in X11 terminals?</h3>
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><span class="section-number-3">2.16</span> Make copy/paste working with the mouse in X11 terminals?</h3>
 <div class="outline-text-3" id="text-2-16">
 <p>
 It is possible to disable the mouse support in X11 terminals in order to
@@ -907,8 +928,8 @@ enable copying/pasting with the mouse. You need to add this line to your
 </div>
 </div>
 
-<div id="outline-container-orgheadline35" class="outline-3">
-<h3 id="orgheadline35"><span class="section-number-3">2.17</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">2.17</span> Use <code>helm-ag</code> to search only in files of a certain type?</h3>
 <div class="outline-text-3" id="text-2-17">
 <p>
 It is possible to restrict the scope of <code>helm-ag</code> to search only expressions in
@@ -940,11 +961,11 @@ arguments of the <code>ag</code> program.
 </div>
 </div>
 
-<div id="outline-container-orgheadline41" class="outline-2">
-<h2 id="orgheadline41"><span class="section-number-2">3</span> Windows</h2>
+<div id="outline-container-orgheadline42" class="outline-2">
+<h2 id="orgheadline42"><span class="section-number-2">3</span> Windows</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline37" class="outline-3">
-<h3 id="orgheadline37"><span class="section-number-3">3.1</span> Why do the fonts look crappy on Windows?</h3>
+</div><div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="orgheadline38"><span class="section-number-3">3.1</span> Why do the fonts look crappy on Windows?</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 You can install <a href="https://code.google.com/p/mactype/">MacType</a> on Windows to get very nice looking fonts. It is also
@@ -953,8 +974,8 @@ recommended to disable smooth scrolling on Windows.
 </div>
 </div>
 
-<div id="outline-container-orgheadline38" class="outline-3">
-<h3 id="orgheadline38"><span class="section-number-3">3.2</span> Why is there no Spacemacs logo in the startup buffer?</h3>
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="orgheadline39"><span class="section-number-3">3.2</span> Why is there no Spacemacs logo in the startup buffer?</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 A GUI build of emacs supporting image display is required. You can follow the
@@ -964,8 +985,8 @@ support included such as <a href="http://emacsbinw64.sourceforge.net/">this one<
 </div>
 </div>
 
-<div id="outline-container-orgheadline39" class="outline-3">
-<h3 id="orgheadline39"><span class="section-number-3">3.3</span> Why are all packages unavailable?</h3>
+<div id="outline-container-orgheadline40" class="outline-3">
+<h3 id="orgheadline40"><span class="section-number-3">3.3</span> Why are all packages unavailable?</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Check if your Emacs has HTTPS capabilities by doing <code>M-:</code> and then:
@@ -984,8 +1005,8 @@ directory as Emacs. See <a href="https://www.gnu.org/software/emacs/manual/html_
 </div>
 </div>
 
-<div id="outline-container-orgheadline40" class="outline-3">
-<h3 id="orgheadline40"><span class="section-number-3">3.4</span> The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code>.</h3>
+<div id="outline-container-orgheadline41" class="outline-3">
+<h3 id="orgheadline41"><span class="section-number-3">3.4</span> The powerline isn't shown correctly when Spacemacs is used within <code>PuTTY</code>.</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">this explanation</a> explaining how to correct this.
@@ -994,11 +1015,11 @@ You can follow <a href="http://mschulte.nl/posts/using-powerline-in-PuTTY.html">
 </div>
 </div>
 
-<div id="outline-container-orgheadline43" class="outline-2">
-<h2 id="orgheadline43"><span class="section-number-2">4</span> OS X</h2>
+<div id="outline-container-orgheadline44" class="outline-2">
+<h2 id="orgheadline44"><span class="section-number-2">4</span> OS X</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline42" class="outline-3">
-<h3 id="orgheadline42"><span class="section-number-3">4.1</span> Why are the powerline colors not correct on OS X?</h3>
+</div><div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="orgheadline43"><span class="section-number-3">4.1</span> Why are the powerline colors not correct on OS X?</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 This is a <a href="https://github.com/milkypostman/powerline/issues/54">known issue</a> as of Emacs 24.4 due to <code>ns-use-srgb-colorspace</code>
@@ -1010,8 +1031,8 @@ install section in the <a href="../README.md">README</a> for more details.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="author">Author: sbenner</p>
+<p class="date">Created: 2016-04-01 Fri 09:30</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
