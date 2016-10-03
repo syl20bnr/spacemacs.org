@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rust contribution layer for Spacemacs</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,15 +165,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline5">2. Install</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#orgheadline2">2.1. Layer</a></li>
-<li><a href="#orgheadline3">2.2. Cargo</a></li>
-<li><a href="#orgheadline4">2.3. Auto-completion</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#racer">2.2. Racer</a></li>
+<li><a href="#cargo">2.3. Cargo</a></li>
+<li><a href="#rustfmt">2.4. Rustfmt</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline6">3. Key bindings</a></li>
+<li><a href="#key-bindings">3. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -186,25 +185,26 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
-This layer aims to support <a href="http://www.rust-lang.org/">Rust</a> development in Spacemacs.
+This layer supports <a href="http://www.rust-lang.org/">Rust</a> development in Spacemacs.
 </p>
 
 <p>
-It supports <a href="http://doc.crates.io/index.html">Cargo</a>, and has some basic auto-completion support through <a href="https://github.com/phildawes/racer">Racer</a>,
-though Racer needs some additional configurations as described on their page.
+It has auto-completion and navigation support through <a href="https://github.com/phildawes/racer">Racer</a> and supports <a href="http://doc.crates.io/index.html">Cargo</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="install"><a id="orgheadline6"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>rust</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -214,8 +214,23 @@ file.
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">2.2</span> Cargo</h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="racer"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Racer</h3>
+<div class="outline-text-3" id="text-racer">
+<p>
+You must install <a href="https://github.com/phildawes/racer">Racer</a> to use this. Make sure the <code>racer</code> binary is available in
+your <code>PATH</code> and to set the environment variable <code>RUST_SRC_PATH</code>, as described in
+the <a href="https://github.com/phildawes/racer#installation">installation instructions</a>.
+</p>
+
+<p>
+To enable auto-completion, ensure that the <code>auto-completion</code> layer is enabled.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="cargo"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> Cargo</h3>
+<div class="outline-text-3" id="text-cargo">
 <p>
 <a href="http://doc.crates.io/index.html">Cargo</a> is a project management command line tool for Rust. Installation
 instructions can be found on the main page of <a href="http://doc.crates.io/index.html">Cargo</a>.
@@ -223,31 +238,29 @@ instructions can be found on the main page of <a href="http://doc.crates.io/inde
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.3</span> Auto-completion</h3>
-<div class="outline-text-3" id="text-2-3">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="rustfmt"><a id="orgheadline5"></a><span class="section-number-3">2.4</span> Rustfmt</h3>
+<div class="outline-text-3" id="text-rustfmt">
 <p>
-To enable auto-completion, ensure that the <code>auto-completion</code> layer is enabled and
-add the following line to your <code>dotspacemacs/user-init</code>:
+Format Rust code according to style guidelines using <a href="https://github.com/rust-lang-nursery/rustfmt">rustfmt</a>.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq-default</span> <span class="ATTRLIST-1">rust-enable-racer</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-sh">cargo install rustfmt
 </pre>
 </div>
 
 <p>
-You have to install <a href="https://github.com/phildawes/racer">Racer</a> to use this. For more information on the installation
-procedure, look <a href="https://github.com/racer-rust/emacs-racer">here</a>.
+To enable automatic buffer formatting on save, set the variable <code>rust-format-on-save</code> to <code>t</code>.
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">3</span> Key bindings</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline7"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -264,23 +277,13 @@ procedure, look <a href="https://github.com/racer-rust/emacs-racer">here</a>.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m c c</code></td>
-<td class="org-left">compile project with Cargo</td>
+<td class="org-left"><code>SPC m =</code></td>
+<td class="org-left">reformat the buffer</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m c t</code></td>
-<td class="org-left">run tests with Cargo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c d</code></td>
-<td class="org-left">generate documentation with Cargo</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m c x</code></td>
-<td class="org-left">execute the project with Cargo</td>
+<td class="org-left"><code>SPC m c .</code></td>
+<td class="org-left">repeat the last Cargo command</td>
 </tr>
 
 <tr>
@@ -289,8 +292,68 @@ procedure, look <a href="https://github.com/racer-rust/emacs-racer">here</a>.
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m c X</code></td>
+<td class="org-left">execute a project example with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c c</code></td>
+<td class="org-left">compile project with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c d</code></td>
+<td class="org-left">generate documentation with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c e</code></td>
+<td class="org-left">run benchmarks with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c f</code></td>
+<td class="org-left">run the current test with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c i</code></td>
+<td class="org-left">create a new project with Cargo (init)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c n</code></td>
+<td class="org-left">create a new project with Cargo (new)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c o</code></td>
+<td class="org-left">run all tests in current file with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c s</code></td>
+<td class="org-left">search for packages on crates.io with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c u</code></td>
+<td class="org-left">update dependencies with Cargo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c x</code></td>
+<td class="org-left">execute a project with Cargo</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">go jump to definition</td>
+<td class="org-left">jump to definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t</code></td>
+<td class="org-left">run tests with Cargo</td>
 </tr>
 </tbody>
 </table>
@@ -299,7 +362,7 @@ procedure, look <a href="https://github.com/racer-rust/emacs-racer">here</a>.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

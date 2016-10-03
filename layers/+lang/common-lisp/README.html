@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:10 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Common Lisp layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,19 +165,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Install</a></li>
-<li><a href="#orgheadline11">3. Key Bindings</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#key-bindings">3. Key Bindings</a>
 <ul>
-<li><a href="#orgheadline3">3.1. Working with lisp files (barfage, slurpage &amp; more)</a></li>
-<li><a href="#orgheadline10">3.2. Leader</a>
+<li><a href="#working-with-lisp-files-barfage-slurpage--more">3.1. Working with lisp files (barfage, slurpage &amp; more)</a></li>
+<li><a href="#leader">3.2. Leader</a>
 <ul>
-<li><a href="#orgheadline4">3.2.1. Help</a></li>
-<li><a href="#orgheadline5">3.2.2. Evaluation</a></li>
-<li><a href="#orgheadline6">3.2.3. REPL</a></li>
-<li><a href="#orgheadline7">3.2.4. Compile</a></li>
-<li><a href="#orgheadline8">3.2.5. Navigation</a></li>
-<li><a href="#orgheadline9">3.2.6. Macroexpansion</a></li>
+<li><a href="#help">3.2.1. Help</a></li>
+<li><a href="#evaluation">3.2.2. Evaluation</a></li>
+<li><a href="#repl">3.2.3. REPL</a></li>
+<li><a href="#compile">3.2.4. Compile</a></li>
+<li><a href="#navigation">3.2.5. Navigation</a></li>
+<li><a href="#macroexpansion">3.2.6. Macroexpansion</a></li>
 </ul>
 </li>
 </ul>
@@ -194,8 +192,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 A Spacemacs contribution layer providing Common Lisp support via <a href="https://github.com/slime/slime">SLIME</a>.
 </p>
@@ -203,8 +201,8 @@ A Spacemacs contribution layer providing Common Lisp support via <a href="https:
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="install"><a id="orgheadline2"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
 <p>
 If you have previously installed slime in any other way, it is recommended that
 you uninstall it before proceeding. You should clean up any config files tied to
@@ -225,19 +223,21 @@ of Common Lisp, you can specify it in your <code>~/.spacemacs</code>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-3">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-2">dotspacemacs/user-config</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">inferior-lisp-program</span> <span class="org-string">"/path/to/your/lisp"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">dotspacemacs/user-config</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>setq inferior-lisp-program <span class="org-string">"/path/to/your/lisp"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11"><span class="section-number-2">3</span> Key Bindings</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">3.1</span> Working with lisp files (barfage, slurpage &amp; more)</h3>
-<div class="outline-text-3" id="text-3-1">
+<h2 id="key-bindings"><a id="orgheadline11"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="working-with-lisp-files-barfage-slurpage--more"><a id="orgheadline3"></a><span class="section-number-3">3.1</span> Working with lisp files (barfage, slurpage &amp; more)</h3>
+<div class="outline-text-3" id="text-working-with-lisp-files-barfage-slurpage--more">
 <p>
 Spacemacs comes with a special <code>lisp-state</code> for working with lisp code that
 supports slurpage, barfage and more tools you'll likely want when working with
@@ -246,17 +246,19 @@ lisp.
 
 <p>
 As this state works the same for all files, the documentation is in global
-<a href="https://github.com/syl20bnr/spacemacs/blob/master/doc/DOCUMENTATION.org#lisp-key-bindings">DOCUMENTATION.org</a>. In general, use <code>SPC k</code> to interact with the lisp-state.
+<a href="http://spacemacs.org/doc/DOCUMENTATION.html#lisp-key-bindings">DOCUMENTATION.org</a>. In general, use <code>SPC k</code> to interact with the lisp-state.
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">3.2</span> Leader</h3>
-<div class="outline-text-3" id="text-3-2">
-</div><div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">3.2.1</span> Help</h4>
-<div class="outline-text-4" id="text-3-2-1">
+<h3 id="leader"><a id="orgheadline10"></a><span class="section-number-3">3.2</span> Leader</h3>
+<div class="outline-text-3" id="text-leader">
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="help"><a id="orgheadline4"></a><span class="section-number-4">3.2.1</span> Help</h4>
+<div class="outline-text-4" id="text-help">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -337,8 +339,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">3.2.2</span> Evaluation</h4>
-<div class="outline-text-4" id="text-3-2-2">
+<h4 id="evaluation"><a id="orgheadline5"></a><span class="section-number-4">3.2.2</span> Evaluation</h4>
+<div class="outline-text-4" id="text-evaluation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -384,8 +386,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><span class="section-number-4">3.2.3</span> REPL</h4>
-<div class="outline-text-4" id="text-3-2-3">
+<h4 id="repl"><a id="orgheadline6"></a><span class="section-number-4">3.2.3</span> REPL</h4>
+<div class="outline-text-4" id="text-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -421,8 +423,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7"><span class="section-number-4">3.2.4</span> Compile</h4>
-<div class="outline-text-4" id="text-3-2-4">
+<h4 id="compile"><a id="orgheadline7"></a><span class="section-number-4">3.2.4</span> Compile</h4>
+<div class="outline-text-4" id="text-compile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -473,8 +475,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8"><span class="section-number-4">3.2.5</span> Navigation</h4>
-<div class="outline-text-4" id="text-3-2-5">
+<h4 id="navigation"><a id="orgheadline8"></a><span class="section-number-4">3.2.5</span> Navigation</h4>
+<div class="outline-text-4" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -515,8 +517,8 @@ As this state works the same for all files, the documentation is in global
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9"><span class="section-number-4">3.2.6</span> Macroexpansion</h4>
-<div class="outline-text-4" id="text-3-2-6">
+<h4 id="macroexpansion"><a id="orgheadline9"></a><span class="section-number-4">3.2.6</span> Macroexpansion</h4>
+<div class="outline-text-4" id="text-macroexpansion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -550,7 +552,7 @@ As this state works the same for all files, the documentation is in global
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:10</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

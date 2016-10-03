@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-03 Mon 00:55 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>pdf-tools layer</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">pdf-tools layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#prerequisites">2.1. Prerequisites</a></li>
+<li><a href="#dotfile">2.2. Dotfile</a></li>
+</ul>
+</li>
+<li><a href="#usage">3. Usage</a></li>
+<li><a href="#known-issues">4. Known Issues</a></li>
+<li><a href="#key-bindings">5. Key bindings</a>
+<ul>
+<li><a href="#pdf-view">5.1. PDF View</a></li>
+<li><a href="#leader-keys">5.2. Leader keys</a></li>
+<li><a href="#outline-buffer-mode">5.3. Outline buffer mode</a></li>
+<li><a href="#annotation-list-mode">5.4. Annotation list mode</a></li>
+<li><a href="#occur-mode">5.5. Occur mode</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="img/pdf.png" alt="pdf.png" />
+</p>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer enables support for the <a href="https://github.com/politza/pdf-tools">pdf-tools</a> package.
+</p>
+
+<p>
+According to the official repository:
+</p>
+
+<blockquote>
+<p>
+"PDF Tools is, among other things, a replacement of DocView for PDF files. The
+key difference is, that pages are not pre-rendered by e.g. ghostscript and
+stored in the file-system, but rather created on-demand and stored in memory."
+</p>
+</blockquote>
+
+<p>
+Examples of features that <code>pdf-tools</code> provides:
+</p>
+<ul class="org-ul">
+<li>Use <code>occur</code> in the pdf file;</li>
+<li>Show all headings in a outline buffer;</li>
+<li>Manipulate annotations.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="install"><a id="orgheadline4"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="prerequisites"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Prerequisites</h3>
+<div class="outline-text-3" id="text-prerequisites">
+<p>
+Linux is the only operating system officially supported, but it's possible to
+use <code>pdf-tools</code> on OS X as well, and possibly on other Unix flavors.
+</p>
+
+<p>
+You'll need to install a few libraries. Check the <a href="https://github.com/politza/pdf-tools#server-prerequisites">instructions</a> on
+<code>pdf-tools</code> page. Note that compiling from source might not be necessary, as
+the documentation states.
+</p>
+
+<p>
+If you use a Debian based system such as Ubuntu, you can skip this step, as
+<code>pdf-tools</code> installation asks whether you want it to try to download
+automatically all dependencies using <code>apt-get</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="dotfile"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Dotfile</h3>
+<div class="outline-text-3" id="text-dotfile">
+<p>
+After installing the dependencies, add this to your <code>~/.spacemacs</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>pdf-tools<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+After that, syncronize your configuration with <code>SPC f e R</code>. This will pop up a
+window showing the compilation process.
+</p>
+
+<p>
+If everything goes right, the compilation won't display any error and you will
+be able to see <i>PDFView</i> (instead of <i>DocView</i>) on the spaceline after opening a
+pdf file.
+</p>
+
+<p>
+If the compilation run successfully but you get
+<code>Error (use-package): pdf-tools :config: No executable `epdfinfo' found</code>,
+try restarting Spacemacs (<a href="https://github.com/politza/pdf-tools/issues/31">issue</a>).
+</p>
+
+<p>
+If the compilation does not run successfully, you should confirm whether all
+dependencies are properly installed and run the command <code>pdf-tools-install</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="usage"><a id="orgheadline5"></a><span class="section-number-2">3</span> Usage</h2>
+<div class="outline-text-2" id="text-usage">
+<p>
+Use <code>SPC m .</code> to activate the pdf-tools transient state.
+The keybindings that the transient displays can be also accessed using <code>SPC m</code>. The
+navigation keybindings can be used directly.
+</p>
+
+<p>
+Try out opening the outline (<code>O</code>). The outline window shows the structure of the
+pdf, displaying all headings.
+</p>
+
+<p>
+You can set annotations by selecting regions and right clicking on the buffer.
+Additionally, all annotation related functions can be accessed with <code>SPC m a</code>.
+</p>
+
+<p>
+Searching with <code>occur</code> can be done by using <code>pdf-occur</code> (<code>SPC m s s</code>).
+</p>
+
+<p>
+Tips:
+</p>
+<ul class="org-ul">
+<li>You'll probably want to use <code>pdf-view-set-slice-from-bounding-box</code> (bound to
+<code>SPC m s b</code>) This command trims the blank parts of the
+lateral margins, making the useful portion larger.</li>
+<li>The last visited page is not saved across Emacs sessions. If you want save it,
+use the bookmarks commands on <code>SPC j b</code> to save and go to a bookmark.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="known-issues"><a id="orgheadline6"></a><span class="section-number-2">4</span> Known Issues</h2>
+<div class="outline-text-2" id="text-known-issues">
+<p>
+Due to <code>image-mode</code>'s behaviour, the <code>pdf-tools</code> buffer might go back to the
+first page after switching windows. If this happens, you can quickly go back to
+the previous page in history with <code>pdf-history-backward</code> (<code>``</code> in Evil state and
+<code>B</code> in Emacs state.)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline12"></a><span class="section-number-2">5</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<p>
+If you use Emacs editing style, check the key bindings at the <a href="https://github.com/politza/pdf-tools#some-keybindings">pdf-tools page</a>.
+</p>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="pdf-view"><a id="orgheadline7"></a><span class="section-number-3">5.1</span> PDF View</h3>
+<div class="outline-text-3" id="text-pdf-view">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Key Binding</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Navigation</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>M-SPC</code> or <code>s-M-SPC</code></td>
+<td class="org-left">pdf-tools transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>0/$</code></td>
+<td class="org-left">Left/right full scroll</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>J</code></td>
+<td class="org-left">Move to next page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>K</code></td>
+<td class="org-left">Move to previous page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">Scroll page up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">Scroll page down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gg</code></td>
+<td class="org-left">Go to the first page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>G</code></td>
+<td class="org-left">Go to the last page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gt</code></td>
+<td class="org-left">Go to page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gl</code></td>
+<td class="org-left">Go to label (usually the line as printed)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-u</code></td>
+<td class="org-left">Scroll up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-d</code></td>
+<td class="org-left">Scroll down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>``</code></td>
+<td class="org-left">Go to last page in the history</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>m</code></td>
+<td class="org-left">Set mark</td>
+</tr>
+
+<tr>
+<td class="org-left">~'~</td>
+<td class="org-left">Go to mark</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>y</code></td>
+<td class="org-left">Yank selected region</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Search</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>/</code></td>
+<td class="org-left">Search forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>?</code></td>
+<td class="org-left">Search backward</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Actions</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">Follow link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>O</code></td>
+<td class="org-left">Show outline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">Refresh file</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Zoom</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>+/-</code></td>
+<td class="org-left">Zoom in/out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>zr</code></td>
+<td class="org-left">Reset zoom</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<i>For evil users</i>: Note that the search keys activate <code>isearch</code>, which works
+differently from the default Evil search. To go to the next match, use <code>C-s</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="leader-keys"><a id="orgheadline8"></a><span class="section-number-3">5.2</span> Leader keys</h3>
+<div class="outline-text-3" id="text-leader-keys">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Key Binding</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><b>Slicing</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m s m</code></td>
+<td class="org-left">Set slice using mouse</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s b</code></td>
+<td class="org-left">Set slice from bounding box</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s r</code></td>
+<td class="org-left">Reset slice</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Annotations</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m a D</code></td>
+<td class="org-left">Delete annotation (select it with mouse)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a a</code></td>
+<td class="org-left">List all attachments in a dired buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a h</code></td>
+<td class="org-left">Highlight visual selection</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a l</code></td>
+<td class="org-left">List all annotations</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a m</code></td>
+<td class="org-left">Add markup annotation to visual selection</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a o</code></td>
+<td class="org-left">Strikeout visual selection</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a s</code></td>
+<td class="org-left">Add squiggly to visual selection</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a t</code></td>
+<td class="org-left">Add annotation text</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a u</code></td>
+<td class="org-left">Underline to visual selection</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Fit image to window</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m f w</code></td>
+<td class="org-left">Fit width to window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f h</code></td>
+<td class="org-left">Fit height to window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f p</code></td>
+<td class="org-left">Fit page to window</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><b>Other</b></td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m n</code></td>
+<td class="org-left">Toggle night view mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">Run <code>pdf-occur</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p</code></td>
+<td class="org-left">Display print version</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="outline-buffer-mode"><a id="orgheadline9"></a><span class="section-number-3">5.3</span> Outline buffer mode</h3>
+<div class="outline-text-3" id="text-outline-buffer-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left"><b>Key Binding</b></th>
+<th scope="col" class="org-left"><b>Description</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>S-tab</code></td>
+<td class="org-left">Expand all trees</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">Follow link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-RET</code></td>
+<td class="org-left">Follow link and close outline window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">Go to pdf view window</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>``</code></td>
+<td class="org-left">Move to the heading correspondent to the current page</td>
+</tr>
+
+<tr>
+<td class="org-left">~''~</td>
+<td class="org-left">Move to the heading correspondent to the current page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>f</code></td>
+<td class="org-left">Go to selected heading without leaving outline buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>F</code></td>
+<td class="org-left">Enable follow mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">Quit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>Q</code></td>
+<td class="org-left">Quit and kill outline buffer</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Note that you can use also typical Vim keys such as <code>j</code> and <code>G</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="annotation-list-mode"><a id="orgheadline10"></a><span class="section-number-3">5.4</span> Annotation list mode</h3>
+<div class="outline-text-3" id="text-annotation-list-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">Mark for deletion</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>x</code></td>
+<td class="org-left">Apply action for marked items</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>u</code></td>
+<td class="org-left">Unmark item</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">Quit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="occur-mode"><a id="orgheadline11"></a><span class="section-number-3">5.5</span> Occur mode</h3>
+<div class="outline-text-3" id="text-occur-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">Quit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g</code></td>
+<td class="org-left">Refresh buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">Refresh buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Evil-snipe layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,17 +165,17 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline7">2. Install</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#orgheadline2">2.1. Layer</a></li>
-<li><a href="#orgheadline3">2.2. Improved f and t search behavior</a></li>
-<li><a href="#orgheadline4">2.3. Two-character search with s</a></li>
-<li><a href="#orgheadline5">2.4. More scopes</a></li>
-<li><a href="#orgheadline6">2.5. Symbol groups</a></li>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#improved-f-and-t-search-behavior">2.2. Improved f and t search behavior</a></li>
+<li><a href="#two-character-search-with-s">2.3. Two-character search with s</a></li>
+<li><a href="#more-scopes">2.4. More scopes</a></li>
+<li><a href="#symbol-groups">2.5. Symbol groups</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline8">3. <span class="todo TODO">TODO</span> Key bindings</a></li>
+<li><a href="#todo-key-bindings">3. <span class="todo TODO">TODO</span> Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -188,8 +186,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 The package <a href="https://github.com/hlissner/evil-snipe">evil-snipe</a>
 </p>
@@ -212,11 +210,13 @@ buffer with two chars.
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-2-1">
+<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>evil-snipe</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -226,13 +226,13 @@ file.
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="improved-f-and-t-search-behavior"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
+<div class="outline-text-3" id="text-improved-f-and-t-search-behavior">
 <p>
 With evil-snipe you can define your own search scope for <code>f</code> and <code>t</code> searches
 which means that you won't have to jump to the correct line before searching
 with <code>f</code> / <code>t</code> / <code>F</code> / <code>T</code>. And after you have found a match, you can just press
-<code>f</code> or <code>t</code> again afterwards to continue the search. No need to use <code>;</code> / ~,~.
+<code>f</code> or <code>t</code> again afterwards to continue the search. No need to use <code>;</code> / <code>​,​</code>.
 </p>
 
 <p>
@@ -242,16 +242,16 @@ layer variable <code>evil-snipe-enable-alternate-f-and-t-behaviors</code> to <co
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">evil-snipe</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">evil-snipe-enable-alternate-f-and-t-behaviors</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>evil-snipe <span class="org-builtin">:variables</span> evil-snipe-enable-alternate-f-and-t-behaviors t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.3</span> Two-character search with s</h3>
-<div class="outline-text-3" id="text-2-3">
+<h3 id="two-character-search-with-s"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> Two-character search with s</h3>
+<div class="outline-text-3" id="text-two-character-search-with-s">
 <p>
 With the <code>s~/~S</code> keys you can do a simple search like <code>f~/~t</code>, but instead of
 searching for one character, you search for two. This makes the search a lot
@@ -264,8 +264,8 @@ purposes.
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.4</span> More scopes</h3>
-<div class="outline-text-3" id="text-2-4">
+<h3 id="more-scopes"><a id="orgheadline5"></a><span class="section-number-3">2.4</span> More scopes</h3>
+<div class="outline-text-3" id="text-more-scopes">
 <p>
 Evil-snipe also adds several scope options for searches (set <code>evil-snipe-scope</code>
 and <code>evil-snipe-repeat-scope</code> to one of these, the default value is <code>buffer</code>):
@@ -327,40 +327,40 @@ remove this line from <code>evil-snipe/packages.el</code>:
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">2.5</span> Symbol groups</h3>
-<div class="outline-text-3" id="text-2-5">
+<h3 id="symbol-groups"><a id="orgheadline6"></a><span class="section-number-3">2.5</span> Symbol groups</h3>
+<div class="outline-text-3" id="text-symbol-groups">
 <p>
 With symbol groups you can let a character stand for a regex, for example a
-group of characters. By adding a pair of ='(CHAR REGEX)= to the list
-='evil-snipe-symbol-groups= you can search for a regex very simply:
+group of characters. By adding a pair of <code>(CHAR REGEX)</code> to the list
+<code>evil-snipe-aliases</code> you can search for a regex very simply:
 </p>
 
 <ul class="org-ul">
-<li>Here we set the <code>[</code> character to mean =all characters "[({"= so a search</li>
+<li>Here we set the <code>[</code> character to mean <code>all characters [({</code> <b>in all modes</b> so a
+search with <code>sa[</code> would find <code>a[</code>, <code>a{</code> or <code>a(</code>.</li>
 </ul>
-<p>
-with <code>sa[</code> would find <code>a[</code>, <code>a{</code> or <code>a(</code>.
-</p>
 
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Alias [ and ] to all types of brackets</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">add-to-list</span> '<span class="ATTRLIST-2">evil-snipe-symbol-groups</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">?</span>\\<span class="org-rainbow-delimiters-depth-3">[</span> \"<span class="org-rainbow-delimiters-depth-4">[</span><span class="org-rainbow-delimiters-depth-5">[</span><span class="ATTRLIST">{</span><span class="org-rainbow-delimiters-depth-6">(</span><span class="org-rainbow-delimiters-mismatched">]</span>\"<span class="org-rainbow-delimiters-mismatched">))</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>?\[ <span class="org-string">"[[{(]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>?\] <span class="org-string">"[]})]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <ul class="org-ul">
-<li>Here we set the char <code>:</code> to mean =a regex matching python function</li>
+<li>Here we set the char <code>:</code> to mean <code>a regex matching python function
+  definitions</code> (but only in python-mode), so by searching with <code>f:fff</code> you can
+quickly cycle through all function definitions in a buffer!</li>
 </ul>
-<p>
-definitions= so by searching with <code>f:fff</code> you can quickly cycle through
-all function definitions in a buffer!
-</p>
 
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">For python style functions</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-5">add-to-list</span> '<span class="ATTRLIST-4">evil-snipe-symbol-groups</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-3">?</span>\\<span class="ATTRLIST-2">:</span> \"<span class="ATTRLIST-1">def</span> <span class="ATTRLIST">.+:</span>\"\)<span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook
+          <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span>make-variable-buffer-local 'evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span>push '<span class="org-rainbow-delimiters-depth-4">(</span>?: <span class="org-string">"def .+:"</span><span class="org-rainbow-delimiters-depth-4">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -368,12 +368,14 @@ all function definitions in a buffer!
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Key bindings</h2>
+<h2 id="todo-key-bindings"><a id="orgheadline8"></a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Key bindings</h2>
+<div class="outline-text-2" id="text-todo-key-bindings">
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

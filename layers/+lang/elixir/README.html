@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elixir layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,20 +165,30 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Install</a></li>
-<li><a href="#orgheadline13">3. Key bindings</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#orgheadline3">3.1. Refcard</a></li>
-<li><a href="#orgheadline4">3.2. Help</a></li>
-<li><a href="#orgheadline5">3.3. Mix</a></li>
-<li><a href="#orgheadline6">3.4. Project</a></li>
-<li><a href="#orgheadline7">3.5. Evaluation in place</a></li>
-<li><a href="#orgheadline8">3.6. REPL interactions</a></li>
-<li><a href="#orgheadline9">3.7. Tests</a></li>
-<li><a href="#orgheadline10">3.8. Compile</a></li>
-<li><a href="#orgheadline11">3.9. Execute</a></li>
-<li><a href="#orgheadline12">3.10. Code Definition Jump</a></li>
+<li><a href="#flycheck">3.1. Flycheck</a>
+<ul>
+<li><a href="#credo">3.1.1. Credo</a></li>
+<li><a href="#mix-compile">3.1.2. mix compile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a>
+<ul>
+<li><a href="#refcard">4.1. Refcard</a></li>
+<li><a href="#help">4.2. Help</a></li>
+<li><a href="#mix">4.3. Mix</a></li>
+<li><a href="#project">4.4. Project</a></li>
+<li><a href="#evaluation-in-place">4.5. Evaluation in place</a></li>
+<li><a href="#repl-interactions">4.6. REPL interactions</a></li>
+<li><a href="#tests">4.7. Tests</a></li>
+<li><a href="#compile">4.8. Compile</a></li>
+<li><a href="#execute">4.9. Execute</a></li>
+<li><a href="#code-definition-jump">4.10. Code Definition Jump</a></li>
 </ul>
 </li>
 </ul>
@@ -191,8 +199,8 @@ for the JavaScript code in this tag.
 </p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for <a href="http://elixir-lang.org/">Elixir</a> .
 </p>
@@ -211,13 +219,16 @@ features like:
 <li>Smart code completion</li>
 <li>Elixir project management</li>
 <li>Integration with <a href="http://company-mode.github.io/">company-mode</a></li>
+<li>Flycheck support for mix compile</li>
+<li>Flycheck support for <a href="https://github.com/rrrene/credo">credo</a></li>
+<li>Flycheck support for test results</li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="install"><a id="orgheadline2"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>elixir</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -226,21 +237,115 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="section-number-2">3</span> Key bindings</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">3.1</span> Refcard</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="configuration"><a id="orgheadline6"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="flycheck"><a id="orgheadline5"></a><span class="section-number-3">3.1</span> Flycheck</h3>
+<div class="outline-text-3" id="text-flycheck">
+<p>
+<b>Note:</b> since flycheck checkers are slow, the checks are enabled only at save
+time.
+</p>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="credo"><a id="orgheadline3"></a><span class="section-number-4">3.1.1</span> Credo</h4>
+<div class="outline-text-4" id="text-credo">
+<p>
+A flycheck checker for <a href="https://github.com/rrrene/credo">credo</a> is installed. The check needs both <code>bunt</code> and
+<code>credo</code> to be available, you can install them like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-shell">git clone https://github.com/rrrene/bunt
+<span class="org-builtin">cd</span> bunt
+mix archive.build
+mix archive.install
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-shell">git clone https://github.com/rrrene/credo
+<span class="org-builtin">cd</span> credo
+mix deps.get
+mix archive.build
+mix archive.install
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="mix-compile"><a id="orgheadline4"></a><span class="section-number-4">3.1.2</span> mix compile</h4>
+<div class="outline-text-4" id="text-mix-compile">
+<p>
+<b>Important:</b>
+Elixir compiler is based on macros and can execute arbitrary during compilation.
+Therefore Spacemacs disable flycheck compilation checker by default.
+</p>
+
+<p>
+To enable flycheck support for compilation errors  <b>globally</b> the variable
+<code>elixir-enable-compilation-checking</code> can be set explicitly to <code>t</code> in your
+dotfile but it is not recommended to do so because of the limitation described
+above.
+</p>
+
+<p>
+Instead you should use directory local variables in order to enable the flycheck
+checker only for certain projects. Directory local variables are stored in a
+file named <code>.dir-local.el</code> usually at the root of a project. To easily add a
+directory local variable use the key binding <code>SPC f v d</code> then choose the
+<code>elixir-mode</code> and the variable name <code>elixir-enable-compilation-checking</code> with
+a value of t. The result is a new file <code>.dir-local.el</code> with the following
+contents:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>elixir-mode
+  <span class="org-rainbow-delimiters-depth-3">(</span>elixir-enable-compilation-checking . t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Spacemacs marks the variable <code>elixir-enable-compilation-checking</code> as safe so
+Emacs won't ask you if the variable is safe whenever an elixir file is opened.
+</p>
+
+<p>
+Remember that you can verify the flycheck checkers status with <code>SPC e v</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline17"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="refcard"><a id="orgheadline7"></a><span class="section-number-3">4.1</span> Refcard</h3>
+<div class="outline-text-3" id="text-refcard">
 <p>
 You find and overview of all the key-bindings on the <a href="alchemist-refcard.pdf">Alchemist-Refcard</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">3.2</span> Help</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="help"><a id="orgheadline8"></a><span class="section-number-3">4.2</span> Help</h3>
+<div class="outline-text-3" id="text-help">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -280,9 +385,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">3.3</span> Mix</h3>
-<div class="outline-text-3" id="text-3-3">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="mix"><a id="orgheadline9"></a><span class="section-number-3">4.3</span> Mix</h3>
+<div class="outline-text-3" id="text-mix">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -322,9 +427,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">3.4</span> Project</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="project"><a id="orgheadline10"></a><span class="section-number-3">4.4</span> Project</h3>
+<div class="outline-text-3" id="text-project">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -359,9 +464,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">3.5</span> Evaluation in place</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="evaluation-in-place"><a id="orgheadline11"></a><span class="section-number-3">4.5</span> Evaluation in place</h3>
+<div class="outline-text-3" id="text-evaluation-in-place">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -411,9 +516,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">3.6</span> REPL interactions</h3>
-<div class="outline-text-3" id="text-3-6">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="repl-interactions"><a id="orgheadline12"></a><span class="section-number-3">4.6</span> REPL interactions</h3>
+<div class="outline-text-3" id="text-repl-interactions">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -473,9 +578,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">3.7</span> Tests</h3>
-<div class="outline-text-3" id="text-3-7">
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="tests"><a id="orgheadline13"></a><span class="section-number-3">4.7</span> Tests</h3>
+<div class="outline-text-3" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -520,9 +625,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">3.8</span> Compile</h3>
-<div class="outline-text-3" id="text-3-8">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="compile"><a id="orgheadline14"></a><span class="section-number-3">4.8</span> Compile</h3>
+<div class="outline-text-3" id="text-compile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -557,10 +662,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">3.9</span> Execute</h3>
-<div class="outline-text-3" id="text-3-9">
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="execute"><a id="orgheadline15"></a><span class="section-number-3">4.9</span> Execute</h3>
+<div class="outline-text-3" id="text-execute">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -595,9 +699,9 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">3.10</span> Code Definition Jump</h3>
-<div class="outline-text-3" id="text-3-10">
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="code-definition-jump"><a id="orgheadline16"></a><span class="section-number-3">4.10</span> Code Definition Jump</h3>
+<div class="outline-text-3" id="text-code-definition-jump">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -619,7 +723,7 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </tr>
 
 <tr>
-<td class="org-left">~SPC m ,~</td>
+<td class="org-left"><code>SPC m ​,​</code></td>
 <td class="org-left">Pop back to where <code>SPC m g g</code> was last invoked.</td>
 </tr>
 </tbody>
@@ -630,7 +734,7 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

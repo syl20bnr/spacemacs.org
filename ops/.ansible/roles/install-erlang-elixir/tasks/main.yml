@@ -1,0 +1,26 @@
+---
+
+- name: Erlang | Add gpg key
+  apt_key:
+    url: https://packages.erlang-solutions.com/debian/erlang_solutions.asc
+    state: present
+
+- name: Erlang | Add repository
+  apt_repository:
+    repo: "deb https://binaries.erlang-solutions.com/debian {{ ansible_distribution_release }} contrib"
+    state: present
+
+- name: Erlang | Install version {{ elixir_erlang_version }}
+  apt:
+    name: "erlang-base=1:{{ elixir_erlang_version }}.*"
+    install_recommends: no
+    update_cache: yes
+    cache_valid_time: 3600
+    state: present
+
+- name: Elixir | Install version {{ elixir_version }}
+  apt:
+    name: "elixir={{ elixir_version }}.*"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: present

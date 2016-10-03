@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,80 +165,91 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. General layers</a></li>
-<li><a href="#orgheadline2">2. Completion</a></li>
-<li><a href="#orgheadline3">3. Configuration files</a></li>
-<li><a href="#orgheadline4">4. E-mail</a></li>
-<li><a href="#orgheadline5">5. Frameworks</a></li>
-<li><a href="#orgheadline6">6. Fun</a></li>
-<li><a href="#orgheadline7">7. IRC</a></li>
-<li><a href="#orgheadline8">8. Keyboard layouts</a></li>
-<li><a href="#orgheadline9">9. Programming and markup languages</a></li>
-<li><a href="#orgheadline10">10. Source control</a></li>
-<li><a href="#orgheadline11">11. Tools</a></li>
-<li><a href="#orgheadline12">12. Vim</a></li>
-<li><a href="#orgheadline13">13. Window management</a></li>
+<li><a href="#chat">1. Chat</a></li>
+<li><a href="#checkers">2. Checkers</a></li>
+<li><a href="#completion">3. Completion</a></li>
+<li><a href="#distributions">4. Distributions</a></li>
+<li><a href="#emacs">5. Emacs</a></li>
+<li><a href="#e-mail">6. E-mail</a></li>
+<li><a href="#frameworks">7. Frameworks</a></li>
+<li><a href="#fun">8. Fun</a></li>
+<li><a href="#international-support">9. International support</a></li>
+<li><a href="#programming-and-markup-languages">10. Programming and markup languages</a></li>
+<li><a href="#misc">11. Misc</a></li>
+<li><a href="#operating-systems">12. Operating systems</a></li>
+<li><a href="#pair-programming">13. Pair programming</a></li>
+<li><a href="#source-control">14. Source control</a></li>
+<li><a href="#spacemacs-distribution-layers">15. Spacemacs distribution layers</a></li>
+<li><a href="#tags">16. Tags</a></li>
+<li><a href="#themes">17. Themes</a></li>
+<li><a href="#tools">18. Tools</a></li>
+<li><a href="#vim">19. Vim</a></li>
+<li><a href="#web-services">20. Web services</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> General layers</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="chat"><a id="orgheadline1"></a><span class="section-number-2">1</span> Chat</h2>
+<div class="outline-text-2" id="text-chat">
 <ul class="org-ul">
-<li><a href="auto-completion/README.html">auto-completion</a></li>
-<li><a href="better-defaults/README.html">better-defaults</a></li>
-<li><a href="chinese/README.html">chinese</a></li>
-<li><a href="chrome/README.html">chrome</a></li>
-<li><a href="colors/README.html">colors</a></li>
-<li><a href="cscope/README.html">cscope</a></li>
-<li><a href="deft/README.html">deft</a></li>
-<li><a href="finance/README.html">finance</a></li>
-<li><a href="floobits/README.html">floobits</a></li>
-<li><a href="geolocation/README.html">geolocation</a></li>
-<li><a href="gtags/README.html">gtags</a></li>
-<li><a href="ibuffer/README.html">ibuffer</a></li>
-<li><a href="jabber/README.html">jabber</a></li>
-<li><a href="nixos/README.html">nixos</a></li>
-<li><a href="org/README.html">org</a></li>
-<li><a href="osx/README.html">osx</a></li>
-<li><a href="prodigy/README.html">prodigy</a></li>
-<li><a href="restclient/README.html">restclient</a></li>
-<li><a href="search-engine/README.html">search-engine</a></li>
-<li><a href="semantic/README.html">semantic</a></li>
-<li><a href="shell/README.html">shell</a></li>
-<li><a href="smex/README.html">smex</a></li>
-<li><a href="speed-reading/README.html">speed-reading</a></li>
-<li><a href="spell-checking/README.html">spell-checking</a></li>
-<li><a href="spotify/README.html">spotify</a></li>
-<li><a href="syntax-checking/README.html">syntax-checking</a></li>
-<li><a href="themes-megapack/README.html">themes-megapack</a></li>
-<li><a href="theming/README.html">theming</a></li>
-<li><a href="typography/README.html">typography</a></li>
+<li><a href="+chat/erc/README.html">erc</a></li>
+<li><a href="+chat/jabber/README.html">jabber</a></li>
+<li><a href="+chat/rcirc/README.html">rcirc</a></li>
+<li><a href="+chat/slack/README.html">slack</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Completion</h2>
+<h2 id="checkers"><a id="orgheadline2"></a><span class="section-number-2">2</span> Checkers</h2>
+<div class="outline-text-2" id="text-checkers">
+<ul class="org-ul">
+<li><a href="+checkers/spell-checking/README.html">spell-checking</a></li>
+<li><a href="+checkers/syntax-checking/README.html">syntax-checking</a></li>
+</ul>
+</div>
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> Configuration files</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="completion"><a id="orgheadline3"></a><span class="section-number-2">3</span> Completion</h2>
+<div class="outline-text-2" id="text-completion">
 <ul class="org-ul">
-<li><a href="+config-files/ansible/README.html">ansible</a></li>
-<li><a href="+config-files/dockerfile/README.html">dockerfile</a></li>
-<li><a href="+config-files/puppet/README.html">puppet</a></li>
-<li><a href="+config-files/salt/README.html">salt</a></li>
-<li><a href="+config-files/terraform/README.html">terraform</a></li>
+<li><a href="+completion/auto-completion/README.html">auto-completion</a></li>
+<li><a href="+completion/helm/README.html">helm</a></li>
+<li><a href="+completion/ivy/README.html">ivy</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> E-mail</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="distributions"><a id="orgheadline4"></a><span class="section-number-2">4</span> Distributions</h2>
+<div class="outline-text-2" id="text-distributions">
+<ul class="org-ul">
+<li><a href="+distributions/spacemacs/README.html">spacemacs</a></li>
+<li><a href="+distributions/spacemacs-base/README.html">spacemacs-base</a></li>
+<li><a href="+distributions/spacemacs-bootstrap/README.html">spacemacs-bootstrap</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="emacs"><a id="orgheadline5"></a><span class="section-number-2">5</span> Emacs</h2>
+<div class="outline-text-2" id="text-emacs">
+<ul class="org-ul">
+<li><a href="+emacs/better-defaults/README.html">better-defaults</a></li>
+<li><a href="+emacs/ibuffer/README.html">ibuffer</a></li>
+<li><a href="+emacs/org/README.html">org</a></li>
+<li><a href="+emacs/semantic/README.html">semantic</a></li>
+<li><a href="+emacs/smex/README.html">smex</a></li>
+<li><a href="+emacs/typography/README.html">typography</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="e-mail"><a id="orgheadline6"></a><span class="section-number-2">6</span> E-mail</h2>
+<div class="outline-text-2" id="text-e-mail">
 <ul class="org-ul">
 <li><a href="+email/gnus/README.html">gnus</a></li>
 <li><a href="+email/mu4e/README.html">mu4e</a></li>
@@ -248,9 +257,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5"><span class="section-number-2">5</span> Frameworks</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="frameworks"><a id="orgheadline7"></a><span class="section-number-2">7</span> Frameworks</h2>
+<div class="outline-text-2" id="text-frameworks">
 <ul class="org-ul">
 <li><a href="+frameworks/django/README.html">django</a></li>
 <li><a href="+frameworks/react/README.html">react</a></li>
@@ -259,9 +268,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> Fun</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="fun"><a id="orgheadline8"></a><span class="section-number-2">8</span> Fun</h2>
+<div class="outline-text-2" id="text-fun">
 <ul class="org-ul">
 <li><a href="+fun/emoji/README.html">emoji</a></li>
 <li><a href="+fun/games/README.html">games</a></li>
@@ -271,36 +280,30 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> IRC</h2>
-<div class="outline-text-2" id="text-7">
-<ul class="org-ul">
-<li><a href="+irc/erc/README.html">erc</a></li>
-<li><a href="+irc/rcirc/README.html">rcirc</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">8</span> Keyboard layouts</h2>
-<div class="outline-text-2" id="text-8">
-<ul class="org-ul">
-<li><a href="+keyboard-layouts/bepo/README.html">bepo</a></li>
-</ul>
-</div>
-</div>
-
 <div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9"><span class="section-number-2">9</span> Programming and markup languages</h2>
-<div class="outline-text-2" id="text-9">
+<h2 id="international-support"><a id="orgheadline9"></a><span class="section-number-2">9</span> International support</h2>
+<div class="outline-text-2" id="text-international-support">
+<ul class="org-ul">
+<li><a href="+intl/chinese/README.html">chinese</a></li>
+<li><a href="+intl/keyboard-layout/README.html">keyboard-layout</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="programming-and-markup-languages"><a id="orgheadline10"></a><span class="section-number-2">10</span> Programming and markup languages</h2>
+<div class="outline-text-2" id="text-programming-and-markup-languages">
 <ul class="org-ul">
 <li><a href="+lang/agda/README.html">agda</a></li>
 <li><a href="+lang/asciidoc/README.html">asciidoc</a></li>
+<li><a href="+lang/asm/README.html">asm</a></li>
 <li><a href="+lang/autohotkey/README.html">autohotkey</a></li>
+<li><a href="+lang/bibtex/README.html">bibtex</a></li>
 <li><a href="+lang/c-c++/README.html">c-c++</a></li>
 <li><a href="+lang/clojure/README.html">clojure</a></li>
 <li><a href="+lang/common-lisp/README.html">common-lisp</a></li>
 <li><a href="+lang/csharp/README.html">csharp</a></li>
+<li><a href="+lang/csv/README.html">csv</a></li>
 <li><a href="+lang/d/README.html">d</a></li>
 <li><a href="+lang/elixir/README.html">elixir</a></li>
 <li><a href="+lang/elm/README.html">elm</a></li>
@@ -308,8 +311,10 @@ for the JavaScript code in this tag.
 <li><a href="+lang/erlang/README.html">erlang</a></li>
 <li><a href="+lang/ess/README.html">ess</a></li>
 <li><a href="+lang/extra-langs/README.html">extra-langs</a></li>
+<li><a href="+lang/faust/README.html">faust</a></li>
 <li><a href="+lang/fsharp/README.html">fsharp</a></li>
 <li><a href="+lang/go/README.html">go</a></li>
+<li><a href="+lang/graphviz/README.html">graphviz</a></li>
 <li><a href="+lang/haskell/README.html">haskell</a></li>
 <li><a href="+lang/html/README.html">html</a></li>
 <li><a href="+lang/idris/README.html">idris</a></li>
@@ -323,6 +328,7 @@ for the JavaScript code in this tag.
 <li><a href="+lang/ocaml/README.html">ocaml</a></li>
 <li><a href="+lang/octave/README.html">octave</a></li>
 <li><a href="+lang/php/README.html">php</a></li>
+<li><a href="+lang/plantuml/README.html">plantuml</a></li>
 <li><a href="+lang/purescript/README.html">purescript</a></li>
 <li><a href="+lang/python/README.html">python</a></li>
 <li><a href="+lang/racket/README.html">racket</a></li>
@@ -330,6 +336,7 @@ for the JavaScript code in this tag.
 <li><a href="+lang/rust/README.html">rust</a></li>
 <li><a href="+lang/scala/README.html">scala</a></li>
 <li><a href="+lang/scheme/README.html">scheme</a></li>
+<li><a href="+lang/shaders/README.html">shaders</a></li>
 <li><a href="+lang/shell-scripts/README.html">shell-scripts</a></li>
 <li><a href="+lang/sml/README.html">sml</a></li>
 <li><a href="+lang/sql/README.html">sql</a></li>
@@ -342,9 +349,37 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10"><span class="section-number-2">10</span> Source control</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="misc"><a id="orgheadline11"></a><span class="section-number-2">11</span> Misc</h2>
+<div class="outline-text-2" id="text-misc">
+<ul class="org-ul">
+<li><a href="+misc/nlinum/README.html">nlinum</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="operating-systems"><a id="orgheadline12"></a><span class="section-number-2">12</span> Operating systems</h2>
+<div class="outline-text-2" id="text-operating-systems">
+<ul class="org-ul">
+<li><a href="+os/nixos/README.html">nixos</a></li>
+<li><a href="+os/osx/README.html">osx</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="pair-programming"><a id="orgheadline13"></a><span class="section-number-2">13</span> Pair programming</h2>
+<div class="outline-text-2" id="text-pair-programming">
+<ul class="org-ul">
+<li><a href="+pair-programming/floobits/README.html">floobits</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="source-control"><a id="orgheadline14"></a><span class="section-number-2">14</span> Source control</h2>
+<div class="outline-text-2" id="text-source-control">
 <ul class="org-ul">
 <li><a href="+source-control/git/README.html">git</a></li>
 <li><a href="+source-control/github/README.html">github</a></li>
@@ -354,33 +389,86 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11"><span class="section-number-2">11</span> Tools</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="spacemacs-distribution-layers"><a id="orgheadline15"></a><span class="section-number-2">15</span> Spacemacs distribution layers</h2>
+<div class="outline-text-2" id="text-spacemacs-distribution-layers">
 <ul class="org-ul">
+<li><a href="+spacemacs/spacemacs-completion/README.html">spacemacs-completion</a></li>
+<li><a href="+spacemacs/spacemacs-editing/README.html">spacemacs-editing</a></li>
+<li><a href="+spacemacs/spacemacs-editing-visual/README.html">spacemacs-editing-visual</a></li>
+<li><a href="+spacemacs/spacemacs-evil/README.html">spacemacs-evil</a></li>
+<li><a href="+spacemacs/spacemacs-language/README.html">spacemacs-language</a></li>
+<li><a href="+spacemacs/spacemacs-layouts/README.html">spacemacs-layouts</a></li>
+<li><a href="+spacemacs/spacemacs-misc/README.html">spacemacs-misc</a></li>
+<li><a href="+spacemacs/spacemacs-org/README.html">spacemacs-org</a></li>
+<li><a href="+spacemacs/spacemacs-ui/README.html">spacemacs-ui</a></li>
+<li><a href="+spacemacs/spacemacs-ui-visual/README.html">spacemacs-ui-visual</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="tags"><a id="orgheadline16"></a><span class="section-number-2">16</span> Tags</h2>
+<div class="outline-text-2" id="text-tags">
+<ul class="org-ul">
+<li><a href="+tags/cscope/README.html">cscope</a></li>
+<li><a href="+tags/gtags/README.html">gtags</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="themes"><a id="orgheadline17"></a><span class="section-number-2">17</span> Themes</h2>
+<div class="outline-text-2" id="text-themes">
+<ul class="org-ul">
+<li><a href="+themes/colors/README.html">colors</a></li>
+<li><a href="+themes/themes-megapack/README.html">themes-megapack</a></li>
+<li><a href="+themes/theming/README.html">theming</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-2">
+<h2 id="tools"><a id="orgheadline18"></a><span class="section-number-2">18</span> Tools</h2>
+<div class="outline-text-2" id="text-tools">
+<ul class="org-ul">
+<li><a href="+tools/ansible/README.html">ansible</a></li>
+<li><a href="+tools/cfengine/README.html">cfengine</a></li>
+<li><a href="+tools/chrome/README.html">chrome</a></li>
 <li><a href="+tools/command-log/README.html">command-log</a></li>
 <li><a href="+tools/dash/README.html">dash</a></li>
-<li><a href="+tools/elfeed/README.html">elfeed</a></li>
-<li><a href="+tools/evernote/README.html">evernote</a></li>
+<li><a href="+tools/deft/README.html">deft</a></li>
+<li><a href="+tools/docker/README.html">docker</a></li>
 <li><a href="+tools/fasd/README.html">fasd</a></li>
+<li><a href="+tools/finance/README.html">finance</a></li>
+<li><a href="+tools/geolocation/README.html">geolocation</a></li>
+<li><a href="+tools/imenu-list/README.html">imenu-list</a></li>
+<li><a href="+tools/nginx/README.html">nginx</a></li>
 <li><a href="+tools/pandoc/README.html">pandoc</a></li>
+<li><a href="+tools/pdf-tools/README.html">pdf-tools</a></li>
+<li><a href="+tools/prodigy/README.html">prodigy</a></li>
+<li><a href="+tools/puppet/README.html">puppet</a></li>
 <li><a href="+tools/ranger/README.html">ranger</a></li>
+<li><a href="+tools/restclient/README.html">restclient</a></li>
+<li><a href="+tools/salt/README.html">salt</a></li>
+<li><a href="+tools/shell/README.html">shell</a></li>
+<li><a href="+tools/speed-reading/README.html">speed-reading</a></li>
+<li><a href="+tools/systemd/README.html">systemd</a></li>
+<li><a href="+tools/terraform/README.html">terraform</a></li>
 <li><a href="+tools/tmux/README.html">tmux</a></li>
 <li><a href="+tools/vagrant/README.html">vagrant</a></li>
-<li><a href="+tools/wakatime/README.html">wakatime</a></li>
 <li><a href="+tools/ycmd/README.html">ycmd</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="orgheadline12"><span class="section-number-2">12</span> Vim</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="vim"><a id="orgheadline19"></a><span class="section-number-2">19</span> Vim</h2>
+<div class="outline-text-2" id="text-vim">
 <ul class="org-ul">
 <li><a href="+vim/evil-cleverparens/README.html">evil-cleverparens</a></li>
 <li><a href="+vim/evil-commentary/README.html">evil-commentary</a></li>
 <li><a href="+vim/evil-snipe/README.html">evil-snipe</a></li>
-<li><a href="+vim/unimpaired/README.html">unimpaired</a></li>
 <li><a href="+vim/vim-empty-lines/README.html">vim-empty-lines</a></li>
 <li><a href="+vim/vim-powerline/README.html">vim-powerline</a></li>
 <li><a href="+vim/vinegar/README.html">vinegar</a></li>
@@ -388,19 +476,23 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="orgheadline13"><span class="section-number-2">13</span> Window management</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-orgheadline20" class="outline-2">
+<h2 id="web-services"><a id="orgheadline20"></a><span class="section-number-2">20</span> Web services</h2>
+<div class="outline-text-2" id="text-web-services">
 <ul class="org-ul">
-<li><a href="+window-management/eyebrowse/README.html">eyebrowse</a></li>
-<li><a href="+window-management/spacemacs-layouts/README.html">spacemacs-layouts</a></li>
+<li><a href="+web-services/elfeed/README.html">elfeed</a></li>
+<li><a href="+web-services/evernote/README.html">evernote</a></li>
+<li><a href="+web-services/search-engine/README.html">search-engine</a></li>
+<li><a href="+web-services/spotify/README.html">spotify</a></li>
+<li><a href="+web-services/twitter/README.html">twitter</a></li>
+<li><a href="+web-services/wakatime/README.html">wakatime</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

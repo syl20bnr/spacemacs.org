@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:10 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>C# layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,30 +165,30 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Packages Included</a></li>
-<li><a href="#orgheadline7">3. Install</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#packages-included">2. Packages Included</a></li>
+<li><a href="#install">3. Install</a>
 <ul>
-<li><a href="#orgheadline6">3.1. Prerequisites</a>
+<li><a href="#prerequisites">3.1. Prerequisites</a>
 <ul>
-<li><a href="#orgheadline3">3.1.1. ASP.NET 5</a></li>
-<li><a href="#orgheadline4">3.1.2. curl</a></li>
-<li><a href="#orgheadline5">3.1.3. Omnisharp server</a></li>
+<li><a href="#aspnet-5">3.1.1. ASP.NET 5</a></li>
+<li><a href="#curl">3.1.2. curl</a></li>
+<li><a href="#omnisharp-server">3.1.3. Omnisharp server</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline8">4. Caveats</a></li>
-<li><a href="#orgheadline17">5. Key Bindings</a>
+<li><a href="#caveats">4. Caveats</a></li>
+<li><a href="#key-bindings">5. Key Bindings</a>
 <ul>
-<li><a href="#orgheadline9">5.1. Compilation</a></li>
-<li><a href="#orgheadline10">5.2. File/Solution/Project manipulation</a></li>
-<li><a href="#orgheadline11">5.3. Navigation</a></li>
-<li><a href="#orgheadline12">5.4. Helpers (documentation, info)</a></li>
-<li><a href="#orgheadline13">5.5. Refactoring</a></li>
-<li><a href="#orgheadline14">5.6. OmniSharp server interaction</a></li>
-<li><a href="#orgheadline15">5.7. Tests</a></li>
-<li><a href="#orgheadline16">5.8. Code manipulation</a></li>
+<li><a href="#compilation">5.1. Compilation</a></li>
+<li><a href="#filesolutionproject-manipulation">5.2. File/Solution/Project manipulation</a></li>
+<li><a href="#navigation">5.3. Navigation</a></li>
+<li><a href="#helpers-documentation-info">5.4. Helpers (documentation, info)</a></li>
+<li><a href="#refactoring">5.5. Refactoring</a></li>
+<li><a href="#omnisharp-server-interaction">5.6. OmniSharp server interaction</a></li>
+<li><a href="#tests">5.7. Tests</a></li>
+<li><a href="#code-manipulation">5.8. Code manipulation</a></li>
 </ul>
 </li>
 </ul>
@@ -201,8 +199,8 @@ for the JavaScript code in this tag.
 </p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer adds experimental support for C# language using <a href="https://github.com/OmniSharp/omnisharp-emacs">OmniSharp</a>.
 </p>
@@ -210,8 +208,8 @@ This layer adds experimental support for C# language using <a href="https://gith
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Packages Included</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="packages-included"><a id="orgheadline2"></a><span class="section-number-2">2</span> Packages Included</h2>
+<div class="outline-text-2" id="text-packages-included">
 <ul class="org-ul">
 <li><a href="https://github.com/OmniSharp/omnisharp-emacs">OmniSharp-emacs</a></li>
 </ul>
@@ -219,8 +217,8 @@ This layer adds experimental support for C# language using <a href="https://gith
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">3</span> Install</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">3</span> Install</h2>
+<div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>csharp</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -229,11 +227,13 @@ file.
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">3.1</span> Prerequisites</h3>
-<div class="outline-text-3" id="text-3-1">
-</div><div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">3.1.1</span> ASP.NET 5</h4>
-<div class="outline-text-4" id="text-3-1-1">
+<h3 id="prerequisites"><a id="orgheadline6"></a><span class="section-number-3">3.1</span> Prerequisites</h3>
+<div class="outline-text-3" id="text-prerequisites">
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="aspnet-5"><a id="orgheadline3"></a><span class="section-number-4">3.1.1</span> ASP.NET 5</h4>
+<div class="outline-text-4" id="text-aspnet-5">
 <p>
 Follow the instructions for your platform <a href="https://github.com/aspnet/home#getting-started">here</a>.
 </p>
@@ -241,8 +241,8 @@ Follow the instructions for your platform <a href="https://github.com/aspnet/hom
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">3.1.2</span> curl</h4>
-<div class="outline-text-4" id="text-3-1-2">
+<h4 id="curl"><a id="orgheadline4"></a><span class="section-number-4">3.1.2</span> curl</h4>
+<div class="outline-text-4" id="text-curl">
 <p>
 You'll need <a href="http://curl.haxx.se/">curl</a> to be able to use the Omnisharp package. Use your favorite
 package manager to install it (on Windows you can use <a href="https://chocolatey.org/">chocolatey</a>).
@@ -256,15 +256,15 @@ or set the variable <code>omnisharp--curl-executable-path</code> in your dotfile
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq-default</span> <span class="ATTRLIST">omnisharp--curl-executable-path</span> <span class="org-string">"/PATH/TO/CURL/curl"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default omnisharp--curl-executable-path <span class="org-string">"/PATH/TO/CURL/curl"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">3.1.3</span> Omnisharp server</h4>
-<div class="outline-text-4" id="text-3-1-3">
+<h4 id="omnisharp-server"><a id="orgheadline5"></a><span class="section-number-4">3.1.3</span> Omnisharp server</h4>
+<div class="outline-text-4" id="text-omnisharp-server">
 <p>
 You have to compile the OmniSharp server following the instructions which can
 be found <a href="https://github.com/OmniSharp/omnisharp-server">here</a>.
@@ -279,7 +279,7 @@ variable <code>omnisharp-server-executable-path</code> (put this in your
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq-default</span> <span class="ATTRLIST">omnisharp-server-executable-path</span> <span class="org-string">"/PATH/TO/OMNISHARP/OmniSharpServer"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default omnisharp-server-executable-path <span class="org-string">"/PATH/TO/OMNISHARP/OmniSharpServer"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -293,8 +293,8 @@ OmniSharp should now automatically load and start a server when you open a
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">4</span> Caveats</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="caveats"><a id="orgheadline8"></a><span class="section-number-2">4</span> Caveats</h2>
+<div class="outline-text-2" id="text-caveats">
 <ul class="org-ul">
 <li>It's currently not possible to create a C# solution outside of an IDE such as
 <a href="http://www.monodevelop.com/">MonoDevelop</a>, it's therefore recommended that you install it to create your
@@ -306,11 +306,13 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="orgheadline17"><span class="section-number-2">5</span> Key Bindings</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">5.1</span> Compilation</h3>
-<div class="outline-text-3" id="text-5-1">
+<h2 id="key-bindings"><a id="orgheadline17"></a><span class="section-number-2">5</span> Key Bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="compilation"><a id="orgheadline9"></a><span class="section-number-3">5.1</span> Compilation</h3>
+<div class="outline-text-3" id="text-compilation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -336,8 +338,8 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">5.2</span> File/Solution/Project manipulation</h3>
-<div class="outline-text-3" id="text-5-2">
+<h3 id="filesolutionproject-manipulation"><a id="orgheadline10"></a><span class="section-number-3">5.2</span> File/Solution/Project manipulation</h3>
+<div class="outline-text-3" id="text-filesolutionproject-manipulation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -383,8 +385,8 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">5.3</span> Navigation</h3>
-<div class="outline-text-3" id="text-5-3">
+<h3 id="navigation"><a id="orgheadline11"></a><span class="section-number-3">5.3</span> Navigation</h3>
+<div class="outline-text-3" id="text-navigation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -411,6 +413,11 @@ solutions.</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m g c</code></td>
+<td class="org-left">Go to member in current file</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m g g</code></td>
 <td class="org-left">Go to definition</td>
 </tr>
@@ -423,6 +430,11 @@ solutions.</li>
 <tr>
 <td class="org-left"><code>SPC m g i</code></td>
 <td class="org-left">Find implementations</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g I</code></td>
+<td class="org-left">Find implementations using ido</td>
 </tr>
 
 <tr>
@@ -449,14 +461,19 @@ solutions.</li>
 <td class="org-left"><code>SPC m g u</code></td>
 <td class="org-left">Find usages of symbol under cursor using Helm</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m g U</code></td>
+<td class="org-left">Find usages of symbol under cursor using ido</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">5.4</span> Helpers (documentation, info)</h3>
-<div class="outline-text-3" id="text-5-4">
+<h3 id="helpers-documentation-info"><a id="orgheadline12"></a><span class="section-number-3">5.4</span> Helpers (documentation, info)</h3>
+<div class="outline-text-3" id="text-helpers-documentation-info">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -487,8 +504,8 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">5.5</span> Refactoring</h3>
-<div class="outline-text-3" id="text-5-5">
+<h3 id="refactoring"><a id="orgheadline13"></a><span class="section-number-3">5.5</span> Refactoring</h3>
+<div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -510,6 +527,11 @@ solutions.</li>
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m r M</code></td>
+<td class="org-left">Rename symbol under cursor interactively</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m r r</code></td>
 <td class="org-left">Refactor symbol under cursor</td>
 </tr>
@@ -519,8 +541,8 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">5.6</span> OmniSharp server interaction</h3>
-<div class="outline-text-3" id="text-5-6">
+<h3 id="omnisharp-server-interaction"><a id="orgheadline14"></a><span class="section-number-3">5.6</span> OmniSharp server interaction</h3>
+<div class="outline-text-3" id="text-omnisharp-server-interaction">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -556,8 +578,8 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">5.7</span> Tests</h3>
-<div class="outline-text-3" id="text-5-7">
+<h3 id="tests"><a id="orgheadline15"></a><span class="section-number-3">5.7</span> Tests</h3>
+<div class="outline-text-3" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -593,8 +615,8 @@ solutions.</li>
 </div>
 
 <div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">5.8</span> Code manipulation</h3>
-<div class="outline-text-3" id="text-5-8">
+<h3 id="code-manipulation"><a id="orgheadline16"></a><span class="section-number-3">5.8</span> Code manipulation</h3>
+<div class="outline-text-3" id="text-code-manipulation">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -632,7 +654,7 @@ solutions.</li>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:10</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

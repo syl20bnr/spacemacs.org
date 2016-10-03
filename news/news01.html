@@ -1,0 +1,995 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-03 Mon 01:52 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Newsletter #01: About the 0.200 release</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Newsletter #01: About the 0.200 release</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#breaking-changes">2. Breaking changes</a>
+<ul>
+<li><a href="#support-for-emacs-243-has-been-dropped">2.1. Support for Emacs 24.3 has been dropped</a></li>
+<li><a href="#some-modifications-in-the-layer-format">2.2. Some modifications in the layer format</a></li>
+<li><a href="#controlling-downloaded-packages">2.3. Controlling downloaded packages</a></li>
+<li><a href="#key-bindings">2.4. Key bindings</a></li>
+</ul>
+</li>
+<li><a href="#whats-new-">3. What's new ?</a>
+<ul>
+<li><a href="#startup-improvments">3.1. Startup improvments</a></li>
+<li><a href="#improved-composability">3.2. Improved composability</a></li>
+<li><a href="#improved-stability">3.3. Improved stability</a></li>
+<li><a href="#lazy-installation-of-layers">3.4. Lazy installation of layers</a></li>
+<li><a href="#a-better-hybrid-editing-style">3.5. A better hybrid editing style</a></li>
+<li><a href="#support-for-ivy">3.6. Support for Ivy</a></li>
+<li><a href="#better-transient-states">3.7. Better transient-states</a></li>
+<li><a href="#more-debugging-tools">3.8. More debugging tools</a></li>
+<li><a href="#new-keyboard-layouts">3.9. New keyboard layouts</a></li>
+<li><a href="#directory-and-file-local-variables">3.10. Directory and file local variables</a></li>
+<li><a href="#more-useful-abstraction">3.11. More useful abstraction</a></li>
+<li><a href="#new-welcome-screen">3.12. New welcome screen</a></li>
+<li><a href="#about-spacemacs-update-notifications">3.13. About Spacemacs update notifications</a></li>
+<li><a href="#a-new-community-document">3.14. A new community document</a></li>
+<li><a href="#the-spacemacs-shop">3.15. The Spacemacs shop</a></li>
+</ul>
+</li>
+<li><a href="#whats-next-">4. What's next ?</a>
+<ul>
+<li><a href="#even-more-stability">4.1. Even more stability</a></li>
+<li><a href="#more-consistent-window-behaviour">4.2. More consistent window behaviour</a></li>
+<li><a href="#new-layers">4.3. New layers</a></li>
+</ul>
+</li>
+<li><a href="#a-few-thanks">5. A few thanks</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="introduction"><a id="orgheadline1"></a><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-introduction">
+<p>
+0.200 is a huge release with more than 1700 commits since the last major version
+released in January 2016. Actually it is so big that we jumped directly from
+version 0.105 to version 0.200, so don't panic if you think you missed all the
+versions since 0.105 :-)
+</p>
+
+<p>
+This first newsletter describes with details the main changes introduced in the
+new version and gives some explanation about the various choices made during the
+last months.
+</p>
+
+<p>
+The (boring) complete list of changes can be found in the file <code>CHANGELOG.org</code>
+at the root of the Git repository.
+</p>
+
+<p>
+Let's start with the hottest section: breaking changes!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="breaking-changes"><a id="orgheadline6"></a><span class="section-number-2">2</span> Breaking changes</h2>
+<div class="outline-text-2" id="text-breaking-changes">
+<p>
+Before starting with the breaking changes let me begin with a few words about
+the motivation behind those changes. Spacemacs moves at an incredible pace
+thanks to a big and active community, the project already counts more than 400
+contributors! With such a high number of contributors lots of new ideas are
+proposed to constantly evolve and improve the project, some of them make a lot
+of sense and we give them priority over backward compatibility, this is
+especially true with key bindings. In this release quite a few changes have been
+made to the key bindings, some of them are deep changes and anyone using the
+develop branch had to adapt to them at some point, the result seems to worth it.
+</p>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="support-for-emacs-243-has-been-dropped"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Support for Emacs 24.3 has been dropped</h3>
+<div class="outline-text-3" id="text-support-for-emacs-243-has-been-dropped">
+<p>
+The packages ecosystem moves even faster than Spacemacs and a lot of packages
+are now incompatible with the version 24.3 of Emacs which has been released
+in 2013. Supporting this version in Spacemacs is more and more work for
+maintainers so we decided to drop all the 24.3 related code in Spacemacs
+effectively raising the minimum Emacs version required to 24.4. We believe that
+users are able to switch to a newer version of Emacs, if you need help in this
+process you can try the <a href="https://gitter.im/syl20bnr/spacemacs">Gitter chat</a>, I'm sure you'll find solutions there.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="some-modifications-in-the-layer-format"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Some modifications in the layer format</h3>
+<div class="outline-text-3" id="text-some-modifications-in-the-layer-format">
+<p>
+We renamed <code>extensions</code> directories in layers to <code>local</code> and the file
+<code>extensions.el</code> is now ignored, their contents must be moved to the file
+<code>packages.el</code> and their package declarations must now set the keyword
+<code>:location</code> to <code>local</code>.
+</p>
+
+<p>
+<span class="underline">Before:</span>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in extensions.el</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq python-post-extensions
+  '<span class="org-rainbow-delimiters-depth-2">(</span>
+    nose
+    pylookup
+    python-compile
+    py-yapf
+    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<span class="underline">After:</span>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">in packages.el</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>setq python-packages
+  '<span class="org-rainbow-delimiters-depth-2">(</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages before...</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>nose <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>pylookup <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-comment-delimiter">;; </span><span class="org-comment">skipping packages after...</span>
+    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The variables <code>&lt;package&gt;-excluded-packages</code> are now ignored, they have been
+replaced by the <code>:excluded</code> keyword in <code>&lt;layer&gt;-packages</code> variables.
+</p>
+
+<p>
+<span class="underline">Before:</span>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq vim-empty-lines-packages
+      '<span class="org-rainbow-delimiters-depth-2">(</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span>setq vim-empty-lines-excluded-packages
+      '<span class="org-rainbow-delimiters-depth-2">(</span>vi-tilde-fringe<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<span class="underline">After:</span>
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq vim-empty-lines-packages
+      '<span class="org-rainbow-delimiters-depth-2">(</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>vim-empty-lines-mode <span class="org-builtin">:location</span> local<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-3">(</span>vi-tilde-fringe <span class="org-builtin">:excluded</span> t<span class="org-rainbow-delimiters-depth-3">)</span>
+        <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+A new file called <code>layers.el</code> is in charge of layers dependency, i.e. when a
+layer needs to declare additional layers. Previously this was done in the
+<code>config.el</code> file, to avoid errors you'll have to move the calls to the functions
+<code>configuration-layer/declare-layer</code> and <code>configuration-layer/declare-layers</code> to
+a dedicated <code>layers.el</code> file. An example can be found in the
+<a href="https://github.com/syl20bnr/spacemacs/blob/564cbc40eda936985325c9b79088fbcb39d9a69d/layers/+distributions/spacemacs/layers.el">spacemacs distribution layer</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="controlling-downloaded-packages"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> Controlling downloaded packages</h3>
+<div class="outline-text-3" id="text-controlling-downloaded-packages">
+<p>
+The method to install all packages supported by Spacemacs has been improved. The
+old way was to set the variable <code>dotspacemacs-configuration-layers</code> to the value
+<code>all</code>. This method had several major drawbacks like forcing all layers to be
+marked as <code>used</code> and it triggered various bad side effects. We removed the
+support for the value <code>all</code>.
+</p>
+
+<p>
+A new variable <code>dotspacemacs-install-packages</code> is now dedicated to control what
+packages are downloaded by Spacemacs. Three behaviours are supported:
+</p>
+<ul class="org-ul">
+<li><code>used-only</code> (default) will download only the used packages</li>
+<li><code>used-but-keep-unused</code> will download only the used packages but won't uninstall
+them if they become unused</li>
+<li><code>all</code> will download <span class="underline">all</span> the supported packages by Spacemacs.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="key-bindings"><a id="orgheadline5"></a><span class="section-number-3">2.4</span> Key bindings</h3>
+<div class="outline-text-3" id="text-key-bindings">
+<p>
+Here is the scary section, the one feared by most users :-) Let be honest, there
+is a rather big amount of changes for users jumping from master 0.105 to 0.200.
+</p>
+
+<p>
+First of all the most visible change is for <code>SPC SPC</code> which triggers now <code>M-x</code>
+instead of <code>avy</code> to jump to a character. The <code>SPC</code> key in Spacemacs is a central
+key as it acts as the leader key for <span class="underline">all</span> the key bindings, it made sense to
+give the same sense of "root" key to the sequence <code>SPC SPC</code>, so now <code>SPC SPC</code> is
+the central sequence to execute <span class="underline">any</span> interactive function in Emacs.
+</p>
+
+<p>
+Where is the <code>avy</code> command then ? We reorganised from the ground up the prefix
+<code>SPC j</code> for all jump commands. In the conventions a doubled key is often used
+for the default command under a given prefix, for instance <code>SPC b b</code> is for
+buffer selection, <code>SPC f f</code> for file selection etc&#x2026; The "jump to character"
+command of <code>avy</code> is then under <code>SPC j j</code>. Here is a detailed list of the new
+<code>SPC j</code> prefix:
+</p>
+<ul class="org-ul">
+<li><code>avy</code> commands are now behind the prefix <code>SPC j</code> for <code>jump</code>:
+<ul class="org-ul">
+<li><code>SPC j j</code> to jump to a character in the buffer (works as an evil motion)</li>
+<li><code>SPC j l</code> to jump to a line with avy (works as an evil motion)</li>
+<li><code>SPC j w</code> to jump to a word in the current buffer (works as an evil motion)</li>
+</ul></li>
+<li>the following key bindings have been moved:
+<ul class="org-ul">
+<li><code>SPC j j</code> to split a line has been moved to <code>SPC j n</code> (mnemonic is New line)</li>
+<li><code>SPC j h</code> and <code>SPC j l</code> have been moved to <code>SPC j 0</code> and <code>SPC j $</code>
+    respectively.</li>
+<li><code>SPC J</code> to split a string or sexp has been moved to <code>SPC j s</code></li>
+</ul></li>
+</ul>
+
+<p>
+A lot of other handy commands are under this prefix, I let you discover them with
+the <code>which key</code> menus.
+</p>
+
+<p>
+Closing, deleting or killing things ? This can be a tough call to distinguish
+them and we can find such confusion in the Spacemacs key bindings, for instance
+we close a window but we delete a buffer and we can also kill a buffer. Whereas
+it can make sense for a lot of users, there are still users finding this
+confusing. So we decided to simplify the notion of "closing/deleting" things
+under the <code>d</code> key for <code>delete</code>. We moved <code>SPC w c</code> and <code>SPC w C</code> to <code>SPC w d</code>
+and <code>SPC w D</code>.
+</p>
+
+<p>
+More generally we tried to map prefixes <code>SPC b</code> and <code>SPC w</code> to the same actions
+and bring a convention with <code>avy</code> commands with the capital letter to manipulate
+windows and buffers. The result is detailed here:
+</p>
+<ul class="org-ul">
+<li><code>SPC b k</code> has been removed.</li>
+<li><code>SPC b C-k</code> (kill buffer matching regexp) is now <code>SPC b C-d</code></li>
+<li><code>SPC b m</code> (buffer move) has been removed because the functionality
+is available via <code>SPC w</code> with <code>SPC w h/j/k/l</code>, <code>SPC w H/J/K/L</code> and
+<code>SPC w M</code>.</li>
+<li><code>SPC b K</code> (kill other buffers) is now <code>SPC b m</code> to map with <code>SPC w m</code>
+  (maximize buffer/window which effectively delete other windows).</li>
+<li><code>SPC b D</code> now kills a buffer using <code>ace-window</code>.</li>
+<li>Buffer actions don't delete the windows by default, use the universal
+prefix argument to do so, for instance <code>SPC u SPC b d</code> and <code>SPC u SPC b D</code>
+will delete the buffer and also the window. Another example is
+<code>SPC u SPC b m</code> to maximize a buffer.</li>
+</ul>
+
+<p>
+<code>Helm</code> has a new friend in this release, it is called <code>ivy</code> and it has more and
+more adopters. Since we have now a new package capable of doing <code>helm</code> commands
+we decided to remove all <code>helm</code> related command from the prefix <code>SPC h</code>. <code>SPC h</code>
+is now exclusively for <span class="underline">help</span> commands and the following <code>helm</code> commands has
+been moved:
+</p>
+<ul class="org-ul">
+<li><code>SPC h b</code> for =helm-filetered-bookmarks~is now <code>SPC f b</code></li>
+<li><code>SPC h l</code> for <code>helm-resume</code> is now <code>SPC r l</code></li>
+<li><code>SPC h L</code> for <code>helm-locate-library</code> is now <code>SPC f e l</code></li>
+</ul>
+
+<p>
+The <code>git</code> related commands have been drastically simplified to leverage the
+<code>magit</code> dispatch menu. Instead of replicating all the <code>magit</code> dispatch keys
+under the <code>SPC g</code> prefix we now only define the key binding <code>SPC g m</code> to display
+the <code>magit</code> dispatch menu. We get several benefits by doing so: first we free up
+a lot of valuable keys under <code>SPC g</code>, second we have now more consistent key
+bindings since we always use the <code>magit</code> dispatch menu. Previously we have some
+actions bound to different keys between <code>SPC g</code> and the <code>magit</code> dispatch menu
+accessible under <code>?</code>. The new available keys allowed us to move some key
+bindings directly under <code>SPC g</code> like <code>git-link</code> which is now under <code>SPC g l</code>,
+it makes more sense to have it under <code>SPC g l</code> since it is agnostic of the
+hosting platform (i.e. it works with <code>GitHub</code>, <code>GitLab</code> etc&#x2026;).
+</p>
+
+<p>
+Spacemacs layouts now restrict the scope of the buffer list opened with
+<code>SPC b b</code>. Use <code>SPC b B</code> to list all the buffers of all the layouts. Also
+<code>1,2,...,9,0</code> keys now select a layout and close the layout menu, use
+<code>C-1,C-2,...,C-9,C-0</code> to switch to a layout and keep the menu opened.
+</p>
+
+<p>
+To conclude this section about key binding changes and breaking changes the
+<code>micro-states</code> in Spacemacs are dead, say hi to the <code>transient-states</code>. We took
+advantage of the <code>micro-states</code> refactoring to change the name to a more
+accurate new name <code>transient-states</code>, indeed these states leverage the notion
+of transient maps in Emacs. The refactoring replaces the custom back-end by
+<code>hydra</code> a powerful and very popular package to define transient maps. In effect
+the macro <code>spacemacs|define-micro-state</code> is deprecated and is replaced by the
+new <code>hydra</code> powered macro <code>spacemacs|define-transient-state</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="whats-new-"><a id="orgheadline22"></a><span class="section-number-2">3</span> What's new ?</h2>
+<div class="outline-text-2" id="text-whats-new-">
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="startup-improvments"><a id="orgheadline7"></a><span class="section-number-3">3.1</span> Startup improvments</h3>
+<div class="outline-text-3" id="text-startup-improvments">
+<p>
+The layer system has been rewritten to index packages information, the startup
+time of Spacemacs should be reduced by 20~25%. Also this refactoring will better
+scale as we add new layers and packages to the distribution.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="improved-composability"><a id="orgheadline8"></a><span class="section-number-3">3.2</span> Improved composability</h3>
+<div class="outline-text-3" id="text-improved-composability">
+<p>
+The <code>spacemacs</code> distribution layer has been split into several layers under
+the <code>spacemacs</code> directory. The user can now very easily customize her Spacemacs
+experience by choosing the <code>spacemacs-base</code> distribution and using only the
+<code>spacemacs</code> layers she wants.
+</p>
+
+<p>
+An exhaustive list of all the <code>spacemacs</code> layers:
+</p>
+<ul class="org-ul">
+<li>spacemacs-completion</li>
+<li>spacemacs-editing</li>
+<li>spacemacs-editing-visual</li>
+<li>spacemacs-evil</li>
+<li>spacemacs-language</li>
+<li>spacemacs-layouts</li>
+<li>spacemacs-misc</li>
+<li>spacemacs-org</li>
+<li>spacemacs-ui</li>
+<li>spacemacs-ui-visual</li>
+</ul>
+
+<p>
+For people wanting an even more bare Emacs experience try the distribution
+layer <code>spacemacs-bootstrap</code> which installs only essential packages like
+<code>use-package</code>, <code>which-key</code>, etc&#x2026;
+</p>
+
+<p>
+Also it is easier to select or exclude a sub-list of packages in a layer with
+the new keyword <code>:packages</code>. For instance here is an example to select only the
+packages <code>fill-column-indicator</code> and <code>golden-ratio</code> in the layer
+<code>spacemacs-ui-visual</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq dotspacemacs-configuration-layers
+  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> fill-column-indicator golden-ratio<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Another example to select all the packages except <code>fancy-battery</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq dotspacemacs-configuration-layers
+  <span class="org-rainbow-delimiters-depth-2">(</span>spacemacs-ui-visual <span class="org-builtin">:packages</span> <span class="org-rainbow-delimiters-depth-3">(</span>not fancy-battery<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="improved-stability"><a id="orgheadline9"></a><span class="section-number-3">3.3</span> Improved stability</h3>
+<div class="outline-text-3" id="text-improved-stability">
+<p>
+This is one of the Achilles' heel of Spacemacs. We rely on bleeding edge version
+of packages from <code>melpa</code> repository to install a fresh version of Spacemacs. If
+the repository is down then no sugar, try again later.
+</p>
+
+<p>
+With 0.200 we introduce <a href="https://github.com/syl20bnr/spacemacs-elpa-mirror">mirrors</a> for all <code>elpa</code> repositories used by Spacemacs.
+If one of them is down then Spacemacs falls back on the mirror hosted on GitHub.
+Obviously the fall-back repository should not be used as a primary repository
+and should only be used when official <code>elpa</code> repositories are down.
+</p>
+
+<p>
+It is also possible to freeze packages by adding their name to the new variable
+<code>dotspacemacs-frozen-packages</code>. Frozen packages cannot be updated or rollbacked.
+This is useful if a package upstream needs a fix, the package can be frozen
+until the fix is released.
+</p>
+
+<p>
+Packages can be stored in different <code>elpa</code> directories, the most useful setting
+is maybe to define a different directory per Emacs version. You can do it by
+setting the new variable <code>dotspacemacs-elpa-subdirectory</code> to the value
+<code>emacs-version</code>. By default the value of this variable is <code>nil</code> which means that
+all packages are installed in the same <code>elpa</code> directory.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="lazy-installation-of-layers"><a id="orgheadline10"></a><span class="section-number-3">3.4</span> Lazy installation of layers</h3>
+<div class="outline-text-3" id="text-lazy-installation-of-layers">
+<p>
+A feature borrowed to <a href="https://github.com/bbatsov/prelude">Prelude</a> distribution and adapted to the layers, it
+allows to install a layer and all its packages when opening a new file with a
+supported extension.
+</p>
+
+<p>
+For instance, when opening an Elixir file with extension <code>.ex</code> Spacemacs will
+ask to install the <code>elixir</code> layer if it is not already used. The <code>elixir</code> layer
+is automatically added to the dotfile so it won't be uninstalled after a
+restart.
+</p>
+
+<p>
+By default this feature is <span class="underline">disabled</span>, you have to opt-in for it by setting
+the variable <code>dotspacemacs-enable-lazy-installation</code> to one of the following
+values:
+</p>
+<ul class="org-ul">
+<li><code>unused</code> to lazy install only layers not listed in
+<code>dotspacemacs-configuration-layers</code></li>
+<li><code>all</code> to lazy install any layer supporting lazy installation (i.e. even the
+used layers won't be installed at startup until you open a file with a
+supported extension).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="a-better-hybrid-editing-style"><a id="orgheadline11"></a><span class="section-number-3">3.5</span> A better hybrid editing style</h3>
+<div class="outline-text-3" id="text-a-better-hybrid-editing-style">
+<p>
+The Hybrid state wanders between the Emacs style and the Evil style, three
+new variables allow to fine tune the Hybrid style experience:
+</p>
+<ul class="org-ul">
+<li><code>hybrid-mode-enable-evilified-state</code>, if non nil then buffers are evilified,</li>
+<li><code>hybrid-mode-enable-hjkl-bindings</code>, if non nil navigation on <code>hjkl</code> keys is
+enabled (for instance in <code>helm</code> or <code>ivy</code> buffers),</li>
+<li><code>hybrid-mode-default-state</code>, the default state when opening a new buffer,
+by default it is <code>normal</code>.</li>
+</ul>
+
+<p>
+To define these new variables use the <code>:variables</code> keyword. For example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq dotspacemacs-editing-style '<span class="org-rainbow-delimiters-depth-2">(</span>hybrid <span class="org-builtin">:variables</span>
+                                   hybrid-mode-enable-evilified-state t
+                                   hybrid-mode-enable-hjkl-bindings t
+                                   hybrid-mode-default-state 'normal<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="support-for-ivy"><a id="orgheadline12"></a><span class="section-number-3">3.6</span> Support for Ivy</h3>
+<div class="outline-text-3" id="text-support-for-ivy">
+<p>
+The community has made a wonderful work to bring <a href="https://github.com/abo-abo/swiper">ivy</a> support to Spacemacs.
+</p>
+
+<p>
+Want to switch from <code>helm</code> to <code>ivy</code> ? This is as simple as adding the <code>ivy</code>
+layer to your dotfile and reloading it with <code>SPC f e R</code>!
+</p>
+
+<p>
+The level of feature of the <code>ivy</code> layer is pretty on par with the <code>helm</code> layer,
+this is a fantastic work and it demonstrates all the power of a community-driven
+configuration. I'm really excited by this new feature and how it is so easy to
+enjoy it. Nice work guys!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="better-transient-states"><a id="orgheadline13"></a><span class="section-number-3">3.7</span> Better transient-states</h3>
+<div class="outline-text-3" id="text-better-transient-states">
+<p>
+<code>Transient-states</code> replace the <code>micro-states</code>. They are powered by <a href="https://github.com/abo-abo/hydra">hydra</a>
+making <code>hydra</code> part of the bootstrap packages (pillars of the distribution).
+<code>Hydra</code> is now 100% supported in Spacemacs and does not require hacks to
+work correctly.
+</p>
+
+<p>
+We tried to get consistent <code>transient-states</code> in all the layers by keeping
+the same documentation strings format everywhere.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="more-debugging-tools"><a id="orgheadline14"></a><span class="section-number-3">3.8</span> More debugging tools</h3>
+<div class="outline-text-3" id="text-more-debugging-tools">
+<p>
+Emacs comes with lots of tools to help the user to debug their configuration.
+Spacemacs adds several concepts which can make harder for a user to debug
+his configuration, especially the layer system.
+</p>
+
+<p>
+In this new release we are eager to introduce new easy way to debug your
+configuration:
+</p>
+<ul class="org-ul">
+<li>press <code>SPC q d</code> to restart Emacs in debug mode with command line parameter
+<code>--debug-init</code> fed in for you</li>
+<li>press <code>SPC q D</code> to restart Emacs with a selected list of packages to load,
+in this mode Spacemacs is completely disabled so you get the perfect way
+to test wether a bug comes from Spacemacs configuration or not</li>
+<li>press <code>SPC h I</code> to open an org buffer with an issue template, fill it then
+press <code>C-c C-c</code> to submit it with your default internet browser.</li>
+</ul>
+
+<p>
+Along with these new key bindings, new Spacemacs specific command line
+parameters are available to help you change the scope of an issue investigation:
+</p>
+<ul class="org-ul">
+<li><code>--no-layer</code> deactivates all the layers <span class="underline">except</span> the distribution layer</li>
+<li><code>--distribution x</code> allows to change temporarily the distribution to <code>x</code>.</li>
+</ul>
+
+<p>
+This is a good time to remind you about the other useful Spacemacs specific
+command line parameters:
+</p>
+<ul class="org-ul">
+<li><code>--profile=</code> will display profiling information on startup</li>
+<li><code>--timed-requires</code> will display the time taken by each <code>require</code> commands</li>
+<li><code>--adv-timers n</code> will display any load time greater than <code>n</code>.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="new-keyboard-layouts"><a id="orgheadline15"></a><span class="section-number-3">3.9</span> New keyboard layouts</h3>
+<div class="outline-text-3" id="text-new-keyboard-layouts">
+<p>
+A new layer <code>keyboard-layout</code> aims to provide the tools to define more easily
+new keyboard layouts. This release ships with support for <code>bépo</code> and <code>dvorak</code>
+layouts.
+</p>
+
+<p>
+Be sure to follow the <code>README.org</code> of the <code>keyboard-layout</code> layer for more
+information about layout definition.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="directory-and-file-local-variables"><a id="orgheadline16"></a><span class="section-number-3">3.10</span> Directory and file local variables</h3>
+<div class="outline-text-3" id="text-directory-and-file-local-variables">
+<p>
+<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html">Per-directory and file local variables</a> are a standard feature of Emacs, we try
+to leverage them starting with 0.200. Some layers support several tools to do
+the same thing, for instance in the <code>ruby</code> layer both <code>rspec</code> and <code>ruby-test</code>
+are supported to run tests; the <code>haskell</code> layer supports several completion
+back-ends like <code>intero</code> and <code>ghci</code>. Those tools or back-ends are project
+specific so providing only a global value for them is not enough. With 0.200
+these layers become compatible with directory local variables so the test engine
+for <code>ruby</code> or the completion back-end for <code>haskell</code> can be setup differently for
+different directories (i.e. projects).
+</p>
+
+<p>
+Supporting directory and file local variable dynamically greatly improves the
+flexibility of Spacemacs and make it an even better choice to handle various
+types of projects. We don´t support multiple options for the sake of supporting
+them but for a more robust solution capable to deal easily with your day-to-day
+requirements.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="more-useful-abstraction"><a id="orgheadline17"></a><span class="section-number-3">3.11</span> More useful abstraction</h3>
+<div class="outline-text-3" id="text-more-useful-abstraction">
+<p>
+We have even more abstraction of useful concepts in 0.200 like jumping to the
+definition of a symbol or opening a REPL.
+</p>
+
+<p>
+Like text searching tools, there is now the concept of jump handlers, each mode
+can set a list of jump handlers and Spacemacs will try them in order to get you
+to a symbol definition. This new abstraction alows to merge the different
+jumping tools under the same key binding, for instance <code>dumb-jump</code>, <code>tags</code>
+etc&#x2026;
+</p>
+
+<p>
+All supported REPLs are now registered in a list and you can run any registered
+REPL with ~SPC a '~.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="new-welcome-screen"><a id="orgheadline18"></a><span class="section-number-3">3.12</span> New welcome screen</h3>
+<div class="outline-text-3" id="text-new-welcome-screen">
+<p>
+The contents of the welcome screen are now centered, there is also a nice new
+footer.
+The contents are recentered when the window is resized, to disable this
+behaviour set the variable <code>dotspacemacs-startup-buffer-responsive</code> to <code>nil</code>.
+</p>
+
+<p>
+Sizes of lists in the welcome screen can be customized independently for each
+list with the variable <code>dotspacemacs-startup-list</code>, for instance the following
+value will display a maximum of 5 items for the recent files list and a maximum
+of 7 items for the projects list:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq dotspacemacs-startup-lists '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>recents  . <span class="org-highlight-numbers-number">5</span><span class="org-rainbow-delimiters-depth-3">)</span>
+                                   <span class="org-rainbow-delimiters-depth-3">(</span>projects . <span class="org-highlight-numbers-number">7</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+There are two new lists of items which can be displayed on the welcome screen:
+</p>
+<ul class="org-ul">
+<li>agenda</li>
+<li>todos</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="about-spacemacs-update-notifications"><a id="orgheadline19"></a><span class="section-number-3">3.13</span> About Spacemacs update notifications</h3>
+<div class="outline-text-3" id="text-about-spacemacs-update-notifications">
+<p>
+In previous versions Spacemacs checked for a new version at every startup of
+Emacs and every 6 hours. It was <a href="https://github.com/syl20bnr/spacemacs/issues/6692">stressing the GitHub infrastructure</a> enough to
+make GitHub throttle down the traffic for the repository.
+</p>
+
+<p>
+In this version we changed the notification frequency and took several measures
+to reduce the <code>git</code> commands monitored by GitHub:
+</p>
+<ul class="org-ul">
+<li>reduce number of required git commands per check from 3 to 1</li>
+<li>remove recurrent version check every 6 hours, i.e. the check happens only
+at startup</li>
+<li>rate limit the checks to once per day</li>
+<li>change default value of variable <code>dotspacemacs-check-for-update</code> to <code>nil</code></li>
+<li>make function <code>spacemacs/check-for-new-version</code> interactive so checking
+for a new version can be done on demand.</li>
+</ul>
+
+<p>
+If you want automatic check of new version you have now to opt-in by setting
+<code>dotspacemacs-check-for-update</code> to <code>t</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="a-new-community-document"><a id="orgheadline20"></a><span class="section-number-3">3.14</span> A new community document</h3>
+<div class="outline-text-3" id="text-a-new-community-document">
+<p>
+At the root of the project directory the new file <code>COMMUNITY.org</code> describes
+the values of the project and the moderation rules. There is also an exhaustive
+list of the moderation actions taken by collaborators.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="the-spacemacs-shop"><a id="orgheadline21"></a><span class="section-number-3">3.15</span> The Spacemacs shop</h3>
+<div class="outline-text-3" id="text-the-spacemacs-shop">
+<p>
+You can now show your support for Spacemacs by buying tee-shirts and goodies
+in the new <a href="https://shop.spreadshirt.com/spacemacs-shop">Spacemacs shop</a>!
+</p>
+
+<p>
+There is a limited number of models for women but all the men tee-shirts
+will be available for women as well in the coming weeks!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-2">
+<h2 id="whats-next-"><a id="orgheadline26"></a><span class="section-number-2">4</span> What's next ?</h2>
+<div class="outline-text-2" id="text-whats-next-">
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="even-more-stability"><a id="orgheadline23"></a><span class="section-number-3">4.1</span> Even more stability</h3>
+<div class="outline-text-3" id="text-even-more-stability">
+<p>
+<code>Elpa</code> mirrors are a good start but it does not fix the bleeding edge packages
+issue, especially when installing a fresh version of Spacemacs.
+</p>
+
+<p>
+For 0.201 we plan to introduce stable snapshots of <code>elpa</code> repositories, a new
+installation of Spacemacs will always install packages from this stable source.
+Users will then be able to manually trigger an upgrade of packages if they
+want the bleeding edge versions but they will always be able to rollback to the
+previous stable state if required.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="more-consistent-window-behaviour"><a id="orgheadline24"></a><span class="section-number-3">4.2</span> More consistent window behaviour</h3>
+<div class="outline-text-3" id="text-more-consistent-window-behaviour">
+<p>
+One of the main focus for 0.201 will be to integrate <a href="https://github.com/bmag/emacs-purpose">emacs-purpose</a>. It is a
+package to display buffer in the same windows. The current pull request is very
+popular and I'm sure you'll like what it will bring to the Spacemacs experience.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="new-layers"><a id="orgheadline25"></a><span class="section-number-3">4.3</span> New layers</h3>
+<div class="outline-text-3" id="text-new-layers">
+<p>
+Pull requests with new layers are low on the priority list because reviewing
+them is more time consuming. For 0.201 I'll focus on all the pull requests with
+new layers in order to speed up the merge so you can expect more new layers for
+0.201 than 0.200.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-2">
+<h2 id="a-few-thanks"><a id="orgheadline27"></a><span class="section-number-2">5</span> A few thanks</h2>
+<div class="outline-text-2" id="text-a-few-thanks">
+<p>
+This first newsletter is a great opportunity to thanks the Emacs community and
+more specifically:
+</p>
+
+<ul class="org-ul">
+<li><code>Justin Burkett</code> (aka <a href="https://github.com/justbur">justbur</a>) and <code>Fabien Dubosson</code> (aka <a href="https://github.com/StreakyCobra">StreakyCobra</a>)
+who were collaborators during several months. This version would not be so
+awesome without their dedicated involvement. We wish them all the success in
+their future projects.</li>
+
+<li><code>Boris</code> (aka <a href="https://github.com/d12frosted">d12frosted</a>) who joined <code>TheBB</code> and myself as collaborator.</li>
+
+<li>Of course the unique <code>Eivind Fonn</code> (aka <a href="https://github.com/TheBB">TheBB</a>) without his constant support
+Spacemacs could not be successful and I think I would have burn-out a long
+time ago.</li>
+
+<li>All the package maintainers, especially <code>Oleh Krehel</code> (aka <a href="https://github.com/abo-abo">abo-abo</a>) for the
+great help with <code>ivy</code> and obviously <code>Frank Fischer</code> (aka <a href="https://bitbucket.org/lyro/">lyro</a>) the author
+of <code>evil</code>.</li>
+
+<li>In no specific order: <code>Diego Berrocal</code> (aka <a href="https://github.com/CestDiego">CestDiego</a>), <a href="https://github.com/bmag">bmag</a>, <a href="https://github.com/NJBS">NJBS</a>,
+<code>Eugene Yaremenko</code> (aka <a href="https://github.com/JAremko">JAremko</a>), <a href="https://github.com/travisbhartwell">Travis B. Hartwell</a>, <code>Tristan Hume</code>
+(aka <a href="https://github.com/trishume">trishume</a>)</li>
+
+<li>All the Spacemacs community, you are the heart of Spacemacs!</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-10-03 Mon 01:52</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

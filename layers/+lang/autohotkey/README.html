@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:10 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Autohotkey layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,10 +165,10 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Features</a></li>
-<li><a href="#orgheadline3">3. Install</a></li>
-<li><a href="#orgheadline4">4. Key Bindings</a></li>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#features">2. Features</a></li>
+<li><a href="#install">3. Install</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a></li>
 </ul>
 </div>
 </div>
@@ -181,8 +179,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 Syntax highlighting and Emacs functions for use with <a href="http://www.autohotkey.com/">AutoHotkey</a> or
 <a href="http://ahkscript.org/">AutoHotkey<sub>L</sub></a>.
@@ -202,8 +200,8 @@ Contributed and maintained by <a href="https://www.github.com/ralesi">Rich Alesi
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Features</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="features"><a id="orgheadline2"></a><span class="section-number-2">2</span> Features</h2>
+<div class="outline-text-2" id="text-features">
 <ul class="org-ul">
 <li>Auto-completion</li>
 <li>Documentation Lookup</li>
@@ -214,8 +212,8 @@ Contributed and maintained by <a href="https://www.github.com/ralesi">Rich Alesi
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">3</span> Install</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="install"><a id="orgheadline3"></a><span class="section-number-2">3</span> Install</h2>
+<div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>autohotkey</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -225,8 +223,8 @@ file.
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4"><span class="section-number-2">4</span> Key Bindings</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="key-bindings"><a id="orgheadline4"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -243,13 +241,28 @@ file.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m d</code></td>
+<td class="org-left"><code>SPC m c b</code></td>
+<td class="org-left">block comment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c c</code></td>
+<td class="org-left">line comment</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e b</code></td>
+<td class="org-left">execute file with <code>autohotkey.exe</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h h</code></td>
 <td class="org-left">open documentation in <code>browser</code></td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e</code></td>
-<td class="org-left">execute file with <code>autohotkey.exe</code></td>
+<td class="org-left"><code>SPC m h H</code></td>
+<td class="org-left">open documentation in local <code>chm</code></td>
 </tr>
 </tbody>
 </table>
@@ -258,7 +271,7 @@ file.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:10</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

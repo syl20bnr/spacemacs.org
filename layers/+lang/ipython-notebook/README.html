@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>IPython Notebook layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,49 +165,49 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Features</a></li>
-<li><a href="#orgheadline6">3. List of TODOS</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#features">2. Features</a></li>
+<li><a href="#list-of-todos">3. List of TODOS</a>
 <ul>
-<li><a href="#orgheadline3">3.1. <span class="todo TODO">TODO</span> Maybe it'd be better if there was a state for this</a></li>
-<li><a href="#orgheadline4">3.2. <span class="todo TODO">TODO</span> Make more keybinding to <code>connect</code> to a python buffer.</a></li>
-<li><a href="#orgheadline5">3.3. <span class="todo TODO">TODO</span> Deleting visual regions don't work, find out why.</a></li>
+<li><a href="#todo-maybe-itd-be-better-if-there-was-a-state-for-this">3.1. <span class="todo TODO">TODO</span> Maybe it'd be better if there was a state for this</a></li>
+<li><a href="#todo-make-more-keybinding-to-connect-to-a-python-buffer">3.2. <span class="todo TODO">TODO</span> Make more keybinding to <code>connect</code> to a python buffer</a></li>
+<li><a href="#todo-deleting-visual-regions-dont-work-find-out-why">3.3. <span class="todo TODO">TODO</span> Deleting visual regions don't work, find out why</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline10">4. Install</a>
+<li><a href="#install">4. Install</a>
 <ul>
-<li><a href="#orgheadline7">4.1. Layer</a></li>
-<li><a href="#orgheadline8">4.2. Dependencies</a></li>
-<li><a href="#orgheadline9">4.3. What needs to be run</a></li>
+<li><a href="#layer">4.1. Layer</a></li>
+<li><a href="#dependencies">4.2. Dependencies</a></li>
+<li><a href="#what-needs-to-be-run">4.3. What needs to be run</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">5. Using the IPython notebook</a>
+<li><a href="#using-the-ipython-notebook">5. Using the IPython notebook</a>
 <ul>
-<li><a href="#orgheadline11">5.1. Open Notebook List</a></li>
-<li><a href="#orgheadline16">5.2. Key Bindings</a>
+<li><a href="#open-notebook-list">5.1. Open Notebook List</a></li>
+<li><a href="#key-bindings">5.2. Key Bindings</a>
 <ul>
-<li><a href="#orgheadline12">5.2.1. Micro-state: <code>ipython-notebook</code></a></li>
-<li><a href="#orgheadline13">5.2.2. Normal mode</a></li>
-<li><a href="#orgheadline14">5.2.3. Insert mode</a></li>
-<li><a href="#orgheadline15">5.2.4. Traceback mode</a></li>
+<li><a href="#transient-state-ipython-notebook">5.2.1. Transient-state: <code>ipython-notebook</code></a></li>
+<li><a href="#normal-mode">5.2.2. Normal mode</a></li>
+<li><a href="#insert-mode">5.2.3. Insert mode</a></li>
+<li><a href="#traceback-mode">5.2.4. Traceback mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline20">6. Screenshots</a>
+<li><a href="#screenshots">6. Screenshots</a>
 <ul>
-<li><a href="#orgheadline18">6.1. Light</a></li>
-<li><a href="#orgheadline19">6.2. Dark</a></li>
+<li><a href="#light">6.1. Light</a></li>
+<li><a href="#dark">6.2. Dark</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline21">7. Bonus</a></li>
+<li><a href="#bonus">7. Bonus</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the package <code>emacs-ipython-notebook</code>.
 </p>
@@ -222,39 +220,51 @@ lots of informative stuff.
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Features</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="features"><a id="orgheadline2"></a><span class="section-number-2">2</span> Features</h2>
+<div class="outline-text-2" id="text-features">
 <ul class="org-ul">
-<li>Keybindings available through micro-State or leader key</li>
+<li>Keybindings available through transient-state or leader key</li>
 <li>Lazy-loading</li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">3</span> List of TODOS</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="list-of-todos"><a id="orgheadline6"></a><span class="section-number-2">3</span> List of TODOS</h2>
+<div class="outline-text-2" id="text-list-of-todos">
 <p>
 This is a WIP, feel free to collaborate.
 </p>
 </div>
+
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Maybe it'd be better if there was a state for this</h3>
-</div>
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">3.2</span> <span class="todo TODO">TODO</span> Make more keybinding to <code>connect</code> to a python buffer.</h3>
-</div>
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> Deleting visual regions don't work, find out why.</h3>
+<h3 id="todo-maybe-itd-be-better-if-there-was-a-state-for-this"><a id="orgheadline3"></a><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> Maybe it'd be better if there was a state for this</h3>
+<div class="outline-text-3" id="text-todo-maybe-itd-be-better-if-there-was-a-state-for-this">
 </div>
 </div>
 
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="todo-make-more-keybinding-to-connect-to-a-python-buffer"><a id="orgheadline4"></a><span class="section-number-3">3.2</span> <span class="todo TODO">TODO</span> Make more keybinding to <code>connect</code> to a python buffer</h3>
+<div class="outline-text-3" id="text-todo-make-more-keybinding-to-connect-to-a-python-buffer">
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="todo-deleting-visual-regions-dont-work-find-out-why"><a id="orgheadline5"></a><span class="section-number-3">3.3</span> <span class="todo TODO">TODO</span> Deleting visual regions don't work, find out why</h3>
+<div class="outline-text-3" id="text-todo-deleting-visual-regions-dont-work-find-out-why">
+</div>
+</div>
+</div>
+
+
 <div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10"><span class="section-number-2">4</span> Install</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">4.1</span> Layer</h3>
-<div class="outline-text-3" id="text-4-1">
+<h2 id="install"><a id="orgheadline10"></a><span class="section-number-2">4</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="layer"><a id="orgheadline7"></a><span class="section-number-3">4.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>ipython-notebook</code> to the existing <code>dotspacemacs-configuration-layers</code> list
@@ -262,28 +272,30 @@ in this file.
 </p>
 </div>
 </div>
+
 <div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="orgheadline8"><span class="section-number-3">4.2</span> Dependencies</h3>
-<div class="outline-text-3" id="text-4-2">
+<h3 id="dependencies"><a id="orgheadline8"></a><span class="section-number-3">4.2</span> Dependencies</h3>
+<div class="outline-text-3" id="text-dependencies">
 <p>
-Install IPython &gt; 3
+Install IPython Notebook &gt; 3
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="ATTRLIST-1">pip</span> <span class="ATTRLIST-2">install</span> <span class="ATTRLIST">ipython</span>
+<pre class="src src-sh">pip install ipython<span class="org-rainbow-delimiters-depth-1">[</span>notebook<span class="org-rainbow-delimiters-depth-1">]</span>
 </pre>
 </div>
 </div>
 </div>
+
 <div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">4.3</span> What needs to be run</h3>
-<div class="outline-text-3" id="text-4-3">
+<h3 id="what-needs-to-be-run"><a id="orgheadline9"></a><span class="section-number-3">4.3</span> What needs to be run</h3>
+<div class="outline-text-3" id="text-what-needs-to-be-run">
 <p>
 Have an IPython notebook running
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="ATTRLIST">ipython</span> <span class="ATTRLIST-1">notebook</span>
+<pre class="src src-sh">ipython notebook
 </pre>
 </div>
 </div>
@@ -291,35 +303,38 @@ Have an IPython notebook running
 </div>
 
 <div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="orgheadline17"><span class="section-number-2">5</span> Using the IPython notebook</h2>
-<div class="outline-text-2" id="text-5">
-</div><div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11"><span class="section-number-3">5.1</span> Open Notebook List</h3>
-<div class="outline-text-3" id="text-5-1">
+<h2 id="using-the-ipython-notebook"><a id="orgheadline17"></a><span class="section-number-2">5</span> Using the IPython notebook</h2>
+<div class="outline-text-2" id="text-using-the-ipython-notebook">
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="open-notebook-list"><a id="orgheadline11"></a><span class="section-number-3">5.1</span> Open Notebook List</h3>
+<div class="outline-text-3" id="text-open-notebook-list">
 <p>
-This layer is lazy loaded so the micro-state will only work after you summon the
+This layer is lazy loaded so the transient-state will only work after you summon the
 command <code>ein:notebooklist-open</code> which is bound to <code>SPC a i n</code>
 </p>
 </div>
 </div>
+
 <div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">5.2</span> Key Bindings</h3>
-<div class="outline-text-3" id="text-5-2">
+<h3 id="key-bindings"><a id="orgheadline16"></a><span class="section-number-3">5.2</span> Key Bindings</h3>
+<div class="outline-text-3" id="text-key-bindings">
 <p>
-The key bindings can be used through a micro state or the usual evil-leader.
+The key bindings can be used through a transient state or the usual evil-leader.
 </p>
 </div>
 
 <div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">5.2.1</span> Micro-state: <code>ipython-notebook</code></h4>
-<div class="outline-text-4" id="text-5-2-1">
+<h4 id="transient-state-ipython-notebook"><a id="orgheadline12"></a><span class="section-number-4">5.2.1</span> Transient-state: <code>ipython-notebook</code></h4>
+<div class="outline-text-4" id="text-transient-state-ipython-notebook">
 <p>
-Once you are in the ipython notebook you can activate the micro-state with
-<code>SPC e i n</code>
+Once you are in the ipython notebook you can activate the transient-state with
+<code>SPC m .</code>
 </p>
 
 <p>
-The following table lists the keys. Use them as listed in the micro-state or
+The following table lists the keys. Use them as listed in the transient-state or
 prefix with <code>SPC m</code> to use with your evil-leader.
 </p>
 
@@ -523,8 +538,8 @@ prefix with <code>SPC m</code> to use with your evil-leader.
 </div>
 
 <div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">5.2.2</span> Normal mode</h4>
-<div class="outline-text-4" id="text-5-2-2">
+<h4 id="normal-mode"><a id="orgheadline13"></a><span class="section-number-4">5.2.2</span> Normal mode</h4>
+<div class="outline-text-4" id="text-normal-mode">
 <p>
 In normal mode the following key bindings are defined:
 </p>
@@ -573,8 +588,8 @@ Also <code>SPC f s</code> saves the notebook like you would a regular buffer.
 </div>
 
 <div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">5.2.3</span> Insert mode</h4>
-<div class="outline-text-4" id="text-5-2-3">
+<h4 id="insert-mode"><a id="orgheadline14"></a><span class="section-number-4">5.2.3</span> Insert mode</h4>
+<div class="outline-text-4" id="text-insert-mode">
 <p>
 In normal mode the following key bindings are defined:
 </p>
@@ -609,8 +624,8 @@ In normal mode the following key bindings are defined:
 </div>
 
 <div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">5.2.4</span> Traceback mode</h4>
-<div class="outline-text-4" id="text-5-2-4">
+<h4 id="traceback-mode"><a id="orgheadline15"></a><span class="section-number-4">5.2.4</span> Traceback mode</h4>
+<div class="outline-text-4" id="text-traceback-mode">
 <p>
 In traceback mode the following key bindings are defined:
 </p>
@@ -657,24 +672,27 @@ In traceback mode the following key bindings are defined:
 </div>
 
 <div id="outline-container-orgheadline20" class="outline-2">
-<h2 id="orgheadline20"><span class="section-number-2">6</span> Screenshots</h2>
-<div class="outline-text-2" id="text-6">
-</div><div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">6.1</span> Light</h3>
-<div class="outline-text-3" id="text-6-1">
+<h2 id="screenshots"><a id="orgheadline20"></a><span class="section-number-2">6</span> Screenshots</h2>
+<div class="outline-text-2" id="text-screenshots">
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="light"><a id="orgheadline18"></a><span class="section-number-3">6.1</span> Light</h3>
+<div class="outline-text-3" id="text-light">
 
 <div class="figure">
-<p><img src="img/light.png" alt="light.png" />
+<p><img src="img/light.png" alt="light.png" width="400px" />
 </p>
 </div>
 </div>
 </div>
+
 <div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">6.2</span> Dark</h3>
-<div class="outline-text-3" id="text-6-2">
+<h3 id="dark"><a id="orgheadline19"></a><span class="section-number-3">6.2</span> Dark</h3>
+<div class="outline-text-3" id="text-dark">
 
 <div class="figure">
-<p><img src="img/dark.png" alt="dark.png" />
+<p><img src="img/dark.png" alt="dark.png" width="400px" />
 </p>
 </div>
 </div>
@@ -682,8 +700,8 @@ In traceback mode the following key bindings are defined:
 </div>
 
 <div id="outline-container-orgheadline21" class="outline-2">
-<h2 id="orgheadline21"><span class="section-number-2">7</span> Bonus</h2>
-<div class="outline-text-2" id="text-7">
+<h2 id="bonus"><a id="orgheadline21"></a><span class="section-number-2">7</span> Bonus</h2>
+<div class="outline-text-2" id="text-bonus">
 <p>
 If you want to have a matplotlibrc that looks good with a dark background try
 using <a href="matplotlibrc">this</a> <code>matplotlibrc</code>. Plot background is always transparent by default so
@@ -694,7 +712,7 @@ it will look okay for most dark themes out there.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

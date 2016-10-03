@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elm layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,37 +165,41 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline8">2. Install</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#orgheadline2">2.1. Layer</a></li>
-<li><a href="#orgheadline6">2.2. Elm Platform</a>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#elm-platform">2.2. Elm Platform</a>
 <ul>
-<li><a href="#orgheadline3">2.2.1. OS X and Windows installers</a></li>
-<li><a href="#orgheadline4">2.2.2. Universal installer using npm</a></li>
-<li><a href="#orgheadline5">2.2.3. Source code</a></li>
+<li><a href="#os-x-and-windows-installers">2.2.1. OS X and Windows installers</a></li>
+<li><a href="#universal-installer-using-npm">2.2.2. Universal installer using npm</a></li>
+<li><a href="#source-code">2.2.3. Source code</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline7">2.3. elm-oracle</a></li>
+<li><a href="#elm-oracle">2.3. elm-oracle</a></li>
+<li><a href="#elm-format">2.4. elm-format</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline11">3. Basic usage tips</a>
+<li><a href="#basic-usage-tips">3. Basic usage tips</a>
 <ul>
-<li><a href="#orgheadline9">3.1. Compilation</a></li>
-<li><a href="#orgheadline10">3.2. Reactor</a></li>
+<li><a href="#compilation">3.1. Compilation</a></li>
+<li><a href="#reactor">3.2. Reactor</a></li>
+<li><a href="#sort-imports-on-save">3.3. Sort imports on save</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline18">4. Key bindings</a>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#orgheadline12">4.1. elm-make</a></li>
-<li><a href="#orgheadline13">4.2. elm-repl</a></li>
-<li><a href="#orgheadline14">4.3. elm-reactor</a></li>
-<li><a href="#orgheadline16">4.4. elm-package</a>
+<li><a href="#elm-make">4.1. elm-make</a></li>
+<li><a href="#elm-repl">4.2. elm-repl</a></li>
+<li><a href="#elm-reactor">4.3. elm-reactor</a></li>
+<li><a href="#elm-package">4.4. elm-package</a>
 <ul>
-<li><a href="#orgheadline15">4.4.1. package list buffer</a></li>
+<li><a href="#package-list-buffer">4.4.1. package list buffer</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline17">4.5. elm-oracle</a></li>
+<li><a href="#elm-oracle">4.5. elm-oracle</a></li>
+<li><a href="#elm-format">4.6. elm-format</a></li>
+<li><a href="#refactoring">4.7. Refactoring</a></li>
 </ul>
 </li>
 </ul>
@@ -210,8 +212,8 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for <a href="http://elm-lang.org/">Elm</a>.
 </p>
@@ -233,12 +235,14 @@ with using elm-oracle</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="install"><a id="orgheadline9"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>elm</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -248,11 +252,11 @@ file.
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6"><span class="section-number-3">2.2</span> Elm Platform</h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="elm-platform"><a id="orgheadline6"></a><span class="section-number-3">2.2</span> Elm Platform</h3>
+<div class="outline-text-3" id="text-elm-platform">
 <p>
-The <code>elm-platform</code> is a bundle of tools, including the <code>elm-compiler</code>, <code>elm-make</code>,
-<code>elm-reactor</code>, <code>elm-repl</code> and <code>elm-package</code>. 
+The <code>elm-platform</code> is a bundle of tools, including the <code>elm-compiler</code>,
+<code>elm-make</code>, <code>elm-reactor</code>, <code>elm-repl</code> and <code>elm-package</code>.
 </p>
 
 <p>
@@ -262,8 +266,8 @@ able to access commands such as <code>elm-reactor</code> or <code>elm-make</code
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">2.2.1</span> OS X and Windows installers</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<h4 id="os-x-and-windows-installers"><a id="orgheadline3"></a><span class="section-number-4">2.2.1</span> OS X and Windows installers</h4>
+<div class="outline-text-4" id="text-os-x-and-windows-installers">
 <p>
 Official installers for these operating systems are available from:
 <a href="http://elm-lang.org/install"><a href="http://elm-lang.org/install">http://elm-lang.org/install</a></a>
@@ -272,15 +276,15 @@ Official installers for these operating systems are available from:
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">2.2.2</span> Universal installer using npm</h4>
-<div class="outline-text-4" id="text-2-2-2">
+<h4 id="universal-installer-using-npm"><a id="orgheadline4"></a><span class="section-number-4">2.2.2</span> Universal installer using npm</h4>
+<div class="outline-text-4" id="text-universal-installer-using-npm">
 <p>
 A npm based installer is available to, and provides pre-compiled binaries for
 certain operating system and architectures.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">--global</span> <span class="ATTRLIST">elm</span>
+<pre class="src src-sh">npm install --global elm
 </pre>
 </div>
 <p>
@@ -289,15 +293,20 @@ the corresponding directory created by the installer.
 </p>
 
 <p>
+If you are facing problems with previewing a buffer with <code>elm-reactor</code> ensure
+that the absolute path of the npm global bin file is on your path within emacs
+</p>
+
+<p>
 OS X Users facing problems with <code>elm-reactor</code> failing to properly install or
-run, see this issue <a href="https://github.com/kevva/elm-bin/issues/28"><a href="https://github.com/kevva/elm-bin/issues/28">https://github.com/kevva/elm-bin/issues/28</a></a>. 
+run, see this issue <a href="https://github.com/kevva/elm-bin/issues/28"><a href="https://github.com/kevva/elm-bin/issues/28">https://github.com/kevva/elm-bin/issues/28</a></a>.
 </p>
 </div>
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">2.2.3</span> Source code</h4>
-<div class="outline-text-4" id="text-2-2-3">
+<h4 id="source-code"><a id="orgheadline5"></a><span class="section-number-4">2.2.3</span> Source code</h4>
+<div class="outline-text-4" id="text-source-code">
 <p>
 To build from source, see instructions here:
 <a href="https://github.com/elm-lang/elm-platform"><a href="https://github.com/elm-lang/elm-platform">https://github.com/elm-lang/elm-platform</a></a>
@@ -307,17 +316,17 @@ To build from source, see instructions here:
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">2.3</span> elm-oracle</h3>
-<div class="outline-text-3" id="text-2-3">
+<h3 id="elm-oracle"><a id="orgheadline7"></a><span class="section-number-3">2.3</span> elm-oracle</h3>
+<div class="outline-text-3" id="text-elm-oracle">
 <p>
 <code>elm-oracle</code> can be used to show type signatures and docs for tokens under the
-cursor and provide support for auto-completion, but it is not part of the standard
-elm-platform.
+cursor and provide support for auto-completion, but it is not part of the
+standard elm-platform.
 </p>
 
 <p>
 Both the "company" and "auto-complete" backends are supported, but this layer
-is configured with company. 
+is configured with company.
 </p>
 
 <p>
@@ -327,19 +336,49 @@ run this command:
 
 <div class="org-src-container">
 
-<pre class="src src-sh"><span class="ATTRLIST-2">npm</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-1">-g</span> <span class="ATTRLIST">elm-oracle</span>
+<pre class="src src-sh">npm install -g elm-oracle
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="elm-format"><a id="orgheadline8"></a><span class="section-number-3">2.4</span> elm-format</h3>
+<div class="outline-text-3" id="text-elm-format">
+<p>
+<code>elm-format</code> can be used to format elm code according to a standard set of
+rules.
+</p>
+
+<p>
+To install <code>elm-format</code> follow the the instructions for the version of elm
+installed: <a href="https://github.com/avh4/elm-format">https://github.com/avh4/elm-format</a>
+</p>
+
+<p>
+Also, note that if you use homebrew to install <code>elm-format</code> the installed exe
+has a version suffix, the installed command name can be set in your
+<code>~/spacemacs</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
+     elm-format-command <span class="org-string">"elm-format-0.17"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="orgheadline11"><span class="section-number-2">3</span> Basic usage tips</h2>
-<div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">3.1</span> Compilation</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="basic-usage-tips"><a id="orgheadline13"></a><span class="section-number-2">3</span> Basic usage tips</h2>
+<div class="outline-text-2" id="text-basic-usage-tips">
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="compilation"><a id="orgheadline10"></a><span class="section-number-3">3.1</span> Compilation</h3>
+<div class="outline-text-3" id="text-compilation">
 <p>
 To control the name of the compiled JavaScript file, use <code>SPC m c B</code> instead of
 <code>SPC m c b</code>. This will overwrite the <code>--output</code> parameter of <code>elm-make</code> to
@@ -348,9 +387,9 @@ To control the name of the compiled JavaScript file, use <code>SPC m c B</code> 
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10"><span class="section-number-3">3.2</span> Reactor</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="reactor"><a id="orgheadline11"></a><span class="section-number-3">3.2</span> Reactor</h3>
+<div class="outline-text-3" id="text-reactor">
 <p>
 <code>elm-reactor</code> is an interactive development tool, used to develop and debug Elm
 programs. It will automatically compile an Elm program, and run it in the
@@ -377,21 +416,39 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">elm</span> <span class="org-builtin">:variables</span>
-     <span class="ATTRLIST">elm-reactor-port</span> <span class="org-string">"3000"</span>          <span class="org-comment-delimiter">; </span><span class="org-comment">default 8000</span>
-     <span class="ATTRLIST">elm-reactor-address</span> <span class="org-string">"0.0.0.0"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default 127.0.0.1</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
+     elm-reactor-port <span class="org-string">"3000"</span>          <span class="org-comment-delimiter">; </span><span class="org-comment">default 8000</span>
+     elm-reactor-address <span class="org-string">"0.0.0.0"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default 127.0.0.1</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="sort-imports-on-save"><a id="orgheadline12"></a><span class="section-number-3">3.3</span> Sort imports on save</h3>
+<div class="outline-text-3" id="text-sort-imports-on-save">
+<p>
+Set <code>elm-sort-imports-on-save</code> to <code>t</code> to sort the imports in the current file on
+every save.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span> elm-sort-imports-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">4</span> Key bindings</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12"><span class="section-number-3">4.1</span> elm-make</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline22"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="elm-make"><a id="orgheadline14"></a><span class="section-number-3">4.1</span> elm-make</h3>
+<div class="outline-text-3" id="text-elm-make">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -426,9 +483,9 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">4.2</span> elm-repl</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="elm-repl"><a id="orgheadline15"></a><span class="section-number-3">4.2</span> elm-repl</h3>
+<div class="outline-text-3" id="text-elm-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -473,9 +530,9 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">4.3</span> elm-reactor</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="elm-reactor"><a id="orgheadline16"></a><span class="section-number-3">4.3</span> elm-reactor</h3>
+<div class="outline-text-3" id="text-elm-reactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -505,9 +562,9 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">4.4</span> elm-package</h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="elm-package"><a id="orgheadline18"></a><span class="section-number-3">4.4</span> elm-package</h3>
+<div class="outline-text-3" id="text-elm-package">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -541,9 +598,9 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </table>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="orgheadline15"><span class="section-number-4">4.4.1</span> package list buffer</h4>
-<div class="outline-text-4" id="text-4-4-1">
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="package-list-buffer"><a id="orgheadline17"></a><span class="section-number-4">4.4.1</span> package list buffer</h4>
+<div class="outline-text-4" id="text-package-list-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -562,16 +619,6 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 <tr>
 <td class="org-left"><code>g</code></td>
 <td class="org-left">elm-package-refresh</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>n</code></td>
-<td class="org-left">elm-package-next</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>p</code></td>
-<td class="org-left">elm-package-previous</td>
 </tr>
 
 <tr>
@@ -604,9 +651,9 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">4.5</span> elm-oracle</h3>
-<div class="outline-text-3" id="text-4-5">
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="elm-oracle"><a id="orgheadline19"></a><span class="section-number-3">4.5</span> elm-oracle</h3>
+<div class="outline-text-3" id="text-elm-oracle">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -623,8 +670,66 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>SPC m h h</code></td>
+<td class="org-left">elm-oracle-doc-at-point</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m h t</code></td>
 <td class="org-left">elm-oracle-type-at-point</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="elm-format"><a id="orgheadline20"></a><span class="section-number-3">4.6</span> elm-format</h3>
+<div class="outline-text-3" id="text-elm-format">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Key Binding</td>
+<td class="org-left">Description</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m = b</code></td>
+<td class="org-left">elm-mode-format-buffer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="refactoring"><a id="orgheadline21"></a><span class="section-number-3">4.7</span> Refactoring</h3>
+<div class="outline-text-3" id="text-refactoring">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">elm-sort-imports</td>
 </tr>
 </tbody>
 </table>
@@ -634,7 +739,7 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

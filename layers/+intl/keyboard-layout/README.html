@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-03 Mon 00:56 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>keyboard-layout layer</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">keyboard-layout layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#installation">2. Installation</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#enabledisable-package-configurations">3.1. Enable/Disable package configurations</a></li>
+<li><a href="#addoverride-key-bindings">3.2. Add/Override key bindings</a></li>
+</ul>
+</li>
+<li><a href="#concept">4. Concept</a></li>
+<li><a href="#keyboard-layouts">5. Keyboard layouts</a>
+<ul>
+<li><a href="#bepo">5.1. bepo</a></li>
+<li><a href="#dvorak">5.2. dvorak</a></li>
+</ul>
+</li>
+<li><a href="#package-configurations">6. Package Configurations</a></li>
+<li><a href="#keybindings">7. Keybindings</a></li>
+<li><a href="#sources">8. Sources</a></li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="img/keyboard-layout.png" alt="keyboard-layout.png" />
+</p>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer configures some keybindings in spacemacs to make it compatible with
+keyboard layouts that differs from the traditional <code>en-us</code> keymap.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="installation"><a id="orgheadline2"></a><span class="section-number-2">2</span> Installation</h2>
+<div class="outline-text-2" id="text-installation">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>keyboard-layout</code> to the existing <code>dotspacemacs-configuration-layers</code> list
+in this file. You can then select the desired layout by specifying the
+<code>kl-layout</code> variable:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>keyboard-layout <span class="org-builtin">:variables</span> kl-layout 'dvorak<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="configuration"><a id="orgheadline5"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="enabledisable-package-configurations"><a id="orgheadline3"></a><span class="section-number-3">3.1</span> Enable/Disable package configurations</h3>
+<div class="outline-text-3" id="text-enabledisable-package-configurations">
+<p>
+This layer can be customized with two variables:
+</p>
+<ul class="org-ul">
+<li>kl-enabled-configurations</li>
+<li>kl-disabled-configurations</li>
+</ul>
+
+<p>
+The first one is used to set the list of configurations to activate, and the
+second one to prevent loading certain configurations. If the
+<code>kl-enabled-configurations</code> is nil (by default), all configurations are loaded.
+Otherwise, only the listed configurations are loaded. Any configuration listed
+in <code>kl-disabled-configurations</code> will never be loaded, whether it is in the
+enabled list or not (empty by default).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>keyboard-layout <span class="org-builtin">:variables</span>
+                   kl-layout 'dvorak
+                   kl-disabled-configurations '<span class="org-rainbow-delimiters-depth-4">(</span>org magit<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="addoverride-key-bindings"><a id="orgheadline4"></a><span class="section-number-3">3.2</span> Add/Override key bindings</h3>
+<div class="outline-text-3" id="text-addoverride-key-bindings">
+<p>
+It is possible to override or add bindings by defining functions named
+<code>kl/pre-config-&lt;NAME&gt;</code> and <code>kl/post-config-&lt;NAME&gt;</code> in <code>dotspacemacs/user-init</code>.
+They are respectively called just before and after the actual configuration of
+keybindings in this layer, so <b>you don't have to think about when to apply the
+configuration by yourself</b>. <code>&lt;NAME&gt;</code> is the name of the configuration you want
+to customize, they are listed under the <a href="#configuration">Configuration</a> section.
+</p>
+
+<p>
+Example:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">kl/post-config-company</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-doc">"Company delete backward."</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>kl/set-in-state company-active-map <span class="org-rainbow-delimiters-depth-3">(</span>kbd <span class="org-string">"C-w"</span><span class="org-rainbow-delimiters-depth-3">)</span> 'evil-delete-backward-word<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Note: If you define some of these functions in your own layer, be sure that the
+<code>keyboard-layout</code> layer is placed <span class="underline">after</span> it in the
+<code>dotspacemacs-configuration-layers</code> list.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="concept"><a id="orgheadline6"></a><span class="section-number-2">4</span> Concept</h2>
+<div class="outline-text-2" id="text-concept">
+<p>
+This package first switch traditional <code>hjkl</code> movement keys with their equivalent
+in destination layout, and then try to correct the bugs introduced by these
+changes in other parts of Spacemacs. This layer only tries to do these changes
+when the letters are used for <b>doing a movement</b>.
+</p>
+
+<p>
+The equivalent remapping is also made for uppercase letters, <code>CTRL+KEY</code>,
+<code>META+KEY</code> and leaders keybindings (<code>SPC …</code>) whenever it makes sense to make
+such changes.
+</p>
+
+<p>
+In some cases the key remapping will not follow these conventions, mainly
+because there are better alternatives, or because some moves don't make sense.
+</p>
+
+<p class="verse">
+Example: In the <code>magit</code> status buffer, the <code>c</code> is used for <code>commit</code> by default,<br  />
+but if we want to follow the conventions, it should be remapped to "move left"<br  />
+in bepo. As it is not useful to move left on <code>magit</code> because operations are done<br  />
+line by line the <code>c</code> is not remapped.<br  />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="keyboard-layouts"><a id="orgheadline9"></a><span class="section-number-2">5</span> Keyboard layouts</h2>
+<div class="outline-text-2" id="text-keyboard-layouts">
+<p>
+The keyboard-layouts available with this layer are the following:
+</p>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="bepo"><a id="orgheadline7"></a><span class="section-number-3">5.1</span> bepo</h3>
+<div class="outline-text-3" id="text-bepo">
+
+<div class="figure">
+<p><img src="img/bepo-logo.png" alt="bepo-logo.png" />
+</p>
+</div>
+
+<p>
+<code>bepo</code> is a keyboard layout optimized for the French language.
+</p>
+
+
+<div class="figure">
+<p><img src="img/bepo-keymap.png" alt="bepo-keymap.png" />
+</p>
+</div>
+
+<p>
+The mapping correction is the one proposed for vim on the official bepo <a href="http://bepo.fr/wiki/Vim#Principe">wiki</a>.
+</p>
+
+<ul class="org-ul">
+<li>Map the movements keys under the right hand's fingers:
+<ul class="org-ul">
+<li><code>c → h</code></li>
+<li><code>t → j</code></li>
+<li><code>s → k</code></li>
+<li><code>r → l</code></li>
+</ul></li>
+
+<li>Map lost functionalities back to some keys:
+<ul class="org-ul">
+<li><code>h → r</code></li>
+<li><code>j → t</code></li>
+<li><code>k → s</code></li>
+<li><code>l → c</code></li>
+</ul></li>
+</ul>
+
+<p>
+Some bepo keys are not used in traditional mapping, mainly because they are not
+on the <code>en-us</code> keyboard layout. They are used as aliases for other shortcuts:
+</p>
+
+<ul class="org-ul">
+<li>Map unused <code>é</code> key as an alias of <code>w</code>, more useful in vim mode:
+<ul class="org-ul">
+<li><code>é → w</code></li>
+<li><code>É → W</code></li>
+</ul></li>
+
+<li>Map indentation on direct-access keys:
+<ul class="org-ul">
+<li><code>» → &gt;</code></li>
+<li><code>« → &lt;</code></li>
+</ul></li>
+</ul>
+
+<p>
+Some default configurations are also not optimal for vim, so the following
+defaults are changed:
+</p>
+
+<ul class="org-ul">
+<li>Change <code>evil-escape</code> escape combination to something faster to type, while
+being nearly nonexistent in French or English words:
+<ul class="org-ul">
+<li><code>fd → gq</code></li>
+</ul></li>
+
+<li>In <code>avy</code>, the key used to select words/lines are remapped to the 8 characters
+under the fingers:
+<ul class="org-ul">
+<li><code>a u i e t s r n</code></li>
+</ul></li>
+</ul>
+
+<p>
+Note: One difference exists with the wiki version: the <code>w</code> is <b>not</b> remapped to
+<code>C-w</code> to avoid having to change its meaning in other modes. Spacemacs provides
+already a <code>SPC w</code> key binding for working with windows.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="dvorak"><a id="orgheadline8"></a><span class="section-number-3">5.2</span> dvorak</h3>
+<div class="outline-text-3" id="text-dvorak">
+<p>
+<code>dvorak</code> is a keyboard layout optimized for the English language. <a href="http://www.kaufmann.no/roland/dvorak/">dvorak
+programmer</a> is an optimized keyboard layout focused in programming and it's a
+variant of the more general <code>dvorak</code> (us) keyboard layout. This configuration
+will remap keybindings for the <code>dvorak-programmer</code> variant.
+</p>
+
+
+<div class="figure">
+<p><img src="img/dvorak-keymap.png" alt="dvorak-keymap.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="package-configurations"><a id="orgheadline10"></a><span class="section-number-2">6</span> Package Configurations</h2>
+<div class="outline-text-2" id="text-package-configurations">
+<p>
+The available configurations are:
+</p>
+
+<ul class="org-ul">
+<li>ace-window</li>
+<li>avy</li>
+<li>comint</li>
+<li>company</li>
+<li>elfeed</li>
+<li>evil</li>
+<li>evil-escape</li>
+<li>evil-evilified-state</li>
+<li>evil-surround</li>
+<li>eyebrowse</li>
+<li>flycheck</li>
+<li>helm</li>
+<li>imenu-list</li>
+<li>ivy</li>
+<li>magit</li>
+<li>mu4e</li>
+<li>neotree</li>
+<li>org</li>
+<li>org-agenda</li>
+<li>ranger</li>
+<li>twittering-mode</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="keybindings"><a id="orgheadline11"></a><span class="section-number-2">7</span> Keybindings</h2>
+<div class="outline-text-2" id="text-keybindings">
+<p>
+This layer is using functions that try to <i>automatically</i> remap keybindings in a
+lot of modes, so it's difficult to list all changed keybindings. And
+</p>
+
+<ul class="org-ul">
+<li>You chose to use a different keyboard layout.</li>
+<li>You chose to be on the dark side by using evil (because they have :cookie: obviously).</li>
+<li>You chose to use a layer, written with :heart:, that try to solve the induced mess.</li>
+</ul>
+
+<p>
+So the price you have to pay is the absence of a keybindings list.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="sources"><a id="orgheadline12"></a><span class="section-number-2">8</span> Sources</h2>
+<div class="outline-text-2" id="text-sources">
+<p>
+The keyboard-layout logo is coming from <a href="https://openclipart.org/detail/202777/keyboard-layout">openclipart.org</a> and is under the public
+domain. The bepo logo and the keymap images are coming from the <a href="http://bepo.fr/">bepo</a> official
+website. They are licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/deed.en">CC-BY-SA</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

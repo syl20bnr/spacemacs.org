@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ranger layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,23 +165,23 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Description</a></li>
-<li><a href="#orgheadline2">2. Features</a></li>
-<li><a href="#orgheadline6">3. Configuration</a>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#features">2. Features</a></li>
+<li><a href="#configuration">3. Configuration</a>
 <ul>
-<li><a href="#orgheadline3">3.1. Customizing</a></li>
-<li><a href="#orgheadline4">3.2. Parent options</a></li>
-<li><a href="#orgheadline5">3.3. Preview options</a></li>
+<li><a href="#customizing">3.1. Customizing</a></li>
+<li><a href="#parent-options">3.2. Parent options</a></li>
+<li><a href="#preview-options">3.3. Preview options</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline7">4. Key Bindings</a></li>
+<li><a href="#key-bindings">4. Key Bindings</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer brings Ranger features to spacemacs from the <code>ranger</code> package.
 </p>
@@ -199,17 +197,17 @@ To default with preview enabled when entering ranger:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span>
-              '<span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-1">ranger</span> <span class="org-builtin">:variables</span>
-                       <span class="ATTRLIST-1">ranger-show-preview</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>ranger <span class="org-builtin">:variables</span>
+                       ranger-show-preview t<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">2</span> Features</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="features"><a id="orgheadline2"></a><span class="section-number-2">2</span> Features</h2>
+<div class="outline-text-2" id="text-features">
 <ul class="org-ul">
 <li>use ranger to display dired with ranger like preview and stacked parent windows.</li>
 </ul>
@@ -217,8 +215,8 @@ To default with preview enabled when entering ranger:
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">3</span> Configuration</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="configuration"><a id="orgheadline6"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
 <p>
 Most parameters can be toggled on and off and stay within the current emacs
 session. Any settings that are desired on startup should be set below.
@@ -226,15 +224,15 @@ session. Any settings that are desired on startup should be set below.
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">3.1</span> Customizing</h3>
-<div class="outline-text-3" id="text-3-1">
+<h3 id="customizing"><a id="orgheadline3"></a><span class="section-number-3">3.1</span> Customizing</h3>
+<div class="outline-text-3" id="text-customizing">
 <p>
 When disabling the mode you can choose to kill the buffers that were opened
 while browsing the directories.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">ranger-cleanup-on-disable</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-cleanup-on-disable t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -244,16 +242,16 @@ dired buffer.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">ranger-cleanup-eagerly</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-cleanup-eagerly t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-You can choose to show dotfiles at ranger startup, toggled by `zh`
+You can choose to show dotfiles at ranger startup, toggled by <code>zh</code>
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">ranger-show-dotfiles</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-show-dotfiles t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -263,7 +261,7 @@ return a string that is placed in the header-line.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">ranger-header-func</span> '<span class="ATTRLIST">ranger-header-line</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-header-func 'ranger-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -273,21 +271,21 @@ return a string that is placed in the header-line.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">ranger-parent-header-func</span> '<span class="ATTRLIST">ranger-parent-header-line</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-parent-header-func 'ranger-parent-header-line<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">3.2</span> Parent options</h3>
-<div class="outline-text-3" id="text-3-2">
+<h3 id="parent-options"><a id="orgheadline4"></a><span class="section-number-3">3.2</span> Parent options</h3>
+<div class="outline-text-3" id="text-parent-options">
 <p>
-You can set the number of folders to nest to the left, adjusted by `z-` and `z+`
+You can set the number of folders to nest to the left, adjusted by <code>z-</code> and <code>z+</code>
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST">setq</span> <span class="ATTRLIST">ranger-parent-depth</span> <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-parent-depth <span class="org-highlight-numbers-number">2</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -296,7 +294,7 @@ You can set the size of the parent windows as a fraction of the frame size
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">ranger-width-parents</span> <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-width-parents <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -306,21 +304,21 @@ frame size to prevent filling up entire frame with parents.
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">ranger-max-parent-width</span> <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-max-parent-width <span class="org-highlight-numbers-number">0.12</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">3.3</span> Preview options</h3>
-<div class="outline-text-3" id="text-3-3">
+<h3 id="preview-options"><a id="orgheadline5"></a><span class="section-number-3">3.3</span> Preview options</h3>
+<div class="outline-text-3" id="text-preview-options">
 <p>
-You can choose to show previews literally, or through find-file, toggled by `zi`
+You can choose to show previews literally, or through find-file, toggled by <code>zi</code>
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">setq</span> <span class="ATTRLIST-1">ranger-show-dotfiles</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-show-dotfiles t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -329,7 +327,7 @@ You can set the size of the preview windows as a fraction of the frame size
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">ranger-width-preview</span> <span class="org-highlight-numbers-number">0.55</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-width-preview <span class="org-highlight-numbers-number">0.55</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -340,7 +338,7 @@ your liking:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">ranger-ignored-extensions</span> '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-ignored-extensions '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"mkv"</span> <span class="org-string">"iso"</span> <span class="org-string">"mp4"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -349,7 +347,7 @@ To set the max files size (in MB), set the following parameter:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-1">setq</span> <span class="ATTRLIST">ranger-max-preview-size</span> <span class="org-highlight-numbers-number">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq ranger-max-preview-size <span class="org-highlight-numbers-number">10</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -357,8 +355,8 @@ To set the max files size (in MB), set the following parameter:
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">4</span> Key Bindings</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="key-bindings"><a id="orgheadline7"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -397,6 +395,26 @@ To set the max files size (in MB), set the following parameter:
 <tr>
 <td class="org-left"><code>k</code></td>
 <td class="org-left">(ranger) navigate up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>yy</code></td>
+<td class="org-left">(ranger) copy</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>pp</code></td>
+<td class="org-left">(ranger) paste</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>R</code></td>
+<td class="org-left">(ranger) rename</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>D</code></td>
+<td class="org-left">(ranger) delete</td>
 </tr>
 
 <tr>
@@ -493,6 +511,16 @@ To set the max files size (in MB), set the following parameter:
 <td class="org-left"><code>C-SPC</code></td>
 <td class="org-left">(ranger) mark current file</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>;C</code></td>
+<td class="org-left">(ranger) copy directory / copy and move directory</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>;+</code></td>
+<td class="org-left">(ranger) create directory</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -500,7 +528,7 @@ To set the max files size (in MB), set the following parameter:
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -1,0 +1,1993 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-03 Mon 00:56 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Org layer</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Org layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features:</a></li>
+<li><a href="#bibtex">1.2. BibTeX</a></li>
+<li><a href="#important-note">1.3. Important Note</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#github-support">2.2. Github support</a></li>
+<li><a href="#gnuplot-support">2.3. Gnuplot support</a></li>
+<li><a href="#revealjs-support">2.4. Reveal.js support</a></li>
+<li><a href="#different-bullets">2.5. Different bullets</a></li>
+<li><a href="#project-support">2.6. Project support</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#org">3.1. Org</a></li>
+<li><a href="#org-with-evil-org-mode">3.2. Org with evil-org-mode</a>
+<ul>
+<li><a href="#tables">3.2.1. Tables</a></li>
+<li><a href="#tree">3.2.2. Tree</a></li>
+<li><a href="#element-insertion">3.2.3. Element insertion</a></li>
+<li><a href="#links">3.2.4. Links</a></li>
+<li><a href="#emphasis">3.2.5. Emphasis</a></li>
+<li><a href="#tagging">3.2.6. Tagging</a></li>
+<li><a href="#navigating-in-calendar">3.2.7. Navigating in calendar</a></li>
+</ul>
+</li>
+<li><a href="#capture-buffers-and-src-blocks">3.3. Capture buffers and src blocks</a></li>
+<li><a href="#org-agenda">3.4. Org agenda</a>
+<ul>
+<li><a href="#keybindings">3.4.1. Keybindings</a></li>
+<li><a href="#org-agenda-transient-state">3.4.2. Org agenda transient state</a></li>
+</ul>
+</li>
+<li><a href="#pomodoro">3.5. Pomodoro</a></li>
+<li><a href="#presentation">3.6. Presentation</a></li>
+<li><a href="#org-mime">3.7. Org-MIME</a></li>
+<li><a href="#org-download">3.8. Org-download</a></li>
+<li><a href="#org-projectile">3.9. Org-projectile</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="img/org.png" alt="org.png" />
+</p>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="description"><a id="orgheadline4"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer enables <a href="http://orgmode.org/">org mode</a> for Spacemacs.
+</p>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Vim inspired key bindings are provided by <a href="https://github.com/edwtjo/evil-org-mode">evil-org-mode</a></li>
+<li>Nicer bullet via <a href="https://github.com/sabof/org-bullets">org-bullets</a></li>
+<li>A <a href="http://pomodorotechnique.com/">pomodoro method</a> integration via <a href="https://github.com/lolownia/org-pomodoro">org-pomodoro</a></li>
+<li>Presentation mode via <a href="https://github.com/rlister/org-present">org-present</a></li>
+<li>Insertion of images via <a href="https://github.com/abo-abo/org-download">org-download</a></li>
+<li>Project-specific TODOs via <a href="https://github.com/IvanMalison/org-projectile">org-projectile</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="bibtex"><a id="orgheadline2"></a><span class="section-number-3">1.2</span> BibTeX</h3>
+<div class="outline-text-3" id="text-bibtex">
+<p>
+For more extensive support of references through BibTeX files, have a look at
+the <a href="../+lang/bibtex">BibTeX layer</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="important-note"><a id="orgheadline3"></a><span class="section-number-3">1.3</span> Important Note</h3>
+<div class="outline-text-3" id="text-important-note">
+<p>
+Since version 0.104, spacemacs uses the <code>org</code> version from the org ELPA
+repository instead of the one shipped with emacs. Then, any <code>org</code> related code
+should not be loaded before <code>dotspacemacs/user-config</code>, otherwise both versions
+will be loaded and will conflict.
+</p>
+
+<p>
+Because of autoloading, calling to <code>org</code> functions will trigger the loading up
+of the <code>org</code> shipped with emacs which will induce conflicts.
+One way to avoid conflict is to wrap your <code>org</code> config code in a
+<code>with-eval-after-load</code> block like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">here goes your Org config :)</span>
+  <span class="org-comment-delimiter">;; </span><span class="org-comment">....</span>
+  <span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="install"><a id="orgheadline11"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="layer"><a id="orgheadline5"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>org</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="github-support"><a id="orgheadline6"></a><span class="section-number-3">2.2</span> Github support</h3>
+<div class="outline-text-3" id="text-github-support">
+<p>
+To install Github related extensions like <a href="https://github.com/larstvei/ox-gfm">ox-gfm</a> to export to Github
+flavored markdown set the variable <code>org-enable-github-support</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-github-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="gnuplot-support"><a id="orgheadline7"></a><span class="section-number-3">2.3</span> Gnuplot support</h3>
+<div class="outline-text-3" id="text-gnuplot-support">
+<p>
+Org-mode support the plotting of data within tables through <a href="http://www.gnuplot.info/">Gnuplot</a> as
+demonstrated <a href="http://orgmode.org/worg/org-tutorials/org-plot.html">here</a>; unfortunately, this is <a href="https://github.com/bruceravel/gnuplot-mode/issues/15">not terribly well supported</a> on Windows
+at this stage.  It is possible to disable the configuration of gnuplot support
+as usual by adding the package <code>gnuplot</code> to your <code>dotspacemacs-excluded-packages</code>
+variable.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="revealjs-support"><a id="orgheadline8"></a><span class="section-number-3">2.4</span> Reveal.js support</h3>
+<div class="outline-text-3" id="text-revealjs-support">
+<p>
+To enable the export of your org file as a <a href="http://lab.hakim.se/reveal-js/">reveal.js</a> presentation, set the
+variable <code>org-enable-reveal-js-support</code> to <code>t</code>. This will install the <a href="https://github.com/yjwen/org-reveal/">org-reveal</a>
+extension.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+ '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-reveal-js-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+In order to be able to use org-reveal, download <code>reveal.js</code> from its
+<a href="http://lab.hakim.se/reveal-js/#/">homepage</a> and set <code>org-reveal-js</code> to the
+download path, as described in the <a href="https://github.com/yjwen/org-reveal#obtain-revealjs">manual</a>. Alternatively, add the following line
+to each <code>.org</code> file you want to process:
+</p>
+
+<pre class="example">
+#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/3.0.0/
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="different-bullets"><a id="orgheadline9"></a><span class="section-number-3">2.5</span> Different bullets</h3>
+<div class="outline-text-3" id="text-different-bullets">
+<p>
+You can tweak the bullets displayed in the org buffer in the function
+<code>dotspacemacs/user-config</code> of your dotfile by setting the variable
+<code>org-bullets-bullet-list</code>. By default the list is set to <code>("◉" "○" "✸" "✿")</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq org-bullets-bullet-list '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"&#9632;"</span> <span class="org-string">"&#9670;"</span> <span class="org-string">"&#9650;"</span> <span class="org-string">"&#9654;"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="project-support"><a id="orgheadline10"></a><span class="section-number-3">2.6</span> Project support</h3>
+<div class="outline-text-3" id="text-project-support">
+<p>
+Set the layer variable <code>org-projectile-file</code> to the filename where you want to
+store project-specific TODOs. If this is an absolute path, all todos will be
+stored in the same file (organized by project), whereas if it is just a single
+filename, todos will be stored in each project root.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-projectile-file <span class="org-string">"TODOs.org"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The TODO files are not added to the agenda automatically. You can do this with
+the following snippet. Note that this may have unintended consequences until
+<a href="https://github.com/IvanMalison/org-projectile/issues/10">this bug</a> is fixed.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org-agenda
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-projectile</span><span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>push <span class="org-rainbow-delimiters-depth-3">(</span>org-projectile:todo-files<span class="org-rainbow-delimiters-depth-3">)</span> org-agenda-files<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline30"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="org"><a id="orgheadline12"></a><span class="section-number-3">3.1</span> Org</h3>
+<div class="outline-text-3" id="text-org">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a o #</code></td>
+<td class="org-left">org agenda list stuck projects</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o /</code></td>
+<td class="org-left">org occur in agenda files</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o a</code></td>
+<td class="org-left">org agenda list</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o c</code></td>
+<td class="org-left">org capture</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o e</code></td>
+<td class="org-left">org store agenda views</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o l</code></td>
+<td class="org-left">org store link</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o m</code></td>
+<td class="org-left">org tags view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o o</code></td>
+<td class="org-left">org agenda</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o O</code></td>
+<td class="org-left">org clock out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o s</code></td>
+<td class="org-left">org search view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o t</code></td>
+<td class="org-left">org todo list</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC C c</code></td>
+<td class="org-left">org-capture</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="org-with-evil-org-mode"><a id="orgheadline20"></a><span class="section-number-3">3.2</span> Org with evil-org-mode</h3>
+<div class="outline-text-3" id="text-org-with-evil-org-mode">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m &lt;dotspacemacs-major-mode-leader-key&gt;</code></td>
+<td class="org-left">org-ctrl-c-ctrl-c</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m *</code></td>
+<td class="org-left">org-ctrl-c-star</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m RET</code></td>
+<td class="org-left">org-ctrl-c-ret</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m -</code></td>
+<td class="org-left">org-ctrl-c-minus</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m '​</code></td>
+<td class="org-left">org-edit-special</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m ^</code></td>
+<td class="org-left">org-sort</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m /</code></td>
+<td class="org-left">org-sparse-tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m .</code></td>
+<td class="org-left">org-time-stamp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m !</code></td>
+<td class="org-left">org-time-stamp-inactive</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a</code></td>
+<td class="org-left">org-agenda</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b</code></td>
+<td class="org-left">org-tree-to-indirect-buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m A</code></td>
+<td class="org-left">org-archive-subtree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c</code></td>
+<td class="org-left">org-capture</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m C</code></td>
+<td class="org-left">evil-org-recompute-clocks</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d</code></td>
+<td class="org-left">org-deadline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D</code></td>
+<td class="org-left">org-insert-drawer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e</code></td>
+<td class="org-left">org-export-dispatch</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f</code></td>
+<td class="org-left">org-set-effort</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m I</code></td>
+<td class="org-left">org-clock-in</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m l</code></td>
+<td class="org-left">org-open-at-point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n</code></td>
+<td class="org-left">org-narrow-to-subtree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m N</code></td>
+<td class="org-left">widen</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m O</code></td>
+<td class="org-left">org-clock-out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m P</code></td>
+<td class="org-left">org-set-property</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m q</code></td>
+<td class="org-left">org-clock-cancel</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m R</code></td>
+<td class="org-left">org-refile</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">org-schedule</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m T</code></td>
+<td class="org-left">org-show-todo-tree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m L</code></td>
+<td class="org-left">org-shiftright</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m H</code></td>
+<td class="org-left">org-shiftleft</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m K</code></td>
+<td class="org-left">org-shiftup</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m J</code></td>
+<td class="org-left">org-shiftdown</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m C-S-l</code></td>
+<td class="org-left">org-shiftcontrolright</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m C-S-h</code></td>
+<td class="org-left">org-shiftcontrolleft</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m C-S-j</code></td>
+<td class="org-left">org-shiftcontroldown</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m C-S-k</code></td>
+<td class="org-left">org-shiftcontrolup</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s j</code></td>
+<td class="org-left">spacemacs/jump-in-buffer (jump to a heading)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="tables"><a id="orgheadline13"></a><span class="section-number-4">3.2.1</span> Tables</h4>
+<div class="outline-text-4" id="text-tables">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">Align the table at point by aligning all vertical bars</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t b</code></td>
+<td class="org-left">Blank the current table field or active region</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t c</code></td>
+<td class="org-left">Convert from <code>org-mode</code> table to table.el and back</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t d c</code></td>
+<td class="org-left">Delete a column from the table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t d r</code></td>
+<td class="org-left">Delete the current row or horizontal line from the table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t e</code></td>
+<td class="org-left">Replace the table field value at the cursor by the result of a calculation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t E</code></td>
+<td class="org-left">Export table to a file, with configurable format</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t h</code></td>
+<td class="org-left">Go to the previous field in the table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t H</code></td>
+<td class="org-left">Move column to the left</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t i c</code></td>
+<td class="org-left">Insert a new column into the table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t i h</code></td>
+<td class="org-left">Insert a horizontal-line below the current line into the table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t i H</code></td>
+<td class="org-left">Insert a hline and move to the row below that line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t i r</code></td>
+<td class="org-left">Insert a new row above the current line into the table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t I</code></td>
+<td class="org-left">Import a file as a table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t j</code></td>
+<td class="org-left">Go to the next row (same column) in the current table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t J</code></td>
+<td class="org-left">Move table row down</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t K</code></td>
+<td class="org-left">Move table row up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t l</code></td>
+<td class="org-left">Go to the next field in the current table, creating new lines as needed</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t L</code></td>
+<td class="org-left">Move column to the right</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t n</code></td>
+<td class="org-left">Query for a size and insert a table skeleton</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t N</code></td>
+<td class="org-left">Use the table.el package to insert a new table</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t p</code></td>
+<td class="org-left">Plot the table using org-plot/gnuplot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t r</code></td>
+<td class="org-left">Recalculate the current table line by applying all stored formulas</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t s</code></td>
+<td class="org-left">Sort table lines according to the column at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t f</code></td>
+<td class="org-left">Toggle the formula debugger in tables</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t o</code></td>
+<td class="org-left">Toggle the display of Row/Column numbers in tables</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t w</code></td>
+<td class="org-left">Wrap several fields in a column like a paragraph</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="tree"><a id="orgheadline14"></a><span class="section-number-4">3.2.2</span> Tree</h4>
+<div class="outline-text-4" id="text-tree">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m S l</code></td>
+<td class="org-left">org-demote-subtree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m S h</code></td>
+<td class="org-left">org-promote-subtree</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m S k</code></td>
+<td class="org-left">org-move-subtree-up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m S j</code></td>
+<td class="org-left">org-move-subtree-down</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">org-cycle</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>$</code></td>
+<td class="org-left">org-end-of-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>^</code></td>
+<td class="org-left">org-beginning-of-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>&lt;</code></td>
+<td class="org-left">org-metaleft</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>&gt;</code></td>
+<td class="org-left">org-metaright</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gh</code></td>
+<td class="org-left">outline-up-heading</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gj</code></td>
+<td class="org-left">org-forward-heading-same-level</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gk</code></td>
+<td class="org-left">org-backward-heading-same-level</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gl</code></td>
+<td class="org-left">outline-next-visible-heading</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>t</code></td>
+<td class="org-left">org-todo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>T</code></td>
+<td class="org-left">org-insert-todo-heading nil</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>H</code></td>
+<td class="org-left">org-beginning-of-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>L</code></td>
+<td class="org-left">org-end-of-line</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">always-insert-item</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>O</code></td>
+<td class="org-left">org-open-above</td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>M-l</code></td>
+<td class="org-left">org-metaright</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-h</code></td>
+<td class="org-left">org-metaleft</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-k</code></td>
+<td class="org-left">org-metaup</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-j</code></td>
+<td class="org-left">org-metadown</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-L</code></td>
+<td class="org-left">org-shiftmetaright</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-H</code></td>
+<td class="org-left">org-shiftmetaleft</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-K</code></td>
+<td class="org-left">org-shiftmetaup</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-J</code></td>
+<td class="org-left">org-shiftmetadown</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-o</code></td>
+<td class="org-left">org-insert-heading+org-metaright</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-t</code></td>
+<td class="org-left">org-insert-todo-heading nil+ org-metaright</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline15" class="outline-4">
+<h4 id="element-insertion"><a id="orgheadline15"></a><span class="section-number-4">3.2.3</span> Element insertion</h4>
+<div class="outline-text-4" id="text-element-insertion">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h i</code></td>
+<td class="org-left">org-insert-heading-after-current</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h I</code></td>
+<td class="org-left">org-insert-heading</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h s</code></td>
+<td class="org-left">org-insert-subheading</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i f</code></td>
+<td class="org-left">org-insert-footnote</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i l</code></td>
+<td class="org-left">org-insert-link</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-4">
+<h4 id="links"><a id="orgheadline16"></a><span class="section-number-4">3.2.4</span> Links</h4>
+<div class="outline-text-4" id="text-links">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">org-open-at-point</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-4">
+<h4 id="emphasis"><a id="orgheadline17"></a><span class="section-number-4">3.2.5</span> Emphasis</h4>
+<div class="outline-text-4" id="text-emphasis">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m x b</code></td>
+<td class="org-left">make region bold</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x c</code></td>
+<td class="org-left">make region code</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x i</code></td>
+<td class="org-left">make region italic</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x r</code></td>
+<td class="org-left">clear region emphasis</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x s</code></td>
+<td class="org-left">make region strike-through</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x u</code></td>
+<td class="org-left">make region underline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m x v</code></td>
+<td class="org-left">make region verbose</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-4">
+<h4 id="tagging"><a id="orgheadline18"></a><span class="section-number-4">3.2.6</span> Tagging</h4>
+<div class="outline-text-4" id="text-tagging">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m :</code></td>
+<td class="org-left">org-set-tags</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-4">
+<h4 id="navigating-in-calendar"><a id="orgheadline19"></a><span class="section-number-4">3.2.7</span> Navigating in calendar</h4>
+<div class="outline-text-4" id="text-navigating-in-calendar">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>M-l</code></td>
+<td class="org-left">One day forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-h</code></td>
+<td class="org-left">One day backward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-j</code></td>
+<td class="org-left">One week forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-k</code></td>
+<td class="org-left">One week backward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-L</code></td>
+<td class="org-left">One month forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-H</code></td>
+<td class="org-left">One month backward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-J</code></td>
+<td class="org-left">One year forward</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-K</code></td>
+<td class="org-left">One year backward</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="capture-buffers-and-src-blocks"><a id="orgheadline21"></a><span class="section-number-3">3.3</span> Capture buffers and src blocks</h3>
+<div class="outline-text-3" id="text-capture-buffers-and-src-blocks">
+<p>
+<code>org-capture-mode</code> and <code>org-src-mode</code> both support the confirm and abort
+conventions.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m &lt;dotspacemacs-major-mode-leader-key&gt;</code></td>
+<td class="org-left">confirm in <code>org-capture-mode</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m '​</code></td>
+<td class="org-left">confirm in <code>org-src-mode</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c</code></td>
+<td class="org-left">confirm</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a</code></td>
+<td class="org-left">abort</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m k</code></td>
+<td class="org-left">abort</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left">org-capture-refile in org-capture-mode</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="org-agenda"><a id="orgheadline24"></a><span class="section-number-3">3.4</span> Org agenda</h3>
+<div class="outline-text-3" id="text-org-agenda">
+</div>
+
+
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="keybindings"><a id="orgheadline22"></a><span class="section-number-4">3.4.1</span> Keybindings</h4>
+<div class="outline-text-4" id="text-keybindings">
+<p>
+The evilified org agenda supports the following bindings:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>M-SPC</code> or <code>s-M-SPC</code></td>
+<td class="org-left">org-agenda transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m :</code></td>
+<td class="org-left">org-agenda-set-tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m a</code></td>
+<td class="org-left">org-agenda</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d</code></td>
+<td class="org-left">org-agenda-deadline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m f</code></td>
+<td class="org-left">org-agenda-set-effort</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m I</code></td>
+<td class="org-left">org-agenda-clock-in</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m O</code></td>
+<td class="org-left">org-agenda-clock-out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p</code></td>
+<td class="org-left">org-pomodoro (if package is used)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m P</code></td>
+<td class="org-left">org-agenda-set-property</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m q</code></td>
+<td class="org-left">org-agenda-refile</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m Q</code></td>
+<td class="org-left">org-agenda-clock-cancel</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">org-agenda-schedule</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-j</code></td>
+<td class="org-left">next item</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-k</code></td>
+<td class="org-left">previous item</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-h</code></td>
+<td class="org-left">earlier view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-l</code></td>
+<td class="org-left">later view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gr</code></td>
+<td class="org-left">refresh</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gd</code></td>
+<td class="org-left">toggle grid</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-v</code></td>
+<td class="org-left">change view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">org-agenda-goto</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>M-RET</code></td>
+<td class="org-left">org-agenda-show-and-scroll-up</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-4">
+<h4 id="org-agenda-transient-state"><a id="orgheadline23"></a><span class="section-number-4">3.4.2</span> Org agenda transient state</h4>
+<div class="outline-text-4" id="text-org-agenda-transient-state">
+<p>
+Use <code>M-SPC</code> or <code>s-M-SPC</code> in an org agenda buffer to activate its transient state.
+The transient state aims to list the most useful org agenda commands and
+visually organize them by category. The commands associated with each binding
+are listed bellow.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Description</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Entry</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>ht</code></td>
+<td class="org-left">set status</td>
+<td class="org-left">org-agenda-todo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hk</code></td>
+<td class="org-left">kill</td>
+<td class="org-left">org-agenda-kill</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hr</code></td>
+<td class="org-left">refile</td>
+<td class="org-left">org-agenda-refile</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hA</code></td>
+<td class="org-left">archive</td>
+<td class="org-left">org-agenda-archive-default</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hT</code></td>
+<td class="org-left">set tags</td>
+<td class="org-left">org-agenda-set-tags</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>hp</code></td>
+<td class="org-left">set priority</td>
+<td class="org-left">org-agenda-priority</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Visit entry</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC</code></td>
+<td class="org-left">in other window</td>
+<td class="org-left">org-agenda-show-and-scroll-up</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">&amp; go to location</td>
+<td class="org-left">org-agenda-goto</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">&amp; del other windows</td>
+<td class="org-left">org-agenda-switch-to</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>o</code></td>
+<td class="org-left">link</td>
+<td class="org-left">link-hint-open-link</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Filter</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>ft</code></td>
+<td class="org-left">by tag</td>
+<td class="org-left">org-agenda-filter-by-tag</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fr</code></td>
+<td class="org-left">refine by tag</td>
+<td class="org-left">org-agenda-filter-by-tag-refine</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fc</code></td>
+<td class="org-left">by category</td>
+<td class="org-left">org-agenda-filter-by-category</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fh</code></td>
+<td class="org-left">by top headline</td>
+<td class="org-left">org-agenda-filter-by-top-headline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fx</code></td>
+<td class="org-left">by regexp</td>
+<td class="org-left">org-agenda-filter-by-regexp</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>fd</code></td>
+<td class="org-left">delete all filters</td>
+<td class="org-left">org-agenda-filter-remove-all</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Date</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>ds</code></td>
+<td class="org-left">schedule</td>
+<td class="org-left">org-agenda-schedule</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dd</code></td>
+<td class="org-left">set deadline</td>
+<td class="org-left">org-agenda-deadline</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>dt</code></td>
+<td class="org-left">timestamp</td>
+<td class="org-left">org-agenda-date-prompt</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>+</code></td>
+<td class="org-left">do later</td>
+<td class="org-left">org-agenda-do-date-later</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>-</code></td>
+<td class="org-left">do earlier</td>
+<td class="org-left">org-agenda-do-date-earlier</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Toggle</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>tf</code></td>
+<td class="org-left">follow</td>
+<td class="org-left">org-agenda-follow-mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tl</code></td>
+<td class="org-left">log</td>
+<td class="org-left">org-agenda-log-mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ta</code></td>
+<td class="org-left">archive</td>
+<td class="org-left">org-agenda-archives-mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>tr</code></td>
+<td class="org-left">clock report</td>
+<td class="org-left">org-agenda-clockreport-mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>td</code></td>
+<td class="org-left">diaries</td>
+<td class="org-left">org-agenda-toggle-diary</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">View</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>vd</code></td>
+<td class="org-left">day</td>
+<td class="org-left">org-agenda-day-view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vw</code></td>
+<td class="org-left">week</td>
+<td class="org-left">org-agenda-week-view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vt</code></td>
+<td class="org-left">fortnight</td>
+<td class="org-left">org-agenda-fortnight-view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vm</code></td>
+<td class="org-left">month</td>
+<td class="org-left">org-agenda-month-view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vy</code></td>
+<td class="org-left">year</td>
+<td class="org-left">org-agenda-year-view</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vn</code></td>
+<td class="org-left">next span</td>
+<td class="org-left">org-agenda-later</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vp</code></td>
+<td class="org-left">prev span</td>
+<td class="org-left">org-agenda-earlier</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>vr</code></td>
+<td class="org-left">reset</td>
+<td class="org-left">org-agenda-reset-view</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Clock</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>ci</code></td>
+<td class="org-left">in</td>
+<td class="org-left">org-agenda-clock-in</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>co</code></td>
+<td class="org-left">out</td>
+<td class="org-left">org-agenda-clock-out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>ck</code></td>
+<td class="org-left">cancel</td>
+<td class="org-left">org-agenda-clock-cancel</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>cj</code></td>
+<td class="org-left">jump</td>
+<td class="org-left">org-agenda-clock-goto</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">Other</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left"><code>gr</code></td>
+<td class="org-left">reload</td>
+<td class="org-left">org-agenda-redo</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>.</code></td>
+<td class="org-left">go to today</td>
+<td class="org-left">org-agenda-goto-today</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>gd</code></td>
+<td class="org-left">go to date</td>
+<td class="org-left">org-agenda-goto-date</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="pomodoro"><a id="orgheadline25"></a><span class="section-number-3">3.5</span> Pomodoro</h3>
+<div class="outline-text-3" id="text-pomodoro">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m p</code></td>
+<td class="org-left">starts a pomodoro</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="presentation"><a id="orgheadline26"></a><span class="section-number-3">3.6</span> Presentation</h3>
+<div class="outline-text-3" id="text-presentation">
+<p>
+org-present must be activated explicitly by typing: <code>SPC SPC org-present</code>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>h</code></td>
+<td class="org-left">previous slide</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>l</code></td>
+<td class="org-left">next slide</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="org-mime"><a id="orgheadline27"></a><span class="section-number-3">3.7</span> Org-MIME</h3>
+<div class="outline-text-3" id="text-org-mime">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m M</code></td>
+<td class="org-left">in <code>message-mode</code> buffers convert into html email</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m</code></td>
+<td class="org-left">send current buffer as HTML email message</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="org-download"><a id="orgheadline28"></a><span class="section-number-3">3.8</span> Org-download</h3>
+<div class="outline-text-3" id="text-org-download">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m i s</code></td>
+<td class="org-left">Take screenshot</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i y</code></td>
+<td class="org-left">Yank image url</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="org-projectile"><a id="orgheadline29"></a><span class="section-number-3">3.9</span> Org-projectile</h3>
+<div class="outline-text-3" id="text-org-projectile">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a o p</code></td>
+<td class="org-left">Capture a TODO for the current project</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC u SPC a o p</code></td>
+<td class="org-left">Capture a TODO for any given project (choose from list)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC p o</code></td>
+<td class="org-left">Go to the TODOs for the current project</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

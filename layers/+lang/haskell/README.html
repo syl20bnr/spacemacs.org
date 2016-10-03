@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-03-12 Sat 14:09 -->
+<!-- 2016-10-03 Mon 00:56 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Haskell layer</title>
@@ -99,8 +99,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
           <script type="text/javascript"
-                  src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
-          <script type="text/javascript"
                   src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
           <script>
            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -167,50 +165,77 @@ for the JavaScript code in this tag.
 <h2>Table of Contents<a href="#">Close</a></h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline2">1. Description</a>
+<li><a href="#description">1. Description</a>
 <ul>
-<li><a href="#orgheadline1">1.1. Features:</a></li>
+<li><a href="#features">1.1. Features:</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline14">2. Install</a>
+<li><a href="#install">2. Install</a>
 <ul>
-<li><a href="#orgheadline3">2.1. Layer</a></li>
-<li><a href="#orgheadline4">2.2. Dependencies</a></li>
-<li><a href="#orgheadline5">2.3. Setup PATH</a></li>
-<li><a href="#orgheadline7">2.4. ghc-mod support</a>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#dependencies">2.2. Dependencies</a></li>
+<li><a href="#setup-path">2.3. Setup PATH</a></li>
+<li><a href="#completion-support">2.4. Completion support</a>
 <ul>
-<li><a href="#orgheadline6">2.4.1. Stack users</a></li>
+<li><a href="#company-ghci">2.4.1. <code>company-ghci</code></a></li>
+<li><a href="#intero">2.4.2. <code>intero</code></a></li>
+<li><a href="#ghc-mod">2.4.3. <code>ghc-mod</code></a></li>
 </ul>
 </li>
-<li><a href="#orgheadline13">2.5. Optional extras</a>
+<li><a href="#optional-extras">2.5. Optional extras</a>
 <ul>
-<li><a href="#orgheadline10">2.5.1. GHCi-ng support</a></li>
-<li><a href="#orgheadline11">2.5.2. structured-haskell-mode</a></li>
-<li><a href="#orgheadline12">2.5.3. hindent</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#orgheadline22">3. Key bindings</a>
-<ul>
-<li><a href="#orgheadline15">3.1. Documentation</a></li>
-<li><a href="#orgheadline16">3.2. Debug</a></li>
-<li><a href="#orgheadline17">3.3. REPL</a></li>
-<li><a href="#orgheadline18">3.4. Cabal commands</a></li>
-<li><a href="#orgheadline19">3.5. Cabal files</a></li>
-<li><a href="#orgheadline21">3.6. Ghc-mod</a>
-<ul>
-<li><a href="#orgheadline20">3.6.1. insert template</a></li>
+<li><a href="#structured-haskell-mode">2.5.1. structured-haskell-mode</a></li>
+<li><a href="#hindent">2.5.2. hindent</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgheadline27">4. FAQ</a>
+<li><a href="#key-bindings">3. Key bindings</a>
 <ul>
-<li><a href="#orgheadline23">4.1. REPL doesn't work</a></li>
-<li><a href="#orgheadline24">4.2. REPL is stuck</a></li>
-<li><a href="#orgheadline25">4.3. I am using <code>stack</code> and <code>ghc-mod</code>, but <code>ghc-mod</code> doesn't work</a></li>
-<li><a href="#orgheadline26">4.4. Indentation doesn't reset when pressing return after empty line</a></li>
+<li><a href="#documentation">3.1. Documentation</a></li>
+<li><a href="#debug">3.2. Debug</a></li>
+<li><a href="#debug-buffer">3.3. Debug Buffer</a></li>
+<li><a href="#repl">3.4. REPL</a></li>
+<li><a href="#intero-repl">3.5. Intero REPL</a></li>
+<li><a href="#cabal-commands">3.6. Cabal commands</a></li>
+<li><a href="#cabal-files">3.7. Cabal files</a></li>
+<li><a href="#refactor">3.8. Refactor</a></li>
+<li><a href="#ghc-mod">3.9. Ghc-mod</a>
+<ul>
+<li><a href="#insert-template">3.9.1. Insert template</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#syntax-checking">4. Syntax checking</a>
+<ul>
+<li><a href="#flycheck">4.1. Flycheck</a></li>
+<li><a href="#hlint">4.2. HLint</a></li>
+<li><a href="#ghc-mod">4.3. ghc-mod</a></li>
+<li><a href="#interactive-haskell-mode">4.4. Interactive haskell-mode</a></li>
+<li><a href="#flymake">4.5. Flymake</a></li>
+<li><a href="#troubleshooting">4.6. Troubleshooting</a></li>
+</ul>
+</li>
+<li><a href="#faq">5. FAQ</a>
+<ul>
+<li><a href="#the-repl-doesnt-work">5.1. The REPL doesn't work</a></li>
+<li><a href="#the-repl-is-stuck">5.2. The REPL is stuck</a></li>
+<li><a href="#i-am-using-stack-and-ghc-mod-but-ghc-mod-doesnt-work">5.3. I am using <code>stack</code> and <code>ghc-mod</code>, but <code>ghc-mod</code> doesn't work</a></li>
+<li><a href="#ghc-mod-doesnt-work">5.4. <code>ghc-mod</code> doesn't work</a></li>
+<li><a href="#indentation-doesnt-reset-when-pressing-return-after-an-empty-line">5.5. Indentation doesn't reset when pressing return after an empty line</a></li>
+<li><a href="#flycheck-displays-hlint-warnings-but-not-errors">5.6. Flycheck displays HLint warnings but not errors</a></li>
+<li><a href="#i-can-see-highlighted-errors-but-they-dont-appear-in-the-error-list">5.7. I can see highlighted errors but they don't appear in the error list</a></li>
+<li><a href="#flycheck-doesnt-work">5.8. Flycheck doesn't work</a></li>
+<li><a href="#flycheck-doesnt-work-with-stack">5.9. Flycheck doesn't work with <code>stack</code></a>
+<ul>
+<li><a href="#the-stack-build-directory-is-wrong">5.9.1. The stack build directory is wrong</a></li>
+<li><a href="#the-project-root-directory-is-not-set-properly">5.9.2. The Project root directory is not set properly</a></li>
+</ul>
+</li>
+<li><a href="#haskell-mode-commands-dont-work">5.10. haskell-mode commands don't work</a></li>
+<li><a href="#ghc-mod-and-haskell-mode-commands-overlap-how-do-i-know-which-command-belongs-to-what">5.11. <code>ghc-mod</code> and <code>haskell-mode</code> commands overlap. How do I know which command belongs to what?</a></li>
+<li><a href="#some-commands-start-with-ghc--and-some-with-haskell--what-does-that-mean">5.12. Some commands start with <code>ghc-</code> and some with <code>haskell-</code>. What does that mean?</a></li>
 </ul>
 </li>
 </ul>
@@ -223,19 +248,19 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2"><span class="section-number-2">1</span> Description</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="description"><a id="orgheadline2"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the <a href="https://www.haskell.org/">Haskell</a> language.
 </p>
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Features:</h3>
-<div class="outline-text-3" id="text-1-1">
+<h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>syntax highlighting for <a href="https://github.com/haskell/haskell-mode">haskell source</a>, <a href="https://github.com/haskell/haskell-mode">cabal files</a>, <a href="https://github.com/bgamari/cmm-mode">C&#x2013; source</a>,</li>
-<li>auto-completion with <a href="https://github.com/iquiw/company-ghc">company-ghc</a>.</li>
+<li>auto-completion with one of selected backends (<code>intero</code>, <code>ghci</code> or <code>ghc-mod</code>).</li>
 </ul>
 
 <p>
@@ -245,12 +270,14 @@ This layer adds support for the <a href="https://www.haskell.org/">Haskell</a> l
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-2">
-<h2 id="orgheadline14"><span class="section-number-2">2</span> Install</h2>
-<div class="outline-text-2" id="text-2">
-</div><div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">2.1</span> Layer</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="install"><a id="orgheadline13"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="layer"><a id="orgheadline3"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
 add <code>haskell</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
@@ -260,16 +287,19 @@ file.
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">2.2</span> Dependencies</h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="dependencies"><a id="orgheadline4"></a><span class="section-number-3">2.2</span> Dependencies</h3>
+<div class="outline-text-3" id="text-dependencies">
 <p>
 This layer requires some <a href="https://www.haskell.org/cabal/">cabal</a> packages:
 </p>
 <ul class="org-ul">
-<li><code>hlint</code></li>
-<li><code>stylish-haskell</code></li>
-<li><code>hasktags</code></li>
-<li><code>ghc-mod</code></li>
+<li><code>apply-refact</code> (required by <code>hlint-refactor</code>)</li>
+<li><code>hlint</code> (required by <code>hlint-refactor</code>)</li>
+<li><code>stylish-haskell</code> (optional for <code>haskell-mode</code>)</li>
+<li><code>hasktags</code> (optional)</li>
+<li><code>hoogle</code> (optional for <code>haskell-mode</code> and <code>helm-hoogle</code>)</li>
+<li><code>ghc-mod</code> (optional for completion)</li>
+<li><code>intero</code> (optional for completion)</li>
 </ul>
 
 <p>
@@ -278,15 +308,15 @@ To install them, use following command (or the <code>stack</code> equivalent):
 
 <div class="org-src-container">
 
-<pre class="src src-sh">$ <span class="ATTRLIST-2">cabal</span> <span class="ATTRLIST-3">install</span> <span class="ATTRLIST-2">stylish-haskell</span> <span class="ATTRLIST-1">hlint</span> <span class="ATTRLIST-2">hasktags</span> <span class="ATTRLIST">ghc-mod</span>
+<pre class="src src-sh">$ cabal install apply-refact hlint stylish-haskell hasktags hoogle
 </pre>
 </div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">2.3</span> Setup PATH</h3>
-<div class="outline-text-3" id="text-2-3">
+<h3 id="setup-path"><a id="orgheadline5"></a><span class="section-number-3">2.3</span> Setup PATH</h3>
+<div class="outline-text-3" id="text-setup-path">
 <p>
 First of all make sure that your <code>$PATH</code> contains the installation path for
 Haskell tools like <code>ghc</code>, <code>ghci</code> etc. It depends on how you have installed
@@ -309,271 +339,103 @@ the FAQ (<code>SPC h SPC $PATH RET</code>).
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">2.4</span> ghc-mod support</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="completion-support"><a id="orgheadline9"></a><span class="section-number-3">2.4</span> Completion support</h3>
+<div class="outline-text-3" id="text-completion-support">
 <p>
-<a href="http://www.mew.org/~kazu/proj/ghc-mod/">ghc-mod</a> enhances <code>haskell-mode</code> with for example code completion, templates,
-case-splitting and much more. In order to use it you need to install the
-executable with <code>cabal install ghc-mod</code> (or <code>stack</code> equivalent). Note that
-<code>ghc-mod</code> support is enabled by default, so if you want to disable it, you must
-do it explicitly in your <code>.spacemacs</code> file.
+This layer provides several completion backends - <code>intero</code>, <code>ghci</code> and
+<code>ghc-mod</code>. By default <code>ghci</code> (<code>company-ghci</code>) is used as it requires no
+dependencies and works both with <code>stack</code> and pure <code>cabal</code> projects. In order to
+manually set completion backend set value of <code>haskell-completion-backend</code>. Note
+that in order to enable completion you have to enable <code>auto-completion</code> layer as
+well.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-enable-ghc-mod-support</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+              '<span class="org-rainbow-delimiters-depth-2">(</span>auto-completion
+                <span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-completion-backend 'intero<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
-
-<p>
-<code>Stack</code> users also should make sure that <code>dist/setup-config</code> doesn't exist in
-the project root. As it will confuse <code>ghc-mod</code>. For more troubleshooting,
-checkout this <a href="https://github.com/kazu-yamamoto/ghc-mod/wiki#known-issues-related-to-stack">document</a>.
-</p>
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><span class="section-number-4">2.4.1</span> Stack users</h4>
-<div class="outline-text-4" id="text-2-4-1">
+<h4 id="company-ghci"><a id="orgheadline6"></a><span class="section-number-4">2.4.1</span> <code>company-ghci</code></h4>
+<div class="outline-text-4" id="text-company-ghci">
 <p>
-Time to time <code>ghc-mod</code> is not available via latest Stackage LTS version. So if
-you have problems with calling <code>stack install ghc-mod</code>, try to use <code>stack
-install ghc-mod --resolver lts-3.1</code> (the last known LTS version that had
-<code>ghc-mod</code>). But even if it doesn't work, don't panic, it's easy to install it
-from sources.
+<a href="https://github.com/juiko/company-ghci">company-ghci</a> communicates directly with <code>ghci</code> in order to provide completion. In
+order to use it you have to call <code>haskell-process-load-or-reload</code> (<code>SPC s b</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-4">
+<h4 id="intero"><a id="orgheadline7"></a><span class="section-number-4">2.4.2</span> <code>intero</code></h4>
+<div class="outline-text-4" id="text-intero">
+<p>
+<code>Intero</code> works only for <code>stack</code> users. You can manually install <code>intero</code> executable by
+calling <code>stack install intero</code>, but this step is optional as <code>Intero</code> installs
+itself.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="ghc-mod"><a id="orgheadline8"></a><span class="section-number-4">2.4.3</span> <code>ghc-mod</code></h4>
+<div class="outline-text-4" id="text-ghc-mod">
+<p>
+<a href="http://www.mew.org/~kazu/proj/ghc-mod/">ghc-mod</a> enhances <code>haskell-mode</code> with for example code completion, templates,
+case-splitting and much more. In order to use it you need to install the
+executable with <code>cabal install ghc-mod</code> (or <code>stack</code> equivalent).
 </p>
 
-<div class="org-src-container">
-
-<pre class="src src-sh"><span class="org-comment-delimiter"># </span><span class="org-comment">clone cabal-helper</span>
-$ <span class="ATTRLIST-10">git</span> <span class="ATTRLIST-9">clone</span> <span class="ATTRLIST-8">https://github.com/DanielG/cabal-helper.git</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">cd into cloned repository</span>
-$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST-6">cabal-helper</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">init stack, so cabal-helper can be installed using stack</span>
-$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-9">init</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">now install it</span>
-$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-4">install</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">go back where you was</span>
-$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST-3">..</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">and remove cabal-helper repository since you don't need it</span>
-$ <span class="ATTRLIST-2">rm</span> <span class="ATTRLIST-9">-rf</span> <span class="ATTRLIST-6">cabal-helper</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">now clone ghc-mod</span>
-$ <span class="ATTRLIST-10">git</span> <span class="ATTRLIST-9">clone</span> <span class="ATTRLIST-1">https://github.com/kazu-yamamoto/ghc-mod.git</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">and cd into it</span>
-$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST">ghc-mod</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">again, let's init stack</span>
-$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-9">init</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">now install it</span>
-$ <span class="ATTRLIST-5">stack</span> <span class="ATTRLIST-4">install</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">go back</span>
-$ <span class="ATTRLIST-7">cd</span> <span class="ATTRLIST-3">..</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">and remove ghc-mod since you don't need it</span>
-$ <span class="ATTRLIST-2">rm</span> <span class="ATTRLIST-9">-rf</span> <span class="ATTRLIST">ghc-mod</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">2.5</span> Optional extras</h3>
-<div class="outline-text-3" id="text-2-5">
 <p>
-The Haskell layer supports some extra features that can be enabled through
-layer variables.
+<code>Stack</code> users also should make sure that <code>dist/setup-config</code> doesn't exist in the
+project root. As it will confuse <code>ghc-mod</code>. For more troubleshooting, checkout
+this <a href="https://github.com/kazu-yamamoto/ghc-mod/wiki#known-issues-related-to-stack">document</a>.
+</p>
+
+<p>
+Also note that <code>ghc-mod</code> works only with <code>GHC</code> version that was used to build
+<code>ghc-mod</code>. You can check which version was used by calling <code>ghc-mod --version</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="optional-extras"><a id="orgheadline12"></a><span class="section-number-3">2.5</span> Optional extras</h3>
+<div class="outline-text-3" id="text-optional-extras">
+<p>
+The Haskell layer supports some extra features that can be enabled through layer
+variables.
 </p>
 </div>
 
 <div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">2.5.1</span> GHCi-ng support</h4>
-<div class="outline-text-4" id="text-2-5-1">
+<h4 id="structured-haskell-mode"><a id="orgheadline10"></a><span class="section-number-4">2.5.1</span> structured-haskell-mode</h4>
+<div class="outline-text-4" id="text-structured-haskell-mode">
 <p>
-<a href="https://github.com/chrisdone/ghci-ng">ghci-ng</a> adds some nice features to <code>haskell-mode</code>, and is supported in
-Spacemacs by a layer variable:
+Currently there is no support for <a href="https://github.com/chrisdone/structured-haskell-mode">structured-haskell-mode</a>, since it doesn't play
+very well with non-emacs editing style (<a href="https://github.com/chrisdone/structured-haskell-mode/issues/81">structured-haskell-mode/#81</a>). Emacs
+editing style users might easily enable it by adding <code>structured-haskell-mode</code> to
+list of <code>dotspacemacs-additional-packages</code> in your <code>.spacemacs</code> file. For more
+installation instructions, please refer to the official documentation at
+<a href="https://github.com/chrisdone/structured-haskell-mode#features">structured-haskell-mode</a> page. In case you are non-emacs editing style user and
+still want to use <code>structured-haskell-mode</code> - use it at your own risk.
 </p>
 
 <p>
-Follow the instructions to install <a href="https://github.com/chrisdone/ghci-ng">ghci-ng</a> (remember to add <code>:set +c</code>
-in <code>~/.ghci</code>), next set the layer variable:
+Any contributions that will help to solve issues with <code>structured-haskell-mode</code>
+are warmly welcome!
 </p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-enable-ghci-ng-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
 </div>
-
-<p>
-Once ghci-ng is enabled, two of the old keybindings are overriden with
-improved versions from ghci-ng, and a new keybinding available:
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>SPC m h t</code></td>
-<td class="org-left">gets the type of the identifier under the cursor or for the active region</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m g g</code></td>
-<td class="org-left">go to definition</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m u</code></td>
-<td class="org-left">finds uses of identifier</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<ol class="org-ol"><li><a id="orgheadline8"></a>Stack users<br  /><div class="outline-text-5" id="text-2-5-1-1">
-<p>
-<code>Stack</code> and <code>ghci-ng</code> doesn't play well with each other, so the general advice
-is to avoid mixing them. But, if you want mix them anyway, you'll need to set
-<code>haskell-process-type</code> explicitly:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-process-type</span> '<span class="ATTRLIST-1">ghci</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">or</span>
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-process-type</span> <span class="ATTRLIST">cabal-repl</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-This is needed, because by default <code>haskell-process-type</code> is set to <code>auto</code> and
-if you have <code>stack.yaml</code> file in the root of your project, <code>stack-ghci</code> will be
-used as process type.
-</p>
-</div></li>
-
-<li><a id="orgheadline9"></a>ghc-mod users<br  /><div class="outline-text-5" id="text-2-5-1-2">
-<p>
-If you want to use <code>SPC m h t</code> from <code>ghc-mod</code> instead of <code>ghci-ng</code> - then you
-need to add following line in your <code>dotspacemacs/user-config</code>:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-2">spacemacs/set-leader-keys-for-major-mode</span> '<span class="ATTRLIST-1">haskell-mode</span>
-        <span class="org-string">"mht"</span>  '<span class="ATTRLIST">ghc-show-type</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-This might be useful, because <code>ghc-mod</code> doesn't require active REPL in order to
-get type of symbol.
-</p>
-</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">2.5.2</span> structured-haskell-mode</h4>
-<div class="outline-text-4" id="text-2-5-2">
-<p>
-<a href="https://github.com/chrisdone/structured-haskell-mode">structured-haskell-mode</a>, or shm, replaces default haskell-mode
-auto-indentation and adds some nice functionalities.
-</p>
-
-<p>
-To install <code>shm</code> run <code>cabal install structured-haskell-mode</code> (or <code>stack</code>
-equivalent).
-</p>
-
-<p>
-To enable <code>shm</code> set the layer variable:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-enable-shm-support</span> <span class="ATTRLIST">t</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-After shm has been enabled, some of the evil normal state bindings are overridden:
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Key Binding</th>
-<th scope="col" class="org-left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><code>D</code></td>
-<td class="org-left"><code>shm/kill-line</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>R</code></td>
-<td class="org-left"><code>shm/raise</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>P</code></td>
-<td class="org-left"><code>shm/yank</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>(</code></td>
-<td class="org-left"><code>shm/forward-node</code></td>
-</tr>
-
-<tr>
-<td class="org-left"><code>)</code></td>
-<td class="org-left"><code>shm/backward-node</code></td>
-</tr>
-</tbody>
-</table>
-
-<p>
-For a nice visualization of these functions, please refer to the github page
-for <a href="https://github.com/chrisdone/structured-haskell-mode#features">structured-haskell-mode</a>.
-</p>
-
-<p>
-<b>Warning</b> structured-haskell-mode doesn't play very well with <code>evil</code>
-(<a href="https://github.com/chrisdone/structured-haskell-mode/issues/81">structured-haskell-mode/#81</a>). So it's better to be used with <code>emacs</code> edit
-style.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">2.5.3</span> hindent</h4>
-<div class="outline-text-4" id="text-2-5-3">
+<h4 id="hindent"><a id="orgheadline11"></a><span class="section-number-4">2.5.2</span> hindent</h4>
+<div class="outline-text-4" id="text-hindent">
 <p>
 <a href="https://github.com/chrisdone/hindent">hindent</a> is an extensible Haskell pretty printer, which let's you
 reformat your code. You need to install the executable with <code>cabal
@@ -581,8 +443,8 @@ install hindent</code> or <code>stack install hindent</code>
 </p>
 
 <p>
-To enable it you have to set the variable <code>haskell-enable-hindent-style</code>
-to a supported style. The available styles are:
+To enable it you have to set the variable <code>haskell-enable-hindent-style</code> to a
+supported style. The available styles are:
 </p>
 <ul class="org-ul">
 <li>fundamental</li>
@@ -592,13 +454,13 @@ to a supported style. The available styles are:
 </ul>
 
 <p>
-See examples <a href="https://github.com/chrisdone/hindent#example">here</a>
+See examples <a href="https://github.com/chrisdone/hindent#example">here</a>.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-3">setq-default</span> <span class="ATTRLIST-2">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-1">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST">haskell-enable-hindent-style</span> <span class="org-string">"johan-tibell"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-enable-hindent-style <span class="org-string">"johan-tibell"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
@@ -606,9 +468,9 @@ See examples <a href="https://github.com/chrisdone/hindent#example">here</a>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="orgheadline22"><span class="section-number-2">3</span> Key bindings</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline24" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline24"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
 <p>
 All Haskell specific bindings are prefixed with the major-mode leader
 <code>SPC m</code>.
@@ -644,21 +506,21 @@ Top-level commands are prefixed by <code>SPC m</code>:
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m f</code></td>
+<td class="org-left"><code>SPC m F</code></td>
 <td class="org-left">format buffer using haskell-stylish</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m F</code></td>
+<td class="org-left"><code>SPC m f</code></td>
 <td class="org-left">format declaration using hindent (if enabled)</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">3.1</span> Documentation</h3>
-<div class="outline-text-3" id="text-3-1">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="documentation"><a id="orgheadline14"></a><span class="section-number-3">3.1</span> Documentation</h3>
+<div class="outline-text-3" id="text-documentation">
 <p>
 Documentation commands are prefixed by <code>SPC m h</code>
 </p>
@@ -681,6 +543,11 @@ Documentation commands are prefixed by <code>SPC m h</code>
 <tr>
 <td class="org-left"><code>SPC m h d</code></td>
 <td class="org-left">find or generate Haddock documentation for the identifier under the cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h f</code></td>
+<td class="org-left">do a helm-hoogle lookup</td>
 </tr>
 
 <tr>
@@ -712,9 +579,9 @@ Documentation commands are prefixed by <code>SPC m h</code>
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">3.2</span> Debug</h3>
-<div class="outline-text-3" id="text-3-2">
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="debug"><a id="orgheadline15"></a><span class="section-number-3">3.2</span> Debug</h3>
+<div class="outline-text-3" id="text-debug">
 <p>
 Debug commands are prefixed by <code>SPC m d</code>:
 </p>
@@ -735,23 +602,13 @@ Debug commands are prefixed by <code>SPC m d</code>:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m d d</code></td>
-<td class="org-left">start debug process, needs to be run first</td>
+<td class="org-left"><code>SPC m d a</code></td>
+<td class="org-left">abandon current process</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m d b</code></td>
 <td class="org-left">insert breakpoint at function</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d n</code></td>
-<td class="org-left">next breakpoint</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m d N</code></td>
-<td class="org-left">previous breakpoint</td>
 </tr>
 
 <tr>
@@ -765,13 +622,110 @@ Debug commands are prefixed by <code>SPC m d</code>:
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d a</code></td>
-<td class="org-left">abandon current process</td>
+<td class="org-left"><code>SPC m d d</code></td>
+<td class="org-left">start debug process, needs to be run first</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d n</code></td>
+<td class="org-left">next breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d N</code></td>
+<td class="org-left">previous breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d p</code></td>
+<td class="org-left">previous breakpoint</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m d r</code></td>
 <td class="org-left">refresh process buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">step into the next function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d t</code></td>
+<td class="org-left">trace the expression</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="debug-buffer"><a id="orgheadline16"></a><span class="section-number-3">3.3</span> Debug Buffer</h3>
+<div class="outline-text-3" id="text-debug-buffer">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>RET</code></td>
+<td class="org-left">select object at the point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">abandon current computation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>b</code></td>
+<td class="org-left">break on function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>c</code></td>
+<td class="org-left">continue the current computation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>d</code></td>
+<td class="org-left">delete object at the point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>n</code></td>
+<td class="org-left">go to next step to inspect bindings</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>N</code> or <code>p</code></td>
+<td class="org-left">go to previous step to inspect the bindings</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>r</code></td>
+<td class="org-left">refresh the debugger buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>s</code></td>
+<td class="org-left">step into the next function</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>t</code></td>
+<td class="org-left">trace the expression</td>
 </tr>
 </tbody>
 </table>
@@ -779,8 +733,8 @@ Debug commands are prefixed by <code>SPC m d</code>:
 </div>
 
 <div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">3.3</span> REPL</h3>
-<div class="outline-text-3" id="text-3-3">
+<h3 id="repl"><a id="orgheadline17"></a><span class="section-number-3">3.4</span> REPL</h3>
+<div class="outline-text-3" id="text-repl">
 <p>
 REPL commands are prefixed by <code>SPC m s</code>:
 </p>
@@ -825,8 +779,64 @@ REPL commands are prefixed by <code>SPC m s</code>:
 </div>
 
 <div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18"><span class="section-number-3">3.4</span> Cabal commands</h3>
-<div class="outline-text-3" id="text-3-4">
+<h3 id="intero-repl"><a id="orgheadline18"></a><span class="section-number-3">3.5</span> Intero REPL</h3>
+<div class="outline-text-3" id="text-intero-repl">
+<p>
+Intero REPL commands are prefixed by <code>SPC m i</code>:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m i c</code></td>
+<td class="org-left">change directory in the backend process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i d</code></td>
+<td class="org-left">reload the module <code>DevelMain</code> and then run <code>DevelMain.update</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i k</code></td>
+<td class="org-left">stop the current worker process and kill its associated</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i l</code></td>
+<td class="org-left">list hidden process buffers created by <code>intero</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i r</code></td>
+<td class="org-left">restart the process with the same configuration as before</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i t</code></td>
+<td class="org-left">set the targets to use for stack <code>ghci</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="cabal-commands"><a id="orgheadline19"></a><span class="section-number-3">3.6</span> Cabal commands</h3>
+<div class="outline-text-3" id="text-cabal-commands">
 <p>
 Cabal commands are prefixed by <code>SPC m c</code>:
 </p>
@@ -870,9 +880,9 @@ Cabal commands are prefixed by <code>SPC m c</code>:
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">3.5</span> Cabal files</h3>
-<div class="outline-text-3" id="text-3-5">
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="cabal-files"><a id="orgheadline20"></a><span class="section-number-3">3.7</span> Cabal files</h3>
+<div class="outline-text-3" id="text-cabal-files">
 <p>
 This commands are available in a cabal file.
 </p>
@@ -967,8 +977,58 @@ This commands are available in a cabal file.
 </div>
 
 <div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">3.6</span> Ghc-mod</h3>
-<div class="outline-text-3" id="text-3-6">
+<h3 id="refactor"><a id="orgheadline21"></a><span class="section-number-3">3.8</span> Refactor</h3>
+<div class="outline-text-3" id="text-refactor">
+<p>
+Refactor commands are prefixed by <code>SPC m r</code>:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r b</code></td>
+<td class="org-left">apply all HLint suggestions in the current buffer</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r r</code></td>
+<td class="org-left">apply the HLint suggestion under the cursor</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r s</code></td>
+<td class="org-left">list all Intero suggestions</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Only some of the HLint suggestions can be applied.
+</p>
+
+<p>
+To apply the intero suggestions, press `C-c C-c` when the window is open, which
+is also shown in the window that appears.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="ghc-mod"><a id="orgheadline23"></a><span class="section-number-3">3.9</span> Ghc-mod</h3>
+<div class="outline-text-3" id="text-ghc-mod">
 <p>
 These commands are only available when ghc-mod is enabled.
 </p>
@@ -998,7 +1058,7 @@ ghc-mod commands are prefixed by <code>SPC m m</code>:
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m m t</code></td>
+<td class="org-left"><code>SPC t</code></td>
 <td class="org-left">insert template</td>
 </tr>
 
@@ -1045,30 +1105,128 @@ ghc-mod commands are prefixed by <code>SPC m m</code>:
 </table>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-4">
-<h4 id="orgheadline20"><span class="section-number-4">3.6.1</span> insert template</h4>
-<div class="outline-text-4" id="text-3-6-1">
+<div id="outline-container-orgheadline22" class="outline-4">
+<h4 id="insert-template"><a id="orgheadline22"></a><span class="section-number-4">3.9.1</span> Insert template</h4>
+<div class="outline-text-4" id="text-insert-template">
 <p>
-<code>SPC m m t</code> inserts a template. What this means is that
-In the beginning of a buffer, "module Foo where" is
-inserted. On the function without signature, inferred
-type is inserted. On a symbol "foo" without definition,
-"foo = undefined" is inserted or a proper module is imported.
-<code>SPC m m u</code> inserts a hole in this case. On a variable,
-the case is split. When checking with hlint, original code
-is replaced with hlint's suggestion if possible.
+<code>SPC m m t</code> inserts a template. What this means is that in the beginning of a
+buffer, <code>module Foo where</code> is inserted. On a function without signature, the
+inferred type is inserted. On a symbol <code>foo</code> without definition, <code>foo =
+undefined</code> is inserted or a proper module is imported. <code>SPC m m u</code> inserts a
+hole in this case. On a variable, the case is split. When checking with hlint,
+original code is replaced with hlint's suggestion if possible.
 </p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-2">
-<h2 id="orgheadline27"><span class="section-number-2">4</span> FAQ</h2>
-<div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">4.1</span> REPL doesn't work</h3>
-<div class="outline-text-3" id="text-4-1">
+<div id="outline-container-orgheadline31" class="outline-2">
+<h2 id="syntax-checking"><a id="orgheadline31"></a><span class="section-number-2">4</span> Syntax checking</h2>
+<div class="outline-text-2" id="text-syntax-checking">
+<p>
+At the moment there are four components which can check the syntax and indicates
+somehow error and warnings in the code. Those components are
+</p>
+
+<ul class="org-ul">
+<li>flycheck</li>
+<li>hlint (via flycheck)</li>
+<li>ghc-mod</li>
+<li>haskell-mode interactive</li>
+</ul>
+
+<p>
+As all these components can be active at the same time, it can be tricky to know
+which component is displaying which message, especially when they disagree or
+one is not working. Only flycheck errors (ghc and hlint) are displayed in the
+error list and can be navigated using the standard spacemacs key bindings (under
+<code>SPC e</code>) even though errors from other modes might highlight the actual buffer.
+</p>
+</div>
+
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="flycheck"><a id="orgheadline25"></a><span class="section-number-3">4.1</span> Flycheck</h3>
+<div class="outline-text-3" id="text-flycheck">
+<p>
+This is the standard spacemacs way to do syntax checking and the most elaborate.
+You need the syntax-checking layer to enable this. Please the documentation for
+that layer on how to interact with flycheck.
+</p>
+
+<p>
+Flycheck has different Haskell checkers: <code>haskell-ghc</code>, <code>haskell-stack-ghc</code> and
+<code>haskell-hlint</code>. Normally it can automatically detect the best one to use, but
+if it doesn't work, you can change it using <code>SPC e s</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline26" class="outline-3">
+<h3 id="hlint"><a id="orgheadline26"></a><span class="section-number-3">4.2</span> HLint</h3>
+<div class="outline-text-3" id="text-hlint">
+<p>
+HLint is a linter for Haskell. It doesn't detect errors (as long as it can parse
+the file) but bad coding style and code smell. The HLint checker is called
+<b>after</b> the flycheck GHC checker.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="ghc-mod"><a id="orgheadline27"></a><span class="section-number-3">4.3</span> ghc-mod</h3>
+<div class="outline-text-3" id="text-ghc-mod">
+<p>
+Ghc-mod, when enabled, also does syntax checking. It doesn't highlight errors
+but instead displays an exclamation point in the fringe. You can navigate
+between errors using <code>ghc-goto-next-error</code> (<code>M-n</code>) and <code>ghc-goto-prev-error</code>
+(<code>M-p</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="interactive-haskell-mode"><a id="orgheadline28"></a><span class="section-number-3">4.4</span> Interactive haskell-mode</h3>
+<div class="outline-text-3" id="text-interactive-haskell-mode">
+<p>
+Finally, interactive haskell-mode (<code>SPC m s b</code>) also displays errors. These
+errors can be navigated from the interactive buffer (by clicking on the error)
+or using <code>haskell-goto-next-error</code> (<code>M-n</code>) and <code>haskell-goto-prev-error</code>
+(<code>M-p</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="flymake"><a id="orgheadline29"></a><span class="section-number-3">4.5</span> Flymake</h3>
+<div class="outline-text-3" id="text-flymake">
+<p>
+An alternative to syntax checking is to build your project using
+<code>flymake-compile</code>. It doesn't highlight error in the buffer but is more
+reliable. The error navigation is similar to interactive haskell-mode.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="troubleshooting"><a id="orgheadline30"></a><span class="section-number-3">4.6</span> Troubleshooting</h3>
+<div class="outline-text-3" id="text-troubleshooting">
+<p>
+Flycheck and ghc-mod can fail silently for miscellaneous reasons. See the <a href="#faq">5</a>
+for troubleshooting.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline46" class="outline-2">
+<h2 id="faq"><a id="orgheadline46"></a><span class="section-number-2">5</span> FAQ</h2>
+<div class="outline-text-2" id="text-faq">
+</div>
+
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="the-repl-doesnt-work"><a id="orgheadline32"></a><span class="section-number-3">5.1</span> The REPL doesn't work</h3>
+<div class="outline-text-3" id="text-the-repl-doesnt-work">
 <p>
 Usually <code>haskell-mode</code> is great at figuring out which interactive process to
 bring up. But if you are experiencing problems with it you can help
@@ -1077,8 +1235,8 @@ bring up. But if you are experiencing problems with it you can help
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-4">setq-default</span> <span class="ATTRLIST-3">dotspacemacs-configuration-layers</span>
-  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-2">haskell</span> <span class="org-builtin">:variables</span> <span class="ATTRLIST-1">haskell-process-type</span> '<span class="ATTRLIST">stack-ghci</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>haskell <span class="org-builtin">:variables</span> haskell-process-type 'stack-ghci<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1096,23 +1254,23 @@ Available options are:
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="orgheadline24"><span class="section-number-3">4.2</span> REPL is stuck</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="the-repl-is-stuck"><a id="orgheadline33"></a><span class="section-number-3">5.2</span> The REPL is stuck</h3>
+<div class="outline-text-3" id="text-the-repl-is-stuck">
 <p>
 Make sure that when you are typing anything in REPL there is a space between
-what you type and <code>λ&gt;</code>. When there is no space - REPL will behave as it's stuck.
-Usually, when you enter normal state, cursor is moved back, so there is no
-required space when you switch to insert mode. There is possible workaround -
+what you type and <code>λ&gt;</code>. When there is no space - REPL will behave as if it's
+stuck. Usually, when you enter normal state, cursor is moved back, so there is
+no required space when you switch to insert mode. There is possible workaround -
 just add following snippet to your <code>dotspacemacs/user-config</code> function:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-7">when</span></span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-6">configuration-layer/layer-usedp</span> '<span class="ATTRLIST-5">haskell</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-4">add-hook</span> '<span class="ATTRLIST-3">haskell-interactive-mode-hook</span>
-            <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword"><span class="ATTRLIST-4">lambda</span></span> <span class="org-rainbow-delimiters-depth-4">()</span>
-              <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-2">setq-local</span> <span class="ATTRLIST-1">evil-move-cursor-back</span> <span class="ATTRLIST">nil</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/package-usedp 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span>add-hook 'haskell-interactive-mode-hook
+            <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-4">()</span>
+              <span class="org-rainbow-delimiters-depth-4">(</span>setq-local evil-move-cursor-back nil<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -1129,18 +1287,18 @@ could place following snippet in your <code>dotspacemacs/user-config</code> func
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-10">when</span></span> <span class="org-rainbow-delimiters-depth-2">(</span><span class="ATTRLIST-9">configuration-layer/layer-usedp</span> '<span class="ATTRLIST-8">haskell</span><span class="org-rainbow-delimiters-depth-2">)</span>
-    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-7">defadvice</span></span> <span class="org-function-name"><span class="ATTRLIST-6">haskell-interactive-switch</span></span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-5">after</span> <span class="ATTRLIST-4">spacemacs/haskell-interactive-switch-advice</span> <span class="ATTRLIST-3">activate</span><span class="org-rainbow-delimiters-depth-3">)</span>
-      <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword"><span class="ATTRLIST-10">when</span></span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-7">eq</span> <span class="ATTRLIST-2">dotspacemacs-editing-style</span> '<span class="ATTRLIST-7">vim</span><span class="org-rainbow-delimiters-depth-4">)</span>
-        <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-1">call-interactively</span> '<span class="ATTRLIST">evil-insert</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/package-usedp 'haskell<span class="org-rainbow-delimiters-depth-2">)</span>
+    <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defadvice</span> <span class="org-function-name">haskell-interactive-switch</span> <span class="org-rainbow-delimiters-depth-3">(</span>after spacemacs/haskell-interactive-switch-advice activate<span class="org-rainbow-delimiters-depth-3">)</span>
+      <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-4">(</span>eq dotspacemacs-editing-style 'vim<span class="org-rainbow-delimiters-depth-4">)</span>
+        <span class="org-rainbow-delimiters-depth-4">(</span>call-interactively 'evil-insert<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="orgheadline25"><span class="section-number-3">4.3</span> I am using <code>stack</code> and <code>ghc-mod</code>, but <code>ghc-mod</code> doesn't work</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="i-am-using-stack-and-ghc-mod-but-ghc-mod-doesnt-work"><a id="orgheadline34"></a><span class="section-number-3">5.3</span> I am using <code>stack</code> and <code>ghc-mod</code>, but <code>ghc-mod</code> doesn't work</h3>
+<div class="outline-text-3" id="text-i-am-using-stack-and-ghc-mod-but-ghc-mod-doesnt-work">
 <p>
 Make sure that <code>dist</code> directory doesn't exist in your project root. So if it
 exists, just remove it and try again.
@@ -1148,33 +1306,195 @@ exists, just remove it and try again.
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="orgheadline26"><span class="section-number-3">4.4</span> Indentation doesn't reset when pressing return after empty line</h3>
-<div class="outline-text-3" id="text-4-4">
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="ghc-mod-doesnt-work"><a id="orgheadline35"></a><span class="section-number-3">5.4</span> <code>ghc-mod</code> doesn't work</h3>
+<div class="outline-text-3" id="text-ghc-mod-doesnt-work">
 <p>
-This is intended behavior in <code>haskell-indentation-mode</code>. If you want to reset indentation when pressing return after empty line, add following snippet into your <code>dotspacemacs/user-config</code> function.
+First of all - make sure that the version of <code>ghc</code> matches the version of <code>ghc</code> that
+was used to build <code>ghc-mod</code>. To get the latter call <code>ghc-mod --version</code> in terminal.
+If they don't match you have to rebuild <code>ghc-mod</code>.
+</p>
+
+<p>
+<code>Stack</code> provides ability to use different <code>ghc</code> versions across different projects.
+In case you are using this feature you have to rebuild <code>ghc-mod</code> quite often. If
+you use <code>ghc-mod</code> only for completion and don't want to rebuild <code>ghc-mod</code> every time
+you switch project you'd better disable <code>ghc-mod</code> support, so <code>company-ghci</code> will be
+used for completion.
+</p>
+
+<p>
+The second thing to do if it's still not working - call <code>ghc-mod debug</code> in the
+root of project you are currently working on. Make sure that it shows no errors.
+If there are errors you can't solve - it's better to report them <a href="https://github.com/DanielG/ghc-mod">upstream</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="indentation-doesnt-reset-when-pressing-return-after-an-empty-line"><a id="orgheadline36"></a><span class="section-number-3">5.5</span> Indentation doesn't reset when pressing return after an empty line</h3>
+<div class="outline-text-3" id="text-indentation-doesnt-reset-when-pressing-return-after-an-empty-line">
+<p>
+This is the intended behavior in <code>haskell-indentation-mode</code>. If you want to
+reset indentation when pressing return after an empty line, add the following
+snippet into your <code>dotspacemacs/user-config</code> function.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword"><span class="ATTRLIST-6">defun</span></span> <span class="org-function-name"><span class="ATTRLIST-5">haskell-indentation-advice</span></span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword"><span class="ATTRLIST-4">when</span></span> <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-5">and</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-5">&lt;</span> <span class="org-highlight-numbers-number">1</span> <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-5">line-number-at-pos</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
-             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword"><span class="ATTRLIST-5">save-excursion</span></span>
-               <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-3">forward-line</span> <span class="org-highlight-numbers-number">-1</span><span class="org-rainbow-delimiters-depth-5">)</span>
-               <span class="org-rainbow-delimiters-depth-5">(</span><span class="ATTRLIST-2">string=</span> <span class="org-string">""</span> <span class="org-rainbow-delimiters-depth-6">(</span><span class="ATTRLIST-5">s-trim</span> <span class="org-rainbow-delimiters-depth-7">(</span><span class="ATTRLIST-1">buffer-substring</span> <span class="org-rainbow-delimiters-depth-8">(</span><span class="ATTRLIST-5">line-beginning-position</span><span class="org-rainbow-delimiters-depth-8">)</span> <span class="org-rainbow-delimiters-depth-8">(</span><span class="ATTRLIST">line-end-position</span><span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span><span class="ATTRLIST-5">delete-region</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-5">line-beginning-position</span><span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span><span class="ATTRLIST-5">point</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">haskell-indentation-advice</span> <span class="org-rainbow-delimiters-depth-2">()</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-3">(</span>and <span class="org-rainbow-delimiters-depth-4">(</span>&lt; <span class="org-highlight-numbers-number">1</span> <span class="org-rainbow-delimiters-depth-5">(</span>line-number-at-pos<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span>
+             <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">save-excursion</span>
+               <span class="org-rainbow-delimiters-depth-5">(</span>forward-line <span class="org-highlight-numbers-number">-1</span><span class="org-rainbow-delimiters-depth-5">)</span>
+               <span class="org-rainbow-delimiters-depth-5">(</span>string= <span class="org-string">""</span> <span class="org-rainbow-delimiters-depth-6">(</span>s-trim <span class="org-rainbow-delimiters-depth-7">(</span>buffer-substring <span class="org-rainbow-delimiters-depth-8">(</span>line-beginning-position<span class="org-rainbow-delimiters-depth-8">)</span> <span class="org-rainbow-delimiters-depth-8">(</span>line-end-position<span class="org-rainbow-delimiters-depth-8">)</span><span class="org-rainbow-delimiters-depth-7">)</span><span class="org-rainbow-delimiters-depth-6">)</span><span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>delete-region <span class="org-rainbow-delimiters-depth-4">(</span>line-beginning-position<span class="org-rainbow-delimiters-depth-4">)</span> <span class="org-rainbow-delimiters-depth-4">(</span>point<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="ATTRLIST-5">advice-add</span> '<span class="ATTRLIST-5">haskell-indentation-newline-and-indent</span>
-            <span class="org-builtin">:after</span> '<span class="ATTRLIST-5">haskell-indentation-advice</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span>advice-add 'haskell-indentation-newline-and-indent
+            <span class="org-builtin">:after</span> 'haskell-indentation-advice<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline37" class="outline-3">
+<h3 id="flycheck-displays-hlint-warnings-but-not-errors"><a id="orgheadline37"></a><span class="section-number-3">5.6</span> Flycheck displays HLint warnings but not errors</h3>
+<div class="outline-text-3" id="text-flycheck-displays-hlint-warnings-but-not-errors">
+<p>
+The HLint checker is called <b>after</b> normal flycheck checker even if the checker
+fails. Check the <a href="#flycheck-doesnt-work">5.8</a> section.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline38" class="outline-3">
+<h3 id="i-can-see-highlighted-errors-but-they-dont-appear-in-the-error-list"><a id="orgheadline38"></a><span class="section-number-3">5.7</span> I can see highlighted errors but they don't appear in the error list</h3>
+<div class="outline-text-3" id="text-i-can-see-highlighted-errors-but-they-dont-appear-in-the-error-list">
+<p>
+The error list is only set by flycheck. You are probably seeing errors
+highlighted by either ghc-mode or haskell-mode. Check the <a href="#flycheck-doesnt-work">5.8</a>
+section.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline39" class="outline-3">
+<h3 id="flycheck-doesnt-work"><a id="orgheadline39"></a><span class="section-number-3">5.8</span> Flycheck doesn't work</h3>
+<div class="outline-text-3" id="text-flycheck-doesnt-work">
+<p>
+You can check what is wrong with flycheck with the <code>flycheck-compile</code> command.
+This will show you the exact command line used and its output.
+</p>
+
+<p>
+If you are using stack, check the <a href="#flycheck-doesnt-work-with-stack">5.9</a> section.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline42" class="outline-3">
+<h3 id="flycheck-doesnt-work-with-stack"><a id="orgheadline42"></a><span class="section-number-3">5.9</span> Flycheck doesn't work with <code>stack</code></h3>
+<div class="outline-text-3" id="text-flycheck-doesnt-work-with-stack">
+<p>
+First check that flycheck uses the correct checker and all the paths are
+properly configured using <code>flycheck-verify-setup</code> (<code>SPC e v</code>). You can force the
+checker with <code>flycheck-select-checker</code> (<code>SPC e s</code>) to ensure it uses
+<code>haskell-stack-ghc</code>. If it still doesn't work, it could be one of the following
+problems:
+</p>
+
+<ul class="org-ul">
+<li>The stack build directory is wrong</li>
+<li>The project root is not set properly</li>
+</ul>
+</div>
+
+<div id="outline-container-orgheadline40" class="outline-4">
+<h4 id="the-stack-build-directory-is-wrong"><a id="orgheadline40"></a><span class="section-number-4">5.9.1</span> The stack build directory is wrong</h4>
+<div class="outline-text-4" id="text-the-stack-build-directory-is-wrong">
+<p>
+The path to the build directory containing some generated files is normally
+under <code>.stack-work/install/&lt;os&gt;/Cabal-&lt;version&gt;/build</code>.
+</p>
+
+<p>
+However, the version of the cabal library used by stack to generate the
+directory name is not the version of the cabal library installed by stack, but
+the version of cabal associated to the GHC version. This error can happen after
+upgrading cabal or cabal-install. To check if this is the problem, compare the
+path name of the build path used by flycheck using <code>flycheck-compile</code> and
+compare it to to the actual path in the <code>.stack-work</code> directory. If they are
+different you need to reinstall ghc using the command <code>stack setup
+--upgrade-cabal</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline41" class="outline-4">
+<h4 id="the-project-root-directory-is-not-set-properly"><a id="orgheadline41"></a><span class="section-number-4">5.9.2</span> The Project root directory is not set properly</h4>
+<div class="outline-text-4" id="text-the-project-root-directory-is-not-set-properly">
+<p>
+Flycheck launches the GHC command not from the project root directory but from
+the the directory of the file being checked. This is normally not a problem as
+all the paths are set properly, however it could be a problem if some template
+Haskell functions use relative paths (e.g. in Yesod scaffolded projects).
+</p>
+
+<p>
+Until it's fixed in flycheck the workaround is to the wrap the stack command to
+run all subcommands from the project root directory. You can do so with the
+following script:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span>
+<span class="org-builtin">cd</span> <span class="org-sh-quoted-exec">`stack --project-root`</span>
+stack $<span class="org-variable-name">*</span>
+</pre>
+</div>
+
+<p>
+Make sure you set <code>flycheck-haskell-stack-ghc-executable</code> to this script.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline43" class="outline-3">
+<h3 id="haskell-mode-commands-dont-work"><a id="orgheadline43"></a><span class="section-number-3">5.10</span> haskell-mode commands don't work</h3>
+<div class="outline-text-3" id="text-haskell-mode-commands-dont-work">
+<p>
+Some (most of) the haskell-mode commands only works when haskell-mode is in
+interactive mode, i.e. as a interactive session associated to it. Load it using
+<code>SPC m s b</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline44" class="outline-3">
+<h3 id="ghc-mod-and-haskell-mode-commands-overlap-how-do-i-know-which-command-belongs-to-what"><a id="orgheadline44"></a><span class="section-number-3">5.11</span> <code>ghc-mod</code> and <code>haskell-mode</code> commands overlap. How do I know which command belongs to what?</h3>
+<div class="outline-text-3" id="text-ghc-mod-and-haskell-mode-commands-overlap-how-do-i-know-which-command-belongs-to-what">
+<p>
+ghc-mod commands are prefixed with <code>ghc-</code>, haskell-mode ones are prefixed with
+<code>haskell-</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline45" class="outline-3">
+<h3 id="some-commands-start-with-ghc--and-some-with-haskell--what-does-that-mean"><a id="orgheadline45"></a><span class="section-number-3">5.12</span> Some commands start with <code>ghc-</code> and some with <code>haskell-</code>. What does that mean?</h3>
+<div class="outline-text-3" id="text-some-commands-start-with-ghc--and-some-with-haskell--what-does-that-mean">
+<p>
+Commands starting with <code>ghc-</code> are ghc-mod commands. Commands starting with
+<code>haskell-</code> are haskell-mode commands.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-03-12 Sat 14:09</p>
+<p class="date">Created: 2016-10-03 Mon 00:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

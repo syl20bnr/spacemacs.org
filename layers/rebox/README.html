@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-10-03 Mon 00:55 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rebox layer</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Rebox layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a>
+<ul>
+<li><a href="#features">1.1. Features</a></li>
+</ul>
+</li>
+<li><a href="#install">2. Install</a>
+<ul>
+<li><a href="#layer">2.1. Layer</a></li>
+<li><a href="#configuration">2.2. Configuration</a>
+<ul>
+<li><a href="#styles-cycling">2.2.1. Styles cycling</a></li>
+<li><a href="#text-mode">2.2.2. Text mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#style-templates">3. Style Templates</a>
+<ul>
+<li><a href="#standard-packaged-templates">3.1. Standard packaged templates</a>
+<ul>
+<li><a href="#comments">3.1.1. Comments</a></li>
+<li><a href="#text-mode">3.1.2. Text Mode</a></li>
+<li><a href="#c-mode">3.1.3. C Mode</a></li>
+</ul>
+</li>
+<li><a href="#additional-templates">3.2. Additional Templates</a></li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="description"><a id="orgheadline2"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer adds support for <a href="https://github.com/lewang/rebox2">rebox2</a> package which is a minor-mode allowing
+to easily add ASCII text boxes to a buffer.
+</p>
+
+<p>
+A nice video demonstration by the package author can be found <a href="https://www.youtube.com/watch?v=53YeTdVtDkU">here</a>.
+</p>
+</div>
+
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features</h3>
+<div class="outline-text-3" id="text-features">
+<ul class="org-ul">
+<li>Auto-wrap correctly in comments,</li>
+<li>Auto-fill correctly in comments,</li>
+<li>Boxes auto-adapt as text is inserted or deleted,</li>
+<li><code>S-return</code> to continue a comment on the next line,</li>
+<li>Kill/yank within the box,</li>
+<li>Apparently works well with ancient <code>filladpt-mode</code> (see authors video).</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="layer"><a id="orgheadline3"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div class="outline-text-3" id="text-layer">
+<p>
+To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
+add <code>rebox</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this
+file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="configuration"><a id="orgheadline6"></a><span class="section-number-3">2.2</span> Configuration</h3>
+<div class="outline-text-3" id="text-configuration">
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="styles-cycling"><a id="orgheadline4"></a><span class="section-number-4">2.2.1</span> Styles cycling</h4>
+<div class="outline-text-4" id="text-styles-cycling">
+<p>
+Box styles are identified by numbers, it is possible to cycle through a list
+of styles using <code>SPC x b n</code>. This list can be customized by setting the variable
+<code>rebox-style-loop</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq rebox-style-loop '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-highlight-numbers-number">71</span> <span class="org-highlight-numbers-number">72</span> <span class="org-highlight-numbers-number">73</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="text-mode"><a id="orgheadline5"></a><span class="section-number-4">2.2.2</span> Text mode</h4>
+<div class="outline-text-4" id="text-text-mode">
+<p>
+As text mode usage could surprise some users (e.g., when they enter M-q to fill
+a paragraph) <code>rebox</code> is not enabled by default in <code>text-mode</code>. To enable it you
+need to set the layer variable <code>rebox-enable-in-text-mode</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+    <span class="org-rainbow-delimiters-depth-3">(</span>rebox <span class="org-builtin">:variables</span> rebox-enable-in-text-mode t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="style-templates"><a id="orgheadline13"></a><span class="section-number-2">3</span> Style Templates</h2>
+<div class="outline-text-2" id="text-style-templates">
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="standard-packaged-templates"><a id="orgheadline11"></a><span class="section-number-3">3.1</span> Standard packaged templates</h3>
+<div class="outline-text-3" id="text-standard-packaged-templates">
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="comments"><a id="orgheadline8"></a><span class="section-number-4">3.1.1</span> Comments</h4>
+<div class="outline-text-4" id="text-comments">
+<p>
+These templates are single line comments styles. A <code>#</code> is used here for
+illustration; however, it will work equally well if the comment character is
+different (e.g., lisp's <code>;</code> comment character).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-comment-delimiter">#</span><span class="org-comment">box-style 10</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 11</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 12 #</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">------------ #</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">------------ #</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 13 #</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">------------ #</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 14 #</span>
+<span class="org-comment-delimiter">################</span>
+
+<span class="org-comment-delimiter">################</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 15 #</span>
+<span class="org-comment-delimiter">################</span>
+
+<span class="org-comment-delimiter">#</span><span class="org-comment">,----</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">| box style 16</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">`----</span>
+
+<span class="org-comment-delimiter">#</span><span class="org-comment">,-------------</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">| box style 17</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">`-------------</span>
+
+<span class="org-comment-delimiter">##</span><span class="org-comment">box style 20</span>
+
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 21</span>
+
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 22 ##</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">------------ ##</span>
+
+<span class="org-comment-delimiter">## </span><span class="org-comment">------------ ##</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 23 ##</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">------------ ##</span>
+
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 24 ##</span>
+<span class="org-comment-delimiter">##################</span>
+
+<span class="org-comment-delimiter">##################</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 25 ##</span>
+<span class="org-comment-delimiter">##################</span>
+
+<span class="org-comment-delimiter">##</span><span class="org-comment">,----</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">| box style 26</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">`----</span>
+
+<span class="org-comment-delimiter">##</span><span class="org-comment">,-------------</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">| box style 27</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">`-------------</span>
+
+<span class="org-comment-delimiter">###</span><span class="org-comment">box style 30</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">and so on repeating up to styles 5x which have 5 leading comment characters</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="text-mode"><a id="orgheadline9"></a><span class="section-number-4">3.1.2</span> Text Mode</h4>
+<div class="outline-text-4" id="text-text-mode">
+<div class="org-src-container">
+
+<pre class="src src-text">box style 111
+
+| box style 112 |
++---------------+
+
++---------------+
+| box style 113 |
++---------------+
+
+| box style 114 |
+*===============*
+
+*===============*
+| box style 115 |
+*===============*
+
+-------------
+box style 116
+-------------
+
+| box style 121 |
+
+| box style 122 |
+`---------------'
+
+.---------------.
+| box style 123 |
+`---------------'
+
+| box style 124 |
+\===============/
+
+/===============\
+| box style 125 |
+\===============/
+
+,----
+| box style 126
+`----
+
+,--------------
+| box style 127
+`--------------
+
+,----
+| box style 136
+`----
+
+,--------------
+| box style 137
+`--------------
+
+| box style 141
+
+** box style 142 *
+******************
+
+******************
+** box style 143 *
+******************
+
+X box style 144 X
+XXXXXXXXXXXXXXXXX
+
+XXXXXXXXXXXXXXXXX
+X box style 145 X
+XXXXXXXXXXXXXXXXX
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="c-mode"><a id="orgheadline10"></a><span class="section-number-4">3.1.3</span> C Mode</h4>
+<div class="outline-text-4" id="text-c-mode">
+<p>
+<b>Note</b> this mode is disabled for now due to bugs in rebox.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-c"><span class="org-comment-delimiter">/* </span><span class="org-comment">box style 111 </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 112 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">------------- </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/* </span><span class="org-comment">------------- </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 113 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">------------- </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 114 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">============= </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/* </span><span class="org-comment">============= </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 115 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">============= </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment">   box style 221</span>
+<span class="org-comment"> </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*          </span><span class="org-comment">.</span>
+<span class="org-comment"> | box style 222 |</span>
+<span class="org-comment"> `--------------</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span><span class="org-comment">--------------.</span>
+<span class="org-comment">| box style 223 |</span>
+<span class="org-comment">`--------------</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*              </span><span class="org-comment">\</span>
+<span class="org-comment">| box style 224 |</span>
+<span class="org-comment">\==============</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span><span class="org-comment">==============\</span>
+<span class="org-comment">| box style 225 |</span>
+<span class="org-comment">\==============</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment"> | box style 231</span>
+<span class="org-comment"> </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment"> | box style 232 |</span>
+<span class="org-comment"> *---------------</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span><span class="org-comment">---------------*</span>
+<span class="org-comment"> | box style 233 |</span>
+<span class="org-comment"> *---------------</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 234 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/*</span><span class="org-comment">---------------</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span><span class="org-comment">---------------</span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 235 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/*</span><span class="org-comment">---------------</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*</span>
+<span class="org-comment"> * box style 241</span>
+<span class="org-comment"> </span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*               </span><span class="org-comment">*</span>
+<span class="org-comment"> * box style 242 *</span>
+<span class="org-comment"> ****************</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/*****************</span>
+<span class="org-comment"> * box style 243 *</span>
+<span class="org-comment"> ****************</span><span class="org-comment-delimiter">*/</span>
+
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 244 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/*****************/</span>
+
+<span class="org-comment-delimiter">/*****************/</span>
+<span class="org-comment-delimiter">/* </span><span class="org-comment">box style 245 </span><span class="org-comment-delimiter">*/</span>
+<span class="org-comment-delimiter">/*****************/</span>
+
+<span class="org-comment-delimiter">/****************//**</span>
+<span class="org-comment"> * box style 246</span>
+<span class="org-comment"> *******************</span><span class="org-comment-delimiter">*/</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="additional-templates"><a id="orgheadline12"></a><span class="section-number-3">3.2</span> Additional Templates</h3>
+<div class="outline-text-3" id="text-additional-templates">
+<p>
+These templates are added by the Spacemacs layer.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><span class="org-comment-delimiter">#</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 71</span>
+<span class="org-comment-delimiter">#</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">------------</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 72</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">------------</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">============</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 73</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">============</span>
+
+<span class="org-comment-delimiter">#</span><span class="org-comment">--------------</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 74</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">--------------</span>
+
+<span class="org-comment-delimiter">#</span><span class="org-comment">--------------+</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 75</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">--------------+</span>
+
+<span class="org-comment-delimiter">#</span><span class="org-comment">==============</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">box style 76</span>
+<span class="org-comment-delimiter">#</span><span class="org-comment">==============</span>
+
+<span class="org-comment-delimiter">##</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 81</span>
+<span class="org-comment-delimiter">##</span>
+
+<span class="org-comment-delimiter">## </span><span class="org-comment">------------</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 82</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">------------</span>
+
+<span class="org-comment-delimiter">## </span><span class="org-comment">============</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 83</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">============</span>
+
+<span class="org-comment-delimiter">##</span><span class="org-comment">--------------</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 84</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">--------------</span>
+
+<span class="org-comment-delimiter">##</span><span class="org-comment">--------------+</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 85</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">--------------+</span>
+
+<span class="org-comment-delimiter">##</span><span class="org-comment">==============</span>
+<span class="org-comment-delimiter">## </span><span class="org-comment">box style 86</span>
+<span class="org-comment-delimiter">##</span><span class="org-comment">==============</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="key-bindings"><a id="orgheadline14"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+<p>
+<b>Note:</b> Use a numerical prefix argument to choose a specific style for instance
+<code>86 SPC x b b</code> to use the style 86 above.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Keybinding</th>
+<th scope="col" class="org-left">Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC x b &gt;</code></td>
+<td class="org-left">Move box to the right (point must be around left side of the box)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC x b &lt;</code></td>
+<td class="org-left">Move box to the left (point must be around left side of the box)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC x b b</code></td>
+<td class="org-left">Draw next box defined in <code>rebox-style-loop</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC x b B</code></td>
+<td class="org-left">Draw previous box defined in <code>rebox-style-loop</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC x b c</code></td>
+<td class="org-left">Center box (point must be around left side of the box)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>S-return</code></td>
+<td class="org-left">rebox-indent-new-line</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+---
+
+galaxy_info:
+  author: José Coelho
+  description: Installs erlang and elixir from erlang repositories
+  license: MIT
+  min_ansible_version: 1.9
+  platforms:
+  - name: Ubuntu
+    versions:
+      - trusty
+      - utopic
+      - vivid
+  - name: Debian
+    versions:
+      - squeeze
+      - wheezy
+  categories:
+  - system
+dependencies: []
