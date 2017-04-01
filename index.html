@@ -95,13 +95,10 @@
         <h4 class="wp wp-1 animated fadeInUp logo-subtitle">A community-driven <a href="https://www.gnu.org/software/emacs/">Emacs</a> distribution</h4>
         <h6 class="wp wp-3 animated fadeInUp logo-subtitle">The best editor is neither Emacs nor Vim, it's Emacs <em>and</em> Vim!</h6>
         <br>
-        <a class="btn btn-secondary-outline m-b-md" href="#" role="button" id="toggle">&nbsp;<span class="fa fa-download"></span>&nbsp;Get it&nbsp;</a>
-<a class="btn btn-warning m-b-md" href="#" role="button" id="launchXpra">&nbsp;<span class="fa fa-desktop"></span>Try online!&nbsp;</a>
-        <pre id="download" class="download-link"><a href="https://github.com/syl20bnr/spacemacs/archive/master.zip">https://github.com/syl20bnr/spacemacs/archive/master.zip</a></pre>
-        <div class="code-wrapper">
-          <pre id="code">git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d</pre>
-          <button type="button" name="button" class="btn" id="copy-btn" data-clipboard-target="#code">Copy to clipboard</button>
-        </div>
+        <a class="btn btn-secondary-outline m-b-md" href="https://github.com/syl20bnr/spacemacs/archive/master.zip" role="button"><span class="fa fa-download"></span>Download</a>
+        <a class="btn btn-warning m-b-md" href="#" role="button" id="launchXpra">&nbsp;<span class="fa fa-desktop"></span>Try online!&nbsp;</a>
+        <pre id="code">git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d</pre>
+        <button type="button" name="button" class="btn" id="copy-btn" data-clipboard-target="#code">Copy to clipboard</button>
         <br>
         <br>
         <p class="jumbotron-links">
@@ -239,8 +236,7 @@
 
       $("#toggle").click(function() {
         $("#code").fadeToggle("slow");
-	$("#copy-btn").fadeToggle("slow");
-        $("#download").fadeToggle("slow");
+        $("#copy-btn").fadeToggle("slow");
       })
     </script>
     <script type="text/javascript">
@@ -356,7 +352,7 @@
       client.on_first_ui_event = function() {
         XClient.reconnect =false;
         $('#xpra-wrapper').show();
-        $('#launchXpra').html("&nbsp;You're welcome!&nbsp;<span class=\"fa fa-heart\"></span>&nbsp;")
+        $('#launchXpra').html("&nbsp;Compiled Successfully!&nbsp;<span class=\"fa fa-heart\"></span>&nbsp;")
           .switchClass("btn-danger", "btn-success", 1000, "easeInOutQuad")
           .removeClass("btn-blinky")
           .css("cursor", "default");
@@ -364,9 +360,13 @@
 
       client.on_last_window = function() {
         $('#xpra-wrapper').hide();
-        $('#launchXpra').html("&nbsp;<span class=\"fa fa-desktop\"></span>Try online!&nbsp;")
-          .switchClass("btn-success", "btn-warning", 1000, "easeInOutQuad")
-          .css("cursor", "pointer");
+        $('#launchXpra').html("&nbsp;<span class=\"fa fa-arrow-circle-right\"></span>Install&nbsp;")
+          .switchClass("btn-success", "btn btn-secondary-outline m-b-md", 1000, "easeInOutQuad")
+          .css("cursor", "pointer")
+          .on('click', function() {
+            $("#code").fadeToggle("slow");
+            $("#copy-btn").fadeToggle("slow");
+          });
       }
 
       client.enable_encoding(encoding);
@@ -385,7 +385,7 @@
       return false;
     }
 
-    window.OddsForFakeXpra = 0.6;
+    window.OddsForFakeXpra = Math.PI*0.2;
     
     if (Math.random() >= window.OddsForFakeXpra) {
       $("#launchXpra").off('click').on('click', function(_) {
