@@ -360,13 +360,8 @@
 
       client.on_last_window = function() {
         $('#xpra-wrapper').hide();
-        $('#launchXpra').html("&nbsp;<span class=\"fa fa-arrow-circle-right\"></span>Install&nbsp;")
-          .switchClass("btn-success", "btn btn-secondary-outline m-b-md", 1000, "easeInOutQuad")
-          .css("cursor", "pointer")
-          .on('click', function() {
-            $("#code").fadeToggle("slow");
-            $("#copy-btn").fadeToggle("slow");
-          });
+        $('#launchXpra').html("&nbsp;<span class=\"fa fa-desktop\"></span>Try online!&nbsp;")
+                        .css("cursor", "pointer");
       }
 
       client.enable_encoding(encoding);
