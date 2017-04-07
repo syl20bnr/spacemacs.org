@@ -286,8 +286,6 @@
   <script type="text/javascript" src="js/MediaSourceUtil.js"></script>
   <script type="text/javascript" src="js/Client.js"></script>
 
-  <script type="text/javascript" src="js/xpra-user-fake-xpra.js"></script>
-
   <script>
     window.XClient = {};
 
@@ -385,23 +383,12 @@
       return false;
     }
 
-    window.OddsForFakeXpra = Math.PI*0.2;
-    
-    if (Math.random() >= window.OddsForFakeXpra) {
-      $("#launchXpra").off('click').on('click', function(_) {
-        if ($("#launchXpra").is(".btn-warning")) {
-          startXpra();
-        }
-        return false;
-      });
-    } else {
-      $("#launchXpra").off('click').on('click', function(_) {
-        if ($("#launchXpra").is(".btn-warning")) {
-          startFakeXpra();
-        }
-        return false;
-      });
-    }
+    $("#launchXpra").off('click').on('click', function(_) {
+      if ($("#launchXpra").is(".btn-warning")) {
+        startXpra();
+      }
+      return false;
+    });
   </script>
   <!-- -Xpra stuff -->
 
