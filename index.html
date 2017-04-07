@@ -352,7 +352,7 @@
       client.on_first_ui_event = function() {
         XClient.reconnect =false;
         $('#xpra-wrapper').show();
-        $('#launchXpra').html("&nbsp;Connected!&nbsp;<span class=\"fa fa-heart\"></span>&nbsp;")
+        $('#launchXpra').html("&nbsp;<span class=\"fa fa-heart\"></span>Connected!&nbsp;")
           .switchClass("btn-danger", "btn-success", 1000, "easeInOutQuad")
           .removeClass("btn-blinky")
           .css("cursor", "default");
