@@ -95,8 +95,10 @@
         <h4 class="wp wp-1 animated fadeInUp logo-subtitle">A community-driven <a href="https://www.gnu.org/software/emacs/">Emacs</a> distribution</h4>
         <h6 class="wp wp-3 animated fadeInUp logo-subtitle">The best editor is neither Emacs nor Vim, it's Emacs <em>and</em> Vim!</h6>
         <br>
+        <a class="btn btn-success m-b-md" href="#" role="button" id="launchXpra">&nbsp;<span class="fa fa-desktop"></span>Try online!&nbsp;</a>
+        <br>
         <a class="btn btn-secondary-outline m-b-md" href="https://github.com/syl20bnr/spacemacs/archive/master.zip" role="button"><span class="fa fa-download"></span>Download</a>
-        <a class="btn btn-warning m-b-md" href="#" role="button" id="launchXpra">&nbsp;<span class="fa fa-desktop"></span>Try online!&nbsp;</a>
+        <a class="btn btn-secondary-outline m-b-md" href="#" role="button" id="toggle">&nbsp;<span class="fa fa-arrow-circle-right"></span> Install  &nbsp;</a>
         <pre id="code">git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d</pre>
         <button type="button" name="button" class="btn" id="copy-btn" data-clipboard-target="#code">Copy to clipboard</button>
         <br>
@@ -291,8 +293,8 @@
 
     function startXpra(_) {
 
-      $('#launchXpra').html("&nbsp;<span class=\"fa fa-wheelchair\"></span>Compiling Emacs to JS&nbsp;")
-        .switchClass("btn-warning", "btn-danger", 1000, "easeInOutQuad")
+      $('#launchXpra').html("&nbsp;<span class=\"fa fa-heartbeat\"></span>Connecting...&nbsp;")
+        .switchClass("btn-success", "btn-danger", 1000, "easeInOutQuad")
         .addClass("btn-blinky")
         .css("cursor", "default");
 
@@ -350,7 +352,7 @@
       client.on_first_ui_event = function() {
         XClient.reconnect =false;
         $('#xpra-wrapper').show();
-        $('#launchXpra').html("&nbsp;Compiled Successfully!&nbsp;<span class=\"fa fa-heart\"></span>&nbsp;")
+        $('#launchXpra').html("&nbsp;Connected!&nbsp;<span class=\"fa fa-heart\"></span>&nbsp;")
           .switchClass("btn-danger", "btn-success", 1000, "easeInOutQuad")
           .removeClass("btn-blinky")
           .css("cursor", "default");
@@ -384,7 +386,7 @@
     }
 
     $("#launchXpra").off('click').on('click', function(_) {
-      if ($("#launchXpra").is(".btn-warning")) {
+      if ($("#launchXpra").is(".btn-success")) {
         startXpra();
       }
       return false;
