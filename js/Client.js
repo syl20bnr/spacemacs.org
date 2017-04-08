@@ -52,24 +52,30 @@ XpraClient.prototype.init_settings = function(container) {
 	this.steal = true;
 	this.remote_logging = true;
 	this.enabled_encodings = [];
-	this.normal_fullscreen_mode = false;
+	this.supported_encodings = ["jpeg", "png", "rgb", "rgb32"];	//"h264", "vp8+webm", "h264+mp4", "mpeg4+mp4"];
 	this.start_new_session = null;
 	this.clipboard_enabled = false;
 	this.file_transfer = false;
+	this.keyboard_layout = null;
 	this.printing = false;
 	this.reconnect = true;
 	this.reconnect_count = 5;
 	this.reconnect_delay = 1000;	//wait 1 second before retrying
 	this.reconnect_attempt = 0;
+	this.HELLO_TIMEOUT = 2000;
+	this.PING_TIMEOUT = 15000;
+	this.PING_GRACE = 2000;
+	this.PING_FREQUENCY = 5000;
 }
 
 XpraClient.prototype.init_state = function(container) {
 	// state
+	this.desktop_width = 0;
+	this.desktop_height = 0;
 	this.server_remote_logging = false;
 	// some client stuff
 	this.capabilities = {};
 	this.RGB_FORMATS = ["RGBX", "RGBA"];
-	this.supported_encodings = ["jpeg", "png", "rgb", "rgb32"];	//"h264", "vp8+webm", "h264+mp4", "mpeg4+mp4"];
 	this.disconnect_reason = null;
 	// audio
 	this.audio_enabled = false;
@@ -85,6 +91,10 @@ XpraClient.prototype.init_state = function(container) {
 	this.encryption_key = null;
 	this.cipher_in_caps = null;
 	this.cipher_out_caps = null;
+	// detect locale change:
+	this.browser_language = Utilities.getFirstBrowserLanguage();
+	this.browser_language_change_embargo_time = 0;
+	this.key_layout = null;
 	// clipboard
 	this.clipboard_buffer = "";
 	this.clipboard_pending = false;
@@ -94,14 +104,10 @@ XpraClient.prototype.init_state = function(container) {
 	this.remote_file_transfer = false;
 	this.remote_open_files = false;
 	// hello
-	this.HELLO_TIMEOUT = 2000;
 	this.hello_timer = null;
 	// ping
-	this.PING_TIMEOUT = 15000;
 	this.ping_timeout_timer = null;
-	this.PING_GRACE = 2000;
 	this.ping_grace_timer = null;
-	this.PING_FREQUENCY = 5000;
 	this.ping_timer = null;
 	this.last_ping_echoed_time = 0;
 	this.server_ok = false;
@@ -224,7 +230,6 @@ XpraClient.prototype.init_audio = function(ignore_audio_blacklist) {
 
 XpraClient.prototype.init_keyboard = function() {
 	var me = this;
-	this.keyboard_layout = null;
 	// modifier keys:
 	this.caps_lock = null;
 	this.num_lock = true;
@@ -278,6 +283,7 @@ XpraClient.prototype.init_packet_handlers = function() {
 		'window-icon': this._process_window_icon,
 		'window-resized': this._process_window_resized,
 		'window-move-resize': this._process_window_move_resize,
+		'initiate-moveresize': this._process_initiate_moveresize,
 		'configure-override-redirect': this._process_configure_override_redirect,
 		'desktop_size': this._process_desktop_size,
 		'draw': this._process_draw,
@@ -376,7 +382,7 @@ XpraClient.prototype.open_protocol = function() {
 }
 
 XpraClient.prototype.close = function() {
-	console.error("client closed");
+	console.log("client closed");
 	this.close_windows();
 	this.clear_timers();
 	this.close_audio();
@@ -450,7 +456,12 @@ XpraClient.prototype._route_packet = function(packet, ctx) {
 
 XpraClient.prototype._screen_resized = function(event, ctx) {
 	// send the desktop_size packet so server knows we changed size
-	var newsize = this._get_desktop_size();
+	if (this.container.clientWidth==this.desktop_width && this.container.clientHeight==this.desktop_height) {
+		return;
+	}
+	this.desktop_width = this.container.clientWidth;
+	this.desktop_height = this.container.clientHeight;
+	var newsize = [this.desktop_width, this.desktop_height];
 	var packet = ["desktop_size", newsize[0], newsize[1], this._get_screen_sizes()];
 	ctx.send(packet);
 	// call the screen_resized function on all open windows
@@ -483,6 +494,44 @@ XpraClient.prototype._keyb_get_modifiers = function(event) {
 	return modifiers;
 }
 
+XpraClient.prototype._check_browser_language = function(key_layout) {
+	/**
+	 * Use the "key_language" if we have it,
+	 * otherwise use the browser's language.
+	 * This function may ssend the new detected keyboard layout.
+	 * (ignoring the keyboard_layout preference)
+	 */
+	var now = new Date().getTime();
+	if (now<this.browser_language_change_embargo_time) {
+		return;
+	}
+	var new_layout = null;
+	if (key_layout && this.key_layout!=key_layout) {
+		console.log("input language changed from", this.key_layout, "to", key_layout);
+		new_layout = key_layout;
+		this.key_layout = key_layout;
+	}
+	else {
+		var l = Utilities.getFirstBrowserLanguage();
+		if (l && this.browser_language != l) {
+			new_layout = Utilities.getKeyboardLayout();
+			console.log("browser language changed from", this.browser_language, "to", l, ", sending new keyboard layout:", layout);
+			this.browser_language = l;
+		}
+	}
+	if (new_layout!=null) {
+		this.send(["layout-changed", new_layout, ""]);
+		//changing the language too quickly can cause problems server side,
+		//wait at least 2 seconds before checking again:
+		this.browser_language_change_embargo_time = now + 2000;
+	}
+	else {
+		//check again after 100ms minimum
+		this.browser_language_change_embargo_time = now + 100;
+	}
+}
+
+
 XpraClient.prototype._keyb_process = function(pressed, event) {
 	/**
 	 * Process a key event: key pressed or key released.
@@ -492,20 +541,50 @@ XpraClient.prototype._keyb_process = function(pressed, event) {
 	// MSIE hack
 	if (window.event)
 		event = window.event;
-	//show("processKeyEvent("+pressed+", "+event+") keyCode="+event.keyCode+", charCode="+event.charCode+", which="+event.which);
 
-	var keyname = "";
-	var keycode = 0;
-	if (event.which)
-		keycode = event.which;
-	else
-		keycode = event.keyCode;
-	if (keycode==144 && pressed)
+	var keyname = event.code || "";
+	var keycode = event.which || event.keyCode;
+	var str = event.key || String.fromCharCode(keycode);
+
+	if (this.debug) {
+		console.debug("processKeyEvent(", pressed, ", ", event, ") key=", keyname, "keycode=", keycode);
+	}
+
+	//sync numlock
+	if (keycode==144 && pressed) {
 		this.num_lock = !this.num_lock;
-	if (keycode in CHARCODE_TO_NAME)
+	}
+
+	var key_language = null;
+	//special case for numpad,
+	//try to distinguish arrowpad and numpad:
+	//(for arrowpad, keyname==str)
+	if (keyname!=str && str in NUMPAD_TO_NAME) {
+		keyname = NUMPAD_TO_NAME[str];
+		this.num_lock = ("0123456789.".indexOf(keyname))>=0;
+	}
+	//some special keys are better mapped by name:
+	else if (keyname in KEY_TO_NAME){
+		keyname = KEY_TO_NAME[keyname];
+	}
+	//next try mapping the actual character
+	else if (str in CHAR_TO_NAME) {
+		keyname = CHAR_TO_NAME[str];
+		if (keyname.indexOf("_")>0) {
+			//ie: Thai_dochada
+			var lang = keyname.split("_")[0];
+			key_language = KEYSYM_TO_LAYOUT[lang];
+		}
+	}
+	//fallback to keycode map:
+	else if (keycode in CHARCODE_TO_NAME) {
 		keyname = CHARCODE_TO_NAME[keycode];
-	if (this.num_lock && keycode>=96 && keycode<106)
-		keyname = "KP_"+(keycode-96);
+	}
+
+	this._check_browser_language(key_language);
+
+	//if (this.num_lock && keycode>=96 && keycode<106)
+	//	keyname = "KP_"+(keycode-96);
 	var DOM_KEY_LOCATION_RIGHT = 2;
 	if (keyname.match("_L$") && event.location==DOM_KEY_LOCATION_RIGHT)
 		keyname = keyname.replace("_L", "_R")
@@ -516,7 +595,6 @@ XpraClient.prototype._keyb_process = function(pressed, event) {
 	if (this.num_lock && this.num_lock_mod)
 		modifiers.push(this.num_lock_mod);
 	var keyval = keycode;
-	var str = String.fromCharCode(event.which);
 	var group = 0;
 
 	var shift = modifiers.indexOf("shift")>=0;
@@ -531,6 +609,9 @@ XpraClient.prototype._keyb_process = function(pressed, event) {
 		setTimeout(function () {
 			//show("win="+win.toSource()+", keycode="+keycode+", modifiers=["+modifiers+"], str="+str);
 			me.send(packet);
+			if (me.debug) {
+				console.debug(packet);
+			}
 		}, 0);
 	}
 	if (this.clipboard_enabled) {
@@ -596,6 +677,7 @@ XpraClient.prototype._keyb_onkeypress = function(event, ctx) {
 };
 
 XpraClient.prototype._get_keyboard_layout = function() {
+	console.debug("_get_keyboard_layout() keyboard_layout=", this.keyboard_layout);
 	if (this.keyboard_layout)
 		return this.keyboard_layout;
 	return Utilities.getKeyboardLayout();
@@ -614,7 +696,7 @@ XpraClient.prototype._get_keycodes = function() {
 }
 
 XpraClient.prototype._get_desktop_size = function() {
-	return [this.container.clientWidth, this.container.clientHeight];
+	return [this.desktop_width, this.desktop_height];
 }
 
 XpraClient.prototype._get_DPI = function() {
@@ -634,7 +716,7 @@ XpraClient.prototype._get_DPI = function() {
 
 XpraClient.prototype._get_screen_sizes = function() {
 	var dpi = this._get_DPI();
-	var screen_size = this._get_desktop_size();
+	var screen_size = [this.container.clientWidth, this.container.clientHeight];
 	var wmm = Math.round(screen_size[0]*25.4/dpi);
 	var hmm = Math.round(screen_size[1]*25.4/dpi);
 	var monitor = ["Canvas", 0, 0, screen_size[0], screen_size[1], wmm, hmm];
@@ -749,6 +831,17 @@ XpraClient.prototype._send_hello = function(challenge_response, client_salt) {
 
 XpraClient.prototype._make_hello_base = function() {
 	this.capabilities = {};
+	var digests = ["hmac", "hmac+md5", "xor"]
+	try {
+		console.debug("forge.md.algorithms=", forge.md.algorithms);
+		for (var hash in forge.md.algorithms) {
+			digests.push("hmac+"+hash);
+		}
+		console.debug("digests:", digests);
+	}
+	catch (e) {
+		console.error("Error probing forge crypto digests:", e);
+	}
 	this._update_capabilities({
 		// version and platform
 		"version"					: Utilities.VERSION,
@@ -764,7 +857,7 @@ XpraClient.prototype._make_hello_base = function() {
 		"username" 					: this.username,
 		"uuid"						: Utilities.getHexUUID(),
 		"argv" 						: [window.location.href],
-		"digest" 					: ["hmac", "xor"],
+		"digest" 					: digests,
 		//compression bits:
 		"zlib"						: true,
 		"lzo"						: false,
@@ -801,6 +894,8 @@ XpraClient.prototype._make_hello_base = function() {
 }
 
 XpraClient.prototype._make_hello = function() {
+	this.desktop_width = this.container.clientWidth;
+	this.desktop_height = this.container.clientHeight;
 	this._update_capabilities({
 		"auto_refresh_delay"		: 500,
 		"randr_notify"				: true,
@@ -809,10 +904,17 @@ XpraClient.prototype._make_hello = function() {
 		"notify-startup-complete"	: true,
 		"generic-rgb-encodings"		: true,
 		"window.raise"				: true,
+        "window.initiate-moveresize": true,
+        "metadata.supported"		: [
+        								"fullscreen", "maximized", "above", "below",
+        								//"set-initial-position", "group-leader",
+        								"title", "size-hints", "class-instance", "transient-for", "window-type",
+        								"decorations", "override-redirect", "tray", "modal", "opacity",
+        								],
 		"encodings"					: this._get_encodings(),
 		"raw_window_icons"			: true,
 		"encoding.icons.max_size"	: [30, 30],
-		"encodings.core"			: this.supported_encodings,
+		"encodings.core"			: this._get_encodings(),
 		"encodings.rgb_formats"	 	: this.RGB_FORMATS,
 		"encodings.window-icon"		: ["png"],
 		"encodings.cursor"			: ["png"],
@@ -857,7 +959,7 @@ XpraClient.prototype._make_hello = function() {
 		"xkbmap_keycodes"			: this._get_keycodes(),
 		"xkbmap_print"				: "",
 		"xkbmap_query"				: "",
-		"desktop_size"				: this._get_desktop_size(),
+		"desktop_size"				: [this.desktop_width, this.desktop_height],
 		"screen_sizes"				: this._get_screen_sizes(),
 		"dpi"						: this._get_DPI(),
 		//not handled yet, but we will:
@@ -919,12 +1021,6 @@ XpraClient.prototype._new_window = function(wid, x, y, w, h, metadata, override_
 	win.debug = this.debug;
 	this.id_to_window[wid] = win;
 	if (!override_redirect) {
-		if(this.normal_fullscreen_mode) {
-			if(win.windowtype == "NORMAL") {
-				win.undecorate();
-				win.set_maximized(true);
-			}
-		}
 		var geom = win.get_internal_geometry();
 		this.send(["map-window", wid, geom.x, geom.y, geom.w, geom.h, this._get_client_properties(win)]);
 		this._window_set_focus(win);
@@ -975,31 +1071,36 @@ XpraClient.prototype._window_geometry_changed = function(win) {
 }
 
 XpraClient.prototype._window_mouse_move = function(win, x, y, modifiers, buttons) {
+	win.client._check_browser_language();
 	var wid = win.wid;
 	win.client.send(["pointer-position", wid, [x, y], modifiers, buttons]);
 }
 
 XpraClient.prototype._window_mouse_click = function(win, button, pressed, x, y, modifiers, buttons) {
 	var wid = win.wid;
+	var client = win.client;
+	//console.debug("click focus=", client.focus, ", wid=", wid);
 	// dont call set focus unless the focus has actually changed
-	if(win.client.focus != wid) {
-		win.client._window_set_focus(win);
+	if(client.focus != wid) {
+		client._window_set_focus(win);
 	}
-	win.client.send(["button-action", wid, button, pressed, [x, y], modifiers, buttons]);
+	client.send(["button-action", wid, button, pressed, [x, y], modifiers, buttons]);
 }
 
 XpraClient.prototype._window_set_focus = function(win) {
 	// don't send focus packet for override_redirect windows!
 	if(!win.override_redirect) {
+		var client = win.client;
 		var wid = win.wid;
-		win.client.focus = wid;
-		win.client.topwindow = wid;
-		win.client.send(["focus", wid, []]);
+		client.focus = wid;
+		client.topwindow = wid;
+		client.send(["focus", wid, []]);
 		//set the focused flag on all windows:
-		for (var i in win.client.id_to_window) {
-			var iwin = win.client.id_to_window[i];
+		for (var i in client.id_to_window) {
+			var iwin = client.id_to_window[i];
 			iwin.focused = (i==wid);
 			iwin.updateFocus();
+			iwin.update_zindex();
 		}
 	}
 }
@@ -1186,8 +1287,6 @@ XpraClient.prototype._process_error = function(packet, ctx) {
 	if (!ctx.reconnect || ctx.reconnect_attempt>=ctx.reconnect_count) {
 		// call the client's close callback
 		ctx.callback_close(ctx.disconnect_reason);
-		// clear the reason
-		ctx.disconnect_reason = null;
 	}
 }
 
@@ -1225,18 +1324,17 @@ XpraClient.prototype._process_close = function(packet, ctx) {
 		ctx.close_protocol();
 		// call the client's close callback
 		ctx.callback_close(ctx.disconnect_reason);
-		// clear the reason
-		ctx.disconnect_reason = null;
 	}
 }
 
 XpraClient.prototype._process_disconnect = function(packet, ctx) {
 	// save the disconnect reason
-	ctx.disconnect_reason = packet[1];
+	var reason = packet[1];
+	console.debug("disconnect reason:", reason);
+	ctx.disconnect_reason = reason;
 	ctx.close();
 	// call the client's close callback
-	ctx.callback_close(ctx.disconnect_reason);
-	ctx.disconnect_reason = null;
+	ctx.callback_close(reason);
 }
 
 XpraClient.prototype._process_startup_complete = function(packet, ctx) {
@@ -1414,9 +1512,15 @@ XpraClient.prototype._process_challenge = function(packet, ctx) {
 	var challenge_response = null;
 	client_salt = Utilities.getSalt(salt.length);
 	salt = Utilities.xorString(salt, client_salt);
-	if (digest == "hmac") {
+	console.log("challenge using digest", digest);
+	if (digest.startsWith("hmac")) {
+		var hash="md5";
+		if (digest.indexOf("+")>0) {
+			hash = digest.split("+")[1];
+		}
+		console.log("hmac using hash", hash);
 		var hmac = forge.hmac.create();
-		hmac.start('md5', ctx.password);
+		hmac.start(hash, ctx.password);
 		hmac.update(salt);
 		challenge_response = hmac.digest().toHex();
 	} else if (digest == "xor") {
@@ -1461,6 +1565,20 @@ XpraClient.prototype._process_window_metadata = function(packet, ctx) {
 		win.update_metadata(metadata);
 	}
 }
+
+XpraClient.prototype._process_initiate_moveresize = function(packet, ctx) {
+    var wid = packet[1],
+    	win = ctx.id_to_window[wid];
+	if (win!=null) {
+		var x_root = packet[2],
+			y_root = packet[3],
+			direction = packet[4],
+			button = packet[5],
+			source_indication = packet[6];
+        win.initiate_moveresize(x_root, y_root, direction, button, source_indication)
+	}
+}
+
 
 XpraClient.prototype.on_last_window = function() {
 	//this hook can be overriden

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2016 Antoine Martin <antoine@devloop.org.uk>
+ * Copyright (c) 2013-2017 Antoine Martin <antoine@devloop.org.uk>
  * Copyright (c) 2014 Joshua Higgins <josh@kxes.net>
  * Copyright (c) 2015-2016 Spikes, Inc.
  * Licensed under MPL 2.0
@@ -61,6 +61,8 @@ function XpraWindow(client, canvas_state, wid, x, y, w, h, metadata, override_re
 	this.saved_geometry = null;
 	this.maximized = false;
 	this.focused = false;
+	this.decorations = true;
+	this.resizable = false;
 
 	//these values represent the internal geometry
 	//i.e. geometry as windows appear to the compositor
@@ -82,6 +84,7 @@ function XpraWindow(client, canvas_state, wid, x, y, w, h, metadata, override_re
 	this.topoffset = parseInt(jQuery(this.div).css('border-top-width'), 10);
 	this.bottomoffset = parseInt(jQuery(this.div).css('border-bottom-width'), 10);
 
+	this.mousedown_event = null;
 	// Hook up the events we want to receive:
 	jQuery(this.canvas).mousedown(function (e) {
 		me.on_mousedown(e);
@@ -104,50 +107,49 @@ function XpraWindow(client, canvas_state, wid, x, y, w, h, metadata, override_re
 
 	// create the decoration as part of the window, style is in CSS
 	jQuery(this.div).addClass("window");
-	jQuery(this.div).addClass("window-" + this.windowtype);
-	// add a title bar to this window if we need to
-	if((this.windowtype == "NORMAL") || (this.windowtype == "DIALOG") || (this.windowtype == "UTILITY")) {
-		if(!this.override_redirect) {
-			// create header
-			jQuery(this.div).prepend('<div id="head' + String(wid) + '" class="windowhead"> '+
-					'<span class="windowicon"><img src="../icons/noicon.png" id="windowicon' + String(wid) + '" /></span> '+
-					'<span class="windowtitle" id="title' + String(wid) + '">' + this.title + '</span> '+
-					'<span class="windowbuttons"> '+
-					'<span id="maximize' + String(wid) + '"><img src="../icons/maximize.png" /></span> '+
-					'<span id="close' + String(wid) + '"><img src="../icons/close.png" /></span> '+
-					'</span></div>');
-			// make draggable
-			jQuery(this.div).draggable({
-				cancel: "canvas",
-				stop: function(e, ui) {
-					me.handle_moved(ui);
-				}
-			});
-			// attach resize handles
-			jQuery(this.div).resizable({
-			  helper: "ui-resizable-helper",
-			  stop: function(e, ui) {
-			  	me.handle_resized(ui);
-			  }
-			});
-			this.d_header = '#head' + String(wid);
-			this.d_closebtn = '#close' + String(wid);
-			this.d_maximizebtn = '#maximize' + String(wid);
-			// adjust top offset
-			this.topoffset = this.topoffset + parseInt(jQuery(this.d_header).css('height'), 10);
-			// assign some interesting callbacks
-			jQuery('#head' + String(wid)).click(function() {
-				set_focus_cb(me);
-			});
-			jQuery('#close' + String(wid)).click(function() {
-				window_closed_cb(me);
-			});
-			jQuery('#maximize' + String(wid)).click(function() {
-				me.toggle_maximized();
-			});
-		} else {
-			jQuery(this.div).addClass("override-redirect");
-		}
+	if (this.windowtype) {
+		jQuery(this.div).addClass("window-" + this.windowtype);
+	}
+
+	if(this.override_redirect) {
+		jQuery(this.div).addClass("override-redirect");
+	}
+	else if((this.windowtype == "") || (this.windowtype == "NORMAL") || (this.windowtype == "DIALOG") || (this.windowtype == "UTILITY")) {
+		this.resizable = true;
+		// add a title bar to this window if we need to
+		// create header
+		jQuery(this.div).prepend('<div id="head' + String(wid) + '" class="windowhead"> '+
+				'<span class="windowicon"><img src="../icons/noicon.png" id="windowicon' + String(wid) + '" /></span> '+
+				'<span class="windowtitle" id="title' + String(wid) + '">' + this.title + '</span> '+
+				'<span class="windowbuttons"> '+
+				'<span id="maximize' + String(wid) + '"><img src="../icons/maximize.png" /></span> '+
+				'<span id="close' + String(wid) + '"><img src="../icons/close.png" /></span> '+
+				'</span></div>');
+		// make draggable
+		jQuery(this.div).draggable({ cancel: "canvas" });
+		jQuery(this.div).on("dragstop",function(ev,ui){
+			me.handle_moved(ui);
+		});
+		// attach resize handles
+		jQuery(this.div).resizable({ helper: "ui-resizable-helper", "handles": "n, e, s, w, ne, se, sw, nw" });
+		jQuery(this.div).on("resizestop",function(ev,ui){
+		  	me.handle_resized(ui);
+		});
+		this.d_header = '#head' + String(wid);
+		this.d_closebtn = '#close' + String(wid);
+		this.d_maximizebtn = '#maximize' + String(wid);
+		// adjust top offset
+		this.topoffset = this.topoffset + parseInt(jQuery(this.d_header).css('height'), 10);
+		// assign some interesting callbacks
+		jQuery(this.d_header).click(function() {
+			set_focus_cb(me);
+		});
+		jQuery(this.d_closebtn).click(function() {
+			window_closed_cb(me);
+		});
+		jQuery(this.d_maximizebtn).click(function() {
+			me.toggle_maximized();
+		});
 	}
 
 	// create the spinner overlay div
@@ -324,8 +326,11 @@ XpraWindow.prototype.on_mousedown = function(e) {
 	// pass the click to the area:
 	var modifiers = [];
 	var buttons = [];
-	this.handle_mouse_click(mouse.button, true, mx, my, modifiers, buttons);
-	return;
+	this.mousedown_event = e;
+	var me = this;
+	setTimeout(function() {
+		me.handle_mouse_click(mouse.button, true, mx, my, modifiers, buttons);
+	}, 0);
 };
 
 XpraWindow.prototype.on_mouseup = function(e) {
@@ -333,13 +338,13 @@ XpraWindow.prototype.on_mouseup = function(e) {
 	var mouse = this.getMouse(e),
 			mx = Math.round(mouse.x),
 			my = Math.round(mouse.y);
-	if (!this.dragging) {
-		var modifiers = [];
-		var buttons = [];
-		this.handle_mouse_click(mouse.button, false, mx, my, modifiers, buttons);
-	}
-
-	this.dragging = false;
+	var modifiers = [];
+	var buttons = [];
+	this.mousedown_event = null;
+	var me = this;
+	setTimeout(function() {
+		me.handle_mouse_click(mouse.button, false, mx, my, modifiers, buttons);
+	}, 0);
 };
 
 XpraWindow.prototype.on_mousescroll = function(e) {
@@ -397,12 +402,46 @@ XpraWindow.prototype.toString = function() {
 	return "Window("+this.wid+")";
 };
 
+
+XpraWindow.prototype.update_zindex = function() {
+	var z = 5000;
+	if (this.override_redirect) {
+		z = 15000;
+	}
+	else if (this.windowtype=="DROPDOWN" || this.windowtype=="TOOLTIP" ||
+			this.windowtype=="POPUP_MENU" || this.windowtype=="MENU" ||
+			this.windowtype=="COMBO") {
+		z = 20000;
+	}
+	else if (this.windowtype=="UTILITY" || this.windowtype=="DIALOG") {
+		z = 15000;
+	}
+	var above = this.metadata["above"];
+	if (above) {
+		z += 5000;
+	}
+	else {
+		var below = this.metadata["below"];
+		if (below) {
+			z -= 5000;
+		}
+	}
+	if (this.focused) {
+		z += 1000;
+	}
+	jQuery(this.div).css('z-index', z);
+}
+
+
 /**
  * Update our metadata cache with new key-values,
  * then call set_metadata with these new key-values.
  */
 XpraWindow.prototype.update_metadata = function(metadata, safe) {
 	//update our metadata cache with new key-values:
+	if (this.debug) {
+		console.debug("update_metadata(", metadata, ")");
+	}
 	for (var attrname in metadata) {
 		this.metadata[attrname] = metadata[attrname];
 	}
@@ -411,6 +450,7 @@ XpraWindow.prototype.update_metadata = function(metadata, safe) {
 	} else {
 		this.set_metadata(metadata)
 	}
+	this.update_zindex();
 };
 
 /**
@@ -419,10 +459,83 @@ XpraWindow.prototype.update_metadata = function(metadata, safe) {
 XpraWindow.prototype.set_metadata_safe = function(metadata) {
 	if ("title" in metadata) {
 		this.title = metadata["title"];
-		jQuery('#title' + this.wid).html(this.title);
+		jQuery('#title' + this.wid).html(decodeURIComponent(escape(this.title)));
 	}
 	if ("window-type" in metadata) {
 		this.windowtype = metadata["window-type"][0];
+	}
+	if ("decorations" in metadata) {
+		this.decorations = metadata["decorations"];
+		this._set_decorated(this.decorations);
+		this.updateCSSGeometry();
+		this.handle_resized();
+	}
+	if ("opacity" in metadata) {
+		var opacity = metadata["opacity"];
+		if (opacity<0) {
+			opacity = 1.0;
+		}
+		else {
+			opacity = opacity / 0x100000000
+		}
+		jQuery(this.div).css('opacity', ''+opacity);
+	}
+	//if the attribute is set, add the corresponding css class:
+	var attrs = ["modal", "above", "below"];
+	for (var i = 0; i < attrs.length; i++) {
+		var attr = attrs[i];
+		if (attr in metadata) {
+			var value = metadata[attr];
+			if (value) {
+				jQuery(this.div).addClass(attr);
+			}
+			else {
+				jQuery(this.div).removeClass(attr);
+			}
+		}
+	}
+	if (this.resizable && "size-constraints" in metadata) {
+		var mw, mh;
+		var size_constraints = metadata["size-constraints"];
+		var min_size = size_constraints["minimum-size"];
+		mw=null, mh=null;
+		if (min_size) {
+			mw = min_size[0];
+			mh = min_size[1];
+		}
+		jQuery(this.div).resizable("option", "minWidth", mw);
+		jQuery(this.div).resizable("option", "minHeight", mh);
+		var max_size = size_constraints["maximum-size"];
+		mw=null, mh=null;
+		if (max_size) {
+			mw = max_size[0];
+			mh = max_size[1];
+		}
+		jQuery(this.div).resizable("option", "maxWidth", mw);
+		jQuery(this.div).resizable("option", "maxHeight", mh);
+		//TODO: aspectRatio, grid
+	}
+	if ("class-instance" in metadata) {
+		var wm_class = metadata["class-instance"];
+		var classes = jQuery(this.div).prop("classList");
+		if (classes) {
+			//remove any existing "wmclass-" classes not in the new wm_class list:
+			for (var i = 0; i < classes.length; i++) {
+				var _class = classes[i];
+				if (_class.startsWith("wmclass-") && wm_class && wm_class.indexOf(_class)<0) {
+					jQuery(this.div).removeClass(_class);
+				}
+			}
+		}
+		if (wm_class) {
+			//add new wm-class:
+			for (var i = 0; i < wm_class.length; i++) {
+				var _class = wm_class[i].replace(/[^0-9a-zA-Z]/g, '');
+				if (_class && !jQuery(this.div).hasClass(_class)) {
+					jQuery(this.div).addClass("wmclass-"+_class);
+				}
+			}
+		}
 	}
 };
 
@@ -430,18 +543,12 @@ XpraWindow.prototype.set_metadata_safe = function(metadata) {
  * Apply new metadata settings.
  */
 XpraWindow.prototype.set_metadata = function(metadata) {
+	this.set_metadata_safe(metadata);
 	if ("fullscreen" in metadata) {
 		this.set_fullscreen(metadata["fullscreen"]==1);
 	}
 	if ("maximized" in metadata) {
 		this.set_maximized(metadata["maximized"]==1);
-	}
-	if ("title" in metadata) {
-		this.title = metadata["title"];
-		jQuery('#title' + this.wid).html(this.title);
-	}
-	if ("window-type" in metadata) {
-		this.windowtype = metadata["window-type"][0];
 	}
 };
 
@@ -477,14 +584,13 @@ XpraWindow.prototype.restore_geometry = function() {
  * Maximize / unmaximizes the window.
  */
 XpraWindow.prototype.set_maximized = function(maximized) {
-	//show("set_maximized("+maximized+")");
 	if (this.maximized==maximized) {
 		return;
 	}
 	this.max_save_restore(maximized);
 	this.maximized = maximized;
 	this.handle_resized();
-	// enable or disable the draggable event
+	// disable the draggable event when maximized
 	if(this.maximized) {
 		jQuery(this.div).draggable('disable');
 	} else {
@@ -496,30 +602,45 @@ XpraWindow.prototype.set_maximized = function(maximized) {
  * Toggle maximized state
  */
 XpraWindow.prototype.toggle_maximized = function() {
-	//show("set_maximized("+maximized+")");
-	if (this.maximized==true) {
-		this.set_maximized(false);
-	} else {
-		this.set_maximized(true);
-	}
+	this.set_maximized(!this.maximized);
 };
 
 /**
  * Fullscreen / unfullscreen the window.
  */
 XpraWindow.prototype.set_fullscreen = function(fullscreen) {
-	/*
-	TODO
-	//show("set_fullscreen("+fullscreen+")");
 	if (this.fullscreen==fullscreen) {
 		return;
 	}
+	if (this.resizable) {
+		if (fullscreen) {
+			this._set_decorated(false);
+		}
+		else {
+			this._set_decorated(this.decorations);
+		}
+	}
 	this.max_save_restore(fullscreen);
 	this.fullscreen = fullscreen;
-	this.calculate_offsets();
-	this.handle_resize();
-	*/
+	this.updateCSSGeometry();
+	this.handle_resized();
 };
+
+
+XpraWindow.prototype._set_decorated = function(decorated) {
+	this.topoffset = parseInt(jQuery(this.div).css('border-top-width'), 10);
+	if (decorated) {
+		jQuery('#head' + this.wid).show();
+		jQuery(this.div).removeClass("undecorated");
+		jQuery(this.div).addClass("window");
+		this.topoffset = this.topoffset + parseInt(jQuery(this.d_header).css('height'), 10);
+	}
+	else {
+		jQuery('#head' + this.wid).hide();
+		jQuery(this.div).removeClass("window");
+		jQuery(this.div).addClass("undecorated");
+	}
+}
 
 /**
  * Either:
@@ -550,20 +671,6 @@ XpraWindow.prototype.fill_screen = function() {
 	this.h = (screen_size[1] - this.topoffset) - this.bottomoffset;
 };
 
-XpraWindow.prototype.undecorate = function() {
-	// hide the window decoration
-	jQuery(this.d_header).hide();
-	// replace window style
-	jQuery(this.div).removeClass("window");
-	jQuery(this.div).addClass("undecorated");
-	// reset the offsets
-	this.leftoffset = parseInt(jQuery(this.div).css('border-left-width'), 10);
-	this.rightoffset = parseInt(jQuery(this.div).css('border-right-width'), 10);
-	this.topoffset = parseInt(jQuery(this.div).css('border-top-width'), 10);
-	this.bottomoffset = parseInt(jQuery(this.div).css('border-bottom-width'), 10);
-	// update geometry
-	this.updateCSSGeometry();
-}
 
 /**
  * We have resized the window, so we need to:
@@ -577,6 +684,8 @@ XpraWindow.prototype.handle_resized = function(e) {
 	// remote resize will call this.resize()
 	// need to update the internal geometry
 	if(e) {
+		this.x = this.x + Math.round(e.position.left - e.originalPosition.left);
+		this.y = this.y + Math.round(e.position.top - e.originalPosition.top);
 		this.w = Math.round(e.size.width) - this.leftoffset - this.rightoffset;
 		this.h = Math.round(e.size.height) - this.topoffset - this.bottomoffset;
 	}
@@ -642,6 +751,33 @@ XpraWindow.prototype.resize = function(w, h) {
 	this.move_resize(this.x, this.y, w, h);
 };
 
+XpraWindow.prototype.initiate_moveresize = function(x_root, y_root, direction, button, source_indication) {
+	var dir_str = MOVERESIZE_DIRECTION_STRING[direction];
+	this.log("initiate_moveresize", dir_str, [x_root, y_root, direction, button, source_indication]);
+	if (direction==MOVERESIZE_MOVE) {
+		var e = this.mousedown_event;
+		e.type = "mousedown.draggable";
+		e.target = this.div[0];
+		this.div.trigger(e);
+		//jQuery(this.div).trigger("mousedown");
+	}
+	else if (direction==MOVERESIZE_CANCEL) {
+		jQuery(this.div).draggable('disable');
+		jQuery(this.div).draggable('enable');
+	}
+	else if (direction in MOVERESIZE_DIRECTION_JS_NAME) {
+		var js_dir = MOVERESIZE_DIRECTION_JS_NAME[direction];
+		var resize_widget = jQuery(this.div).find(".ui-resizable-handle.ui-resizable-"+js_dir).first();
+		if (resize_widget) {
+			var pageX = resize_widget.offset().left;
+			var pageY = resize_widget.offset().top;
+			resize_widget.trigger("mouseover");
+			resize_widget.trigger({ type: "mousedown", which: 1, pageX: pageX, pageY: pageY });
+		}
+	}
+}
+
+
 /**
  * Returns the geometry of the window backing image,
  * the inner window geometry (without any borders or top bar).
@@ -681,6 +817,8 @@ XpraWindow.prototype.handle_mouse_move = function(mx, my, modifiers, buttons) {
 
 XpraWindow.prototype.update_icon = function(width, height, encoding, img_data) {
 	if (encoding=="png") {
+		//move title to the right:
+		$("#title"+ String(this.wid)).css('left', 32);
 		jQuery('#windowicon' + String(this.wid)).attr('src', "data:image/"+encoding+";base64," + this._arrayBufferToBase64(img_data));
 	}
 };
@@ -828,7 +966,7 @@ XpraWindow.prototype._init_video = function(width, height, coding, profile, leve
 	this.video.setAttribute('height', height);
 	this.video.style.pointerEvents = "all";
 	this.video.style.position = "absolute";
-	this.video.style.zIndex = "1";
+	this.video.style.zIndex = this.div.css("z-index")+1;
 	this.video.style.left  = ""+this.leftoffset+"px";
 	this.video.style.top = ""+this.topoffset+"px";
 	if(this.debug) {
@@ -1040,9 +1178,9 @@ XpraWindow.prototype.do_paint = function paint(x, y, width, height, coding, img_
 			var level  = options["level"] || "3.0";
 			this._init_video(width, height, coding, profile, level);
 		}
-		else if (this.video.style.zIndex != "1"){
-			//make sure video is on the top layer:
-			this.video.style.zIndex = "1";
+		else {
+			//keep it above the div:
+			this.video.style.zIndex = this.div.css("z-index")+1;
 		}
 		if(img_data.length>0) {
 			if(this.debug) {

@@ -3,7 +3,7 @@
 
 <head>
 	<!--
-	Copyright (c) 2013-2016 Antoine Martin <antoine@devloop.org.uk>
+	Copyright (c) 2013-2017 Antoine Martin <antoine@devloop.org.uk>
 	Copyright (c) 2014 Joshua Higgins <josh@kxes.net>
 	Licensed under MPL 2.0
 	-->
@@ -34,12 +34,12 @@
 
 <div class="container">
 
-		<form class="form-signin">
+		<form class="form-signin" action="./index.html">
 
-	  	<img src="icons/xpra-logo.png" alt="xpra logo">
-		<h2 class="form-signin-heading">Xpra HTML5 Client</h2>
+	  	  <img src="icons/xpra-logo.png" alt="xpra logo">
+		  <h2 class="form-signin-heading">Xpra HTML5 Client</h2>
 
-		<div id="alert-disconnect" class="alert alert-info" role="alert" style="display:none;">
+		  <div id="alert-disconnect" class="alert alert-info" role="alert" style="display:none;">
 		  	<p>You were disconnected for the following reason:</p>
 		  	<p><span id="disconnect-reason"></span></p>
 		  </div>
@@ -226,9 +226,6 @@
 				  	<input type="checkbox" id="video"> <span>Video (experimental) <input type="checkbox" id="mediasource_video"> Native decoding</span>
 				  </li>
 				  <li class="list-group-item">
-				  	<input type="checkbox" id="normal_fullscreen"> <span>Normal fullscreen windows</span>
-				  </li>
-				  <li class="list-group-item">
 				  	<input type="checkbox" id="debug"> <span>Debugging</span>
 				  </li>
 				</ul>
@@ -272,12 +269,16 @@ if (!window.location.getParameter ) {
 	};
 }
 
-function getparam(name) {
-	return window.location.getParameter(name);
+function getparam(prop) {
+	var value = window.location.getParameter(prop);
+	if (value === undefined && typeof(Storage) !== undefined) {
+		value = sessionStorage.getItem(prop);
+	}
+	return value;
 }
-function getboolparam(name, default_value) {
-	var v = window.location.getParameter(name);
-	if(v==null) {
+function getboolparam(prop, default_value) {
+	var v = getparam(prop);
+	if(v===null) {
 		return default_value;
 	}
 	return ["true", "on", "1"].indexOf(String(v).toLowerCase())>=0;
@@ -289,59 +290,60 @@ function encodeData(s) {
 
 function doConnect() {
 	// url to client
-	var url = "/index.html?submit=true";
-	var val_props = ["server", "port", "username", "password", "encoding", "keyboard_layout"];
+	var url = "/index.html";
+	function add_prop(prop, value) {
+		if (typeof(Storage) !== "undefined") {
+			if (value===null || value==="undefined") {
+				sessionStorage.removeItem(prop);
+			}
+			else {
+				sessionStorage.setItem(prop, value);
+			}
+		} else {
+			if (value===null || value==="undefined") {
+				value = "";
+			}
+			url = url + "&"+prop+"="+encodeData(""+value);
+		}
+	}
+	add_prop("submit", true);
+	var val_props = ["server", "port", "username", "password", "encoding", "keyboard_layout", "audio_codec"];
 	for (var i = 0; i < val_props.length; i++) {
 		var prop = val_props[i];
 		var value = document.getElementById(prop).value;
 		if (value.length>0) {
-			url = url + "&"+prop+"="+value;
+			add_prop(prop, value);
 		}
 	}
 
-	var sound = document.getElementById("sound").checked;
-	if(sound) {
-		var audio_codec = document.getElementById("audio_codec");
-		if(audio_codec) {
-			url = url + "&audio_codec="+encodeData(audio_codec.value);
-		}
-		var ignore_audio_blacklist = document.getElementById("ignore_audio_blacklist");
-		if(ignore_audio_blacklist && ignore_audio_blacklist.value) {
-			url = url + "&ignore_audio_blacklist="+encodeData(ignore_audio_blacklist.value);
-		}
-	}
 	var start = null;
 	if (document.getElementById("action_connect").checked) {
-		//default action
+		add_prop("action", "connect");
 	}
 	else if (document.getElementById("action_start").checked) {
-		url = url + "&action=start";
+		add_prop("action", "start");
 		start = document.getElementById("start_command").value;
 	}
 	else if (document.getElementById("action_start_desktop").checked) {
-		url = url + "&action=start-desktop";
+		add_prop("action", "start-desktop");
 		start = document.getElementById("start_desktop_command").value;
 	}
 	else if (document.getElementById("action_shadow").checked) {
-		url = url + "&action=shadow";
+		add_prop("action", "shadow");
 	}
 	if(start) {
-		url = url + "&start="+encodeData(start);
+		add_prop("start", start);
 	}
 
 	var bool_props = ["clipboard", "printing", "file_transfer",
+		"sound", "ignore_audio_blacklist",
 		"exit_with_children", "exit_with_client",
 		"sharing", "steal", "reconnect",
 		"video", "mediasource_video",
-		"normal_fullscreen", "debug", "insecure"];
+		"debug", "insecure"];
 	for (var i = 0; i < bool_props.length; i++) {
 		var prop = bool_props[i];
-		if(document.getElementById(prop).checked) {
-			url = url + "&"+prop+"=true";
-		}
-		else {
-			url = url + "&"+prop+"=false";
-		}
+		add_prop(prop, document.getElementById(prop).checked);
 	}
 	window.location = url;
 }
@@ -349,7 +351,7 @@ function doConnect() {
 $(document).ready(function() {
 
 	var ssl = document.location.protocol=="https:";
-	var disconnect_reason = window.location.getParameter("disconnect") || null;
+	var disconnect_reason = getparam("disconnect") || null;
 
 	if(disconnect_reason) {
 		document.getElementById("alert-disconnect").style.display = "block";
@@ -371,9 +373,8 @@ $(document).ready(function() {
 	   	$('input#password').prop("disabled", true);
 		var insecure_input = document.getElementById("insecure");
 		insecure_input.onchange = function() {
-   			$('input#password').prop("disabled", !insecure_input.checked);
+   			$('input#password').prop("disabled", !insecure_input.checked && typeof(Storage)==="undefined");
 		};
-		$('input#password').prop("disabled", !insecure_input.checked);
 	}
 
 	var action = getparam("action") || "";
@@ -411,6 +412,42 @@ $(document).ready(function() {
 
 	var keyboard_layout = Utilities.getKeyboardLayout();
 	document.getElementById('keyboard_layout').value = keyboard_layout;
+	try {
+		var req = new XMLHttpRequest()
+		req.open('GET', "/favicon.png?echo-headers", true);
+		req.onload = function (e) {
+			if (req.readyState === 4) {
+				if (req.status === 200) {
+					var headers = Utilities.ParseResponseHeaders(req.getAllResponseHeaders());
+					console.debug("headers:", headers);
+					var lang = headers["Echo-Accept-Language"];
+					//ie: lang = "en-gb,en-us;q=0.8,en;q=0.6"
+					if (lang) {
+						//just the first option:
+						console.debug("accept-language:", lang);
+						lang = lang.split(",")[0];		//ie: lang="en-gb"
+						console.debug("first language:", lang);
+						var locale = lang.split("-")[1];
+						if (locale) {
+							locale = locale.toLowerCase();
+							console.debug("request locale:", locale);
+							if (locale!=keyboard_layout) {
+								keyboard_layout = locale;
+								document.getElementById('keyboard_layout').value = keyboard_layout;
+							}
+						}
+					}
+					//
+				} else {
+					console.error(req.statusText);
+				}
+			}
+		};
+		req.send(null);
+	}
+	catch (e) {
+		console.warn("Warning: failed to get HTTP header probe:", e);
+	}
 
 	var audio_codec = getparam("audio_codec") || "";
 	var audio_codec_select = document.getElementById("audio_codec");
@@ -479,17 +516,25 @@ $(document).ready(function() {
 			"exit_with_children", "exit_with_client",
 			"sharing", "steal", "reconnect",
 			"video", "mediasource_video",
-			"normal_fullscreen", "debug", "insecure"];
+			"debug", "insecure"];
 	var default_on = ["steal", "clipboard", "printing", "file_transfer", "reconnect", "exit_with_children", "exit_with_client"];
 	for (var i = 0; i < bool_props.length; i++) {
 		var prop = bool_props[i];
 		var def = default_on.indexOf(prop)>=0;
 		document.getElementById(prop).checked = getboolparam(prop, def);
 	}
+	$('input#password').prop("disabled", !insecure_input.checked && typeof(Storage)==="undefined");
 
 	$("#expandopts").click(function() {
 		$("#hiddenopts").slideToggle();
 	});
+	//delete session params:
+	try {
+		sessionStorage.clear();
+	}
+	catch (e) {
+		//ignore
+	}
 });
 
 </script>

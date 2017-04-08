@@ -104,11 +104,38 @@ var Utilities = {
 		return 'unknown';
 	},
 
+	getFirstBrowserLanguage : function () {
+		var nav = window.navigator,
+			browserLanguagePropertyKeys = ['language', 'browserLanguage', 'systemLanguage', 'userLanguage'],
+			i,
+			language;
+		// support for HTML 5.1 "navigator.languages"
+		if (Array.isArray(nav.languages)) {
+			for (i = 0; i < nav.languages.length; i++) {
+				language = nav.languages[i];
+				if (language && language.length) {
+					return language;
+				}
+			}
+		}
+		// support for other well known properties in browsers
+		for (i = 0; i < browserLanguagePropertyKeys.length; i++) {
+			var prop = browserLanguagePropertyKeys[i];
+			language = nav[prop];
+			//console.debug(prop, "=", language);
+			if (language && language.length) {
+				return language;
+			}
+		}
+		return null;
+	},
+
 	getKeyboardLayout: function() {
-		//IE:
-		//navigator.systemLanguage
-		//navigator.browserLanguage
-		var v = window.navigator.userLanguage || window.navigator.language;
+		var v = Utilities.getFirstBrowserLanguage();
+		console.debug("getFirstBrowserLanguage()=", v);
+		if (v==null) {
+			return "us";
+		}
 		//ie: v="en_GB";
 		v = v.split(',')[0];
 		var l = v.split('-', 2);
@@ -119,7 +146,9 @@ var Utilities = {
 			return '';
 		}
 		//ie: "gb"
-		return l[1].toLowerCase();
+		var layout=l[1].toLowerCase();
+		console.debug("getKeyboardLayout()=", layout);
+		return layout;
 	},
 
 	getAudioContextClass : function() {
@@ -263,5 +292,68 @@ var Utilities = {
 			c.push(String.fromCharCode.apply(null, u8a.subarray(i, i+CHUNK_SZ)));
 		}
 		return c.join("");
+	},
+
+	/**
+	 * XmlHttpRequest's getAllResponseHeaders() method returns a string of response
+	 * headers according to the format described here:
+	 * http://www.w3.org/TR/XMLHttpRequest/#the-getallresponseheaders-method
+	 * This method parses that string into a user-friendly key/value pair object.
+	 */
+	ParseResponseHeaders : function(headerStr) {
+		var headers = {};
+		if (!headerStr) {
+			return headers;
+		}
+		var headerPairs = headerStr.split('\u000d\u000a');
+		for (var i = 0; i < headerPairs.length; i++) {
+			var headerPair = headerPairs[i];
+			// Can't use split() here because it does the wrong thing
+			// if the header value has the string ": " in it.
+			var index = headerPair.indexOf('\u003a\u0020');
+			if (index > 0) {
+				var key = headerPair.substring(0, index);
+				var val = headerPair.substring(index + 2);
+				headers[key] = val;
+			}
+		}
+		return headers;
 	}
 };
+
+var MOVERESIZE_SIZE_TOPLEFT      = 0;
+var MOVERESIZE_SIZE_TOP          = 1;
+var MOVERESIZE_SIZE_TOPRIGHT     = 2;
+var MOVERESIZE_SIZE_RIGHT        = 3;
+var MOVERESIZE_SIZE_BOTTOMRIGHT  = 4;
+var MOVERESIZE_SIZE_BOTTOM       = 5;
+var MOVERESIZE_SIZE_BOTTOMLEFT   = 6;
+var MOVERESIZE_SIZE_LEFT         = 7;
+var MOVERESIZE_MOVE              = 8;
+var MOVERESIZE_SIZE_KEYBOARD     = 9;
+var MOVERESIZE_MOVE_KEYBOARD     = 10;
+var MOVERESIZE_CANCEL            = 11;
+var MOVERESIZE_DIRECTION_STRING = {
+                               0    : "SIZE_TOPLEFT",
+                               1    : "SIZE_TOP",
+                               2    : "SIZE_TOPRIGHT",
+                               3    : "SIZE_RIGHT",
+                               4  	: "SIZE_BOTTOMRIGHT",
+                               5    : "SIZE_BOTTOM",
+                               6   	: "SIZE_BOTTOMLEFT",
+                               7    : "SIZE_LEFT",
+                               8	: "MOVE",
+                               9    : "SIZE_KEYBOARD",
+                               10   : "MOVE_KEYBOARD",
+                               11	: "CANCEL",
+                               };
+var MOVERESIZE_DIRECTION_JS_NAME = {
+        0	: "nw",
+        1	: "n",
+        2	: "ne",
+        3	: "e",
+        4	: "se",
+        5	: "s",
+        6	: "sw",
+        7	: "w",
+        };
