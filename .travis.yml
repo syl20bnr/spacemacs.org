@@ -1,0 +1,15 @@
+language: node_js
+sudo: required
+branches:
+  only:
+  - gh-pages
+node_js:
+  - "node"
+addons:
+  hosts:
+    - spacemacs.org
+before_install:
+  - sudo apt-get -y update
+  - sudo apt-get -y install linkchecker openssl
+  - npm install -g http-server
+script: ./travis.sh
