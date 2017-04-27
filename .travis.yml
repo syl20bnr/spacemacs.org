@@ -1,0 +1,14 @@
+language: generic
+sudo: required
+branches:
+  only:
+  - gh-pages
+addons:
+  hosts:
+    - spacemacs.org
+services:
+  - docker
+install:
+  - docker pull jare/linkchecker
+  - docker pull taka0225/alpine-http-server
+script: ./travis/travis.sh

@@ -1,0 +1,277 @@
+# Sample configuration file; see the linkcheckerrc(5) man page or
+# execute linkchecker -h for help on these options.
+# Commandline options override these settings.
+
+##################### output configuration ##########################
+[output]
+# enable debug messages; see 'linkchecker -h' for valid debug names
+#debug=all
+# print status output
+#status=1
+# change the logging type
+#log=xml
+# turn on/off --verbose
+#verbose=1
+# turn on/off --warnings
+warnings=off
+# turn on/off --quiet
+#quiet=1
+# additional file output
+#fileoutput = text, html, gml, sql
+
+
+##################### logger configuration ##########################
+# logger output part names:
+# all       For all parts
+# realurl   The full url link
+# result    Valid or invalid, with messages
+# extern    1 or 0, only in some logger types reported
+# base      <base href=...>
+# name      <a href=...>name</a> and <img alt="name">
+# parenturl The referrer URL if there is any
+# info      Some additional info, e.g. FTP welcome messages
+# warning   Warnings
+# dltime    Download time
+# checktime Check time
+# url       The original url name, can be relative
+# intro     The blurb at the beginning, "starting at ..."
+# outro     The blurb at the end, "found x errors ..."
+# stats     Statistics including URL lengths and contents.
+
+# each Logger can have separate configuration parameters
+
+# standard text logger
+[text]
+#filename=linkchecker-out.txt
+#parts=all
+# colors for the various parts, syntax is <color> or <type>;<color>
+# type can be bold, light, blink, invert
+# color can be default, black, red, green, yellow, blue, purple, cyan, white,
+# Black, Red, Green, Yellow, Blue, Purple, Cyan, White
+#colorparent=white
+#colorurl=default
+#colorname=default
+#colorreal=cyan
+#colorbase=purple
+#colorvalid=bold;green
+#colorinvalid=bold;red
+#colorinfo=default
+#colorwarning=bold;yellow
+#colordltime=default
+#colorreset=default
+
+# GML logger
+[gml]
+#filename=linkchecker-out.gml
+#parts=all
+# valid encodings are listed in http://docs.python.org/library/codecs.html#standard-encodings
+# default encoding is iso-8859-15
+#encoding=utf_16
+
+# DOT logger
+[dot]
+#filename=linkchecker-out.dot
+#parts=all
+# default encoding is ascii since the original DOT format does not
+# support other charsets
+#encoding=iso-8859-15
+
+# CSV logger
+[csv]
+#filename=linkchecker-out.csv
+#separator=,
+#quotechar="
+#parts=all
+
+# SQL logger
+[sql]
+#filename=linkchecker-out.sql
+#dbname=linksdb
+#separator=;
+#parts=all
+
+# HTML logger
+[html]
+#filename=linkchecker-out.html
+# colors for the various parts
+#colorbackground=#fff7e5
+#colorurl=#dcd5cf
+#colorborder=#000000
+#colorlink=#191c83
+#colorwarning=#e0954e
+#colorerror=#db4930
+#colorok=#3ba557
+#parts=all
+
+# blacklist logger
+[blacklist]
+#filename=~/.linkchecker/blacklist
+
+# custom xml logger
+[xml]
+#encoding=iso-8859-1
+
+# GraphXML logger
+[gxml]
+#encoding=iso-8859-1
+
+# Sitemap logger
+[sitemap]
+#priority=0.7
+#frequency=weekly
+
+
+##################### checking options ##########################
+[checking]
+# number of threads
+threads=16
+# connection timeout in seconds
+#timeout=60
+# Time to wait for checks to finish after the user aborts the first time
+# (with Ctrl-C or the abort button).
+#aborttimeout=300
+# The recursion level determines how many times links inside pages are followed.
+#recursionlevel=1
+# Basic NNTP server. Overrides NNTP_SERVER environment variable.
+#nntpserver=
+# parse a cookiefile for initial cookie data
+#cookiefile=/path/to/cookies.txt
+# User-Agent header string to send to HTTP web servers
+# Note that robots.txt are always checked with the original User-Agent.
+useragent=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.85 Safari/537.36
+# When checking finishes, write a memory dump to a temporary file.
+# The memory dump is written both when checking finishes normally
+# and when checking gets canceled.
+# The memory dump only works if the python-meliae package is installed.
+# Otherwise a warning is printed to install it.
+#debugmemory=0
+# When checking absolute URLs inside local files, the given root directory
+# is used as base URL.
+# Note that the given directory must have URL syntax, so it must use a slash
+# to join directories instead of a backslash.
+# And the given directory must end with a slash.
+# Unix example:
+#localwebroot=/var/www/
+# Windows example:
+#localwebroot=/C|/public_html/
+# Check SSL certificates. Set to an absolute pathname for a custom
+# CA cert bundle to use. Set to zero to disable SSL certificate verification.
+sslverify=0
+# Stop checking new URLs after the given number of seconds. Same as if the
+# user hits Ctrl-C after X seconds.
+#maxrunseconds=600
+# Maximum number of URLs to check. New URLs will not be queued after the
+# given number of URLs is checked.
+#maxnumurls=153
+# Maximum number of requests per second to one host.
+#maxrequestspersecond=10
+# Allowed URL schemes as a comma-separated list.
+#allowedschemes=http,https
+
+##################### filtering options ##########################
+[filtering]
+ignore=
+  ^http://localhost
+  ^https://localhost
+# ignore everything with 'lconline' in the URL name
+#  lconline
+# and ignore everything with 'bookmark' in the URL name
+#  bookmark
+# and ignore all mailto: URLs
+#  ^mailto:
+# do not recurse into the following URLs
+
+#nofollow=
+# just an example
+#  http://www\.example\.com/bla
+
+# Ignore specified warnings (see linkchecker -h for the list of
+# recognized warnings). Add a comma-separated list of warnings here
+# that prevent a valid URL from being logged. Note that the warning
+# will be logged in invalid URLs.
+#ignorewarnings=url-unicode-domain
+# Regular expression to add more URLs recognized as internal links.
+# Default is that URLs given on the command line are internal.
+#internlinks=^http://www\.example\.net/
+# Check external links
+checkextern=1
+
+
+##################### password authentication ##########################
+[authentication]
+# WARNING: if you store passwords in this configuration entry, make sure the
+# configuration file is not readable by other users.
+# Different user/password pairs for different URLs can be provided.
+# Entries are a triple (URL regular expression, username, password),
+# separated by whitespace.
+# If the regular expression matches, the given user/password pair is used
+# for authentication. The commandline options -u,-p match every link
+# and therefore override the entries given here. The first match wins.
+# At the moment, authentication is used for http[s] and ftp links.
+#entry=
+# Note that passwords are optional. If any passwords are stored here,
+# this file should not readable by other users.
+#  ^https?://www\.example\.com/~calvin/ calvin mypass
+#  ^ftp://www\.example\.com/secret/ calvin
+
+# if the website requires a login the URL and optionally the user and
+# password CGI fieldnames can be provided.
+#loginurl=http://www.example.com/
+
+# The name of the user and password CGI field
+#loginuserfield=login
+#loginpasswordfield=password
+# Optionally any additional CGI name/value pairs. Note that the default
+# values are submitted automatically.
+#loginextrafields=
+#  name1:value1
+#  name 2:value 2
+
+############################ Plugins ###################################
+#
+# uncomment sections to enable plugins
+
+# Check HTML anchors
+[AnchorCheck]
+
+# Print HTTP header info
+#[HttpHeaderInfo]
+# Comma separated list of header prefixes to print.
+# The names are case insensitive.
+# The default list is empty, so it should be non-empty when activating
+# this plugin.
+#prefixes=Server,X-
+
+# Add country info to URLs
+#[LocationInfo]
+
+# Run W3C syntax checks
+#[CssSyntaxCheck]
+#[HtmlSyntaxCheck]
+
+# Search for regular expression in page contents
+#[RegexCheck]
+#warningregex=Oracle Error
+
+# Search for viruses in page contents
+#[VirusCheck]
+#clamavconf=/etc/clamav/clam.conf
+
+# Check that SSL certificates are at least the given number of days valid.
+#[SslCertificateCheck]
+#sslcertwarndays=14
+
+# Parse and check links in PDF files
+#[PdfParser]
+
+# Parse and check links in Word files
+#[WordParser]
+
+# Parse and check links in Markdown files.
+# Supported links are:
+#        <http://autolink.com>
+#        [name](http://link.com "Optional title")
+#        [id]: http://link.com "Optional title"
+#[MarkdownCheck]
+# Regexp of filename
+#filename_re=.*\.(blog|markdown|md(own)?|mkdn?)$
