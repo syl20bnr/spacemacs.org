@@ -1,15 +1,14 @@
-language: node_js
+language: generic
 sudo: required
 branches:
   only:
   - gh-pages
-node_js:
-  - "node"
 addons:
   hosts:
     - spacemacs.org
-before_install:
-  - sudo apt-get -y update
-  - sudo apt-get -y install linkchecker openssl
-  - npm install -g http-server
-script: ./travis.sh
+services:
+  - docker
+install:
+  - docker pull jare/linkchecker
+  - docker pull taka0225/alpine-http-server
+script: ./travis/travis.sh
