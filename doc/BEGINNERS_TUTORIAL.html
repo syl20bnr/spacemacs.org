@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Beginners tutorial</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Beginners tutorial</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#why-spacemacs">1. Why Spacemacs?</a></li>
+<li><a href="#installation-and-setup">2. Installation and setup</a>
+<ul>
+<li><a href="#first-startup-and-choosing-the-default-editing-style">2.1. First startup and choosing the default editing style</a></li>
+</ul>
+</li>
+<li><a href="#getting-started">3. Getting started</a>
+<ul>
+<li><a href="#keybinding-notation">3.1. Keybinding notation</a></li>
+<li><a href="#modal-text-editing---why-and-how">3.2. Modal text editing - why and how?</a></li>
+<li><a href="#start-the-vim-tutorial">3.3. Start the Vim tutorial</a></li>
+<li><a href="#using-the-spacebar-to-launch-commands">3.4. Using the spacebar to launch commands</a></li>
+<li><a href="#buffers-windows-and-frames">3.5. Buffers, windows and frames</a></li>
+<li><a href="#accessing-files">3.6. Accessing files</a></li>
+</ul>
+</li>
+<li><a href="#configuring-spacemacs">4. Configuring Spacemacs</a>
+<ul>
+<li><a href="#adding-language-support-and-other-features-using-layers">4.1. Adding language support and other features: using layers</a></li>
+<li><a href="#changing-the-colour-theme">4.2. Changing the colour theme</a></li>
+<li><a href="#starting-maximized">4.3. Starting maximized</a></li>
+<li><a href="#quitting">4.4. Quitting</a></li>
+</ul>
+</li>
+<li><a href="#additional-features-tips-and-troubleshooting">5. Additional features, tips and troubleshooting</a>
+<ul>
+<li><a href="#org-mode">5.1. Org mode</a></li>
+<li><a href="#version-control---the-intelligent-way">5.2. Version control - the intelligent way</a></li>
+<li><a href="#daemon-mode-and-instant-startup-linux">5.3. Daemon mode and instant startup (Linux)</a></li>
+<li><a href="#swap-caps-lock-and-esc-keys-on-your-keyboard">5.4. Swap caps lock and esc keys on your keyboard</a></li>
+<li><a href="#troubleshooting-and-further-info">5.5. Troubleshooting and further info</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org857096b" class="outline-2">
+<h2 id="why-spacemacs"><a id="org857096b"></a><span class="section-number-2">1</span> Why Spacemacs?</h2>
+<div class="outline-text-2" id="text-why-spacemacs">
+<ul class="org-ul">
+<li>Unparallelled text and structure editing for all types of writing tasks:
+creative writing, blogging, note-taking, todo-lists, scientific papers&#x2026;</li>
+<li>Powerful modes for programming in dozens of programming languages</li>
+<li>Deeply customizable yet beginner-friendly</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org5fa9b84" class="outline-2">
+<h2 id="installation-and-setup"><a id="org5fa9b84"></a><span class="section-number-2">2</span> Installation and setup</h2>
+<div class="outline-text-2" id="text-installation-and-setup">
+<p>
+Spacemacs is a beginner-friendly and powerful extension of a popular text
+editor called Emacs. To install Spacemacs you need to first install base Emacs
+and then download the Spacemacs extension files, which is most easily done by
+using a program called Git. The steps are easy and detailed in the <a href="https://github.com/syl20bnr/spacemacs/blob/master/README.md#prerequisites">readm</a>e.
+</p>
+</div>
+
+<div id="outline-container-orgf933a72" class="outline-3">
+<h3 id="first-startup-and-choosing-the-default-editing-style"><a id="orgf933a72"></a><span class="section-number-3">2.1</span> First startup and choosing the default editing style</h3>
+<div class="outline-text-3" id="text-first-startup-and-choosing-the-default-editing-style">
+<p>
+Open Spacemacs by clicking the Emacs icon in your applications menu. The first
+time Spacemacs launches, it will load and install packages and prompt you for
+your preferred editing style. You have two options: Vim ("Among the stars aboard
+the Evil flagship") and Emacs. If you haven't used Emacs before or are unsure
+about the differences of the editing styles, we recommend selecting the default,
+Vim, by pressing <code>RET</code>. Using this configuration is introduced more thoroughly
+in the next section. If you are already familiar with Emacs or do not plan to
+switch into modal editing style, select Emacs with the left and right arrow
+keys. There is also a third option, "Hybrid", for more advanced users willing to
+use both styles.
+</p>
+
+<p>
+All of these choices can be easily changed later by editing the
+dotspacemacs-editing-style variable in the dotfile (see <a href="#configuring-spacemacs">Configuring Spacemacs</a>),
+so if modal editing does not sweep you away, you can switch to the Emacs style
+later.
+</p>
+
+<p>
+Next, you will be prompted for the distribution you would like to start with.
+The standard distribution is recommended, press <code>RET</code> to select it.
+</p>
+
+<p>
+Now Spacemacs will download and install required packages. This will take some
+minutes depending on your connection. After everything is installed (you will
+see the text <code>"n packages loaded in x s"</code> appear in the list under the Spacemacs
+logo), restart Spacemacs.
+</p>
+
+<p>
+Now your installation process is complete, congratulations! For troubleshooting,
+see the last section.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd06c6b4" class="outline-2">
+<h2 id="getting-started"><a id="orgd06c6b4"></a><span class="section-number-2">3</span> Getting started</h2>
+<div class="outline-text-2" id="text-getting-started">
+</div>
+
+<div id="outline-container-org0c87de1" class="outline-3">
+<h3 id="keybinding-notation"><a id="org0c87de1"></a><span class="section-number-3">3.1</span> Keybinding notation</h3>
+<div class="outline-text-3" id="text-keybinding-notation">
+<p>
+The power of Spacemacs lies in its efficient keybindings. Because it is built on
+Emacs, we will use Emacs conventions for keybinding notation. The most important
+modifier keys are:
+</p>
+
+<p>
+<code>SPC</code> = <code>Space</code>, used as the leader key in Vim editing style.
+<code>RET</code> = <code>Return</code> (also known as <code>Enter</code>)
+<code>C-</code> = <code>Ctrl</code>
+<code>M-</code> (for "meta") = <code>Alt</code>
+<code>S-</code> = <code>Shift</code>
+</p>
+
+<p>
+The modifier keys can be used either in a sequence or as key chords by pressing
+two keys at the same time. <code>SPC 1</code> is notation for a key sequence and means
+pressing <code>Space</code> first and pressing <code>1</code> after it. Key chords are notated by
+writing a <code>-</code> between the keys. Thus <code>C-c</code> means pressing <code>Ctrl</code> and the letter
+<code>c</code> simultaneously. Key chords and sequences can also be combined: <code>C-c a</code> means
+"First press <code>Ctrl</code> and <code>c</code> simultaneously, then press <code>a</code>". <code>C-c C-a</code> means
+"First press <code>Ctrl</code> and <code>c</code> simultaneously, then press <code>Ctrl</code> and <code>a</code>
+simultaneously".
+</p>
+
+<p>
+This document assumes you chose the "Vim" editing style and notates accordingly.
+If you chose the Emacs editing style, just substitute <code>SPC</code> with <code>M-m</code> in all
+the commands that begin with <code>SPC</code>.
+</p>
+
+<p>
+(Note: Other modifier keys such as <code>Super</code>, notated with a small-case <code>s-</code>, can
+be set up but this is rarely necessary in Spacemacs).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org14fc043" class="outline-3">
+<h3 id="modal-text-editing---why-and-how"><a id="org14fc043"></a><span class="section-number-3">3.2</span> Modal text editing - why and how?</h3>
+<div class="outline-text-3" id="text-modal-text-editing---why-and-how">
+<p>
+Writing (or programming) is typically not a simple linear process of adding
+words and lines until finished. At least as important part of the work consists
+of editing the text: deleting and rewriting parts, moving sentences around or
+jumping to an earlier point to fix a discrepancy.
+</p>
+
+<p>
+The crudest way to, for example, delete a certain line is moving the mouse to
+the line in question, clicking on the line and then deleting it by pressing
+backspace repeatedly. This is slow and inefficient, both because you have to
+take your hands from your keyboard and because repeatedly pressing backspace
+takes time. The more time you spend pressing keys, the more time and energy is
+wasted.
+</p>
+
+<p>
+To speed up editing, many editors use key chords for common editing tasks:
+<code>Control-c</code> for copying and so on. However, these types of shortcuts tend to
+have two problems. First, you have to press two keys at the same time, which is
+harder to coordinate and thus slower than pressing keys in a sequence. Second,
+you typically have to use your weakest fingers (pinkies) extensively and bend
+your wrists in unergonomic positions, which is uncomfortable for many and risks
+developing carpal tunnel syndrome in the long run.
+</p>
+
+<p>
+By contrast, Spacemacs uses modal editing. Modal editing means that different
+modes are used for editing and writing text. While this can sound complicated at
+first, in practice it can be learned quickly and once learned is unparallelled
+in speed and ergonomy. Our earlier example of deleting a certain line of text (a
+very common edit task) can be achieved in Spacemacs by simply navigating to the
+line in question with the keys <code>j</code> and <code>k</code> (navigation keys) and pressing <code>d</code>
+(for "delete") two times!
+</p>
+
+<p>
+You might have noticed that this was achieved entirely without moving your
+fingers from your home row (the row where your fingers lie in rest when
+touch-typing) and without using modifier keys.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd6a2610" class="outline-3">
+<h3 id="start-the-vim-tutorial"><a id="orgd6a2610"></a><span class="section-number-3">3.3</span> Start the Vim tutorial</h3>
+<div class="outline-text-3" id="text-start-the-vim-tutorial">
+<p>
+The modal editing features of Spacemacs originate from a text editor called Vi,
+and thus the modal editing tutorial is called eVIl tutor. Press <code>SPC h T</code> (that
+is, the spacebar followed by <code>h</code> and <code>T</code>) to familiarize yourself with
+modal editing.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge82079d" class="outline-3">
+<h3 id="using-the-spacebar-to-launch-commands"><a id="orge82079d"></a><span class="section-number-3">3.4</span> Using the spacebar to launch commands</h3>
+<div class="outline-text-3" id="text-using-the-spacebar-to-launch-commands">
+<p>
+Now that you are familiar with writing and editing text it is time to put the
+"Space" into Spacemacs. Because the spacebar is the most accessible key on the
+keyboard and is pressed by the strongest fingers (the thumbs), it is a natural
+choice for launching commands. You can think of it as the start menu of
+Spacemacs.
+</p>
+
+<p>
+A short instant after the spacebar is pressed a menu pops up. This interactive
+menu shows you what submenus and commands can be accessed by subsequent
+keypresses. Browsing around this menu is a great way of finding new features in
+Spacemacs, so keep on eye on the different options! <code>ESC</code> usually breaks the
+combination you don't want to use.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org200e713" class="outline-3">
+<h3 id="buffers-windows-and-frames"><a id="org200e713"></a><span class="section-number-3">3.5</span> Buffers, windows and frames</h3>
+<div class="outline-text-3" id="text-buffers-windows-and-frames">
+<p>
+Because Emacs (the extension of which Spacemacs is) was developed in the 80's
+before the advent of modern graphical user interfaces, Emacs has
+a different name of what we normally call "windows": in Emacs these are
+called "frames". A frame is what pops up when you launch Spacemacs from your
+desktop shortcut. A frame contains windows and buffers.
+</p>
+
+<p>
+Windows are the visual spaces a frame is divided into. The default
+is one, but windows can be split to allow editing multiple files in one frame.
+Let's try this. Press <code>SPC</code> to bring up the menu. You can see different letters
+having different submenus associated with them, usually with a mnemonic for
+easier recall. The letter w is assigned for "windows": press it. A new menu
+opens with further options. Write the character / to split the currently active
+window vertically into two.
+</p>
+
+<p>
+Now you should see two windows of this tutorial, and the one on the left should
+be active, as can be seen from the modeline in the bottom or by moving the
+cursor around using the navigation keys. This isn't very useful, as we
+would probably want to see a different file on the right.
+</p>
+
+<p>
+First, activate the window on the right with <code>SPC 2</code>. Now that the window on the
+right is active, we can open a different buffer for a different file. We'll use
+the scratch buffer, which can be used like a notepad. Be warned, unlike other
+buffers it doesn't prompt you whether you want to save the changes you've made
+when quitting the program! Press <code>SPC b</code> to open the buffers menu and then
+switch to the scratch buffer by pressing s. Now you have two different buffers
+in two different windows open, great! You can write something on the scratch
+buffer, and when you're done, make sure that the scratch window is active and
+close it by pressing <code>SPC w d</code>.
+</p>
+
+<p>
+Now the tutorial window fills the whole frame. But you only closed the window,
+not the scratch buffer, so the buffer is still open beneath the surface. You can
+quickly switch between the current buffer and the last with <code>SPC TAB</code>: use this
+a couple of times to switch between the tutorial and the scratch buffer. <code>SPC b</code>
+has more options for switching between buffers, for example <code>SPC b b</code> opens a
+searchable list of all currently open buffers and <code>SPC b d</code> closes the current
+buffer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0f79bce" class="outline-3">
+<h3 id="accessing-files"><a id="org0f79bce"></a><span class="section-number-3">3.6</span> Accessing files</h3>
+<div class="outline-text-3" id="text-accessing-files">
+<p>
+Files can be accessed under the <code>SPC f</code> mnemonic. You can navigate to any file
+with <code>SPC f f</code> and open it by pressing <code>RET</code>. Accessing recently opened files is
+a very common task and is done with <code>SPC f r</code>. An edited file is saved with
+<code>SPC f s</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad509c0" class="outline-2">
+<h2 id="configuring-spacemacs"><a id="orgad509c0"></a><span class="section-number-2">4</span> Configuring Spacemacs</h2>
+<div class="outline-text-2" id="text-configuring-spacemacs">
+</div>
+
+<div id="outline-container-org9f4c1e1" class="outline-3">
+<h3 id="adding-language-support-and-other-features-using-layers"><a id="org9f4c1e1"></a><span class="section-number-3">4.1</span> Adding language support and other features: using layers</h3>
+<div class="outline-text-3" id="text-adding-language-support-and-other-features-using-layers">
+<p>
+Spacemacs divides its configuration into self-contained units called
+configuration layers. These layers are stacked on top of each other to achieve a
+custom configuration.
+</p>
+
+<p>
+By default Spacemacs uses a dotfile called <code>~/.spacemacs</code> to control which layers
+to load. Within this file you can also configure certain features. First, split
+the window vertically to view both this tutorial and the dotfile simultaneously
+(<code>SPC w /</code>). Open the dotfile by pressing <code>SPC f e d</code>. Navigate to the line
+starting with "dotspacemacs-configuration-layers". The following lines have
+further instructions: uncomment <code>org</code> and <code>git</code> layers if you want to be
+familiarized with them. More <a href="../layers/LAYERS.html">layers</a> for different languages and tools can be
+found by pressing <code>SPC h SPC</code>. The added layers will be installed upon restart
+of Spacemacs.
+</p>
+
+<p>
+Some layers require third-party tools that you'll have to install via your
+favorite package manager. The layer readme will tell if this is the case.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga158e97" class="outline-3">
+<h3 id="changing-the-colour-theme"><a id="orga158e97"></a><span class="section-number-3">4.2</span> Changing the colour theme</h3>
+<div class="outline-text-3" id="text-changing-the-colour-theme">
+<p>
+You can toggle the theme by <code>SPC T n</code>. This cycles between currently
+activated themes. You can find more by adding the themes-megapack layer and
+activate them by writing their names in the dotspacemacs-themes list.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge462011" class="outline-3">
+<h3 id="starting-maximized"><a id="orge462011"></a><span class="section-number-3">4.3</span> Starting maximized</h3>
+<div class="outline-text-3" id="text-starting-maximized">
+<p>
+Editing the <code>dotspacemacs-maximized-at-startup</code> variable from <code>nil</code> to <code>t</code> will start
+Spacemacs maximized.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbe2e846" class="outline-3">
+<h3 id="quitting"><a id="orgbe2e846"></a><span class="section-number-3">4.4</span> Quitting</h3>
+<div class="outline-text-3" id="text-quitting">
+<p>
+Save the changes you've made to the dotfile with <code>SPC f s</code> and then quit emacs
+by <code>SPC q q</code>. You can return to this tutorial by clicking it on the home screen!
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org46ec2f0" class="outline-2">
+<h2 id="additional-features-tips-and-troubleshooting"><a id="org46ec2f0"></a><span class="section-number-2">5</span> Additional features, tips and troubleshooting</h2>
+<div class="outline-text-2" id="text-additional-features-tips-and-troubleshooting">
+</div>
+
+<div id="outline-container-org12f9cd2" class="outline-3">
+<h3 id="org-mode"><a id="org12f9cd2"></a><span class="section-number-3">5.1</span> Org mode</h3>
+<div class="outline-text-3" id="text-org-mode">
+<p>
+Org mode is one of the best features of Spacemacs and enough reason to warrant
+its use. Org mode's official description tells that it is "for keeping notes,
+maintaining todo lists, planning projects, and authoring documents with a fast
+and effective plain-text system", but this gives only a small inkling of its
+versatility. If you do any kind of writing at all, chances are that Org mode
+will make it easier and more fun. This tutorial was written in Org mode.
+</p>
+
+<p>
+Install the Org layer and open this tutorial. Make a copy named test.org with
+<code>SPC f c</code> somewhere outside of the .emacs.d directory. Write
+<code>SPC SPC org-mode RET</code> to switch to org mode from the write-only documentation mode.
+</p>
+
+<p>
+Press <code>S-TAB</code> repeatedly and observe that this cycles the visibility of the
+contents of different headlines. Press <code>t</code> in normal mode and observe that you
+can add TODO tags on headlines. Press <code>M-k</code> or <code>M-j</code> in normal mode and see how
+you can quickly move parts of the document around.
+</p>
+
+<p>
+This is not even scratching the surface of Org mode, so you should look into
+<a href="../layers/+emacs/org/README.html">org layer</a> with <code>SPC h SPC org</code> for more information. Googling for Org mode
+tutorials is also very helpful in finding out the most useful features of it!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8367739" class="outline-3">
+<h3 id="version-control---the-intelligent-way"><a id="org8367739"></a><span class="section-number-3">5.2</span> Version control - the intelligent way</h3>
+<div class="outline-text-3" id="text-version-control---the-intelligent-way">
+<p>
+Version control means keeping track of the changes and edits you have made to
+your document. Often version control is done by saving different versions of the
+document with different names, such as "document version 13" and so on. This is
+crude in many ways: if you want to, for example, re-add something you deleted,
+you have to manually open several past versions of the document to find the one
+with the deleted part, and then copy-paste it to the most recent file. More
+complicated edits will be harder still. Fortunately, there is a much better way.
+Git is the most popular version control system for programmers, but it can be as
+useful for people that are writing school or scientific papers, fiction or blog
+posts as well.
+</p>
+
+<p>
+Install the git layer, restart Spacemacs and open a file you want to version
+control. You can check the status of your file by pressing <code>SPC g s</code>. Select the
+folder your file is in. You will be prompted whether you want to create a
+repository in the folder. Select yes. You will see a list of "Untracked files":
+navigate to the file you want to track and press s to "stage changes". You might
+be prompted to save the file: save it if necessary. Now the new file needs to be
+commited: press c and c again. Two windows pop up: one showing the changes
+you've made since the last edit (in this case, the whole document) and another
+prompting for a commit message. Write "Initial commit", press ESC to exit back
+to normal mode and press <code>, c</code> confirm and quit the commit
+message. To abort, press <code>, a</code>.
+</p>
+
+<p>
+Now you know how to make a commit. The commits are saved in
+the (hidden) .git folder in the same folder the tracked file(s) are in. You can
+make further commits the same way.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgea56479" class="outline-3">
+<h3 id="daemon-mode-and-instant-startup-linux"><a id="orgea56479"></a><span class="section-number-3">5.3</span> Daemon mode and instant startup (Linux)</h3>
+<div class="outline-text-3" id="text-daemon-mode-and-instant-startup-linux">
+<p>
+Emacs can be used in daemon mode: a daemon runs in the background and launches
+clients. This way new frames launch instantly without delay. <a href="https://www.emacswiki.org/emacs/EmacsAsDaemon">Emacswiki</a> tells
+more about the daemon and how to set it to launch automatically on startup.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf7fd58b" class="outline-3">
+<h3 id="swap-caps-lock-and-esc-keys-on-your-keyboard"><a id="orgf7fd58b"></a><span class="section-number-3">5.4</span> Swap caps lock and esc keys on your keyboard</h3>
+<div class="outline-text-3" id="text-swap-caps-lock-and-esc-keys-on-your-keyboard">
+<p>
+This is useful outside of Spacemacs as well!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3306331" class="outline-3">
+<h3 id="troubleshooting-and-further-info"><a id="org3306331"></a><span class="section-number-3">5.5</span> Troubleshooting and further info</h3>
+<div class="outline-text-3" id="text-troubleshooting-and-further-info">
+<p>
+<code>SPC ?</code> shows you the keybindings in the current major mode, which is often
+helpful. For troubleshooting, please refer to the <a href="FAQ.html">FAQ</a> by pressing <code>SPC f e f</code>.
+More help is found under <code>SPC h</code>, and with <code>SPC h ~SPC</code> you can access the
+comprehensive Spacemacs documentation, including this tutorial and the layer
+documents.
+</p>
+
+<p>
+The <a href="https://gitter.im/syl20bnr/spacemacs">Gitter chat</a> can be used to ask questions if the answer cannot be found in
+the documentation. For a detailed review of Spacemacs' features one can also
+watch the <a href="https://www.youtube.com/playlist?list=PLrJ2YN5y27KLhd3yNs2dR8_inqtEiEweE">Spacemacs ABC series</a> by Eivind Fonn on Youtube. Some of the
+keybindings have changed since the videos were uploaded but seeing someone in
+action helps spot helpful tricks that would otherwise be missed.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

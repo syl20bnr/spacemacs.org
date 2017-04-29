@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -189,8 +273,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="chat"><a id="orgheadline1"></a><span class="section-number-2">1</span> Chat</h2>
+<div id="outline-container-org827c31b" class="outline-2">
+<h2 id="chat"><a id="org827c31b"></a><span class="section-number-2">1</span> Chat</h2>
 <div class="outline-text-2" id="text-chat">
 <ul class="org-ul">
 <li><a href="+chat/erc/README.html">erc</a></li>
@@ -201,8 +285,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="checkers"><a id="orgheadline2"></a><span class="section-number-2">2</span> Checkers</h2>
+<div id="outline-container-orgac5ef1c" class="outline-2">
+<h2 id="checkers"><a id="orgac5ef1c"></a><span class="section-number-2">2</span> Checkers</h2>
 <div class="outline-text-2" id="text-checkers">
 <ul class="org-ul">
 <li><a href="+checkers/spell-checking/README.html">spell-checking</a></li>
@@ -211,8 +295,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="completion"><a id="orgheadline3"></a><span class="section-number-2">3</span> Completion</h2>
+<div id="outline-container-org24ce86a" class="outline-2">
+<h2 id="completion"><a id="org24ce86a"></a><span class="section-number-2">3</span> Completion</h2>
 <div class="outline-text-2" id="text-completion">
 <ul class="org-ul">
 <li><a href="+completion/auto-completion/README.html">auto-completion</a></li>
@@ -222,19 +306,20 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="distributions"><a id="orgheadline4"></a><span class="section-number-2">4</span> Distributions</h2>
+<div id="outline-container-org5ee1e83" class="outline-2">
+<h2 id="distributions"><a id="org5ee1e83"></a><span class="section-number-2">4</span> Distributions</h2>
 <div class="outline-text-2" id="text-distributions">
 <ul class="org-ul">
 <li><a href="+distributions/spacemacs/README.html">spacemacs</a></li>
 <li><a href="+distributions/spacemacs-base/README.html">spacemacs-base</a></li>
 <li><a href="+distributions/spacemacs-bootstrap/README.html">spacemacs-bootstrap</a></li>
+<li><a href="+distributions/spacemacs-docker/README.html">spacemacs-docker</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="emacs"><a id="orgheadline5"></a><span class="section-number-2">5</span> Emacs</h2>
+<div id="outline-container-orgbffd88d" class="outline-2">
+<h2 id="emacs"><a id="orgbffd88d"></a><span class="section-number-2">5</span> Emacs</h2>
 <div class="outline-text-2" id="text-emacs">
 <ul class="org-ul">
 <li><a href="+emacs/better-defaults/README.html">better-defaults</a></li>
@@ -247,8 +332,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="e-mail"><a id="orgheadline6"></a><span class="section-number-2">6</span> E-mail</h2>
+<div id="outline-container-orgb06d658" class="outline-2">
+<h2 id="e-mail"><a id="orgb06d658"></a><span class="section-number-2">6</span> E-mail</h2>
 <div class="outline-text-2" id="text-e-mail">
 <ul class="org-ul">
 <li><a href="+email/gnus/README.html">gnus</a></li>
@@ -257,8 +342,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="frameworks"><a id="orgheadline7"></a><span class="section-number-2">7</span> Frameworks</h2>
+<div id="outline-container-org1bfe98e" class="outline-2">
+<h2 id="frameworks"><a id="org1bfe98e"></a><span class="section-number-2">7</span> Frameworks</h2>
 <div class="outline-text-2" id="text-frameworks">
 <ul class="org-ul">
 <li><a href="+frameworks/django/README.html">django</a></li>
@@ -268,8 +353,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="fun"><a id="orgheadline8"></a><span class="section-number-2">8</span> Fun</h2>
+<div id="outline-container-orgac12ae0" class="outline-2">
+<h2 id="fun"><a id="orgac12ae0"></a><span class="section-number-2">8</span> Fun</h2>
 <div class="outline-text-2" id="text-fun">
 <ul class="org-ul">
 <li><a href="+fun/emoji/README.html">emoji</a></li>
@@ -280,8 +365,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="international-support"><a id="orgheadline9"></a><span class="section-number-2">9</span> International support</h2>
+<div id="outline-container-orgc0e42fb" class="outline-2">
+<h2 id="international-support"><a id="orgc0e42fb"></a><span class="section-number-2">9</span> International support</h2>
 <div class="outline-text-2" id="text-international-support">
 <ul class="org-ul">
 <li><a href="+intl/chinese/README.html">chinese</a></li>
@@ -290,8 +375,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="programming-and-markup-languages"><a id="orgheadline10"></a><span class="section-number-2">10</span> Programming and markup languages</h2>
+<div id="outline-container-org55d84fe" class="outline-2">
+<h2 id="programming-and-markup-languages"><a id="org55d84fe"></a><span class="section-number-2">10</span> Programming and markup languages</h2>
 <div class="outline-text-2" id="text-programming-and-markup-languages">
 <ul class="org-ul">
 <li><a href="+lang/agda/README.html">agda</a></li>
@@ -302,6 +387,7 @@ for the JavaScript code in this tag.
 <li><a href="+lang/c-c++/README.html">c-c++</a></li>
 <li><a href="+lang/clojure/README.html">clojure</a></li>
 <li><a href="+lang/common-lisp/README.html">common-lisp</a></li>
+<li><a href="+lang/coq/README.html">coq</a></li>
 <li><a href="+lang/csharp/README.html">csharp</a></li>
 <li><a href="+lang/csv/README.html">csv</a></li>
 <li><a href="+lang/d/README.html">d</a></li>
@@ -312,8 +398,10 @@ for the JavaScript code in this tag.
 <li><a href="+lang/ess/README.html">ess</a></li>
 <li><a href="+lang/extra-langs/README.html">extra-langs</a></li>
 <li><a href="+lang/faust/README.html">faust</a></li>
+<li><a href="+lang/forth/README.html">forth</a></li>
 <li><a href="+lang/fsharp/README.html">fsharp</a></li>
 <li><a href="+lang/go/README.html">go</a></li>
+<li><a href="+lang/gpu/README.html">gpu</a></li>
 <li><a href="+lang/graphviz/README.html">graphviz</a></li>
 <li><a href="+lang/haskell/README.html">haskell</a></li>
 <li><a href="+lang/html/README.html">html</a></li>
@@ -321,22 +409,25 @@ for the JavaScript code in this tag.
 <li><a href="+lang/ipython-notebook/README.html">ipython-notebook</a></li>
 <li><a href="+lang/java/README.html">java</a></li>
 <li><a href="+lang/javascript/README.html">javascript</a></li>
+<li><a href="+lang/jr/README.html">jr</a></li>
 <li><a href="+lang/latex/README.html">latex</a></li>
 <li><a href="+lang/lua/README.html">lua</a></li>
 <li><a href="+lang/markdown/README.html">markdown</a></li>
 <li><a href="+lang/nim/README.html">nim</a></li>
 <li><a href="+lang/ocaml/README.html">ocaml</a></li>
 <li><a href="+lang/octave/README.html">octave</a></li>
+<li><a href="+lang/perl6/README.html">perl6</a></li>
 <li><a href="+lang/php/README.html">php</a></li>
 <li><a href="+lang/plantuml/README.html">plantuml</a></li>
+<li><a href="+lang/protobuf/README.html">protobuf</a></li>
 <li><a href="+lang/purescript/README.html">purescript</a></li>
 <li><a href="+lang/python/README.html">python</a></li>
 <li><a href="+lang/racket/README.html">racket</a></li>
+<li><a href="+lang/restructuredtext/README.html">restructuredtext</a></li>
 <li><a href="+lang/ruby/README.html">ruby</a></li>
 <li><a href="+lang/rust/README.html">rust</a></li>
 <li><a href="+lang/scala/README.html">scala</a></li>
 <li><a href="+lang/scheme/README.html">scheme</a></li>
-<li><a href="+lang/shaders/README.html">shaders</a></li>
 <li><a href="+lang/shell-scripts/README.html">shell-scripts</a></li>
 <li><a href="+lang/sml/README.html">sml</a></li>
 <li><a href="+lang/sql/README.html">sql</a></li>
@@ -349,8 +440,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="misc"><a id="orgheadline11"></a><span class="section-number-2">11</span> Misc</h2>
+<div id="outline-container-org0a291c7" class="outline-2">
+<h2 id="misc"><a id="org0a291c7"></a><span class="section-number-2">11</span> Misc</h2>
 <div class="outline-text-2" id="text-misc">
 <ul class="org-ul">
 <li><a href="+misc/nlinum/README.html">nlinum</a></li>
@@ -358,8 +449,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="operating-systems"><a id="orgheadline12"></a><span class="section-number-2">12</span> Operating systems</h2>
+<div id="outline-container-orgcf4c06a" class="outline-2">
+<h2 id="operating-systems"><a id="orgcf4c06a"></a><span class="section-number-2">12</span> Operating systems</h2>
 <div class="outline-text-2" id="text-operating-systems">
 <ul class="org-ul">
 <li><a href="+os/nixos/README.html">nixos</a></li>
@@ -368,8 +459,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="pair-programming"><a id="orgheadline13"></a><span class="section-number-2">13</span> Pair programming</h2>
+<div id="outline-container-org37ff8e5" class="outline-2">
+<h2 id="pair-programming"><a id="org37ff8e5"></a><span class="section-number-2">13</span> Pair programming</h2>
 <div class="outline-text-2" id="text-pair-programming">
 <ul class="org-ul">
 <li><a href="+pair-programming/floobits/README.html">floobits</a></li>
@@ -377,8 +468,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-2">
-<h2 id="source-control"><a id="orgheadline14"></a><span class="section-number-2">14</span> Source control</h2>
+<div id="outline-container-org0947bc5" class="outline-2">
+<h2 id="source-control"><a id="org0947bc5"></a><span class="section-number-2">14</span> Source control</h2>
 <div class="outline-text-2" id="text-source-control">
 <ul class="org-ul">
 <li><a href="+source-control/git/README.html">git</a></li>
@@ -389,8 +480,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="spacemacs-distribution-layers"><a id="orgheadline15"></a><span class="section-number-2">15</span> Spacemacs distribution layers</h2>
+<div id="outline-container-org5b136f6" class="outline-2">
+<h2 id="spacemacs-distribution-layers"><a id="org5b136f6"></a><span class="section-number-2">15</span> Spacemacs distribution layers</h2>
 <div class="outline-text-2" id="text-spacemacs-distribution-layers">
 <ul class="org-ul">
 <li><a href="+spacemacs/spacemacs-completion/README.html">spacemacs-completion</a></li>
@@ -400,15 +491,17 @@ for the JavaScript code in this tag.
 <li><a href="+spacemacs/spacemacs-language/README.html">spacemacs-language</a></li>
 <li><a href="+spacemacs/spacemacs-layouts/README.html">spacemacs-layouts</a></li>
 <li><a href="+spacemacs/spacemacs-misc/README.html">spacemacs-misc</a></li>
+<li><a href="+spacemacs/spacemacs-modeline/README.html">spacemacs-modeline</a></li>
+<li><a href="+spacemacs/spacemacs-navigation/README.html">spacemacs-navigation</a></li>
 <li><a href="+spacemacs/spacemacs-org/README.html">spacemacs-org</a></li>
-<li><a href="+spacemacs/spacemacs-ui/README.html">spacemacs-ui</a></li>
-<li><a href="+spacemacs/spacemacs-ui-visual/README.html">spacemacs-ui-visual</a></li>
+<li><a href="+spacemacs/spacemacs-purpose/README.html">spacemacs-purpose</a></li>
+<li><a href="+spacemacs/spacemacs-visual/README.html">spacemacs-visual</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-2">
-<h2 id="tags"><a id="orgheadline16"></a><span class="section-number-2">16</span> Tags</h2>
+<div id="outline-container-org3d07077" class="outline-2">
+<h2 id="tags"><a id="org3d07077"></a><span class="section-number-2">16</span> Tags</h2>
 <div class="outline-text-2" id="text-tags">
 <ul class="org-ul">
 <li><a href="+tags/cscope/README.html">cscope</a></li>
@@ -417,8 +510,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="themes"><a id="orgheadline17"></a><span class="section-number-2">17</span> Themes</h2>
+<div id="outline-container-org219f2fd" class="outline-2">
+<h2 id="themes"><a id="org219f2fd"></a><span class="section-number-2">17</span> Themes</h2>
 <div class="outline-text-2" id="text-themes">
 <ul class="org-ul">
 <li><a href="+themes/colors/README.html">colors</a></li>
@@ -428,8 +521,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="tools"><a id="orgheadline18"></a><span class="section-number-2">18</span> Tools</h2>
+<div id="outline-container-org7105c2c" class="outline-2">
+<h2 id="tools"><a id="org7105c2c"></a><span class="section-number-2">18</span> Tools</h2>
 <div class="outline-text-2" id="text-tools">
 <ul class="org-ul">
 <li><a href="+tools/ansible/README.html">ansible</a></li>
@@ -449,10 +542,12 @@ for the JavaScript code in this tag.
 <li><a href="+tools/prodigy/README.html">prodigy</a></li>
 <li><a href="+tools/puppet/README.html">puppet</a></li>
 <li><a href="+tools/ranger/README.html">ranger</a></li>
+<li><a href="+tools/rebox/README.html">rebox</a></li>
 <li><a href="+tools/restclient/README.html">restclient</a></li>
 <li><a href="+tools/salt/README.html">salt</a></li>
 <li><a href="+tools/shell/README.html">shell</a></li>
 <li><a href="+tools/speed-reading/README.html">speed-reading</a></li>
+<li><a href="+tools/sphinx/README.html">sphinx</a></li>
 <li><a href="+tools/systemd/README.html">systemd</a></li>
 <li><a href="+tools/terraform/README.html">terraform</a></li>
 <li><a href="+tools/tmux/README.html">tmux</a></li>
@@ -462,8 +557,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="vim"><a id="orgheadline19"></a><span class="section-number-2">19</span> Vim</h2>
+<div id="outline-container-org49642d8" class="outline-2">
+<h2 id="vim"><a id="org49642d8"></a><span class="section-number-2">19</span> Vim</h2>
 <div class="outline-text-2" id="text-vim">
 <ul class="org-ul">
 <li><a href="+vim/evil-cleverparens/README.html">evil-cleverparens</a></li>
@@ -476,10 +571,11 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-2">
-<h2 id="web-services"><a id="orgheadline20"></a><span class="section-number-2">20</span> Web services</h2>
+<div id="outline-container-org1eb6959" class="outline-2">
+<h2 id="web-services"><a id="org1eb6959"></a><span class="section-number-2">20</span> Web services</h2>
 <div class="outline-text-2" id="text-web-services">
 <ul class="org-ul">
+<li><a href="+web-services/confluence/README.html">confluence</a></li>
 <li><a href="+web-services/elfeed/README.html">elfeed</a></li>
 <li><a href="+web-services/evernote/README.html">evernote</a></li>
 <li><a href="+web-services/search-engine/README.html">search-engine</a></li>
@@ -491,8 +587,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

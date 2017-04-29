@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Helm layer</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../../../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Helm layer</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#description">1. Description</a></li>
+<li><a href="#install">2. Install</a></li>
+<li><a href="#key-bindings">3. Key bindings</a>
+<ul>
+<li><a href="#hjkl-navigation">3.1. hjkl navigation</a></li>
+<li><a href="#transient-state">3.2. Transient state</a></li>
+<li><a href="#bookmarks">3.3. Bookmarks</a></li>
+<li><a href="#c-z-and-tab-switch">3.4. C-z and Tab switch</a></li>
+<li><a href="#helm-focus">3.5. Helm focus</a></li>
+<li><a href="#helm-swoop">3.6. Helm-swoop</a></li>
+<li><a href="#universal-argument">3.7. Universal argument</a></li>
+<li><a href="#replacing-text-in-several-files">3.8. Replacing text in several files</a></li>
+<li><a href="#resume-last-session">3.9. Resume last session</a></li>
+</ul>
+</li>
+<li><a href="#external-resources">4. External resources</a></li>
+</ul>
+</div>
+</div>
+
+<div class="figure">
+<p><img src="img/helm.png" alt="helm.png" />
+</p>
+</div>
+
+<div id="outline-container-org84f9748" class="outline-2">
+<h2 id="description"><a id="org84f9748"></a><span class="section-number-2">1</span> Description</h2>
+<div class="outline-text-2" id="text-description">
+<p>
+This layer enables Helm everywhere in Spacemacs. The alternative to this
+layer is the Ivy layer which brings the same level of integration as Helm.
+</p>
+
+<p>
+These completion systems are the central control towers of Spacemacs, they are
+used to manage buffers, projects, search results, configuration layers, toggles
+and more&#x2026;
+</p>
+
+<p>
+Mastering your choice of completion system will make you a Spacemacs power user.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbb6c7b0" class="outline-2">
+<h2 id="install"><a id="orgbb6c7b0"></a><span class="section-number-2">2</span> Install</h2>
+<div class="outline-text-2" id="text-install">
+<p>
+Helm is the default completion framework &#x2013; if Ivy is not enabled, Helm will be
+enabled automatically.
+</p>
+
+<p>
+To switch from Ivy to Helm, modify your <code>~/.spacemacs</code>. You will need to add
+<code>helm</code> to the existing <code>dotspacemacs-configuration-layers</code> list in this file,
+and remove <code>ivy</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org688111b" class="outline-2">
+<h2 id="key-bindings"><a id="org688111b"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div class="outline-text-2" id="text-key-bindings">
+</div>
+
+<div id="outline-container-org9cf7418" class="outline-3">
+<h3 id="hjkl-navigation"><a id="org9cf7418"></a><span class="section-number-3">3.1</span> hjkl navigation</h3>
+<div class="outline-text-3" id="text-hjkl-navigation">
+<p>
+When using the Vim style or Hybrid style with the variable
+<code>hybrid-mode-enable-hjkl-bindings</code> set to <code>t</code>, Spacemacs adds navigation in the
+Helm buffers with <code>hjkl</code>.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-h</code></td>
+<td class="org-left">go to next source</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-H</code></td>
+<td class="org-left">describe key (replace <code>C-h</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-j</code></td>
+<td class="org-left">go to previous candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-k</code></td>
+<td class="org-left">go to next candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-l</code></td>
+<td class="org-left">same as <code>return</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org1753012" class="outline-3">
+<h3 id="transient-state"><a id="org1753012"></a><span class="section-number-3">3.2</span> Transient state</h3>
+<div class="outline-text-3" id="text-transient-state">
+<p>
+Spacemacs defines a transient state for <code>Helm</code> to make it work like <a href="https://github.com/Shougo/unite.vim">Vim's Unite</a>
+plugin.
+</p>
+
+<p>
+Initiate the transient state with <code>M-SPC</code> or <code>s-M-SPC</code> while in a <code>Helm</code> buffer.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>M-SPC</code> or <code>s-M-SPC</code></td>
+<td class="org-left">initiate the transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>q</code></td>
+<td class="org-left">quit transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>TAB</code></td>
+<td class="org-left">switch to actions page and leave the transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>1</code></td>
+<td class="org-left">execute action 0</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>2</code></td>
+<td class="org-left">execute action 1</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>3</code></td>
+<td class="org-left">execute action 2</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>4</code></td>
+<td class="org-left">execute action 3</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>5</code></td>
+<td class="org-left">execute action 4</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>6</code></td>
+<td class="org-left">execute action 5</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>7</code></td>
+<td class="org-left">execute action 6</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>8</code></td>
+<td class="org-left">execute action 7</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>9</code></td>
+<td class="org-left">execute action 8</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>0</code></td>
+<td class="org-left">execute action 9</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>a</code></td>
+<td class="org-left">switch to actions page</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>g</code></td>
+<td class="org-left">go to first candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>G</code></td>
+<td class="org-left">go to last candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>h</code></td>
+<td class="org-left">go to previous source</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>j</code></td>
+<td class="org-left">select next candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>k</code></td>
+<td class="org-left">select previous candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>l</code></td>
+<td class="org-left">go to next source</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>t</code></td>
+<td class="org-left">mark current candidate</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>T</code></td>
+<td class="org-left">mark all candidates</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>v</code></td>
+<td class="org-left">execute persistent action</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7542610" class="outline-3">
+<h3 id="bookmarks"><a id="org7542610"></a><span class="section-number-3">3.3</span> Bookmarks</h3>
+<div class="outline-text-3" id="text-bookmarks">
+<p>
+In the <code>helm-bookmarks</code> buffer:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>C-d</code></td>
+<td class="org-left">delete the selected bookmark</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-e</code></td>
+<td class="org-left">edit the selected bookmark</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-f</code></td>
+<td class="org-left">toggle filename location</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>C-o</code></td>
+<td class="org-left">open the selected bookmark in another window</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgb8d68be" class="outline-3">
+<h3 id="c-z-and-tab-switch"><a id="orgb8d68be"></a><span class="section-number-3">3.4</span> C-z and Tab switch</h3>
+<div class="outline-text-3" id="text-c-z-and-tab-switch">
+<p>
+The command bound to <code>C-z</code> is much more useful than the one bound to Tab, so it
+makes sense to swap them. It's also recommended <a href="http://tuhdo.github.io/helm-intro.html">here</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a1716b" class="outline-3">
+<h3 id="helm-focus"><a id="org7a1716b"></a><span class="section-number-3">3.5</span> Helm focus</h3>
+<div class="outline-text-3" id="text-helm-focus">
+<p>
+If you find yourself unable to return focus to Helm (after a careless
+mouse-click for example), use <code>SPC w b</code> to return focus to the minibuffer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org480aaa6" class="outline-3">
+<h3 id="helm-swoop"><a id="org480aaa6"></a><span class="section-number-3">3.6</span> Helm-swoop</h3>
+<div class="outline-text-3" id="text-helm-swoop">
+<p>
+<a href="https://github.com/ShingoFukuyama/helm-swoop">Helm-swoop</a> is very similar to <code>moccur</code>, it displays a <code>helm</code> buffer with all the
+occurrences of the word under point. You can then change the search query in
+real-time and navigate between them easily.
+</p>
+
+<p>
+You can even edit the occurrences directly in the <code>helm</code> buffer and apply the
+modifications to the buffer.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC s s</code></td>
+<td class="org-left">execute <code>helm-swoop</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s S</code></td>
+<td class="org-left">execute <code>helm-multi-swoop</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC s C-s</code></td>
+<td class="org-left">execute <code>helm-multi-swoop-all</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org477cd64" class="outline-3">
+<h3 id="universal-argument"><a id="org477cd64"></a><span class="section-number-3">3.7</span> Universal argument</h3>
+<div class="outline-text-3" id="text-universal-argument">
+<p>
+<code>SPC u</code> is not working before <code>helm-M-x</code> (<code>SPC SPC</code>). Instead, call <code>helm-M-x</code>
+first, select the command you want to run, and press <code>C-u</code> before pressing
+<code>RETURN</code>. For instance: <code>SPC SPC org-reload C-u RET</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org15c7b67" class="outline-3">
+<h3 id="replacing-text-in-several-files"><a id="org15c7b67"></a><span class="section-number-3">3.8</span> Replacing text in several files</h3>
+<div class="outline-text-3" id="text-replacing-text-in-several-files">
+<p>
+If you have <code>rg</code>, <code>ag</code>, <code>pt</code> or <code>ack</code> installed, replacing an occurrence of text
+in several files can be performed via <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a>.
+</p>
+
+<p>
+Say you want to replace all <code>foo</code> occurrences by <code>bar</code> in your current
+project:
+</p>
+<ul class="org-ul">
+<li>initiate a search with <code>SPC /</code></li>
+<li>enter in edit mode with <code>C-c C-e</code></li>
+<li>go to the occurrence and enter in <code>iedit state</code> with <code>SPC s e</code></li>
+<li>edit the occurrences then leave the <code>iedit state</code></li>
+<li>press <code>C-c C-c</code></li>
+</ul>
+
+<p>
+<b>Note</b>: In Spacemacs, <code>helm-ag</code> despite its name works with <code>rg</code>, <code>pt</code> and <code>ack</code>
+as well (but not with <code>grep</code>).
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb615207" class="outline-3">
+<h3 id="resume-last-session"><a id="orgb615207"></a><span class="section-number-3">3.9</span> Resume last session</h3>
+<div class="outline-text-3" id="text-resume-last-session">
+<p>
+Use <code>SPC r l</code> to resume the last helm session. For instance it is handy to
+quickly toggle on and off a toggle using <code>SPC h t</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc08c50e" class="outline-2">
+<h2 id="external-resources"><a id="orgc08c50e"></a><span class="section-number-2">4</span> External resources</h2>
+<div class="outline-text-2" id="text-external-resources">
+<ul class="org-ul">
+<li><a href="https://github.com/emacs-helm/helm/wiki">The Helm wiki</a></li>
+<li><a href="http://tuhdo.github.io/helm-intro.html">The Helm guide</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

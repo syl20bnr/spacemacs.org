@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Evil-snipe layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -185,8 +269,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org277d76a" class="outline-2">
+<h2 id="description"><a id="org277d76a"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 The package <a href="https://github.com/hlissner/evil-snipe">evil-snipe</a>
@@ -209,13 +293,13 @@ buffer with two chars.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgf796237" class="outline-2">
+<h2 id="install"><a id="orgf796237"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org68f2152" class="outline-3">
+<h3 id="layer"><a id="org68f2152"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -225,8 +309,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="improved-f-and-t-search-behavior"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
+<div id="outline-container-org762383e" class="outline-3">
+<h3 id="improved-f-and-t-search-behavior"><a id="org762383e"></a><span class="section-number-3">2.2</span> Improved f and t search behavior</h3>
 <div class="outline-text-3" id="text-improved-f-and-t-search-behavior">
 <p>
 With evil-snipe you can define your own search scope for <code>f</code> and <code>t</code> searches
@@ -241,16 +325,15 @@ layer variable <code>evil-snipe-enable-alternate-f-and-t-behaviors</code> to <co
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>evil-snipe <span class="org-builtin">:variables</span> evil-snipe-enable-alternate-f-and-t-behaviors t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="two-character-search-with-s"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> Two-character search with s</h3>
+<div id="outline-container-org0b8c22a" class="outline-3">
+<h3 id="two-character-search-with-s"><a id="org0b8c22a"></a><span class="section-number-3">2.3</span> Two-character search with s</h3>
 <div class="outline-text-3" id="text-two-character-search-with-s">
 <p>
 With the <code>s~/~S</code> keys you can do a simple search like <code>f~/~t</code>, but instead of
@@ -263,8 +346,8 @@ purposes.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="more-scopes"><a id="orgheadline5"></a><span class="section-number-3">2.4</span> More scopes</h3>
+<div id="outline-container-org4e70086" class="outline-3">
+<h3 id="more-scopes"><a id="org4e70086"></a><span class="section-number-3">2.4</span> More scopes</h3>
 <div class="outline-text-3" id="text-more-scopes">
 <p>
 Evil-snipe also adds several scope options for searches (set <code>evil-snipe-scope</code>
@@ -326,8 +409,8 @@ remove this line from <code>evil-snipe/packages.el</code>:
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="symbol-groups"><a id="orgheadline6"></a><span class="section-number-3">2.5</span> Symbol groups</h3>
+<div id="outline-container-org147f2fd" class="outline-3">
+<h3 id="symbol-groups"><a id="org147f2fd"></a><span class="section-number-3">2.5</span> Symbol groups</h3>
 <div class="outline-text-3" id="text-symbol-groups">
 <p>
 With symbol groups you can let a character stand for a regex, for example a
@@ -341,10 +424,9 @@ search with <code>sa[</code> would find <code>a[</code>, <code>a{</code> or <cod
 </ul>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Alias [ and ] to all types of brackets</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>?\[ <span class="org-string">"[[{(]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>push '<span class="org-rainbow-delimiters-depth-2">(</span>?\] <span class="org-string">"[]})]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span>?\[ <span class="org-string">"[[{(]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-2">(</span>?\] <span class="org-string">"[]})]"</span><span class="org-rainbow-delimiters-depth-2">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -355,27 +437,25 @@ quickly cycle through all function definitions in a buffer!</li>
 </ul>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">For python style functions</span>
 <span class="org-rainbow-delimiters-depth-1">(</span>add-hook 'python-mode-hook
           <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">lambda</span> <span class="org-rainbow-delimiters-depth-3">()</span>
             <span class="org-rainbow-delimiters-depth-3">(</span>make-variable-buffer-local 'evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span>
-            <span class="org-rainbow-delimiters-depth-3">(</span>push '<span class="org-rainbow-delimiters-depth-4">(</span>?: <span class="org-string">"def .+:"</span><span class="org-rainbow-delimiters-depth-4">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+            <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">push</span> '<span class="org-rainbow-delimiters-depth-4">(</span>?: <span class="org-string">"def .+:"</span><span class="org-rainbow-delimiters-depth-4">)</span> evil-snipe-aliases<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="todo-key-bindings"><a id="orgheadline8"></a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Key bindings</h2>
+<div id="outline-container-org14baf7d" class="outline-2">
+<h2 id="todo-key-bindings"><a id="org14baf7d"></a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Key bindings</h2>
 <div class="outline-text-2" id="text-todo-key-bindings">
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

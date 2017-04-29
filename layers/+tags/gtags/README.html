@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Helm Gtags layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -173,6 +257,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#install-on-osx-using-homebrew">3.1.1. Install on OSX using Homebrew</a></li>
 <li><a href="#install-on-nix-from-source">3.1.2. Install on *nix from source</a></li>
+<li><a href="#conflict-between-ctags-and-emacss-etags-binary">3.1.3. Conflict between <code>ctags</code> and emacs's <code>etags</code> binary</a></li>
 </ul>
 </li>
 <li><a href="#emacs-configuration">3.2. Emacs Configuration</a>
@@ -197,8 +282,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org3a9f3a3" class="outline-2">
+<h2 id="description"><a id="org3a9f3a3"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 <code>helm-gtags</code> and <code>ggtags</code> are clients for GNU Global. GNU Global is a source
@@ -209,8 +294,8 @@ modes.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="features"><a id="orgheadline2"></a><span class="section-number-2">2</span> Features</h2>
+<div id="outline-container-org9d2da3a" class="outline-2">
+<h2 id="features"><a id="org9d2da3a"></a><span class="section-number-2">2</span> Features</h2>
 <div class="outline-text-2" id="text-features">
 <ul class="org-ul">
 <li>Select any tag in a project retrieved by gtags</li>
@@ -232,14 +317,14 @@ modes.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="install"><a id="orgheadline11"></a><span class="section-number-2">3</span> Install</h2>
+<div id="outline-container-orgbae97b3" class="outline-2">
+<h2 id="install"><a id="orgbae97b3"></a><span class="section-number-2">3</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="gnu-global-gtags"><a id="orgheadline8"></a><span class="section-number-3">3.1</span> GNU Global (gtags)</h3>
+<div id="outline-container-org7999cb8" class="outline-3">
+<h3 id="gnu-global-gtags"><a id="org7999cb8"></a><span class="section-number-3">3.1</span> GNU Global (gtags)</h3>
 <div class="outline-text-3" id="text-gnu-global-gtags">
 <p>
 To use gtags, you first have to install <a href="https://www.gnu.org/software/global/download.html">GNU Global</a>.
@@ -253,29 +338,27 @@ recommend installing from source. If not for example to install on Ubuntu:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">sudo apt-get install global
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="install-on-osx-using-homebrew"><a id="orgheadline3"></a><span class="section-number-4">3.1.1</span> Install on OSX using Homebrew</h4>
+<div id="outline-container-orgb4c18aa" class="outline-4">
+<h4 id="install-on-osx-using-homebrew"><a id="orgb4c18aa"></a><span class="section-number-4">3.1.1</span> Install on OSX using Homebrew</h4>
 <div class="outline-text-4" id="text-install-on-osx-using-homebrew">
 <div class="org-src-container">
-
 <pre class="src src-sh">brew install global --with-pygments --with-ctags
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="install-on-nix-from-source"><a id="orgheadline7"></a><span class="section-number-4">3.1.2</span> Install on *nix from source</h4>
+<div id="outline-container-orge466066" class="outline-4">
+<h4 id="install-on-nix-from-source"><a id="orge466066"></a><span class="section-number-4">3.1.2</span> Install on *nix from source</h4>
 <div class="outline-text-4" id="text-install-on-nix-from-source">
 </div>
 
-<ol class="org-ol"><li><a id="install-recommended-dependencies"></a><a id="orgheadline4"></a>Install recommended dependencies<br  /><div class="outline-text-5" id="text-install-recommended-dependencies">
+<ol class="org-ol"><li><a id="install-recommended-dependencies"></a><a id="org4ca57c5"></a>Install recommended dependencies<br /><div class="outline-text-5" id="text-install-recommended-dependencies">
 <p>
 To take full advantage of global you should install 2 extra packages in
 addition to global: pygments and ctags (exuberant). You can do this using
@@ -283,7 +366,6 @@ your normal OS package manager, e.g., on Ubuntu
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">sudo apt-get install exuberant-ctags python-pygments
 </pre>
 </div>
@@ -293,19 +375,17 @@ or e.g., Archlinux:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">sudo pacman -S ctags python-pygments
 </pre>
 </div>
 </div></li>
 
-<li><a id="install-with-recommended-features"></a><a id="orgheadline5"></a>Install with recommended features<br  /><div class="outline-text-5" id="text-install-with-recommended-features">
+<li><a id="install-with-recommended-features"></a><a id="org8cc5682"></a>Install with recommended features<br /><div class="outline-text-5" id="text-install-with-recommended-features">
 <p>
 Download the latest tar.gz archive, then run these commands:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">tar xvf global-6.5.3.tar.gz
 <span class="org-builtin">cd</span> global-6.5.3
 ./configure --with-exuberant-ctags=/usr/bin/ctags
@@ -315,14 +395,13 @@ sudo make install
 </div>
 </div></li>
 
-<li><a id="configure-your-environment-to-use-pygments-and-ctags"></a><a id="orgheadline6"></a>Configure your environment to use pygments and ctags<br  /><div class="outline-text-5" id="text-configure-your-environment-to-use-pygments-and-ctags">
+<li><a id="configure-your-environment-to-use-pygments-and-ctags"></a><a id="org3d363f4"></a>Configure your environment to use pygments and ctags<br /><div class="outline-text-5" id="text-configure-your-environment-to-use-pygments-and-ctags">
 <p>
 To be able to use <code>pygments</code> and <code>ctags</code>, you need to copy the sample
 <code>gtags.conf</code> either to <code>/etc/gtags.conf</code> or <code>$HOME/.globalrc</code>. For example:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">cp gtags.conf ~/.globalrc
 </pre>
 </div>
@@ -333,16 +412,45 @@ with sh/ksh:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh"><span class="org-builtin">echo</span> export <span class="org-variable-name">GTAGSLABEL</span>=pygments &gt;&gt; .profile
 </pre>
 </div>
 </div></li></ol>
 </div>
+
+<div id="outline-container-org91e7a52" class="outline-4">
+<h4 id="conflict-between-ctags-and-emacss-etags-binary"><a id="org91e7a52"></a><span class="section-number-4">3.1.3</span> Conflict between <code>ctags</code> and emacs's <code>etags</code> binary</h4>
+<div class="outline-text-4" id="text-conflict-between-ctags-and-emacss-etags-binary">
+<p>
+If you installed <code>emacs</code> from source after <code>ctags</code>, your original <code>ctags</code> binary
+is probably replaced by emacs's <code>etags</code>. To get around this you will need to
+configure <code>emacs</code> as following before installing:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">./configure --program-transform-name=<span class="org-string">'s/^ctags$/ctags.emacs/'</span>
+</pre>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="emacs-configuration"><a id="orgheadline10"></a><span class="section-number-3">3.2</span> Emacs Configuration</h3>
+<p>
+To check if you have the correct version of <code>ctags</code> execute:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">ctags --version | grep Exuberant
+</pre>
+</div>
+
+<p>
+If yo do not get any output then it means you have the wrong <code>ctags</code> and must
+install it again.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf39b0bd" class="outline-3">
+<h3 id="emacs-configuration"><a id="orgf39b0bd"></a><span class="section-number-3">3.2</span> Emacs Configuration</h3>
 <div class="outline-text-3" id="text-emacs-configuration">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You
@@ -350,8 +458,7 @@ will need to add <code>gtags</code> to the existing <code>dotspacemacs-configura
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> dotspacemacs-configuration-layers
       '<span class="org-rainbow-delimiters-depth-2">(</span> <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
         gtags
          <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
@@ -360,8 +467,8 @@ will need to add <code>gtags</code> to the existing <code>dotspacemacs-configura
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="disabling-by-default"><a id="orgheadline9"></a><span class="section-number-4">3.2.1</span> Disabling by default</h4>
+<div id="outline-container-org7f1efc8" class="outline-4">
+<h4 id="disabling-by-default"><a id="org7f1efc8"></a><span class="section-number-4">3.2.1</span> Disabling by default</h4>
 <div class="outline-text-4" id="text-disabling-by-default">
 <p>
 If <code>ggtags-mode</code> is too intrusive you can disable it by default, by setting the
@@ -369,8 +476,7 @@ layer variable <code>gtags-enable-by-default</code> to <code>nil</code>.
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>gtags <span class="org-builtin">:variables</span> gtags-enable-by-default t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -384,8 +490,8 @@ additional control per project.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="usage"><a id="orgheadline18"></a><span class="section-number-2">4</span> Usage</h2>
+<div id="outline-container-org9a5c486" class="outline-2">
+<h2 id="usage"><a id="org9a5c486"></a><span class="section-number-2">4</span> Usage</h2>
 <div class="outline-text-2" id="text-usage">
 <p>
 Before using the <code>gtags</code>, remember to create a GTAGS database by the following
@@ -401,7 +507,6 @@ can choose <code>ctags</code> or <code>pygments</code> as a backend to generate 
 </ul>
 
 <div class="org-src-container">
-
 <pre class="src src-sh"><span class="org-builtin">cd</span> /path/to/project/root
 gtags
 </pre>
@@ -413,18 +518,17 @@ GTAGSLABEL environment variable, use this command instead:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">gtags --gtagslabel=pygments
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="language-support"><a id="orgheadline16"></a><span class="section-number-4">4.0.1</span> Language Support</h4>
+<div id="outline-container-org615bac0" class="outline-4">
+<h4 id="language-support"><a id="org615bac0"></a><span class="section-number-4">4.0.1</span> Language Support</h4>
 <div class="outline-text-4" id="text-language-support">
 </div>
 
-<ol class="org-ol"><li><a id="built-in-languages"></a><a id="orgheadline12"></a>Built-in languages<br  /><div class="outline-text-5" id="text-built-in-languages">
+<ol class="org-ol"><li><a id="built-in-languages"></a><a id="orgfdcf153"></a>Built-in languages<br /><div class="outline-text-5" id="text-built-in-languages">
 <p>
 If you do not have <code>ctags</code> or <code>pygments</code> enabled gtags will only produce
 tags for the following languages:
@@ -439,7 +543,7 @@ tags for the following languages:
 </ul>
 </div></li>
 
-<li><a id="exuberant-ctags-languages"></a><a id="orgheadline13"></a>Exuberant ctags languages<br  /><div class="outline-text-5" id="text-exuberant-ctags-languages">
+<li><a id="exuberant-ctags-languages"></a><a id="org52cee1c"></a>Exuberant ctags languages<br /><div class="outline-text-5" id="text-exuberant-ctags-languages">
 <p>
 If you have enabled <code>exuberant ctags</code> and use that as the backend (i.e.,
 GTAGSLABEL=ctags or &#x2013;gtagslabel=ctags) the following additional languages
@@ -462,7 +566,7 @@ will have tags created for them:
 </ul>
 </div></li>
 
-<li><a id="universal-ctags-languages"></a><a id="orgheadline14"></a>Universal ctags languages<br  /><div class="outline-text-5" id="text-universal-ctags-languages">
+<li><a id="universal-ctags-languages"></a><a id="orgdd0f055"></a>Universal ctags languages<br /><div class="outline-text-5" id="text-universal-ctags-languages">
 <p>
 If instead you installed you the newer/beta <code>universal ctags</code> and use that
 as the backend (i.e., GTAGSLABEL=ctags or &#x2013;gtagslabel=ctags) the following
@@ -477,7 +581,7 @@ additional languages will have tags created for them:
 </ul>
 </div></li>
 
-<li><a id="pygments-languages-plus-symbol-and-reference-tags"></a><a id="orgheadline15"></a>Pygments languages (plus symbol and reference tags)<br  /><div class="outline-text-5" id="text-pygments-languages-plus-symbol-and-reference-tags">
+<li><a id="pygments-languages-plus-symbol-and-reference-tags"></a><a id="org900d3fc"></a>Pygments languages (plus symbol and reference tags)<br /><div class="outline-text-5" id="text-pygments-languages-plus-symbol-and-reference-tags">
 <p>
 In order to look up symbol references for any language not in the built in
 parser you must use the pygments backend. When this backend is used global
@@ -504,8 +608,8 @@ languages will have tags created for them:
 </div></li></ol>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="eldoc-integration"><a id="orgheadline17"></a><span class="section-number-3">4.1</span> Eldoc integration</h3>
+<div id="outline-container-org7c1a347" class="outline-3">
+<h3 id="eldoc-integration"><a id="org7c1a347"></a><span class="section-number-3">4.1</span> Eldoc integration</h3>
 <div class="outline-text-3" id="text-eldoc-integration">
 <p>
 This layer also integrates <code>ggtags</code> for its Eldoc feature. That means, when
@@ -537,8 +641,8 @@ the gtags commands.
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline19"></a><span class="section-number-2">5</span> Key bindings</h2>
+<div id="outline-container-orgd55958f" class="outline-2">
+<h2 id="key-bindings"><a id="orgd55958f"></a><span class="section-number-2">5</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -556,7 +660,7 @@ the gtags commands.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m g c</code></td>
+<td class="org-left"><code>SPC m g C</code></td>
 <td class="org-left">create a tag database</td>
 </tr>
 
@@ -630,8 +734,7 @@ the gtags commands.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

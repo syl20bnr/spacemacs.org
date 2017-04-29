@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elixir layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -172,7 +256,8 @@ for the JavaScript code in this tag.
 <li><a href="#flycheck">3.1. Flycheck</a>
 <ul>
 <li><a href="#credo">3.1.1. Credo</a></li>
-<li><a href="#mix-compile">3.1.2. mix compile</a></li>
+<li><a href="#dogma">3.1.2. Dogma</a></li>
+<li><a href="#mix-compile">3.1.3. mix compile</a></li>
 </ul>
 </li>
 </ul>
@@ -198,17 +283,18 @@ for the JavaScript code in this tag.
 <img src="img/elixir.png" alt="elixir.png" /> with <img src="img/alchemist.png" alt="alchemist.png" />
 </p>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org2c55347" class="outline-2">
+<h2 id="description"><a id="org2c55347"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for <a href="http://elixir-lang.org/">Elixir</a> .
 </p>
 
 <p>
-<a href="https://github.com/tonini/alchemist.el">Alchemist</a> brings the Elixir tooling to Emacs and comes with a bunch of
-features like:
+<a href="https://github.com/tonini/alchemist.el">Alchemist</a> brings the Elixir tooling to Emacs and comes with a bunch of features
+like:
 </p>
+
 <ul class="org-ul">
 <li>Powerful IEx integration</li>
 <li>Mix integration</li>
@@ -226,8 +312,8 @@ features like:
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="install"><a id="orgheadline2"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org1a9e5a1" class="outline-2">
+<h2 id="install"><a id="org1a9e5a1"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -237,13 +323,13 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="configuration"><a id="orgheadline6"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org76d2bca" class="outline-2">
+<h2 id="configuration"><a id="org76d2bca"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="flycheck"><a id="orgheadline5"></a><span class="section-number-3">3.1</span> Flycheck</h3>
+<div id="outline-container-orga21082d" class="outline-3">
+<h3 id="flycheck"><a id="orga21082d"></a><span class="section-number-3">3.1</span> Flycheck</h3>
 <div class="outline-text-3" id="text-flycheck">
 <p>
 <b>Note:</b> since flycheck checkers are slow, the checks are enabled only at save
@@ -251,46 +337,79 @@ time.
 </p>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="credo"><a id="orgheadline3"></a><span class="section-number-4">3.1.1</span> Credo</h4>
+<div id="outline-container-orgc903233" class="outline-4">
+<h4 id="credo"><a id="orgc903233"></a><span class="section-number-4">3.1.1</span> Credo</h4>
 <div class="outline-text-4" id="text-credo">
 <p>
-A flycheck checker for <a href="https://github.com/rrrene/credo">credo</a> is installed. The check needs both <code>bunt</code> and
-<code>credo</code> to be available, you can install them like this:
+You need to install <a href="https://github.com/rrrene/credo">credo</a> into your project. For this, add the following snippet
+to dependencies of your project (in file <code>mix.exs</code>):
+</p>
+
+<pre class="example">
+{:credo, "~&gt; 0.5", only: [:dev, :test]}
+</pre>
+
+<p>
+Then run in your shell:
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-shell">git clone https://github.com/rrrene/bunt
-<span class="org-builtin">cd</span> bunt
-mix archive.build
-mix archive.install
+<pre class="src src-shell">$ mix deps.get
 </pre>
 </div>
+
+<p>
+For more info about mix <a href="http://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html">see</a>.
+</p>
+
+<p>
+You can tell flycheck-credo to call credo with the '&#x2013;strict' argument.
+</p>
 
 <div class="org-src-container">
-
-<pre class="src src-shell">git clone https://github.com/rrrene/credo
-<span class="org-builtin">cd</span> credo
-mix deps.get
-mix archive.build
-mix archive.install
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> flycheck-elixir-credo-strict t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="mix-compile"><a id="orgheadline4"></a><span class="section-number-4">3.1.2</span> mix compile</h4>
+<div id="outline-container-org31be352" class="outline-4">
+<h4 id="dogma"><a id="org31be352"></a><span class="section-number-4">3.1.2</span> Dogma</h4>
+<div class="outline-text-4" id="text-dogma">
+<p>
+In order to lint your code, you also need to install <a href="https://github.com/lpil/dogma">dogma</a> into your project.
+For this, add the following snippet to the dependencies in your <code>mix.exs</code> file:
+</p>
+
+<pre class="example">
+{:dogma, "~&gt; 0.1", only: [:dev]}
+</pre>
+
+<p>
+Then run in your shell:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ mix deps.get
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org81f2c01" class="outline-4">
+<h4 id="mix-compile"><a id="org81f2c01"></a><span class="section-number-4">3.1.3</span> mix compile</h4>
 <div class="outline-text-4" id="text-mix-compile">
 <p>
 <b>Important:</b>
+</p>
+
+<p>
 Elixir compiler is based on macros and can execute arbitrary during compilation.
 Therefore Spacemacs disable flycheck compilation checker by default.
 </p>
 
 <p>
-To enable flycheck support for compilation errors  <b>globally</b> the variable
+To enable flycheck support for compilation errors <b>globally</b> the variable
 <code>elixir-enable-compilation-checking</code> can be set explicitly to <code>t</code> in your
 dotfile but it is not recommended to do so because of the limitation described
 above.
@@ -301,13 +420,12 @@ Instead you should use directory local variables in order to enable the flycheck
 checker only for certain projects. Directory local variables are stored in a
 file named <code>.dir-local.el</code> usually at the root of a project. To easily add a
 directory local variable use the key binding <code>SPC f v d</code> then choose the
-<code>elixir-mode</code> and the variable name <code>elixir-enable-compilation-checking</code> with
-a value of t. The result is a new file <code>.dir-local.el</code> with the following
+<code>elixir-mode</code> and the variable name <code>elixir-enable-compilation-checking</code> with a
+value of t. The result is a new file <code>.dir-local.el</code> with the following
 contents:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
@@ -329,22 +447,22 @@ Remember that you can verify the flycheck checkers status with <code>SPC e v</co
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline17"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org34b40d1" class="outline-2">
+<h2 id="key-bindings"><a id="org34b40d1"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="refcard"><a id="orgheadline7"></a><span class="section-number-3">4.1</span> Refcard</h3>
+<div id="outline-container-org7189f3c" class="outline-3">
+<h3 id="refcard"><a id="org7189f3c"></a><span class="section-number-3">4.1</span> Refcard</h3>
 <div class="outline-text-3" id="text-refcard">
 <p>
-You find and overview of all the key-bindings on the <a href="alchemist-refcard.pdf">Alchemist-Refcard</a>.
+You find and overview of all the key-bindings on the <a href="https://github.com/tonini/alchemist.el/blob/master/doc/alchemist-refcard.pdf">Alchemist-Refcard</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="help"><a id="orgheadline8"></a><span class="section-number-3">4.2</span> Help</h3>
+<div id="outline-container-org116f213" class="outline-3">
+<h3 id="help"><a id="org116f213"></a><span class="section-number-3">4.2</span> Help</h3>
 <div class="outline-text-3" id="text-help">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -385,8 +503,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="mix"><a id="orgheadline9"></a><span class="section-number-3">4.3</span> Mix</h3>
+<div id="outline-container-org732b2fb" class="outline-3">
+<h3 id="mix"><a id="org732b2fb"></a><span class="section-number-3">4.3</span> Mix</h3>
 <div class="outline-text-3" id="text-mix">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -427,8 +545,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="project"><a id="orgheadline10"></a><span class="section-number-3">4.4</span> Project</h3>
+<div id="outline-container-org9c7fd2e" class="outline-3">
+<h3 id="project"><a id="org9c7fd2e"></a><span class="section-number-3">4.4</span> Project</h3>
 <div class="outline-text-3" id="text-project">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -464,8 +582,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="evaluation-in-place"><a id="orgheadline11"></a><span class="section-number-3">4.5</span> Evaluation in place</h3>
+<div id="outline-container-orgdc5cea4" class="outline-3">
+<h3 id="evaluation-in-place"><a id="orgdc5cea4"></a><span class="section-number-3">4.5</span> Evaluation in place</h3>
 <div class="outline-text-3" id="text-evaluation-in-place">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -516,8 +634,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="repl-interactions"><a id="orgheadline12"></a><span class="section-number-3">4.6</span> REPL interactions</h3>
+<div id="outline-container-org884c94b" class="outline-3">
+<h3 id="repl-interactions"><a id="org884c94b"></a><span class="section-number-3">4.6</span> REPL interactions</h3>
 <div class="outline-text-3" id="text-repl-interactions">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -578,8 +696,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="tests"><a id="orgheadline13"></a><span class="section-number-3">4.7</span> Tests</h3>
+<div id="outline-container-org835cf7f" class="outline-3">
+<h3 id="tests"><a id="org835cf7f"></a><span class="section-number-3">4.7</span> Tests</h3>
 <div class="outline-text-3" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -612,6 +730,11 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m t f</code></td>
+<td class="org-left">Test this file</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m t r</code></td>
 <td class="org-left">Rerun the last test</td>
 </tr>
@@ -620,13 +743,23 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 <td class="org-left"><code>SPC m t t</code></td>
 <td class="org-left">Run test under point</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m t n</code></td>
+<td class="org-left">Jump to next test</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t p</code></td>
+<td class="org-left">Jump to previous test</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="compile"><a id="orgheadline14"></a><span class="section-number-3">4.8</span> Compile</h3>
+<div id="outline-container-org6574ef3" class="outline-3">
+<h3 id="compile"><a id="org6574ef3"></a><span class="section-number-3">4.8</span> Compile</h3>
 <div class="outline-text-3" id="text-compile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -662,8 +795,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="execute"><a id="orgheadline15"></a><span class="section-number-3">4.9</span> Execute</h3>
+<div id="outline-container-org2949f14" class="outline-3">
+<h3 id="execute"><a id="org2949f14"></a><span class="section-number-3">4.9</span> Execute</h3>
 <div class="outline-text-3" id="text-execute">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -699,8 +832,8 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="code-definition-jump"><a id="orgheadline16"></a><span class="section-number-3">4.10</span> Code Definition Jump</h3>
+<div id="outline-container-org9ec912f" class="outline-3">
+<h3 id="code-definition-jump"><a id="org9ec912f"></a><span class="section-number-3">4.10</span> Code Definition Jump</h3>
 <div class="outline-text-3" id="text-code-definition-jump">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -733,8 +866,7 @@ You find and overview of all the key-bindings on the <a href="alchemist-refcard.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

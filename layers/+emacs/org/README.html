@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Org layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -176,10 +260,13 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
 <li><a href="#github-support">2.2. Github support</a></li>
-<li><a href="#gnuplot-support">2.3. Gnuplot support</a></li>
-<li><a href="#revealjs-support">2.4. Reveal.js support</a></li>
-<li><a href="#different-bullets">2.5. Different bullets</a></li>
-<li><a href="#project-support">2.6. Project support</a></li>
+<li><a href="#twitter-bootstrap-support">2.3. Twitter Bootstrap support</a></li>
+<li><a href="#gnuplot-support">2.4. Gnuplot support</a></li>
+<li><a href="#revealjs-support">2.5. Reveal.js support</a></li>
+<li><a href="#org-journal-support">2.6. Org-journal support</a></li>
+<li><a href="#different-bullets">2.7. Different bullets</a></li>
+<li><a href="#project-support">2.8. Project support</a></li>
+<li><a href="#mode-line-support">2.9. Mode line support</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -208,6 +295,7 @@ for the JavaScript code in this tag.
 <li><a href="#org-mime">3.7. Org-MIME</a></li>
 <li><a href="#org-download">3.8. Org-download</a></li>
 <li><a href="#org-projectile">3.9. Org-projectile</a></li>
+<li><a href="#org-journal">3.10. Org-journal</a></li>
 </ul>
 </li>
 </ul>
@@ -219,21 +307,21 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="description"><a id="orgheadline4"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org64ea15e" class="outline-2">
+<h2 id="description"><a id="org64ea15e"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="http://orgmode.org/">org mode</a> for Spacemacs.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features:</h3>
+<div id="outline-container-org3dcc39f" class="outline-3">
+<h3 id="features"><a id="org3dcc39f"></a><span class="section-number-3">1.1</span> Features:</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Vim inspired key bindings are provided by <a href="https://github.com/edwtjo/evil-org-mode">evil-org-mode</a></li>
 <li>Nicer bullet via <a href="https://github.com/sabof/org-bullets">org-bullets</a></li>
-<li>A <a href="http://pomodorotechnique.com/">pomodoro method</a> integration via <a href="https://github.com/lolownia/org-pomodoro">org-pomodoro</a></li>
+<li>A <a href="https://cirillocompany.de/pages/pomodoro-technique">pomodoro method</a> integration via <a href="https://github.com/lolownia/org-pomodoro">org-pomodoro</a></li>
 <li>Presentation mode via <a href="https://github.com/rlister/org-present">org-present</a></li>
 <li>Insertion of images via <a href="https://github.com/abo-abo/org-download">org-download</a></li>
 <li>Project-specific TODOs via <a href="https://github.com/IvanMalison/org-projectile">org-projectile</a></li>
@@ -241,18 +329,18 @@ This layer enables <a href="http://orgmode.org/">org mode</a> for Spacemacs.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="bibtex"><a id="orgheadline2"></a><span class="section-number-3">1.2</span> BibTeX</h3>
+<div id="outline-container-orgfd4c95f" class="outline-3">
+<h3 id="bibtex"><a id="orgfd4c95f"></a><span class="section-number-3">1.2</span> BibTeX</h3>
 <div class="outline-text-3" id="text-bibtex">
 <p>
 For more extensive support of references through BibTeX files, have a look at
-the <a href="../+lang/bibtex">BibTeX layer</a>.
+the <a href="../../+lang/bibtex">BibTeX layer</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="important-note"><a id="orgheadline3"></a><span class="section-number-3">1.3</span> Important Note</h3>
+<div id="outline-container-org502b77d" class="outline-3">
+<h3 id="important-note"><a id="org502b77d"></a><span class="section-number-3">1.3</span> Important Note</h3>
 <div class="outline-text-3" id="text-important-note">
 <p>
 Since version 0.104, spacemacs uses the <code>org</code> version from the org ELPA
@@ -269,7 +357,6 @@ One way to avoid conflict is to wrap your <code>org</code> config code in a
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org
   <span class="org-comment-delimiter">;; </span><span class="org-comment">here goes your Org config :)</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">....</span>
@@ -280,13 +367,13 @@ One way to avoid conflict is to wrap your <code>org</code> config code in a
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="install"><a id="orgheadline11"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org637a5f8" class="outline-2">
+<h2 id="install"><a id="org637a5f8"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="layer"><a id="orgheadline5"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org550f283" class="outline-3">
+<h3 id="layer"><a id="org550f283"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -296,8 +383,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="github-support"><a id="orgheadline6"></a><span class="section-number-3">2.2</span> Github support</h3>
+<div id="outline-container-orged8e889" class="outline-3">
+<h3 id="github-support"><a id="orged8e889"></a><span class="section-number-3">2.2</span> Github support</h3>
 <div class="outline-text-3" id="text-github-support">
 <p>
 To install Github related extensions like <a href="https://github.com/larstvei/ox-gfm">ox-gfm</a> to export to Github
@@ -305,16 +392,33 @@ flavored markdown set the variable <code>org-enable-github-support</code> to <co
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-github-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="gnuplot-support"><a id="orgheadline7"></a><span class="section-number-3">2.3</span> Gnuplot support</h3>
+<div id="outline-container-orgb8156f3" class="outline-3">
+<h3 id="twitter-bootstrap-support"><a id="orgb8156f3"></a><span class="section-number-3">2.3</span> Twitter Bootstrap support</h3>
+<div class="outline-text-3" id="text-twitter-bootstrap-support">
+<p>
+To install the Twitter Boostrap extension (from <a href="https://github.com/marsmining/ox-twbs">ox-twbs</a>), which enables twitter
+bootstrap formatted html, then set the variable <code>org-enable-bootstrap-support</code>
+to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+       org-enable-bootstrap-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7fcd3ae" class="outline-3">
+<h3 id="gnuplot-support"><a id="org7fcd3ae"></a><span class="section-number-3">2.4</span> Gnuplot support</h3>
 <div class="outline-text-3" id="text-gnuplot-support">
 <p>
 Org-mode support the plotting of data within tables through <a href="http://www.gnuplot.info/">Gnuplot</a> as
@@ -326,8 +430,8 @@ variable.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="revealjs-support"><a id="orgheadline8"></a><span class="section-number-3">2.4</span> Reveal.js support</h3>
+<div id="outline-container-org7c188ad" class="outline-3">
+<h3 id="revealjs-support"><a id="org7c188ad"></a><span class="section-number-3">2.5</span> Reveal.js support</h3>
 <div class="outline-text-3" id="text-revealjs-support">
 <p>
 To enable the export of your org file as a <a href="http://lab.hakim.se/reveal-js/">reveal.js</a> presentation, set the
@@ -336,8 +440,7 @@ extension.
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
  '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-enable-reveal-js-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -345,7 +448,7 @@ extension.
 <p>
 In order to be able to use org-reveal, download <code>reveal.js</code> from its
 <a href="http://lab.hakim.se/reveal-js/#/">homepage</a> and set <code>org-reveal-js</code> to the
-download path, as described in the <a href="https://github.com/yjwen/org-reveal#obtain-revealjs">manual</a>. Alternatively, add the following line
+download path, as described in the <a href="https://github.com/yjwen/org-reveal#user-content-revealjs-and-org-reveal">manual</a>. Alternatively, add the following line
 to each <code>.org</code> file you want to process:
 </p>
 
@@ -355,8 +458,115 @@ to each <code>.org</code> file you want to process:
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="different-bullets"><a id="orgheadline9"></a><span class="section-number-3">2.5</span> Different bullets</h3>
+<div id="outline-container-org0421616" class="outline-3">
+<h3 id="org-journal-support"><a id="org0421616"></a><span class="section-number-3">2.6</span> Org-journal support</h3>
+<div class="outline-text-3" id="text-org-journal-support">
+<p>
+<a href="https://github.com/bastibe/org-journal">org-journal</a> is a simple journal management system for keeping a seperate journal
+file for each day inside a directory.
+</p>
+
+<p>
+To install org-journal set the variable <code>org-enable-org-journal-support</code> to <code>t</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+       org-enable-org-journal-support t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+By default journal files are stored in <code>~/Documents/journal/</code>. You can override
+this by setting <code>org-journal-dir</code> in <code>dotspacemacs/user-config</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-dir <span class="org-string">"~/org/journal/"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can change the journal file name format by altering
+<code>org-journal-file-format</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-file-format <span class="org-string">"%Y-%m-%d"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<b>Warning:</b> setting <code>org-journal-file-format</code> to include a file extension like
+<code>%Y-%m-%d.org</code> breaks calender search functionality.
+</p>
+
+<p>
+By default journal files are started with a first level heading (<code>*</code>) followed
+by the date formatted for the locale. If you prefer that your journal files are
+formatted differently you can alter <code>org-journal-date-prefix</code> and
+<code>org-journal-date-format</code>.
+</p>
+
+<p>
+For example, to have your new journal files created with this header:
+</p>
+
+<pre class="example">
+#+TITLE: Tuesday, September 06 2016
+</pre>
+
+<p>
+Simply define the following in <code>dotspacemacs/user-config</code>
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-date-prefix <span class="org-string">"#+TITLE: "</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-date-format <span class="org-string">"%A, %B %d %Y"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The default entry is a second level heading (=** =) followed by a timestamp. If
+you start your journal files with a Title as shown above you may want to adjust
+entries to start at the first level heading and you may want to change or omit
+the timestamp.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-time-prefix <span class="org-string">"* "</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-journal-time-format <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+Any of the org-journal settings can be configured in <code>dotspacemacs/user-config</code>
+or defined along side the layer itself.
+</p>
+
+<p>
+For example:
+</p>
+
+<div class="org-src-container">
+<label class="org-src-name"><span class="listing-number">Listing 1: </span>Configure org-journal with the layer</label><pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+                                                  <span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span>
+                                                       org-enable-org-journal-support t
+                                                       org-journal-dir <span class="org-string">"~/org/journal/"</span>
+                                                       org-journal-file-format <span class="org-string">"%Y-%m-%d"</span>
+                                                       org-journal-date-prefix <span class="org-string">"#+TITLE: "</span>
+                                                       org-journal-date-format <span class="org-string">"%A, %B %d %Y"</span>
+                                                       org-journal-time-prefix <span class="org-string">"* "</span>
+                                                       org-journal-time-format <span class="org-string">""</span><span class="org-rainbow-delimiters-depth-3">)</span>
+                                                  <span class="org-rainbow-delimiters-depth-2">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5d5909f" class="outline-3">
+<h3 id="different-bullets"><a id="org5d5909f"></a><span class="section-number-3">2.7</span> Different bullets</h3>
 <div class="outline-text-3" id="text-different-bullets">
 <p>
 You can tweak the bullets displayed in the org buffer in the function
@@ -365,15 +575,23 @@ You can tweak the bullets displayed in the org buffer in the function
 </p>
 
 <div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> org-bullets-bullet-list '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"&#9632;"</span> <span class="org-string">"&#9670;"</span> <span class="org-string">"&#9650;"</span> <span class="org-string">"&#9654;"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
 
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq org-bullets-bullet-list '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"&#9632;"</span> <span class="org-string">"&#9670;"</span> <span class="org-string">"&#9650;"</span> <span class="org-string">"&#9654;"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<p>
+You can disable the fancy bullets entirely by adding <code>org-bullets</code> to <code>dotspacemacs-excluded-packages</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>dotspacemacs-excluded-packages '<span class="org-rainbow-delimiters-depth-2">(</span>org-bullets<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="project-support"><a id="orgheadline10"></a><span class="section-number-3">2.6</span> Project support</h3>
+<div id="outline-container-org5edd2cf" class="outline-3">
+<h3 id="project-support"><a id="org5edd2cf"></a><span class="section-number-3">2.8</span> Project support</h3>
 <div class="outline-text-3" id="text-project-support">
 <p>
 Set the layer variable <code>org-projectile-file</code> to the filename where you want to
@@ -383,8 +601,7 @@ filename, todos will be stored in each project root.
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>org <span class="org-builtin">:variables</span> org-projectile-file <span class="org-string">"TODOs.org"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -396,23 +613,41 @@ the following snippet. Note that this may have unintended consequences until
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'org-agenda
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">require</span> '<span class="org-constant">org-projectile</span><span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span>push <span class="org-rainbow-delimiters-depth-3">(</span>org-projectile:todo-files<span class="org-rainbow-delimiters-depth-3">)</span> org-agenda-files<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">push</span> <span class="org-rainbow-delimiters-depth-3">(</span>org-projectile:todo-files<span class="org-rainbow-delimiters-depth-3">)</span> org-agenda-files<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc0352f3" class="outline-3">
+<h3 id="mode-line-support"><a id="orgc0352f3"></a><span class="section-number-3">2.9</span> Mode line support</h3>
+<div class="outline-text-3" id="text-mode-line-support">
+<p>
+To temporarily enable mode line display of org clock, press <code>SPC t m c</code>.
+</p>
+
+<p>
+To permanently enable mode line display of org clock, add this snippet to your
+<code>dotspacemacs/user-config</code> function:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> spaceline-org-clock-p t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline30"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org9e29386" class="outline-2">
+<h2 id="key-bindings"><a id="org9e29386"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="org"><a id="orgheadline12"></a><span class="section-number-3">3.1</span> Org</h3>
+<div id="outline-container-org66b3739" class="outline-3">
+<h3 id="org"><a id="org66b3739"></a><span class="section-number-3">3.1</span> Org</h3>
 <div class="outline-text-3" id="text-org">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -455,6 +690,21 @@ the following snippet. Note that this may have unintended consequences until
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC a o k i</code></td>
+<td class="org-left">org clock in last</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o k j</code></td>
+<td class="org-left">org jump to current clock</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o k o</code></td>
+<td class="org-left">org clock out</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC a o l</code></td>
 <td class="org-left">org store link</td>
 </tr>
@@ -467,11 +717,6 @@ the following snippet. Note that this may have unintended consequences until
 <tr>
 <td class="org-left"><code>SPC a o o</code></td>
 <td class="org-left">org agenda</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC a o O</code></td>
-<td class="org-left">org clock out</td>
 </tr>
 
 <tr>
@@ -493,8 +738,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="org-with-evil-org-mode"><a id="orgheadline20"></a><span class="section-number-3">3.2</span> Org with evil-org-mode</h3>
+<div id="outline-container-org0eedc08" class="outline-3">
+<h3 id="org-with-evil-org-mode"><a id="org0eedc08"></a><span class="section-number-3">3.2</span> Org with evil-org-mode</h3>
 <div class="outline-text-3" id="text-org-with-evil-org-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -592,7 +837,7 @@ the following snippet. Note that this may have unintended consequences until
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e</code></td>
+<td class="org-left"><code>SPC m e e</code></td>
 <td class="org-left">org-export-dispatch</td>
 </tr>
 
@@ -692,6 +937,11 @@ the following snippet. Note that this may have unintended consequences until
 </tr>
 
 <tr>
+<td class="org-left"><code>SPC m V</code></td>
+<td class="org-left">toggle <code>space-doc-mode</code> a read-only view mode</td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC s j</code></td>
 <td class="org-left">spacemacs/jump-in-buffer (jump to a heading)</td>
 </tr>
@@ -699,8 +949,8 @@ the following snippet. Note that this may have unintended consequences until
 </table>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="tables"><a id="orgheadline13"></a><span class="section-number-4">3.2.1</span> Tables</h4>
+<div id="outline-container-org506ac48" class="outline-4">
+<h4 id="tables"><a id="org506ac48"></a><span class="section-number-4">3.2.1</span> Tables</h4>
 <div class="outline-text-4" id="text-tables">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -856,8 +1106,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="tree"><a id="orgheadline14"></a><span class="section-number-4">3.2.2</span> Tree</h4>
+<div id="outline-container-orgfed8003" class="outline-4">
+<h4 id="tree"><a id="orgfed8003"></a><span class="section-number-4">3.2.2</span> Tree</h4>
 <div class="outline-text-4" id="text-tree">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1057,8 +1307,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-4">
-<h4 id="element-insertion"><a id="orgheadline15"></a><span class="section-number-4">3.2.3</span> Element insertion</h4>
+<div id="outline-container-orgfa98a0e" class="outline-4">
+<h4 id="element-insertion"><a id="orgfa98a0e"></a><span class="section-number-4">3.2.3</span> Element insertion</h4>
 <div class="outline-text-4" id="text-element-insertion">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1099,13 +1349,18 @@ the following snippet. Note that this may have unintended consequences until
 <td class="org-left"><code>SPC m i l</code></td>
 <td class="org-left">org-insert-link</td>
 </tr>
+
+<tr>
+<td class="org-left"><code>SPC m i a</code></td>
+<td class="org-left">org-attach</td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-4">
-<h4 id="links"><a id="orgheadline16"></a><span class="section-number-4">3.2.4</span> Links</h4>
+<div id="outline-container-org869e6c6" class="outline-4">
+<h4 id="links"><a id="org869e6c6"></a><span class="section-number-4">3.2.4</span> Links</h4>
 <div class="outline-text-4" id="text-links">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1131,8 +1386,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="emphasis"><a id="orgheadline17"></a><span class="section-number-4">3.2.5</span> Emphasis</h4>
+<div id="outline-container-org2409640" class="outline-4">
+<h4 id="emphasis"><a id="org2409640"></a><span class="section-number-4">3.2.5</span> Emphasis</h4>
 <div class="outline-text-4" id="text-emphasis">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1188,8 +1443,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="tagging"><a id="orgheadline18"></a><span class="section-number-4">3.2.6</span> Tagging</h4>
+<div id="outline-container-org17c3a93" class="outline-4">
+<h4 id="tagging"><a id="org17c3a93"></a><span class="section-number-4">3.2.6</span> Tagging</h4>
 <div class="outline-text-4" id="text-tagging">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1215,8 +1470,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-4">
-<h4 id="navigating-in-calendar"><a id="orgheadline19"></a><span class="section-number-4">3.2.7</span> Navigating in calendar</h4>
+<div id="outline-container-org85c8337" class="outline-4">
+<h4 id="navigating-in-calendar"><a id="org85c8337"></a><span class="section-number-4">3.2.7</span> Navigating in calendar</h4>
 <div class="outline-text-4" id="text-navigating-in-calendar">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1278,8 +1533,8 @@ the following snippet. Note that this may have unintended consequences until
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="capture-buffers-and-src-blocks"><a id="orgheadline21"></a><span class="section-number-3">3.3</span> Capture buffers and src blocks</h3>
+<div id="outline-container-org10adc36" class="outline-3">
+<h3 id="capture-buffers-and-src-blocks"><a id="org10adc36"></a><span class="section-number-3">3.3</span> Capture buffers and src blocks</h3>
 <div class="outline-text-3" id="text-capture-buffers-and-src-blocks">
 <p>
 <code>org-capture-mode</code> and <code>org-src-mode</code> both support the confirm and abort
@@ -1327,7 +1582,7 @@ conventions.
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left"><code>SPC m R</code></td>
 <td class="org-left">org-capture-refile in org-capture-mode</td>
 </tr>
 </tbody>
@@ -1335,14 +1590,14 @@ conventions.
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="org-agenda"><a id="orgheadline24"></a><span class="section-number-3">3.4</span> Org agenda</h3>
+<div id="outline-container-org8dd94cc" class="outline-3">
+<h3 id="org-agenda"><a id="org8dd94cc"></a><span class="section-number-3">3.4</span> Org agenda</h3>
 <div class="outline-text-3" id="text-org-agenda">
 </div>
 
 
-<div id="outline-container-orgheadline22" class="outline-4">
-<h4 id="keybindings"><a id="orgheadline22"></a><span class="section-number-4">3.4.1</span> Keybindings</h4>
+<div id="outline-container-org71ef1c2" class="outline-4">
+<h4 id="keybindings"><a id="org71ef1c2"></a><span class="section-number-4">3.4.1</span> Keybindings</h4>
 <div class="outline-text-4" id="text-keybindings">
 <p>
 The evilified org agenda supports the following bindings:
@@ -1409,12 +1664,12 @@ The evilified org agenda supports the following bindings:
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m q</code></td>
+<td class="org-left"><code>SPC m R</code></td>
 <td class="org-left">org-agenda-refile</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m Q</code></td>
+<td class="org-left"><code>SPC m q</code></td>
 <td class="org-left">org-agenda-clock-cancel</td>
 </tr>
 
@@ -1472,8 +1727,8 @@ The evilified org agenda supports the following bindings:
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-4">
-<h4 id="org-agenda-transient-state"><a id="orgheadline23"></a><span class="section-number-4">3.4.2</span> Org agenda transient state</h4>
+<div id="outline-container-org0922edc" class="outline-4">
+<h4 id="org-agenda-transient-state"><a id="org0922edc"></a><span class="section-number-4">3.4.2</span> Org agenda transient state</h4>
 <div class="outline-text-4" id="text-org-agenda-transient-state">
 <p>
 Use <code>M-SPC</code> or <code>s-M-SPC</code> in an org agenda buffer to activate its transient state.
@@ -1520,7 +1775,7 @@ are listed bellow.
 </tr>
 
 <tr>
-<td class="org-left"><code>hr</code></td>
+<td class="org-left"><code>hR</code></td>
 <td class="org-left">refile</td>
 <td class="org-left">org-agenda-refile</td>
 </tr>
@@ -1532,7 +1787,7 @@ are listed bellow.
 </tr>
 
 <tr>
-<td class="org-left"><code>hT</code></td>
+<td class="org-left"><code>h:</code></td>
 <td class="org-left">set tags</td>
 <td class="org-left">org-agenda-set-tags</td>
 </tr>
@@ -1760,19 +2015,19 @@ are listed bellow.
 </tbody>
 <tbody>
 <tr>
-<td class="org-left"><code>ci</code></td>
+<td class="org-left"><code>cI</code></td>
 <td class="org-left">in</td>
 <td class="org-left">org-agenda-clock-in</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>co</code></td>
+<td class="org-left"><code>cO</code></td>
 <td class="org-left">out</td>
 <td class="org-left">org-agenda-clock-out</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>ck</code></td>
+<td class="org-left"><code>cq</code></td>
 <td class="org-left">cancel</td>
 <td class="org-left">org-agenda-clock-cancel</td>
 </tr>
@@ -1814,8 +2069,8 @@ are listed bellow.
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-3">
-<h3 id="pomodoro"><a id="orgheadline25"></a><span class="section-number-3">3.5</span> Pomodoro</h3>
+<div id="outline-container-orgee9bf7d" class="outline-3">
+<h3 id="pomodoro"><a id="orgee9bf7d"></a><span class="section-number-3">3.5</span> Pomodoro</h3>
 <div class="outline-text-3" id="text-pomodoro">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1841,8 +2096,8 @@ are listed bellow.
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="presentation"><a id="orgheadline26"></a><span class="section-number-3">3.6</span> Presentation</h3>
+<div id="outline-container-org72dcd79" class="outline-3">
+<h3 id="presentation"><a id="org72dcd79"></a><span class="section-number-3">3.6</span> Presentation</h3>
 <div class="outline-text-3" id="text-presentation">
 <p>
 org-present must be activated explicitly by typing: <code>SPC SPC org-present</code>
@@ -1882,8 +2137,8 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-3">
-<h3 id="org-mime"><a id="orgheadline27"></a><span class="section-number-3">3.7</span> Org-MIME</h3>
+<div id="outline-container-org3813c29" class="outline-3">
+<h3 id="org-mime"><a id="org3813c29"></a><span class="section-number-3">3.7</span> Org-MIME</h3>
 <div class="outline-text-3" id="text-org-mime">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1914,8 +2169,8 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-3">
-<h3 id="org-download"><a id="orgheadline28"></a><span class="section-number-3">3.8</span> Org-download</h3>
+<div id="outline-container-orgae1a07a" class="outline-3">
+<h3 id="org-download"><a id="orgae1a07a"></a><span class="section-number-3">3.8</span> Org-download</h3>
 <div class="outline-text-3" id="text-org-download">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1946,8 +2201,8 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </div>
 </div>
 
-<div id="outline-container-orgheadline29" class="outline-3">
-<h3 id="org-projectile"><a id="orgheadline29"></a><span class="section-number-3">3.9</span> Org-projectile</h3>
+<div id="outline-container-org08e3abb" class="outline-3">
+<h3 id="org-projectile"><a id="org08e3abb"></a><span class="section-number-3">3.9</span> Org-projectile</h3>
 <div class="outline-text-3" id="text-org-projectile">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -1982,11 +2237,141 @@ org-present must be activated explicitly by typing: <code>SPC SPC org-present</c
 </table>
 </div>
 </div>
+
+<div id="outline-container-org5b29283" class="outline-3">
+<h3 id="org-journal"><a id="org5b29283"></a><span class="section-number-3">3.10</span> Org-journal</h3>
+<div class="outline-text-3" id="text-org-journal">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC a o j j</code></td>
+<td class="org-left">New journal entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC a o j s</code></td>
+<td class="org-left">Search journal entries</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Journal entries are highlighted in the calander. The following key bindings are
+available for <code>calander-mode</code> for navigating and manipulating the journal.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r</code></td>
+<td class="org-left">Read journal entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i</code></td>
+<td class="org-left">Insert journal entry for date</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n</code></td>
+<td class="org-left">Next journal entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p</code></td>
+<td class="org-left">Previous journal entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s</code></td>
+<td class="org-left">Search all journal entries</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m w</code></td>
+<td class="org-left">Search calendar week journal entries</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m m</code></td>
+<td class="org-left">Search calendar month journal entries</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m y</code></td>
+<td class="org-left">Search calendar year journal entries</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+While viewing a journal entry in <code>org-journal-mode</code> the following key bindings
+are available.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m j</code></td>
+<td class="org-left">New journal entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m p</code></td>
+<td class="org-left">Previous journal entry</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m n</code></td>
+<td class="org-left">Next journal entry</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

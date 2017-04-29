@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>React layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -191,8 +275,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="description"><a id="orgheadline2"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org01ac1ff" class="outline-2">
+<h2 id="description"><a id="org01ac1ff"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 ES6 and JSX ready configuration layer for React
@@ -204,8 +288,8 @@ It will also recognize <code>/** @jsx React.DOM */</code> if it is the first lin
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-orgd4b6acd" class="outline-3">
+<h3 id="features"><a id="orgd4b6acd"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>on-the-fly syntax checking</li>
@@ -219,8 +303,8 @@ It will also recognize <code>/** @jsx React.DOM */</code> if it is the first lin
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="install"><a id="orgheadline3"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org49e643c" class="outline-2">
+<h2 id="install"><a id="org49e643c"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -233,7 +317,6 @@ You will also need to install <code>tern</code> to use the auto-completion and
 documentation features:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">$ npm install -g tern
 </pre>
 </div>
@@ -242,7 +325,6 @@ documentation features:
 To use the on-the-fly syntax checking, install <code>eslint</code> with babel and react support:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">$ npm install -g eslint babel-eslint eslint-plugin-react
 </pre>
 </div>
@@ -256,7 +338,6 @@ If your project do not use a custom <code>.eslintrc</code> file I strongly advic
 In order to use automatic code formatting you need to install <code>js-beautify</code> with:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">$ npm install -g js-beautify
 </pre>
 </div>
@@ -265,7 +346,6 @@ In order to use automatic code formatting you need to install <code>js-beautify<
 Be sure to have the <code>e4x</code> option set to <code>true</code> on your <code>.jsbeautifyrc</code> here it is my configuration as an example:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-json">{
   "indent_size": 2,
   "indent_char": " ",
@@ -294,8 +374,8 @@ Be sure to have the <code>e4x</code> option set to <code>true</code> on your <co
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="optional-configuration"><a id="orgheadline4"></a><span class="section-number-2">3</span> Optional Configuration</h2>
+<div id="outline-container-orge674c00" class="outline-2">
+<h2 id="optional-configuration"><a id="orge674c00"></a><span class="section-number-2">3</span> Optional Configuration</h2>
 <div class="outline-text-2" id="text-optional-configuration">
 <p>
 You may refer to the <code>web-mode</code> configuration for fine tuning the indenting behaviour.
@@ -306,8 +386,7 @@ For example to have a consistent 2 spaces indenting both on <code>js</code> and 
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">js2-mode</span>
  js2-basic-offset <span class="org-highlight-numbers-number">2</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">web-mode</span>
@@ -323,7 +402,6 @@ For example to have a consistent 2 spaces indenting both on <code>js</code> and 
 And if you want to have 2 space indent also for element's attributes, concatenations and contiguous function calls:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'web-mode
   <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-args"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>add-to-list 'web-mode-indentation-params '<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"lineup-concats"</span> . nil<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
@@ -333,14 +411,14 @@ And if you want to have 2 space indent also for element's attributes, concatenat
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline8"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org1537f27" class="outline-2">
+<h2 id="key-bindings"><a id="org1537f27"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="formatting-web-beautify"><a id="orgheadline6"></a><span class="section-number-3">4.1</span> Formatting (web-beautify)</h3>
+<div id="outline-container-orgdf9c3b2" class="outline-3">
+<h3 id="formatting-web-beautify"><a id="orgdf9c3b2"></a><span class="section-number-3">4.1</span> Formatting (web-beautify)</h3>
 <div class="outline-text-3" id="text-formatting-web-beautify">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -365,8 +443,8 @@ And if you want to have 2 space indent also for element's attributes, concatenat
 </table>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="documentation-js-doc"><a id="orgheadline5"></a><span class="section-number-4">4.1.1</span> Documentation (js-doc)</h4>
+<div id="outline-container-org18a4292" class="outline-4">
+<h4 id="documentation-js-doc"><a id="org18a4292"></a><span class="section-number-4">4.1.1</span> Documentation (js-doc)</h4>
 <div class="outline-text-4" id="text-documentation-js-doc">
 <p>
 You can check more <a href="https://github.com/mooz/js-doc/">here</a>
@@ -412,8 +490,8 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="auto-complete-and-documentation-tern"><a id="orgheadline7"></a><span class="section-number-3">4.2</span> Auto-complete and documentation (tern)</h3>
+<div id="outline-container-org4ed6a96" class="outline-3">
+<h3 id="auto-complete-and-documentation-tern"><a id="org4ed6a96"></a><span class="section-number-3">4.2</span> Auto-complete and documentation (tern)</h3>
 <div class="outline-text-3" id="text-auto-complete-and-documentation-tern">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -466,8 +544,7 @@ You can check more <a href="https://github.com/mooz/js-doc/">here</a>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

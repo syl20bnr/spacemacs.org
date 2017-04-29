@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:54 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Configuration layers</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -198,7 +282,7 @@ for the JavaScript code in this tag.
 <li><a href="#layer-tips-and-tricks">7. Layer tips and tricks</a>
 <ul>
 <li><a href="#cross-dependencies">7.1. Cross-dependencies</a></li>
-<li><a href="#use-package">7.2. Use-package</a></li>
+<li><a href="#use-package-init-and-config">7.2. Use-package init and config</a></li>
 <li><a href="#use-package-hooks">7.3. Use-package hooks</a></li>
 <li><a href="#best-practices">7.4. Best practices</a>
 <ul>
@@ -211,17 +295,12 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 </li>
-<li><a href="#how-do-i--idiomatically">8. How do I &#x2026; idiomatically?</a>
-<ul>
-<li><a href="#setup-auto-completion-for-a-major-mode">8.1. Setup auto-completion for a major mode</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="introduction"><a id="orgheadline1"></a><span class="section-number-2">1</span> Introduction</h2>
+<div id="outline-container-org49584af" class="outline-2">
+<h2 id="introduction"><a id="org49584af"></a><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-introduction">
 <p>
 This document is intended as a tutorial for users who are interested in writing
@@ -232,8 +311,8 @@ how Spacemacs (and Emacs) loads packages.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="nomenclature"><a id="orgheadline2"></a><span class="section-number-2">2</span> Nomenclature</h2>
+<div id="outline-container-orgdb13aa5" class="outline-2">
+<h2 id="nomenclature"><a id="orgdb13aa5"></a><span class="section-number-2">2</span> Nomenclature</h2>
 <div class="outline-text-2" id="text-nomenclature">
 <p>
 Layers and packages. What gives?
@@ -261,8 +340,8 @@ write a package first, and then a layer that uses your package.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="the-emacs-loading-process"><a id="orgheadline10"></a><span class="section-number-2">3</span> The Emacs loading process</h2>
+<div id="outline-container-org4d25f5d" class="outline-2">
+<h2 id="the-emacs-loading-process"><a id="org4d25f5d"></a><span class="section-number-2">3</span> The Emacs loading process</h2>
 <div class="outline-text-2" id="text-the-emacs-loading-process">
 <p>
 To understand how to best implement a layer, we have to investigate how Emacs
@@ -270,8 +349,8 @@ loads code.
 </p>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="emacs-lisp-files"><a id="orgheadline4"></a><span class="section-number-3">3.1</span> Emacs Lisp files</h3>
+<div id="outline-container-org9923edd" class="outline-3">
+<h3 id="emacs-lisp-files"><a id="org9923edd"></a><span class="section-number-3">3.1</span> Emacs Lisp files</h3>
 <div class="outline-text-3" id="text-emacs-lisp-files">
 <p>
 Emacs Lisp files contains code that can be evaluated. When evaluated, the
@@ -291,15 +370,14 @@ How is this done in Emacs, and how is it done in Spacemacs?
 </p>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="loading-a-file"><a id="orgheadline3"></a><span class="section-number-4">3.1.1</span> Loading a file</h4>
+<div id="outline-container-orgf666a3b" class="outline-4">
+<h4 id="loading-a-file"><a id="orgf666a3b"></a><span class="section-number-4">3.1.1</span> Loading a file</h4>
 <div class="outline-text-4" id="text-loading-a-file">
 <p>
 The simplest way to load a file is to call <code>load-file</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>load-file <span class="org-string">"~/elisp/foo.el"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -313,8 +391,8 @@ byte-compiled <code>.elc</code> file. It will simply load exactly what you tell 
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="features"><a id="orgheadline6"></a><span class="section-number-3">3.2</span> Features</h3>
+<div id="outline-container-org040cc0d" class="outline-3">
+<h3 id="features"><a id="org040cc0d"></a><span class="section-number-3">3.2</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <p>
 A better way to load what you need is to use <i>features</i>. A feature is a symbol
@@ -323,7 +401,6 @@ the following contents in a file called <code>my-feature.el</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Your code goes here ...</span>
 
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">provide</span> '<span class="org-constant">my-feature</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -335,7 +412,6 @@ To have Emacs load this file, call <code>require</code>, as such:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">my-feature</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -364,8 +440,8 @@ loaded before their code runs.
 </p>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="the-load-path"><a id="orgheadline5"></a><span class="section-number-4">3.2.1</span> The load path</h4>
+<div id="outline-container-org9d2a8ae" class="outline-4">
+<h4 id="the-load-path"><a id="org9d2a8ae"></a><span class="section-number-4">3.2.1</span> The load path</h4>
 <div class="outline-text-4" id="text-the-load-path">
 <p>
 When loaded using <code>require</code>, Emacs looks for files in its <i>load path</i>. This is
@@ -375,23 +451,22 @@ simply push to this list, e.g.
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>push <span class="org-string">"/some/path/"</span> load-path<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">push</span> <span class="org-string">"/some/path/"</span> load-path<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="auto-loading"><a id="orgheadline7"></a><span class="section-number-3">3.3</span> Auto-loading</h3>
+<div id="outline-container-org713451e" class="outline-3">
+<h3 id="auto-loading"><a id="org713451e"></a><span class="section-number-3">3.3</span> Auto-loading</h3>
 <div class="outline-text-3" id="text-auto-loading">
 <p>
 Calling <code>require</code> is nothing more than a glorified way of calling <code>load-file</code>.
 It solves the problem of ensuring that files are loaded in the correct order,
 and to some degree it solved the problem of where to find the files on disk but
-a long list of calls to <code>require</code> at startup would still cause Emacs to take for
-ever to load.
+a long list of calls to <code>require</code> at startup would still cause Emacs to take
+forever to load.
 </p>
 
 <p>
@@ -409,7 +484,6 @@ To register a function as auto-loadable, we call <code>autoload</code>:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>autoload 'some-function <span class="org-string">"some-file"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -436,7 +510,6 @@ generated from "magic" comments in the source code of Helm. They look like this:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;;</span><span class="org-comment">###</span><span class="org-comment"><span class="org-warning">autoload</span></span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">my-function</span> <span class="org-rainbow-delimiters-depth-2">()</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Source code...</span>
@@ -463,7 +536,6 @@ your file is actually evaluated, probably not what was intended:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;;</span><span class="org-comment">###</span><span class="org-comment"><span class="org-warning">autoload</span></span>
 <span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">require</span> '<span class="org-constant">helm</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -481,8 +553,8 @@ loaded when needed instead of right away.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="eval-after-load"><a id="orgheadline8"></a><span class="section-number-3">3.4</span> Eval after load</h3>
+<div id="outline-container-org4b3d3d6" class="outline-3">
+<h3 id="eval-after-load"><a id="org4b3d3d6"></a><span class="section-number-3">3.4</span> Eval after load</h3>
 <div class="outline-text-3" id="text-eval-after-load">
 <p>
 Often, we will want to configure packages after loading them. We may want to set
@@ -496,7 +568,6 @@ Emacs offers <code>with-eval-after-load</code> for this purpose. It can be used 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'helm
      <span class="org-comment-delimiter">;; </span><span class="org-comment">Code</span>
      <span class="org-rainbow-delimiters-depth-1">)</span>
@@ -516,8 +587,8 @@ not have to be quoted.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="use-package"><a id="orgheadline9"></a><span class="section-number-3">3.5</span> Use-package</h3>
+<div id="outline-container-org92ecea9" class="outline-3">
+<h3 id="use-package"><a id="org92ecea9"></a><span class="section-number-3">3.5</span> Use-package</h3>
 <div class="outline-text-3" id="text-use-package">
 <p>
 For <i>end users</i> who are trying to put together an efficient Emacs configuration,
@@ -532,7 +603,6 @@ The aspiring layer author is recommended to have a look at the <code>use-package
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -542,7 +612,6 @@ This simply loads Helm. It is essentially equivalent to <code>(require 'helm)</c
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span>
   <span class="org-builtin">:defer</span> t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -554,7 +623,6 @@ commands provided by the Helm source code. It is, in fact, a no-op.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span>
   <span class="org-builtin">:defer</span> t
   <span class="org-builtin">:init</span>
@@ -574,7 +642,6 @@ block in an <code>with-eval-after-load</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">helm</span>
   <span class="org-builtin">:commands</span> <span class="org-rainbow-delimiters-depth-2">(</span>helm-find-files helm-M-x<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -586,7 +653,6 @@ package author has been slacking.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">use-package</span> <span class="org-constant">ruby-mode</span>
   <span class="org-builtin">:mode</span> <span class="org-string">"\\.rb\\'"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -608,8 +674,8 @@ more.
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-2">
-<h2 id="anatomy-of-a-layer"><a id="orgheadline16"></a><span class="section-number-2">4</span> Anatomy of a layer</h2>
+<div id="outline-container-org55c14c6" class="outline-2">
+<h2 id="anatomy-of-a-layer"><a id="org55c14c6"></a><span class="section-number-2">4</span> Anatomy of a layer</h2>
 <div class="outline-text-2" id="text-anatomy-of-a-layer">
 <p>
 A layer is simply a folder somewhere in Spacemacs' layer search path that
@@ -632,8 +698,8 @@ path for you.
 </p>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="layersel"><a id="orgheadline11"></a><span class="section-number-3">4.1</span> layers.el</h3>
+<div id="outline-container-org26b5e0e" class="outline-3">
+<h3 id="layersel"><a id="org26b5e0e"></a><span class="section-number-3">4.1</span> layers.el</h3>
 <div class="outline-text-3" id="text-layersel">
 <p>
 This file is the first file to be loaded and this is the place where addtional
@@ -646,7 +712,6 @@ file <code>layers.el</code> of layer A we can add:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>configuration-layer/declare-layer 'B<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -658,8 +723,8 @@ was added to <code>dotspacemacs-configuration-layers</code> variables.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="packagesel"><a id="orgheadline12"></a><span class="section-number-3">4.2</span> packages.el</h3>
+<div id="outline-container-org704a664" class="outline-3">
+<h3 id="packagesel"><a id="org704a664"></a><span class="section-number-3">4.2</span> packages.el</h3>
 <div class="outline-text-3" id="text-packagesel">
 <p>
 It contains this list of packages of the layer and the actual configuration for
@@ -677,7 +742,6 @@ as follows:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defconst</span> <span class="org-variable-name">mylayer-packages</span>
   '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-comment-delimiter">;; </span><span class="org-comment">Get the package from MELPA, ELPA, etc.</span>
@@ -701,8 +765,7 @@ as follows:
 <p>
 The <code>:location</code> attribute specifies where the package may be found. Spacemacs
 currently supports packages on ELPA compliant repositories, local packages and
-MELPA recipes (through the Quelpa package). See the <a href="https://github.com/milkypostman/melpa#recipe-format">MELPA documentation</a> for more
-information about recipes.
+MELPA recipes (through the Quelpa package). Local packages should reside at <code>&lt;layer&gt;/local/&lt;package&gt;/</code>. For information about recipes see the <a href="https://github.com/milkypostman/melpa#user-content-recipe-format">MELPA documentation</a>.
 </p>
 
 <p>
@@ -738,15 +801,15 @@ discuss later.
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="funcsel"><a id="orgheadline13"></a><span class="section-number-3">4.3</span> funcs.el</h3>
+<div id="outline-container-org7c5d620" class="outline-3">
+<h3 id="funcsel"><a id="org7c5d620"></a><span class="section-number-3">4.3</span> funcs.el</h3>
 <div class="outline-text-3" id="text-funcsel">
 <p>
 It contains all the defined functions used in the layer.
 </p>
 
 <p>
-This file is loaded after  <code>packages.el</code> and before <code>config.el</code>.
+This file is loaded after <code>packages.el</code> and before <code>config.el</code>.
 </p>
 
 <p>
@@ -755,7 +818,6 @@ is actually used. For instance:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/package-usedp 'my-package<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs/my-package-enable</span> <span class="org-rainbow-delimiters-depth-3">()</span> ...<span class="org-rainbow-delimiters-depth-2">)</span>
   <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">spacemacs/my-package-disable</span> <span class="org-rainbow-delimiters-depth-3">()</span> ...<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
@@ -763,18 +825,18 @@ is actually used. For instance:
 </div>
 
 <p>
-By guarding these functions we avoid to define them in case the package
-`my-package` is not used.
+By guarding these functions we avoid defining them when the package <code>my-package</code>
+is not used.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="configel"><a id="orgheadline14"></a><span class="section-number-3">4.4</span> config.el</h3>
+<div id="outline-container-org314a0e1" class="outline-3">
+<h3 id="configel"><a id="org314a0e1"></a><span class="section-number-3">4.4</span> config.el</h3>
 <div class="outline-text-3" id="text-configel">
 <p>
-This file configure the layer like declaring layer variables default values
-and setup some other variables related to the layer.
+This file configures the layer by declaring layer variables' default values and
+setting up some other variables related to the layer.
 </p>
 
 <p>
@@ -783,8 +845,8 @@ This file is loaded after <code>funcs.el</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="keybindingsel"><a id="orgheadline15"></a><span class="section-number-3">4.5</span> keybindings.el</h3>
+<div id="outline-container-orgb76d6e2" class="outline-3">
+<h3 id="keybindingsel"><a id="orgb76d6e2"></a><span class="section-number-3">4.5</span> keybindings.el</h3>
 <div class="outline-text-3" id="text-keybindingsel">
 <p>
 It contains general key bindings.
@@ -809,18 +871,19 @@ More on this in the next section.
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-2">
-<h2 id="the-spacemacs-loading-process"><a id="orgheadline17"></a><span class="section-number-2">5</span> The Spacemacs loading process</h2>
+<div id="outline-container-org729d947" class="outline-2">
+<h2 id="the-spacemacs-loading-process"><a id="org729d947"></a><span class="section-number-2">5</span> The Spacemacs loading process</h2>
 <div class="outline-text-2" id="text-the-spacemacs-loading-process">
 <p>
 The Spacemacs loading process can be summarized as follows:
 </p>
 
 <ol class="org-ol">
-<li>Spacemacs goes through all the enabled layers and evaluates their files. The
-changes introduced by <code>config.el</code> are thus applied, then <code>funcs.el</code> and
-<code>packages.el</code> are loaded, but nothing happens from <code>packages.el</code>, since these
-files only define functions and variables.</li>
+<li>Spacemacs goes through all the enabled layers and evaluates their files.
+First <code>layers.el</code> is loaded to declare layer dependencies. Then <code>packages.el</code>
+and <code>funcs.el</code> are loaded, but nothing happens from them since these files
+only define functions and variables, then the changes introduced by
+<code>config.el</code> are applied.</li>
 <li><p>
 Spacemacs checks which packages should be downloaded and installed. To be
 installed, a package must be
@@ -863,8 +926,8 @@ ownership of a package that was owned by a previously enabled layer.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="case-study-auto-completion"><a id="orgheadline18"></a><span class="section-number-2">6</span> Case study: auto-completion</h2>
+<div id="outline-container-org0c6d071" class="outline-2">
+<h2 id="case-study-auto-completion"><a id="org0c6d071"></a><span class="section-number-2">6</span> Case study: auto-completion</h2>
 <div class="outline-text-2" id="text-case-study-auto-completion">
 <p>
 Spacemacs provides a layer called <code>auto-completion</code> which provides
@@ -915,14 +978,13 @@ which is not what we want.
 </div>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-2">
-<h2 id="layer-tips-and-tricks"><a id="orgheadline28"></a><span class="section-number-2">7</span> Layer tips and tricks</h2>
+<div id="outline-container-orgc38fd55" class="outline-2">
+<h2 id="layer-tips-and-tricks"><a id="orgc38fd55"></a><span class="section-number-2">7</span> Layer tips and tricks</h2>
 <div class="outline-text-2" id="text-layer-tips-and-tricks">
 </div>
 
-
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="cross-dependencies"><a id="orgheadline19"></a><span class="section-number-3">7.1</span> Cross-dependencies</h3>
+<div id="outline-container-orga52d578" class="outline-3">
+<h3 id="cross-dependencies"><a id="orga52d578"></a><span class="section-number-3">7.1</span> Cross-dependencies</h3>
 <div class="outline-text-3" id="text-cross-dependencies">
 <p>
 Spacemacs provides a couple of additional useful functions you can use to check
@@ -943,14 +1005,14 @@ by using <code>post-init</code> functions.
 For layers that require another layers to be enabled, use the functions
 <code>configuration-layer/declare-layer</code> and <code>configuration-layer/declare-layers</code> to
 ensure that layers are enabled even if the user has not enabled them explicitly.
-Calls to these functions must go in the <code>config.el</code> file.
+Calls to these functions must go in the <code>layers.el</code> file.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="use-package"><a id="orgheadline20"></a><span class="section-number-3">7.2</span> Use-package</h3>
-<div class="outline-text-3" id="text-use-package">
+<div id="outline-container-orgd64b509" class="outline-3">
+<h3 id="use-package-init-and-config"><a id="orgd64b509"></a><span class="section-number-3">7.2</span> Use-package init and config</h3>
+<div class="outline-text-3" id="text-use-package-init-and-config">
 <p>
 In the vast majority of cases, a package <code>init</code> function should do nothing but
 call to <code>use-package</code>. Again, in the vast majority of cases, all the
@@ -980,8 +1042,8 @@ have both!
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="use-package-hooks"><a id="orgheadline21"></a><span class="section-number-3">7.3</span> Use-package hooks</h3>
+<div id="outline-container-org3f5e171" class="outline-3">
+<h3 id="use-package-hooks"><a id="org3f5e171"></a><span class="section-number-3">7.3</span> Use-package hooks</h3>
 <div class="outline-text-3" id="text-use-package-hooks">
 <p>
 Spacemacs includes a macro for adding more code to the <code>:init</code> or <code>:config</code>
@@ -991,8 +1053,7 @@ or <code>post-init</code> functions to "inject" code into the <code>use-package<
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs|use-package-add-hook helm
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">spacemacs|use-package-add-hook</span> helm
   <span class="org-builtin">:pre-init</span>
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Code</span>
   <span class="org-builtin">:post-init</span>
@@ -1017,8 +1078,8 @@ be the default choice.
 </div>
 </div>
 
-<div id="outline-container-orgheadline27" class="outline-3">
-<h3 id="best-practices"><a id="orgheadline27"></a><span class="section-number-3">7.4</span> Best practices</h3>
+<div id="outline-container-org6348553" class="outline-3">
+<h3 id="best-practices"><a id="org6348553"></a><span class="section-number-3">7.4</span> Best practices</h3>
 <div class="outline-text-3" id="text-best-practices">
 <p>
 If you break any of these rules, you should know what you are doing and have a
@@ -1026,8 +1087,8 @@ good reason for doing it.
 </p>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-4">
-<h4 id="package-ownership"><a id="orgheadline22"></a><span class="section-number-4">7.4.1</span> Package ownership</h4>
+<div id="outline-container-orge432e24" class="outline-4">
+<h4 id="package-ownership"><a id="orge432e24"></a><span class="section-number-4">7.4.1</span> Package ownership</h4>
 <div class="outline-text-4" id="text-package-ownership">
 <p>
 Each package should be owned by one layer only. The layer that owns the
@@ -1037,8 +1098,8 @@ package should define its <code>init</code> function. Other layers should rely o
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-4">
-<h4 id="localize-your-configuration"><a id="orgheadline23"></a><span class="section-number-4">7.4.2</span> Localize your configuration</h4>
+<div id="outline-container-orgddc9a09" class="outline-4">
+<h4 id="localize-your-configuration"><a id="orgddc9a09"></a><span class="section-number-4">7.4.2</span> Localize your configuration</h4>
 <div class="outline-text-4" id="text-localize-your-configuration">
 <p>
 <b>Each function can only assume the existence of one package.</b> With some
@@ -1058,8 +1119,8 @@ intention to prevent this at all costs.
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-4">
-<h4 id="load-ordering"><a id="orgheadline24"></a><span class="section-number-4">7.4.3</span> Load ordering</h4>
+<div id="outline-container-orgd542bef" class="outline-4">
+<h4 id="load-ordering"><a id="orgd542bef"></a><span class="section-number-4">7.4.3</span> Load ordering</h4>
 <div class="outline-text-4" id="text-load-ordering">
 <p>
 In Spacemacs, layers are loaded in order of inclusion in the dotfile, and
@@ -1077,8 +1138,8 @@ Preferably, write your layer so that it is independent of load ordering. The
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-4">
-<h4 id="no-require"><a id="orgheadline25"></a><span class="section-number-4">7.4.4</span> No require</h4>
+<div id="outline-container-org541cdcf" class="outline-4">
+<h4 id="no-require"><a id="org541cdcf"></a><span class="section-number-4">7.4.4</span> No require</h4>
 <div class="outline-text-4" id="text-no-require">
 <p>
 Do not use require. If you find yourself using <code>require</code>, you are almost
@@ -1092,8 +1153,8 @@ missing appropriate auto-loads.
 </div>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-4">
-<h4 id="auto-load-everything"><a id="orgheadline26"></a><span class="section-number-4">7.4.5</span> Auto-load everything</h4>
+<div id="outline-container-org0f7c860" class="outline-4">
+<h4 id="auto-load-everything"><a id="org0f7c860"></a><span class="section-number-4">7.4.5</span> Auto-load everything</h4>
 <div class="outline-text-4" id="text-auto-load-everything">
 <p>
 Defer everything. You should have a very good reason not to defer the loading
@@ -1103,83 +1164,9 @@ of a package.
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgheadline30" class="outline-2">
-<h2 id="how-do-i--idiomatically"><a id="orgheadline30"></a><span class="section-number-2">8</span> How do I &#x2026; idiomatically?</h2>
-<div class="outline-text-2" id="text-how-do-i--idiomatically">
-</div>
-
-
-<div id="outline-container-orgheadline29" class="outline-3">
-<h3 id="setup-auto-completion-for-a-major-mode"><a id="orgheadline29"></a><span class="section-number-3">8.1</span> Setup auto-completion for a major mode</h3>
-<div class="outline-text-3" id="text-setup-auto-completion-for-a-major-mode">
-<p>
-In your layer's <code>config.el</code>, call <code>spacemacs|defvar-company-backends</code>.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>spacemacs|defvar-company-backends yoyo-mode<span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-
-<p>
-This creates a variable called <code>company-backends-yoyo-mode</code>. In the package
-<code>init</code> functions, you should push backends to this variable. But of course, only
-if the <code>auto-completion</code> layer is enabled.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defconst</span> <span class="org-variable-name">yoyo-packages</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
-                          <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
-                          some-weird-package
-                          <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
-                          <span class="org-rainbow-delimiters-depth-2">)</span>
-
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-3">(</span>configuration-layer/package-usedp 'company<span class="org-rainbow-delimiters-depth-3">)</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yoyo/init-some-weird-package</span> <span class="org-rainbow-delimiters-depth-4">()</span>
-      <span class="org-rainbow-delimiters-depth-4">(</span><span class="org-keyword">use-package</span> <span class="org-constant">some-weird-package</span>
-        <span class="org-builtin">:defer</span> t
-        <span class="org-comment-delimiter">;; </span><span class="org-comment">This has to be in init because it's a package entry point</span>
-        <span class="org-builtin">:init</span>
-        <span class="org-rainbow-delimiters-depth-5">(</span>push 'some-weird-backend company-backends-yoyo-mode<span class="org-rainbow-delimiters-depth-5">)</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span>
-</pre>
-</div>
-
-<p>
-Finally, we must make sure company is started when we enter <code>yoyo-mode</code>, but
-again only if the <code>auto-completion</code> layer is enabled.
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defconst</span> <span class="org-variable-name">yoyo-packages</span> '<span class="org-rainbow-delimiters-depth-2">(</span>
-                          <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
-                          yoyo-mode
-                          <span class="org-comment-delimiter">;; </span><span class="org-comment">...</span>
-                          <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yoyo/init-yoyo-mode</span> <span class="org-rainbow-delimiters-depth-2">()</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">use-package</span> <span class="org-constant">yoyo-mode</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">Some configuration goes here, however nothing relating to company</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">since this function may be called even if company is not installed!</span>
-    <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-
-<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">when</span> <span class="org-rainbow-delimiters-depth-2">(</span>configuration-layer/package-usedp 'company<span class="org-rainbow-delimiters-depth-2">)</span>
-  <span class="org-rainbow-delimiters-depth-2">(</span><span class="org-keyword">defun</span> <span class="org-function-name">yoyo/post-init-yoyo-mode</span> <span class="org-rainbow-delimiters-depth-3">()</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">This makes no reference to `</span><span class="org-comment"><span class="org-constant">some-weird-package</span></span><span class="org-comment">', which may have</span>
-    <span class="org-comment-delimiter">;; </span><span class="org-comment">been excluded by the user</span>
-    <span class="org-rainbow-delimiters-depth-3">(</span>spacemacs|add-company-hook yoyo-mode<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:54</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

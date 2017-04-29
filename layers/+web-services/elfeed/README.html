@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elfeed layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -194,8 +278,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org09181ab" class="outline-2">
+<h2 id="description"><a id="org09181ab"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer enables <a href="https://github.com/skeeto/elfeed">Elfeed</a>, a web feeds client which supports both Atom and RSS
@@ -205,13 +289,13 @@ feeds. It'll optionally enable supporting packages, such as <code>elfeed-web</co
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="install"><a id="orgheadline7"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orgf614871" class="outline-2">
+<h2 id="install"><a id="orgf614871"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgb8590f2" class="outline-3">
+<h3 id="layer"><a id="orgb8590f2"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -225,13 +309,13 @@ By default, <code>elfeed</code> stores its database under <code>~/.elfeed</code>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="setup-feeds"><a id="orgheadline5"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
+<div id="outline-container-org205c7ed" class="outline-3">
+<h3 id="setup-feeds"><a id="org205c7ed"></a><span class="section-number-3">2.2</span> Setup feeds</h3>
 <div class="outline-text-3" id="text-setup-feeds">
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="with-org"><a id="orgheadline3"></a><span class="section-number-4">2.2.1</span> With Org</h4>
+<div id="outline-container-org4cf8ef3" class="outline-4">
+<h4 id="with-org"><a id="org4cf8ef3"></a><span class="section-number-4">2.2.1</span> With Org</h4>
 <div class="outline-text-4" id="text-with-org">
 <p>
 It is recommended to manage your feeds list and tags via org files, this is
@@ -239,7 +323,6 @@ possible thanks to <a href="https://github.com/remyhonig/elfeed-org">elfeed-org<
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> rmh-elfeed-org-files <span class="org-rainbow-delimiters-depth-2">(</span>list <span class="org-string">"~/.emacs.d/private/elfeed1.org"</span>
                                               <span class="org-string">"~/.emacs.d/private/elfeed2.org"</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -254,34 +337,32 @@ Here is an example of such a file (note the usage of org tags to tag your feeds)
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-org"><span class="org-org-level-1">* Blogs                                                              </span><span class="org-org-level-1"><span class="org-org-tag">:elfeed:</span></span>
-<span class="ATTRLIST">*</span><span class="org-org-level-2">* entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  </span><span class="org-org-level-2"><span class="org-org-tag">:linux:</span></span>
-<span class="ATTRLIST">*</span><span class="org-org-level-2">* </span><span class="org-org-link"><a href="http://git-annex.branchable.com/design/assistant/blog/index.rss">http://git-annex.branchable.com/design/assistant/blog/index.rss</a></span><span class="org-org-level-2"> </span><span class="org-org-level-2"><span class="org-org-tag">:mustread:</span></span>
-<span class="ATTRLIST">*</span><span class="org-org-level-2">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/InformationIsBeautiful">http://feeds.feedburner.com/InformationIsBeautiful</a></span>
-<span class="ATTRLIST">*</span><span class="org-org-level-2">* </span><span class="org-org-link"><a href="http://orgmode.org">Org Mode Links supported as well</a></span>
-<span class="ATTRLIST">*</span><span class="org-org-level-2">* Software Development                                                 </span><span class="org-org-level-2"><span class="org-org-tag">:dev:</span></span>
-<span class="ATTRLIST">**</span><span class="org-org-level-3">* Emacs                                                    </span><span class="org-org-level-3"><span class="org-org-tag">:emacs:mustread:</span></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://www.terminally-incoherent.com/blog/feed">http://www.terminally-incoherent.com/blog/feed</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://nullprogram.com/feed">http://nullprogram.com/feed</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* entry-title: \(emacs\|org-mode\)</span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://planet.emacsen.org/atom.xml">http://planet.emacsen.org/atom.xml</a></span>
-<span class="ATTRLIST">**</span><span class="org-org-level-3">* Web Development                                                     </span><span class="org-org-level-3"><span class="org-org-tag">:web:</span></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://planet.phpunit.de/atom.xml">http://planet.phpunit.de/atom.xml</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/symfony/blog">http://feeds.feedburner.com/symfony/blog</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/qooxdoo/blog/content">http://feeds.feedburner.com/qooxdoo/blog/content</a></span>
-<span class="ATTRLIST">**</span><span class="org-org-level-3">* Eclipse                                                         </span><span class="org-org-level-3"><span class="org-org-tag">:eclipse:</span></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://blog.eclipse-tips.com/feeds/posts/default?alt=rss">http://blog.eclipse-tips.com/feeds/posts/default?alt=rss</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://ed-merks.blogspot.com/feeds/posts/default">http://ed-merks.blogspot.com/feeds/posts/default</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://feeds.feedburner.com/eclipselive">http://feeds.feedburner.com/eclipselive</a></span>
-<span class="ATTRLIST">***</span><span class="org-org-level-4">* </span><span class="org-org-link"><a href="http://www.fosslc.org/drupal/rss.xml">http://www.fosslc.org/drupal/rss.xml</a></span><span class="org-org-level-4">                             </span><span class="org-org-level-4"><span class="org-org-tag">:video:</span></span>
+<pre class="src src-org">* Blogs                                                              :elfeed:
+** entry-title: \(linux\|linus\|ubuntu\|kde\|gnome\)                  :linux:
+** http://git-annex.branchable.com/design/assistant/blog/index.rss :mustread:
+** http://feeds.feedburner.com/InformationIsBeautiful
+** [[http://orgmode.org][Org Mode Links supported as well]]
+** Software Development                                                 :dev:
+*** Emacs                                                    :emacs:mustread:
+**** http://www.terminally-incoherent.com/blog/feed/
+**** http://nullprogram.com/feed/
+**** entry-title: \(emacs\|org-mode\)
+**** http://planet.emacsen.org/atom.xml
+*** Web Development                                                     :web:
+**** http://feeds.feedburner.com/symfony/blog
+**** http://feeds.feedburner.com/qooxdoo/blog/content
+*** Eclipse                                                         :eclipse:
+**** http://blog.eclipse-tips.com/feeds/posts/default?alt=rss
+**** http://ed-merks.blogspot.com/feeds/posts/default
+**** http://feeds.feedburner.com/eclipselive
+**** http://www.fosslc.org/drupal/rss.xml                             :video:
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="manually"><a id="orgheadline4"></a><span class="section-number-4">2.2.2</span> Manually</h4>
+<div id="outline-container-orgd67ca5f" class="outline-4">
+<h4 id="manually"><a id="orgd67ca5f"></a><span class="section-number-4">2.2.2</span> Manually</h4>
 <div class="outline-text-4" id="text-manually">
 <p>
 To explicitly setup the list of feeds, set the value of <code>elfeed-feeds</code> variable
@@ -289,7 +370,6 @@ in your <code>.spacemacs</code> file.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span>
    elfeed-feeds '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"http://nullprogram.com/feed/"</span> blog emacs<span class="org-rainbow-delimiters-depth-3">)</span>
                   <span class="org-string">"http://www.50ply.com/atom.xml"</span>  <span class="org-comment-delimiter">; </span><span class="org-comment">no autotagging</span>
@@ -305,8 +385,8 @@ Check documentation for <code>elfeed-feeds</code> for more information about thi
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="server"><a id="orgheadline6"></a><span class="section-number-3">2.3</span> Server</h3>
+<div id="outline-container-org19e0c8a" class="outline-3">
+<h3 id="server"><a id="org19e0c8a"></a><span class="section-number-3">2.3</span> Server</h3>
 <div class="outline-text-3" id="text-server">
 <p>
 Elfeed comes with a simple <a href="https://github.com/skeeto/elfeed#web-interface">web interface</a> to browse its database. You can manually
@@ -315,7 +395,6 @@ to <code>t</code> which will start the web automatically when Emacs starts.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> elfeed-enable-web-interface t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -328,8 +407,8 @@ the default port by changing the value of <code>httpd-port</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline8"></a><span class="section-number-2">3</span> Key Bindings</h2>
+<div id="outline-container-orga23a703" class="outline-2">
+<h2 id="key-bindings"><a id="orga23a703"></a><span class="section-number-2">3</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -452,13 +531,13 @@ In <code>elfeed-show</code> mode, you can use the following bindings:
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="troubleshooting"><a id="orgheadline11"></a><span class="section-number-2">4</span> Troubleshooting</h2>
+<div id="outline-container-org8328193" class="outline-2">
+<h2 id="troubleshooting"><a id="org8328193"></a><span class="section-number-2">4</span> Troubleshooting</h2>
 <div class="outline-text-2" id="text-troubleshooting">
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="database-empty-at-first-start"><a id="orgheadline9"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
+<div id="outline-container-orgecd121c" class="outline-3">
+<h3 id="database-empty-at-first-start"><a id="orgecd121c"></a><span class="section-number-3">4.1</span> Database empty at first start</h3>
 <div class="outline-text-3" id="text-database-empty-at-first-start">
 <p>
 Be sure that you added some feeds first then load your feeds with <code>gr</code>
@@ -467,8 +546,8 @@ in evilified buffer. Or <code>M-x elfeed-update</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="queue-timeout-exceeded"><a id="orgheadline10"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
+<div id="outline-container-org870346c" class="outline-3">
+<h3 id="queue-timeout-exceeded"><a id="org870346c"></a><span class="section-number-3">4.2</span> Queue timeout exceeded</h3>
 <div class="outline-text-3" id="text-queue-timeout-exceeded">
 <p>
 If you are getting "Queue timeout exceeded" errors, try increasing
@@ -476,7 +555,6 @@ the value of <code>url-queue-timeout</code>.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elfeed <span class="org-builtin">:variables</span> url-queue-timeout <span class="org-highlight-numbers-number">30</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -485,8 +563,7 @@ the value of <code>url-queue-timeout</code>.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
