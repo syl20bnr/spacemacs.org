@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Ansible layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -167,7 +251,17 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#description">1. Description</a></li>
 <li><a href="#install">2. Install</a></li>
-<li><a href="#key-bindings">3. Key bindings</a></li>
+<li><a href="#configuration">3. Configuration</a>
+<ul>
+<li><a href="#ansible-vault">3.1. ansible-vault</a>
+<ul>
+<li><a href="#password">3.1.1. Password</a></li>
+<li><a href="#automatic-encryption-and-decryption">3.1.2. Automatic encryption and decryption</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#key-bindings">4. Key bindings</a></li>
 </ul>
 </div>
 </div>
@@ -177,8 +271,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgf0121dd" class="outline-2">
+<h2 id="description"><a id="orgf0121dd"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for Ansible-flavored YAML buffers and Jinja2 templates.
@@ -186,8 +280,8 @@ This layer adds support for Ansible-flavored YAML buffers and Jinja2 templates.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="install"><a id="orgheadline2"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org34175b6" class="outline-2">
+<h2 id="install"><a id="org34175b6"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -197,8 +291,76 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline3"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org07ebbd0" class="outline-2">
+<h2 id="configuration"><a id="org07ebbd0"></a><span class="section-number-2">3</span> Configuration</h2>
+<div class="outline-text-2" id="text-configuration">
+</div>
+
+<div id="outline-container-org619794a" class="outline-3">
+<h3 id="ansible-vault"><a id="org619794a"></a><span class="section-number-3">3.1</span> ansible-vault</h3>
+<div class="outline-text-3" id="text-ansible-vault">
+</div>
+
+<div id="outline-container-org8f5960f" class="outline-4">
+<h4 id="password"><a id="org8f5960f"></a><span class="section-number-4">3.1.1</span> Password</h4>
+<div class="outline-text-4" id="text-password">
+<p>
+To use <code>ansible-vault</code> you have to provide the path to a file containing the
+password to use somewhere in your <code>dotspacemacs/user-config</code> function.
+For instance:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> ansible::vault-password-file <span class="org-string">"path/to/pwd/file"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+The default value is the ansible-vault default value: <code>~/.vault_pass.txt</code>.
+</p>
+
+<p>
+For now Ansible does not handle multiple passwords in the vault file
+(see <a href="https://github.com/ansible/ansible/issues/13243">https://github.com/ansible/ansible/issues/13243</a>). To work around this
+limitation directory local variables can be used to define a different
+password file for a given environment. Example:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
+
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>yaml-mode . <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>ansible::vault-password-file . <span class="org-string">"path/to/vault_file"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge755380" class="outline-4">
+<h4 id="automatic-encryption-and-decryption"><a id="orge755380"></a><span class="section-number-4">3.1.2</span> Automatic encryption and decryption</h4>
+<div class="outline-text-4" id="text-automatic-encryption-and-decryption">
+<p>
+This layer comes preconfigured with automatic encryption/decryption of
+encrypted files using <code>ansible-vault</code> so it is possible to edit seamlessly
+any encrypted files.
+</p>
+
+<p>
+If you want to disable this feature then set the layer variable
+<code>ansible-auto-encrypt-decrypt</code> to <code>nil</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>ansible <span class="org-builtin">:variables</span> ansible-auto-encrypt-decrypt t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47b9af4" class="outline-2">
+<h2 id="key-bindings"><a id="org47b9af4"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -216,6 +378,16 @@ file.
 </thead>
 <tbody>
 <tr>
+<td class="org-left"><code>SPC m b d</code></td>
+<td class="org-left">encrypt the buffer using <code>ansible-vault</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b e</code></td>
+<td class="org-left">decrypt the buffer using <code>ansible-vault</code></td>
+</tr>
+
+<tr>
 <td class="org-left"><code>SPC m h a</code></td>
 <td class="org-left">looks up documentation using <a href="https://github.com/lunaryorn/ansible-doc.el">ansible-doc</a></td>
 </tr>
@@ -225,8 +397,7 @@ file.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

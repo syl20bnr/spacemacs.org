@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Java layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -169,30 +253,69 @@ for the JavaScript code in this tag.
 <li><a href="#layer-installation">2. Layer Installation</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#eclim">2.2. Eclim</a>
+<li><a href="#choosing-a-backend">2.2. Choosing a backend</a></li>
+</ul>
+</li>
+<li><a href="#backends">3. Backends</a>
 <ul>
-<li><a href="#installation">2.2.1. Installation</a></li>
-<li><a href="#usage">2.2.2. Usage</a></li>
+<li><a href="#meghanada">3.1. Meghanada</a>
+<ul>
+<li><a href="#installation">3.1.1. Installation</a></li>
+<li><a href="#about-maven">3.1.2. About Maven</a></li>
+</ul>
+</li>
+<li><a href="#eclim">3.2. Eclim</a>
+<ul>
+<li><a href="#installation-1">3.2.1. Installation</a></li>
+<li><a href="#configuration">3.2.2. Configuration</a></li>
+<li><a href="#usage">3.2.3. Usage</a></li>
+</ul>
+</li>
+<li><a href="#ensime">3.3. ENSIME</a>
+<ul>
+<li><a href="#installation-2">3.3.1. Installation</a></li>
+<li><a href="#configuration-1">3.3.2. Configuration</a></li>
+<li><a href="#usage-1">3.3.3. Usage</a></li>
+<li><a href="#issues">3.3.4. Issues</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#key-bindings">3. Key bindings</a>
+<li><a href="#key-bindings">4. Key bindings</a>
 <ul>
-<li><a href="#java-mode">3.1. Java-mode</a>
+<li><a href="#meghanada-1">4.1. Meghanada</a>
 <ul>
-<li><a href="#project-management">3.1.1. Project management</a></li>
-<li><a href="#eclimd">3.1.2. Eclimd</a></li>
-<li><a href="#maven">3.1.3. Maven</a></li>
-<li><a href="#goto">3.1.4. Goto</a></li>
-<li><a href="#refactoring">3.1.5. Refactoring</a></li>
-<li><a href="#documentation-find">3.1.6. Documentation, Find</a></li>
-<li><a href="#problems">3.1.7. Problems</a></li>
-<li><a href="#tests">3.1.8. Tests</a></li>
+<li><a href="#server">4.1.1. Server</a></li>
+<li><a href="#navigation">4.1.2. Navigation</a></li>
+<li><a href="#compilation">4.1.3. Compilation</a></li>
+<li><a href="#tests-junit">4.1.4. Tests (junit)</a></li>
+<li><a href="#refactoring">4.1.5. Refactoring</a></li>
+<li><a href="#tasks">4.1.6. Tasks</a></li>
 </ul>
 </li>
-<li><a href="#problems-buffer">3.2. Problems buffer</a></li>
-<li><a href="#projects-buffer">3.3. Projects buffer</a></li>
+<li><a href="#eclim-2">4.2. Eclim</a>
+<ul>
+<li><a href="#java-mode">4.2.1. Java-mode</a></li>
+<li><a href="#errors-problems-buffer">4.2.2. Errors (problems) buffer</a></li>
+<li><a href="#projects-buffer">4.2.3. Projects buffer</a></li>
+</ul>
+</li>
+<li><a href="#ensime-key-bindings">4.3. Ensime key bindings</a>
+<ul>
+<li><a href="#search">4.3.1. Search</a></li>
+<li><a href="#sbt">4.3.2. sbt</a></li>
+<li><a href="#typecheck">4.3.3. Typecheck</a></li>
+<li><a href="#debug">4.3.4. Debug</a></li>
+<li><a href="#errors">4.3.5. Errors</a></li>
+<li><a href="#goto-1">4.3.6. Goto</a></li>
+<li><a href="#print-and-yank-types">4.3.7. Print and yank types</a></li>
+<li><a href="#documentation-inspect">4.3.8. Documentation, Inspect</a></li>
+<li><a href="#server-1">4.3.9. Server</a></li>
+<li><a href="#refactoring-2">4.3.10. Refactoring</a></li>
+<li><a href="#tests-1">4.3.11. Tests</a></li>
+<li><a href="#repl">4.3.12. REPL</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -204,22 +327,27 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org038efbb" class="outline-2">
+<h2 id="description"><a id="org038efbb"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for the Java language using the <a href="http://eclim.org/">Eclim</a> client/server.
+This layer adds support for the Java language, it supports multiple backends:
 </p>
+<ul class="org-ul">
+<li>the <a href="https://github.com/mopemope/meghanada-emacs">Meghanada</a> client/server (default),</li>
+<li>the <a href="http://eclim.org">Eclim</a> client/server,</li>
+<li>the <a href="https://ensime.github.io/">ENSIME</a> client/server.</li>
+</ul>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="layer-installation"><a id="orgheadline6"></a><span class="section-number-2">2</span> Layer Installation</h2>
+<div id="outline-container-orge3cebd8" class="outline-2">
+<h2 id="layer-installation"><a id="orge3cebd8"></a><span class="section-number-2">2</span> Layer Installation</h2>
 <div class="outline-text-2" id="text-layer-installation">
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgcc8f5ca" class="outline-3">
+<h3 id="layer"><a id="orgcc8f5ca"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -229,77 +357,526 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="eclim"><a id="orgheadline5"></a><span class="section-number-3">2.2</span> Eclim</h3>
-<div class="outline-text-3" id="text-eclim">
+<div id="outline-container-org7f91c03" class="outline-3">
+<h3 id="choosing-a-backend"><a id="org7f91c03"></a><span class="section-number-3">2.2</span> Choosing a backend</h3>
+<div class="outline-text-3" id="text-choosing-a-backend">
 <p>
-Eclim provides the ability to access Eclipse features such as code completion,
-searching, code validation, and many more.
-</p>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="installation"><a id="orgheadline3"></a><span class="section-number-4">2.2.1</span> Installation</h4>
-<div class="outline-text-4" id="text-installation">
-<p>
-For installation check the <a href="http://eclim.org/install.html#download">official page</a>.
-</p>
-
-<p>
-Then set the <code>Eclipse</code> and <code>Eclim</code> paths in <code>dotspacemacs/user-config</code>,
-for instance:
+To choose a default backend set the layer variable <code>java-backend</code>:
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq eclim-eclipse-dirs <span class="org-string">"~/opt/eclipse"</span>
-      eclim-executable <span class="org-string">"~/opt/eclipse/eclim"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'eclim<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
 <p>
-You can also configure other options, as shown below:
+Backend can be chosen on a per project basis using directory local variables
+(files named <code>.dir-locals.el</code> at the root of a project), an example to use the
+<code>eclim</code> backend:
 </p>
 
 <div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Directory Local Variables</span>
+<span class="org-comment-delimiter">;;; </span><span class="org-comment">For more information see (info "(emacs) Directory Variables")</span>
 
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq
- <span class="org-comment-delimiter">;; </span><span class="org-comment">Use another eclimd executable</span>
- eclimd-executable <span class="org-string">"/path/to/another/executable"</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-rainbow-delimiters-depth-2">(</span>java-mode <span class="org-rainbow-delimiters-depth-3">(</span>java-backend . eclim<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+<b>Note:</b> you can easily add a directory local variable with <code>SPC f v d</code>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6a383b6" class="outline-2">
+<h2 id="backends"><a id="org6a383b6"></a><span class="section-number-2">3</span> Backends</h2>
+<div class="outline-text-2" id="text-backends">
+</div>
+
+<div id="outline-container-org4df1930" class="outline-3">
+<h3 id="meghanada"><a id="org4df1930"></a><span class="section-number-3">3.1</span> Meghanada</h3>
+<div class="outline-text-3" id="text-meghanada">
+<p>
+Meghanada is composed of a lightweight server and an Emacs minor mode. It
+is unintrusive and integrates with <code>company</code> and <code>flycheck</code>.
+</p>
+
+<p>
+Both <code>Gradle</code> and <code>Maven</code> projects are compatible with Meghanada.
+</p>
+
+<p>
+Meghanada is the default backend used by this layer, see <a href="#choosing-a-backend">Choosing a backend</a> in
+order to lean how to select a different backend.
+</p>
+</div>
+
+<div id="outline-container-orgfab0f9d" class="outline-4">
+<h4 id="installation"><a id="orgfab0f9d"></a><span class="section-number-4">3.1.1</span> Installation</h4>
+<div class="outline-text-4" id="text-installation">
+<p>
+The Meghanada server will be installed automatically whenever a Java file
+is opened.
+</p>
+
+<p>
+If you get issues with the auto-installation you can either download the last
+version of the server manually <a href="https://dl.bintray.com/mopemope/meghanada/">there</a> or build from source hosted on <a href="https://github.com/mopemope/meghanada-server">the GitHub
+repository</a> and copy the <code>jar</code> file to <code>.emacs.d/.cache/meghanada</code> folder.
+</p>
+
+<p>
+No additional configuration is necessary!
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb29cd2f" class="outline-4">
+<h4 id="about-maven"><a id="orgb29cd2f"></a><span class="section-number-4">3.1.2</span> About Maven</h4>
+<div class="outline-text-4" id="text-about-maven">
+<p>
+Maven is not fully supported by Meghanada (but should still work fine for most
+projects). If you encounter disconnection from the server then run <code>mvn install</code>
+at the root of your project first.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a73ef7" class="outline-3">
+<h3 id="eclim"><a id="org5a73ef7"></a><span class="section-number-3">3.2</span> Eclim</h3>
+<div class="outline-text-3" id="text-eclim">
+<p>
+Eclim provides the ability to access Eclipse features such as code completion,
+searching, code validation, and many more. This is the default value for the
+layer variable <code>java-backend</code>.
+</p>
+</div>
+
+<div id="outline-container-org31beed5" class="outline-4">
+<h4 id="installation-1"><a id="org31beed5"></a><span class="section-number-4">3.2.1</span> Installation</h4>
+<div class="outline-text-4" id="text-installation-1">
+</div>
+
+<ol class="org-ol"><li><a id="eclipse"></a><a id="org3aa9911"></a>Eclipse<br /><div class="outline-text-5" id="text-eclipse">
+<p>
+First you need the last version of Eclispe from the <a href="https://www.eclipse.org/downloads/eclipse-packages/">official Eclipse site</a>.
+</p>
+
+<p>
+<b>Note:</b> if you are on MacOS there some issues between the new native Eclipse
+application installed by the <code>Eclispe-install.app</code> wizard and the Eclim
+installer wizard. The recommended way to install Eclipse on MacOS is by using
+<code>homebrew</code> or by get the <code>tar.gz</code> compressed file instead. With homebrew
+the command line to install Eclipse is <code>brew cask install eclipse-jee</code>.
+</p>
+</div></li>
+
+<li><a id="eclim-1"></a><a id="orgb76d784"></a>Eclim<br /><div class="outline-text-5" id="text-eclim-1">
+<p>
+For installation of Eclim check the <a href="http://eclim.org/install.html#download">official page</a> to download the installer
+then double click on it or launch it in the command line with the following
+command (the example is for MacOS, replace the eclispe.home definition by
+your correct location as well as the current version of eclim):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ java -Dvim.skip=true -Declipse.home=/Applications/Eclipse.app/Contents/Eclipse -jar eclim_2.6.0.jar install
+</pre>
+</div>
+</div></li></ol>
+</div>
+
+<div id="outline-container-orgf6c7aaf" class="outline-4">
+<h4 id="configuration"><a id="orgf6c7aaf"></a><span class="section-number-4">3.2.2</span> Configuration</h4>
+<div class="outline-text-4" id="text-configuration">
+<p>
+You may need to set the Eclipse and Eclim paths in your dotfile as layer
+variables or in the <code>dotspacemacs/user-config</code>, for instance on MacOS as layer
+variables:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>java <span class="org-builtin">:variables</span> java-backend 'eclim
+                 eclim-eclipse-dirs '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-string">"/Applications/Eclipse.app/Contents/Eclipse/"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+                 eclim-executable <span class="org-string">"/Applications/Eclipse.app/Contents/Eclipse/eclim"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+
+<p>
+You can also configure useful other options like the default location for the
+Eclim workspace (default value is <code>~/workspace</code>), as shown below:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span>
  <span class="org-comment-delimiter">;; </span><span class="org-comment">Specify the workspace to use by default</span>
  eclimd-default-workspace <span class="org-string">"/path/to/default/eclipse/workspace"</span>
- <span class="org-comment-delimiter">;; </span><span class="org-comment">Whether or not to block emacs until eclimd is ready</span>
+ <span class="org-comment-delimiter">;; </span><span class="org-comment">wether autostarting eclimd or not (default nil)</span>
+ eclimd-autostart t
+ <span class="org-comment-delimiter">;; </span><span class="org-comment">Whether or not to block emacs until eclimd is ready (default nil)</span>
  eclimd-wait-for-process t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="usage"><a id="orgheadline4"></a><span class="section-number-4">2.2.2</span> Usage</h4>
+<div id="outline-container-org2da3730" class="outline-4">
+<h4 id="usage"><a id="org2da3730"></a><span class="section-number-4">3.2.3</span> Usage</h4>
 <div class="outline-text-4" id="text-usage">
 <p>
-Start the eclim daemon with <code>SPC m d s</code> and stop it with <code>SPC m d k</code>. (See
+Start the eclim daemon with <code>SPC m D s</code> and stop it with <code>SPC m D k</code>. (See
 below.)
+</p>
+
+<p>
+Syntax checking is performed only on demande with <code>SPC e e</code> to preserve
+perfomance.
+</p>
+
+<p>
+Auto-save feature may freeze Emacs sometimes, use <code>C-g</code> to unfreeze Emacs or
+atlernatively you can set <code>dotspacemacs-auto-save-file-location</code> to nil.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8b5fc9d" class="outline-3">
+<h3 id="ensime"><a id="org8b5fc9d"></a><span class="section-number-3">3.3</span> ENSIME</h3>
+<div class="outline-text-3" id="text-ensime">
+<p>
+Another backend option is the ENSIME server, which is a lot more responsive than
+Eclim. ENSIME is originally made to work with Scala but it now works with plain
+Java projects as well.
+</p>
+</div>
+
+<div id="outline-container-org9ec2b95" class="outline-4">
+<h4 id="installation-2"><a id="org9ec2b95"></a><span class="section-number-4">3.3.1</span> Installation</h4>
+<div class="outline-text-4" id="text-installation-2">
+<p>
+Find it with your favourite package manager, eg:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">nix-env --install sbt
+</pre>
+</div>
+<p>
+or refer to <a href="http://www.scala-sbt.org/download.html">the sbt installation instructions</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga44bf83" class="outline-4">
+<h4 id="configuration-1"><a id="orga44bf83"></a><span class="section-number-4">3.3.2</span> Configuration</h4>
+<div class="outline-text-4" id="text-configuration-1">
+<p>
+Follow <a href="https://ensime.github.io/build_tools/sbt/">the ENSIME configuration instructions</a>. Spacemacs uses
+the development version of Ensime so follow the appropriate steps.
+</p>
+
+<p>
+To use the build functions under <code>SPC m b</code> you need to use version <code>0.13.5</code> or
+newer of <code>sbt</code>, and specify that in your project's <code>project/build.properties</code>.
+For example,
+</p>
+<div class="org-src-container">
+<pre class="src src-scala">sbt.version=0.13.11
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org40506ae" class="outline-4">
+<h4 id="usage-1"><a id="org40506ae"></a><span class="section-number-4">3.3.3</span> Usage</h4>
+<div class="outline-text-4" id="text-usage-1">
+<p>
+<code>SPC SPC spacemacs/ensime-gen-and-restart</code> or <code>SPC m D r</code> generates a new config
+for a project and starts the server. Afterwards <code>SPC SPC ensime</code> or <code>SPC m D s</code>
+will suffice do the trick.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org58b0aa2" class="outline-4">
+<h4 id="issues"><a id="org58b0aa2"></a><span class="section-number-4">3.3.4</span> Issues</h4>
+<div class="outline-text-4" id="text-issues">
+<p>
+ENSIME is originally built for Scala, so support for java is not complete, in
+particular refactoring doesn't work.
 </p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline18"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-org066c77e" class="outline-2">
+<h2 id="key-bindings"><a id="org066c77e"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="java-mode"><a id="orgheadline15"></a><span class="section-number-3">3.1</span> Java-mode</h3>
-<div class="outline-text-3" id="text-java-mode">
+<div id="outline-container-orga72c0a5" class="outline-3">
+<h3 id="meghanada-1"><a id="orga72c0a5"></a><span class="section-number-3">4.1</span> Meghanada</h3>
+<div class="outline-text-3" id="text-meghanada-1">
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="project-management"><a id="orgheadline7"></a><span class="section-number-4">3.1.1</span> Project management</h4>
-<div class="outline-text-4" id="text-project-management">
+<div id="outline-container-org620ad90" class="outline-4">
+<h4 id="server"><a id="org620ad90"></a><span class="section-number-4">4.1.1</span> Server</h4>
+<div class="outline-text-4" id="text-server">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m D c</code></td>
+<td class="org-left">Connect to server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D d</code></td>
+<td class="org-left">Disconnect from server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D i</code></td>
+<td class="org-left">Install server (should be done automatically</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D k</code></td>
+<td class="org-left">Kill server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D l</code></td>
+<td class="org-left">Clear server cache</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D p</code></td>
+<td class="org-left">Ping server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D r</code></td>
+<td class="org-left">Restarrt server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D s</code></td>
+<td class="org-left">Start server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D u</code></td>
+<td class="org-left">Update server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D v</code></td>
+<td class="org-left">Print version of the server</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org47816ae" class="outline-4">
+<h4 id="navigation"><a id="org47816ae"></a><span class="section-number-4">4.1.2</span> Navigation</h4>
+<div class="outline-text-4" id="text-navigation">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g b</code></td>
+<td class="org-left">Jump back to previous location</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left">Jump to declaration</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org6c82f1f" class="outline-4">
+<h4 id="compilation"><a id="org6c82f1f"></a><span class="section-number-4">4.1.3</span> Compilation</h4>
+<div class="outline-text-4" id="text-compilation">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c b</code></td>
+<td class="org-left">Compile file (buffer)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c c</code></td>
+<td class="org-left">Compile project</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org703cd08" class="outline-4">
+<h4 id="tests-junit"><a id="org703cd08"></a><span class="section-number-4">4.1.4</span> Tests (junit)</h4>
+<div class="outline-text-4" id="text-tests-junit">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">Run all tests</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t c</code></td>
+<td class="org-left">Run test class around point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t l</code></td>
+<td class="org-left">Run last tests</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t</code></td>
+<td class="org-left">Run test cause around point</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2cc06a8" class="outline-4">
+<h4 id="refactoring"><a id="org2cc06a8"></a><span class="section-number-4">4.1.5</span> Refactoring</h4>
+<div class="outline-text-4" id="text-refactoring">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m =</code></td>
+<td class="org-left">Beautify code</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">Optimize imports</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r I</code></td>
+<td class="org-left">Import all</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org968d755" class="outline-4">
+<h4 id="tasks"><a id="org968d755"></a><span class="section-number-4">4.1.6</span> Tasks</h4>
+<div class="outline-text-4" id="text-tasks">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m x :</code></td>
+<td class="org-left">Run task</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0e8f98e" class="outline-3">
+<h3 id="eclim-2"><a id="org0e8f98e"></a><span class="section-number-3">4.2</span> Eclim</h3>
+<div class="outline-text-3" id="text-eclim-2">
+</div>
+
+<div id="outline-container-org902dfee" class="outline-4">
+<h4 id="java-mode"><a id="org902dfee"></a><span class="section-number-4">4.2.1</span> Java-mode</h4>
+<div class="outline-text-4" id="text-java-mode">
+</div>
+
+<ol class="org-ol"><li><a id="project-management"></a><a id="org0a452d4"></a>Project management<br /><div class="outline-text-5" id="text-project-management">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -366,12 +943,9 @@ below.)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="eclimd"><a id="orgheadline8"></a><span class="section-number-4">3.1.2</span> Eclimd</h4>
-<div class="outline-text-4" id="text-eclimd">
+<li><a id="eclim-daemon"></a><a id="orge2951c2"></a>Eclim daemon<br /><div class="outline-text-5" id="text-eclim-daemon">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -388,22 +962,19 @@ below.)
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m d s</code></td>
-<td class="org-left">Start daemon</td>
+<td class="org-left"><code>SPC m D k</code></td>
+<td class="org-left">Kill daemon</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m d k</code></td>
-<td class="org-left">Stop daemon</td>
+<td class="org-left"><code>SPC m D s</code></td>
+<td class="org-left">Start daemon</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="maven"><a id="orgheadline9"></a><span class="section-number-4">3.1.3</span> Maven</h4>
-<div class="outline-text-4" id="text-maven">
+<li><a id="maven"></a><a id="orge5d7441"></a>Maven<br /><div class="outline-text-5" id="text-maven">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -450,12 +1021,9 @@ below.)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="goto"><a id="orgheadline10"></a><span class="section-number-4">3.1.4</span> Goto</h4>
-<div class="outline-text-4" id="text-goto">
+<li><a id="goto"></a><a id="org8e23c84"></a>Goto<br /><div class="outline-text-5" id="text-goto">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -487,12 +1055,9 @@ below.)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="refactoring"><a id="orgheadline11"></a><span class="section-number-4">3.1.5</span> Refactoring</h4>
-<div class="outline-text-4" id="text-refactoring">
+<li><a id="refactoring-1"></a><a id="org5c6180b"></a>Refactoring<br /><div class="outline-text-5" id="text-refactoring-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -524,12 +1089,9 @@ below.)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="documentation-find"><a id="orgheadline12"></a><span class="section-number-4">3.1.6</span> Documentation, Find</h4>
-<div class="outline-text-4" id="text-documentation-find">
+<li><a id="documentation-find"></a><a id="org354e4be"></a>Documentation, Find<br /><div class="outline-text-5" id="text-documentation-find">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -561,12 +1123,9 @@ below.)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="problems"><a id="orgheadline13"></a><span class="section-number-4">3.1.7</span> Problems</h4>
-<div class="outline-text-4" id="text-problems">
+<li><a id="errors-problems"></a><a id="org64426f2"></a>Errors (problems)<br /><div class="outline-text-5" id="text-errors-problems">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -583,57 +1142,34 @@ below.)
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><code>SPC m e a</code></td>
-<td class="org-left">set all problems for next/prev action</td>
+<td class="org-left"><code>SPC e e</code></td>
+<td class="org-left">Force an error check</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e b</code></td>
-<td class="org-left">open buffer with problems</td>
+<td class="org-left"><code>SPC e l</code></td>
+<td class="org-left">List errors</td>
 </tr>
 
 <tr>
-<td class="org-left"><code>SPC m e c</code></td>
-<td class="org-left">show options with problem corrections</td>
+<td class="org-left"><code>SPC e n</code></td>
+<td class="org-left">Next error</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC e p</code></td>
+<td class="org-left">Previous error</td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m e e</code></td>
-<td class="org-left">set only errors for next/prev action</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e f</code></td>
-<td class="org-left">set only current file for next/prev action</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e n</code></td>
-<td class="org-left">go to next problem</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e o</code></td>
-<td class="org-left">open buffer with problems</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e p</code></td>
-<td class="org-left">go to previous problem</td>
-</tr>
-
-<tr>
-<td class="org-left"><code>SPC m e w</code></td>
-<td class="org-left">set warnings for next/prev action</td>
+<td class="org-left">Correct error around point</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="tests"><a id="orgheadline14"></a><span class="section-number-4">3.1.8</span> Tests</h4>
-<div class="outline-text-4" id="text-tests">
+<li><a id="tests"></a><a id="orge20e50a"></a>Tests<br /><div class="outline-text-5" id="text-tests">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -655,13 +1191,12 @@ below.)
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li></ol>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="problems-buffer"><a id="orgheadline16"></a><span class="section-number-3">3.2</span> Problems buffer</h3>
-<div class="outline-text-3" id="text-problems-buffer">
+<div id="outline-container-org49e1d82" class="outline-4">
+<h4 id="errors-problems-buffer"><a id="org49e1d82"></a><span class="section-number-4">4.2.2</span> Errors (problems) buffer</h4>
+<div class="outline-text-4" id="text-errors-problems-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -716,9 +1251,9 @@ below.)
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="projects-buffer"><a id="orgheadline17"></a><span class="section-number-3">3.3</span> Projects buffer</h3>
-<div class="outline-text-3" id="text-projects-buffer">
+<div id="outline-container-orgd85d084" class="outline-4">
+<h4 id="projects-buffer"><a id="orgd85d084"></a><span class="section-number-4">4.2.3</span> Projects buffer</h4>
+<div class="outline-text-4" id="text-projects-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -813,10 +1348,578 @@ below.)
 </div>
 </div>
 </div>
+
+<div id="outline-container-orgee30a0d" class="outline-3">
+<h3 id="ensime-key-bindings"><a id="orgee30a0d"></a><span class="section-number-3">4.3</span> Ensime key bindings</h3>
+<div class="outline-text-3" id="text-ensime-key-bindings">
+</div>
+
+<div id="outline-container-orgeb77f3b" class="outline-4">
+<h4 id="search"><a id="orgeb77f3b"></a><span class="section-number-4">4.3.1</span> Search</h4>
+<div class="outline-text-4" id="text-search">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m /</code></td>
+<td class="org-left">incremental search using <code>ensime-scalex</code> major mode</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m ?</code></td>
+<td class="org-left">incremental search in all live buffers</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org49efbe4" class="outline-4">
+<h4 id="sbt"><a id="org49efbe4"></a><span class="section-number-4">4.3.2</span> sbt</h4>
+<div class="outline-text-4" id="text-sbt">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m b .</code></td>
+<td class="org-left">sbt transient state</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b b</code></td>
+<td class="org-left">sbt command</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b c</code></td>
+<td class="org-left">compile</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b C</code></td>
+<td class="org-left">clean command</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b i</code></td>
+<td class="org-left">switch to sbt shell</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b p</code></td>
+<td class="org-left">package command</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m b r</code></td>
+<td class="org-left">run command</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2e09988" class="outline-4">
+<h4 id="typecheck"><a id="org2e09988"></a><span class="section-number-4">4.3.3</span> Typecheck</h4>
+<div class="outline-text-4" id="text-typecheck">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m c t</code></td>
+<td class="org-left">type check the current file</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m c T</code></td>
+<td class="org-left">type check all the open buffers</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgd55798b" class="outline-4">
+<h4 id="debug"><a id="orgd55798b"></a><span class="section-number-4">4.3.4</span> Debug</h4>
+<div class="outline-text-4" id="text-debug">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m d A</code></td>
+<td class="org-left">Attach to a remote debugger</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d b</code></td>
+<td class="org-left">set breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d B</code></td>
+<td class="org-left">clear breakpoint</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d C</code></td>
+<td class="org-left">clear all breakpoints</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d c</code></td>
+<td class="org-left">continue</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d i</code></td>
+<td class="org-left">inspect value at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d n</code></td>
+<td class="org-left">next</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d o</code></td>
+<td class="org-left">step out</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d q</code></td>
+<td class="org-left">quit</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d r</code></td>
+<td class="org-left">run</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d s</code></td>
+<td class="org-left">step</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m d t</code></td>
+<td class="org-left">backtrace</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Note:</b> These key bindings need a transient-state, PR welcome :-)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3c95713" class="outline-4">
+<h4 id="errors"><a id="org3c95713"></a><span class="section-number-4">4.3.5</span> Errors</h4>
+<div class="outline-text-4" id="text-errors">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m e e</code></td>
+<td class="org-left">print error at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e l</code></td>
+<td class="org-left">show all errors and warnings</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m e s</code></td>
+<td class="org-left">switch to buffer containing the stack trace parser</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgd96919a" class="outline-4">
+<h4 id="goto-1"><a id="orgd96919a"></a><span class="section-number-4">4.3.6</span> Goto</h4>
+<div class="outline-text-4" id="text-goto-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m g g</code></td>
+<td class="org-left">go to definition</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g i</code></td>
+<td class="org-left">go to implementation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m g t</code></td>
+<td class="org-left">go to test</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgf4a6260" class="outline-4">
+<h4 id="print-and-yank-types"><a id="orgf4a6260"></a><span class="section-number-4">4.3.7</span> Print and yank types</h4>
+<div class="outline-text-4" id="text-print-and-yank-types">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h T</code></td>
+<td class="org-left">print full type name at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h t</code></td>
+<td class="org-left">print short type name at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m y T</code></td>
+<td class="org-left">yank full type name at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m y t</code></td>
+<td class="org-left">yank short type name at point</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orga957030" class="outline-4">
+<h4 id="documentation-inspect"><a id="orga957030"></a><span class="section-number-4">4.3.8</span> Documentation, Inspect</h4>
+<div class="outline-text-4" id="text-documentation-inspect">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m h h</code></td>
+<td class="org-left">show documentation for symbol at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m h u</code></td>
+<td class="org-left">show uses for symbol at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i i</code></td>
+<td class="org-left">inspect type at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i I</code></td>
+<td class="org-left">inspect type in other frame</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m i p</code></td>
+<td class="org-left">inspect project package</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org349f50b" class="outline-4">
+<h4 id="server-1"><a id="org349f50b"></a><span class="section-number-4">4.3.9</span> Server</h4>
+<div class="outline-text-4" id="text-server-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m D f</code></td>
+<td class="org-left">reload open files</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D r</code></td>
+<td class="org-left">regenerate the <code>.ensime</code> and restart the ensime server</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m D s</code></td>
+<td class="org-left">start ensime server</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org4c5a8b8" class="outline-4">
+<h4 id="refactoring-2"><a id="org4c5a8b8"></a><span class="section-number-4">4.3.10</span> Refactoring</h4>
+<div class="outline-text-4" id="text-refactoring-2">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m r a</code></td>
+<td class="org-left">add type annotation</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r f</code></td>
+<td class="org-left">format source</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r d</code></td>
+<td class="org-left">get rid of an intermediate variable (<code>ensime-refactor-inline-local</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r D</code></td>
+<td class="org-left">get rid of an intermediate variable (<code>ensime-undo-peek</code>)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r i</code></td>
+<td class="org-left">organize imports</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r m</code></td>
+<td class="org-left">extract a range of code into a method</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r r</code></td>
+<td class="org-left">rename a symbol project wide</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r t</code></td>
+<td class="org-left">import type at point</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m r v</code></td>
+<td class="org-left">extract a range of code into a variable</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m z</code></td>
+<td class="org-left">expand/contract region</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org2e16dc0" class="outline-4">
+<h4 id="tests-1"><a id="org2e16dc0"></a><span class="section-number-4">4.3.11</span> Tests</h4>
+<div class="outline-text-4" id="text-tests-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m t a</code></td>
+<td class="org-left">test command (sbt)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t r</code></td>
+<td class="org-left">test quick command (sbt)</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m t t</code></td>
+<td class="org-left">test only (sbt)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-org7f41275" class="outline-4">
+<h4 id="repl"><a id="org7f41275"></a><span class="section-number-4">4.3.12</span> REPL</h4>
+<div class="outline-text-4" id="text-repl">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Key Binding</th>
+<th scope="col" class="org-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left"><code>SPC m s a</code></td>
+<td class="org-left">ask for a file to be loaded in the REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s b</code></td>
+<td class="org-left">send buffer to the REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s B</code></td>
+<td class="org-left">send buffer to the REPL and focus the REPL buffer in <code>insert state</code></td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s i</code></td>
+<td class="org-left">start or switch to the REPL inferior process</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s r</code></td>
+<td class="org-left">send region to the REPL</td>
+</tr>
+
+<tr>
+<td class="org-left"><code>SPC m s R</code></td>
+<td class="org-left">send region to the REPL and focus the REPL buffer in <code>insert state</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

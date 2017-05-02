@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -173,8 +257,13 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#layer">2.1. Layer</a></li>
-<li><a href="#test-runner">2.2. Test runner</a></li>
-<li><a href="#anaconda-dependencies">2.3. Anaconda dependencies</a></li>
+<li><a href="#dependencies">2.2. Dependencies</a>
+<ul>
+<li><a href="#auto-completion-anaconda-dependencies">2.2.1. Auto-completion: Anaconda dependencies</a></li>
+<li><a href="#syntax-checking">2.2.2. Syntax checking</a></li>
+</ul>
+</li>
+<li><a href="#test-runner">2.3. Test runner</a></li>
 <li><a href="#automatic-buffer-formatting-on-save">2.4. Automatic buffer formatting on save</a></li>
 <li><a href="#autoflake">2.5. autoflake</a></li>
 <li><a href="#pylookup">2.6. pylookup</a></li>
@@ -217,16 +306,16 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="description"><a id="orgheadline2"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org2acf8df" class="outline-2">
+<h2 id="description"><a id="org2acf8df"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
 This layer adds support for the Python language.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="features"><a id="orgheadline1"></a><span class="section-number-3">1.1</span> Features</h3>
+<div id="outline-container-org9b87f12" class="outline-3">
+<h3 id="features"><a id="org9b87f12"></a><span class="section-number-3">1.1</span> Features</h3>
 <div class="outline-text-3" id="text-features">
 <ul class="org-ul">
 <li>Auto-completion using <a href="https://github.com/proofit404/anaconda-mode">anaconda-mode</a></li>
@@ -245,13 +334,13 @@ This layer adds support for the Python language.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="install"><a id="orgheadline10"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-orga3cd601" class="outline-2">
+<h2 id="install"><a id="orga3cd601"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="layer"><a id="orgheadline3"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-org8d2502c" class="outline-3">
+<h3 id="layer"><a id="org8d2502c"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -261,8 +350,62 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="test-runner"><a id="orgheadline4"></a><span class="section-number-3">2.2</span> Test runner</h3>
+<div id="outline-container-org5a4c677" class="outline-3">
+<h3 id="dependencies"><a id="org5a4c677"></a><span class="section-number-3">2.2</span> Dependencies</h3>
+<div class="outline-text-3" id="text-dependencies">
+</div>
+
+<div id="outline-container-org6370bd9" class="outline-4">
+<h4 id="auto-completion-anaconda-dependencies"><a id="org6370bd9"></a><span class="section-number-4">2.2.1</span> Auto-completion: Anaconda dependencies</h4>
+<div class="outline-text-4" id="text-auto-completion-anaconda-dependencies">
+<p>
+<code>anaconda-mode</code> tries to install the dependencies itself but sometimes
+it does not work and you may encounter the following message when
+opening a python buffer:
+</p>
+
+<pre class="example">
+Blocking call to accept-process-output with quit inhibited!!
+</pre>
+
+<p>
+To fix this, install the <code>anaconda-mode</code> <a href="https://github.com/proofit404/anaconda-mode/tree/master/requirements">anaconda-deps</a> by hand:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">pip install --upgrade <span class="org-string">"jedi&gt;=0.9.0"</span> <span class="org-string">"json-rpc&gt;=1.8.1"</span> <span class="org-string">"service_factory&gt;=0.1.5"</span>
+</pre>
+</div>
+
+<p>
+Source: <a href="https://github.com/proofit404/anaconda-mode#issues">https://github.com/proofit404/anaconda-mode#issues</a>
+</p>
+
+<p>
+If you are facing errors such as "Unable to run anaconda-mode server", try
+setting your <code>PYTHONPATH</code> as explained at
+<a href="https://github.com/proofit404/anaconda-mode#pythonpath">https://github.com/proofit404/anaconda-mode#pythonpath</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge3ad81e" class="outline-4">
+<h4 id="syntax-checking"><a id="orge3ad81e"></a><span class="section-number-4">2.2.2</span> Syntax checking</h4>
+<div class="outline-text-4" id="text-syntax-checking">
+<p>
+Syntax checking uses `flake8` package:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-sh">pip install flake8
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org146dbc8" class="outline-3">
+<h3 id="test-runner"><a id="org146dbc8"></a><span class="section-number-3">2.3</span> Test runner</h3>
 <div class="outline-text-3" id="text-test-runner">
 <p>
 Both <code>nose</code> and <code>pytest</code> are supported. By default <code>nose</code> is used.
@@ -271,8 +414,7 @@ either <code>nose</code> or <code>pytest</code>.
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-test-runner 'pytest<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -281,8 +423,7 @@ either <code>nose</code> or <code>pytest</code>.
 If you need both then you can set <code>python-test-runner</code> to a list like this:
 </p>
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-test-runner '<span class="org-rainbow-delimiters-depth-4">(</span>pytest nose<span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -305,43 +446,8 @@ The root of the project is detected with a <code>.git</code> directory or a <cod
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="anaconda-dependencies"><a id="orgheadline5"></a><span class="section-number-3">2.3</span> Anaconda dependencies</h3>
-<div class="outline-text-3" id="text-anaconda-dependencies">
-<p>
-<code>anaconda-mode</code> tries to install the dependencies itself but sometimes
-it does not work and you may encounter the following message when
-opening a python buffer:
-</p>
-
-<pre class="example">
-Blocking call to accept-process-output with quit inhibited!!
-</pre>
-
-<p>
-To fix this, install the <code>anaconda-mode</code> <a href="https://github.com/proofit404/anaconda-mode/blob/master/requirements.txt">anaconda-deps</a> by hand:
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh">pip install  <span class="org-variable-name">jedi</span>==<span class="org-highlight-numbers-number">0.8.1</span> json-rpc==<span class="org-highlight-numbers-number">1.8.1</span> <span class="org-variable-name">service_factory</span>==<span class="org-highlight-numbers-number">0.1.2</span>
-</pre>
-</div>
-
-<p>
-Source: <a href="https://github.com/proofit404/anaconda-mode#issues">https://github.com/proofit404/anaconda-mode#issues</a>
-</p>
-
-<p>
-If you are facing errors such as "Unable to run anaconda-mode server", try
-setting your <code>PYTHONPATH</code> as explained at
-<a href="https://github.com/proofit404/anaconda-mode#pythonpath">https://github.com/proofit404/anaconda-mode#pythonpath</a>
-</p>
-</div>
-</div>
-
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="automatic-buffer-formatting-on-save"><a id="orgheadline6"></a><span class="section-number-3">2.4</span> Automatic buffer formatting on save</h3>
+<div id="outline-container-org9c99d86" class="outline-3">
+<h3 id="automatic-buffer-formatting-on-save"><a id="org9c99d86"></a><span class="section-number-3">2.4</span> Automatic buffer formatting on save</h3>
 <div class="outline-text-3" id="text-automatic-buffer-formatting-on-save">
 <p>
 To enable automatic buffer formatting on save with  <a href="https://github.com/google/yapf">YAPF</a> set the variable
@@ -349,31 +455,29 @@ To enable automatic buffer formatting on save with  <a href="https://github.com/
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-enable-yapf-format-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="autoflake"><a id="orgheadline7"></a><span class="section-number-3">2.5</span> autoflake</h3>
+<div id="outline-container-orgb7d8d81" class="outline-3">
+<h3 id="autoflake"><a id="orgb7d8d81"></a><span class="section-number-3">2.5</span> autoflake</h3>
 <div class="outline-text-3" id="text-autoflake">
 <p>
 To be able to suppress unused imports easily, install <a href="https://github.com/myint/autoflake">autoflake</a>:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">pip install autoflake
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="pylookup"><a id="orgheadline8"></a><span class="section-number-3">2.6</span> pylookup</h3>
+<div id="outline-container-org63710ce" class="outline-3">
+<h3 id="pylookup"><a id="org63710ce"></a><span class="section-number-3">2.6</span> pylookup</h3>
 <div class="outline-text-3" id="text-pylookup">
 <p>
 To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the database first, using
@@ -382,8 +486,8 @@ To use <code>pylookup</code> on <code>SPC m h H</code>, make sure you update the
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="hy-mode"><a id="orgheadline9"></a><span class="section-number-3">2.7</span> Hy-mode</h3>
+<div id="outline-container-org657e7f0" class="outline-3">
+<h3 id="hy-mode"><a id="org657e7f0"></a><span class="section-number-3">2.7</span> Hy-mode</h3>
 <div class="outline-text-3" id="text-hy-mode">
 <p>
 To be able to connect to an inferior lisp repl in <code>hy-mode</code>, you need to make sure
@@ -391,7 +495,6 @@ that hy is installed.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">pip install hy
 </pre>
 </div>
@@ -399,18 +502,18 @@ that hy is installed.
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-2">
-<h2 id="management-of-python-versions-and-virtual-environments"><a id="orgheadline14"></a><span class="section-number-2">3</span> Management of Python versions and virtual environments</h2>
+<div id="outline-container-orgeeb6c3f" class="outline-2">
+<h2 id="management-of-python-versions-and-virtual-environments"><a id="orgeeb6c3f"></a><span class="section-number-2">3</span> Management of Python versions and virtual environments</h2>
 <div class="outline-text-2" id="text-management-of-python-versions-and-virtual-environments">
 </div>
 
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="manage-virtual-environments-with-pyvenv"><a id="orgheadline11"></a><span class="section-number-3">3.1</span> Manage virtual environments with pyvenv</h3>
+<div id="outline-container-orgbc9bba0" class="outline-3">
+<h3 id="manage-virtual-environments-with-pyvenv"><a id="orgbc9bba0"></a><span class="section-number-3">3.1</span> Manage virtual environments with pyvenv</h3>
 <div class="outline-text-3" id="text-manage-virtual-environments-with-pyvenv">
 <p>
 A virtual environment provides isolation of your Python package versions. For a
-general overview see <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">this site</a>. <a href="http://virtualenvwrapper.readthedocs.org/en/latest/index.html">Virtualenvwrapper</a> which is also explained in the
+general overview see <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">this site</a>. <a href="http://virtualenvwrapper.readthedocs.io/en/latest/index.html">Virtualenvwrapper</a> which is also explained in the
 previous link, is a program which manages your virtual environments in a central
 location set by the <code>WORKON_HOME</code> environment variable.
 </p>
@@ -454,8 +557,8 @@ by the <a href="https://github.com/jorgenschaefer/pyvenv">pyvenv</a> package. It
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="manage-multiple-python-versions-with-pyenv"><a id="orgheadline13"></a><span class="section-number-3">3.2</span> Manage multiple Python versions with pyenv</h3>
+<div id="outline-container-org72476c0" class="outline-3">
+<h3 id="manage-multiple-python-versions-with-pyenv"><a id="org72476c0"></a><span class="section-number-3">3.2</span> Manage multiple Python versions with pyenv</h3>
 <div class="outline-text-3" id="text-manage-multiple-python-versions-with-pyenv">
 <p>
 If you need multiple Python versions (e.g. Python 2 and Python 3) then take a
@@ -482,12 +585,12 @@ integration is provided by <a href="https://github.com/proofit404/pyenv-mode">py
 <tbody>
 <tr>
 <td class="org-left"><code>SPC m v s</code></td>
-<td class="org-left">set a pyenv environment with <a href="https://github.com/yyuu/pyenv">pyenv</a></td>
+<td class="org-left">set a pyenv environment with <a href="https://github.com/pyenv/pyenv">pyenv</a></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m v u</code></td>
-<td class="org-left">unset a pyenv environment with <a href="https://github.com/yyuu/pyenv">pyenv</a></td>
+<td class="org-left">unset a pyenv environment with <a href="https://github.com/pyenv/pyenv">pyenv</a></td>
 </tr>
 </tbody>
 </table>
@@ -498,12 +601,12 @@ has installed. Those will be listed alongside your Python versions.
 </p>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="automatic-activation-of-local-pyenv-version"><a id="orgheadline12"></a><span class="section-number-4">3.2.1</span> Automatic activation of local pyenv version</h4>
+<div id="outline-container-orgb5cb1fd" class="outline-4">
+<h4 id="automatic-activation-of-local-pyenv-version"><a id="orgb5cb1fd"></a><span class="section-number-4">3.2.1</span> Automatic activation of local pyenv version</h4>
 <div class="outline-text-4" id="text-automatic-activation-of-local-pyenv-version">
 <p>
 A project-specific pyenv version may be written to a file called
-<code>.python-version</code> using the <a href="https://github.com/yyuu/pyenv/blob/master/COMMANDS.md#pyenv-local">pyenv local</a> command.
+<code>.python-version</code> using the <a href="https://github.com/yyuu/pyenv/blob/master/COMMANDS.md#user-content-pyenv-local">pyenv local</a> command.
 </p>
 
 <p>
@@ -516,19 +619,29 @@ the pyenv version. The behavior can be set with the variable
 <li><code>on-project-switch</code> set the version when you switch projects,</li>
 <li><code>nil</code> to disable.</li>
 </ul>
+
+<p>
+The same is also possible on pyvenv with a file called <code>.venv</code>. The behavior
+can be set with the variable <code>python-auto-set-local-pyvenv-virtualenv=</code> to:
+</p>
+<ul class="org-ul">
+<li><code>on-visit</code> (default) set the virtualenv when you visit a python buffer,</li>
+<li><code>on-project-switch</code> set the virtualenv when you switch projects,</li>
+<li><code>nil</code> to disable.</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline22"></a><span class="section-number-2">4</span> Key Bindings</h2>
+<div id="outline-container-org0599545" class="outline-2">
+<h2 id="key-bindings"><a id="org0599545"></a><span class="section-number-2">4</span> Key Bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="inferior-repl-process"><a id="orgheadline15"></a><span class="section-number-3">4.1</span> Inferior REPL process</h3>
+<div id="outline-container-orgce01291" class="outline-3">
+<h3 id="inferior-repl-process"><a id="orgce01291"></a><span class="section-number-3">4.1</span> Inferior REPL process</h3>
 <div class="outline-text-3" id="text-inferior-repl-process">
 <p>
 Start a Python or iPython inferior REPL process with <code>SPC m s i</code>.
@@ -606,8 +719,8 @@ Send code to inferior process commands:
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="running-python-script-in-shell"><a id="orgheadline16"></a><span class="section-number-3">4.2</span> Running Python Script in shell</h3>
+<div id="outline-container-orgeb7deea" class="outline-3">
+<h3 id="running-python-script-in-shell"><a id="orgeb7deea"></a><span class="section-number-3">4.2</span> Running Python Script in shell</h3>
 <div class="outline-text-3" id="text-running-python-script-in-shell">
 <p>
 To run a Python script like you would in the shell press <code>SPC m c c</code>
@@ -650,8 +763,8 @@ compilation command.
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="testing"><a id="orgheadline17"></a><span class="section-number-3">4.3</span> Testing</h3>
+<div id="outline-container-org86d9ba0" class="outline-3">
+<h3 id="testing"><a id="org86d9ba0"></a><span class="section-number-3">4.3</span> Testing</h3>
 <div class="outline-text-3" id="text-testing">
 <p>
 Test commands start with <code>m t</code>. To use the secondary test runner call the
@@ -744,8 +857,8 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="refactoring"><a id="orgheadline18"></a><span class="section-number-3">4.4</span> Refactoring</h3>
+<div id="outline-container-org52e95f8" class="outline-3">
+<h3 id="refactoring"><a id="org52e95f8"></a><span class="section-number-3">4.4</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -776,8 +889,8 @@ function with a prefix argument, for example <code>SPC u SPC m t a</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="live-coding"><a id="orgheadline19"></a><span class="section-number-3">4.5</span> Live coding</h3>
+<div id="outline-container-org05fe8e0" class="outline-3">
+<h3 id="live-coding"><a id="org05fe8e0"></a><span class="section-number-3">4.5</span> Live coding</h3>
 <div class="outline-text-3" id="text-live-coding">
 <p>
 Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plugin">live-py-plugin.</a>
@@ -807,8 +920,8 @@ Live coding is provided by the <a href="https://github.com/donkirkby/live-py-plu
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="hy-repl-process"><a id="orgheadline20"></a><span class="section-number-3">4.6</span> Hy REPL process</h3>
+<div id="outline-container-org9f046e0" class="outline-3">
+<h3 id="hy-repl-process"><a id="org9f046e0"></a><span class="section-number-3">4.6</span> Hy REPL process</h3>
 <div class="outline-text-3" id="text-hy-repl-process">
 <p>
 Start a Hy inferior repel process with <code>SPC m s i</code>. If <code>hy</code> is
@@ -880,8 +993,8 @@ Send code to hy REPL commands:
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="other-python-commands"><a id="orgheadline21"></a><span class="section-number-3">4.7</span> Other Python commands</h3>
+<div id="outline-container-orgdfe5839" class="outline-3">
+<h3 id="other-python-commands"><a id="orgdfe5839"></a><span class="section-number-3">4.7</span> Other Python commands</h3>
 <div class="outline-text-3" id="text-other-python-commands">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -905,7 +1018,7 @@ Send code to hy REPL commands:
 
 <tr>
 <td class="org-left"><code>SPC m d b</code></td>
-<td class="org-left">toggle a breakpoint</td>
+<td class="org-left">toggle a breakpoint using <code>wdb</code>, <code>ipdb</code>, <code>pudb</code> or <code>pdb</code></td>
 </tr>
 
 <tr>
@@ -945,12 +1058,12 @@ Send code to hy REPL commands:
 
 <tr>
 <td class="org-left"><code>SPC m v s</code></td>
-<td class="org-left">set a pyenv environment with <a href="https://github.com/yyuu/pyenv">pyenv</a></td>
+<td class="org-left">set a pyenv environment with <a href="https://github.com/pyenv/pyenv">pyenv</a></td>
 </tr>
 
 <tr>
 <td class="org-left"><code>SPC m v u</code></td>
-<td class="org-left">unset a pyenv environment with <a href="https://github.com/yyuu/pyenv">pyenv</a></td>
+<td class="org-left">unset a pyenv environment with <a href="https://github.com/pyenv/pyenv">pyenv</a></td>
 </tr>
 
 <tr>
@@ -973,13 +1086,13 @@ Send code to hy REPL commands:
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-2">
-<h2 id="configuration"><a id="orgheadline25"></a><span class="section-number-2">5</span> Configuration</h2>
+<div id="outline-container-org89376bf" class="outline-2">
+<h2 id="configuration"><a id="org89376bf"></a><span class="section-number-2">5</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="fill-column"><a id="orgheadline23"></a><span class="section-number-3">5.1</span> Fill column</h3>
+<div id="outline-container-org5b41467" class="outline-3">
+<h3 id="fill-column"><a id="org5b41467"></a><span class="section-number-3">5.1</span> Fill column</h3>
 <div class="outline-text-3" id="text-fill-column">
 <p>
 If you want to customize the fill column value, use something like this inside
@@ -987,16 +1100,15 @@ the <code>user-init</code> function in your <code>.spacemacs</code>:
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-fill-column <span class="org-highlight-numbers-number">99</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline24" class="outline-3">
-<h3 id="sort-imports"><a id="orgheadline24"></a><span class="section-number-3">5.2</span> Sort imports</h3>
+<div id="outline-container-org2239afc" class="outline-3">
+<h3 id="sort-imports"><a id="org2239afc"></a><span class="section-number-3">5.2</span> Sort imports</h3>
 <div class="outline-text-3" id="text-sort-imports">
 <p>
 If you want imports to be automatically sorted when you save a file (using
@@ -1005,8 +1117,7 @@ config section:
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-elisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
   '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>python <span class="org-builtin">:variables</span> python-sort-imports-on-save t<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -1019,8 +1130,7 @@ or as a directory-local variable (for per-project settings).
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

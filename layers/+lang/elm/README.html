@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elm layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -184,7 +268,13 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#compilation">3.1. Compilation</a></li>
 <li><a href="#reactor">3.2. Reactor</a></li>
-<li><a href="#sort-imports-on-save">3.3. Sort imports on save</a></li>
+<li><a href="#on-save-usage">3.3. On save usage</a>
+<ul>
+<li><a href="#imports-sort">3.3.1. Imports sort</a></li>
+<li><a href="#file-format">3.3.2. File format</a></li>
+</ul>
+</li>
+<li><a href="#indentation">3.4. Indentation</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">4. Key bindings</a>
@@ -197,8 +287,8 @@ for the JavaScript code in this tag.
 <li><a href="#package-list-buffer">4.4.1. package list buffer</a></li>
 </ul>
 </li>
-<li><a href="#elm-oracle">4.5. elm-oracle</a></li>
-<li><a href="#elm-format">4.6. elm-format</a></li>
+<li><a href="#elm-oracle-1">4.5. elm-oracle</a></li>
+<li><a href="#elm-format-1">4.6. elm-format</a></li>
 <li><a href="#refactoring">4.7. Refactoring</a></li>
 </ul>
 </li>
@@ -211,11 +301,11 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-orgae6ccd2" class="outline-2">
+<h2 id="description"><a id="orgae6ccd2"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <p>
-This layer adds support for <a href="http://elm-lang.org/">Elm</a>.
+This layer adds support for <a href="http://elm-lang.org">Elm</a>.
 </p>
 
 <p>
@@ -235,13 +325,13 @@ with using elm-oracle</li>
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="install"><a id="orgheadline9"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org96aa276" class="outline-2">
+<h2 id="install"><a id="org96aa276"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="layer"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Layer</h3>
+<div id="outline-container-orgb1e9ab4" class="outline-3">
+<h3 id="layer"><a id="orgb1e9ab4"></a><span class="section-number-3">2.1</span> Layer</h3>
 <div class="outline-text-3" id="text-layer">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -251,8 +341,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="elm-platform"><a id="orgheadline6"></a><span class="section-number-3">2.2</span> Elm Platform</h3>
+<div id="outline-container-org6fc2b78" class="outline-3">
+<h3 id="elm-platform"><a id="org6fc2b78"></a><span class="section-number-3">2.2</span> Elm Platform</h3>
 <div class="outline-text-3" id="text-elm-platform">
 <p>
 The <code>elm-platform</code> is a bundle of tools, including the <code>elm-compiler</code>,
@@ -265,25 +355,24 @@ able to access commands such as <code>elm-reactor</code> or <code>elm-make</code
 </p>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="os-x-and-windows-installers"><a id="orgheadline3"></a><span class="section-number-4">2.2.1</span> OS X and Windows installers</h4>
+<div id="outline-container-org534b207" class="outline-4">
+<h4 id="os-x-and-windows-installers"><a id="org534b207"></a><span class="section-number-4">2.2.1</span> OS X and Windows installers</h4>
 <div class="outline-text-4" id="text-os-x-and-windows-installers">
 <p>
 Official installers for these operating systems are available from:
-<a href="http://elm-lang.org/install"><a href="http://elm-lang.org/install">http://elm-lang.org/install</a></a>
+<a href="https://guide.elm-lang.org/install.html"><a href="https://guide.elm-lang.org/install.html">https://guide.elm-lang.org/install.html</a></a>
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="universal-installer-using-npm"><a id="orgheadline4"></a><span class="section-number-4">2.2.2</span> Universal installer using npm</h4>
+<div id="outline-container-org41332ca" class="outline-4">
+<h4 id="universal-installer-using-npm"><a id="org41332ca"></a><span class="section-number-4">2.2.2</span> Universal installer using npm</h4>
 <div class="outline-text-4" id="text-universal-installer-using-npm">
 <p>
 A npm based installer is available to, and provides pre-compiled binaries for
 certain operating system and architectures.
 </p>
 <div class="org-src-container">
-
 <pre class="src src-sh">npm install --global elm
 </pre>
 </div>
@@ -304,8 +393,8 @@ run, see this issue <a href="https://github.com/kevva/elm-bin/issues/28"><a href
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="source-code"><a id="orgheadline5"></a><span class="section-number-4">2.2.3</span> Source code</h4>
+<div id="outline-container-orgdc30d8f" class="outline-4">
+<h4 id="source-code"><a id="orgdc30d8f"></a><span class="section-number-4">2.2.3</span> Source code</h4>
 <div class="outline-text-4" id="text-source-code">
 <p>
 To build from source, see instructions here:
@@ -315,8 +404,8 @@ To build from source, see instructions here:
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="elm-oracle"><a id="orgheadline7"></a><span class="section-number-3">2.3</span> elm-oracle</h3>
+<div id="outline-container-org8a0d591" class="outline-3">
+<h3 id="elm-oracle"><a id="org8a0d591"></a><span class="section-number-3">2.3</span> elm-oracle</h3>
 <div class="outline-text-3" id="text-elm-oracle">
 <p>
 <code>elm-oracle</code> can be used to show type signatures and docs for tokens under the
@@ -335,15 +424,14 @@ run this command:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-sh">npm install -g elm-oracle
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="elm-format"><a id="orgheadline8"></a><span class="section-number-3">2.4</span> elm-format</h3>
+<div id="outline-container-org8e9700f" class="outline-3">
+<h3 id="elm-format"><a id="org8e9700f"></a><span class="section-number-3">2.4</span> elm-format</h3>
 <div class="outline-text-3" id="text-elm-format">
 <p>
 <code>elm-format</code> can be used to format elm code according to a standard set of
@@ -362,7 +450,6 @@ has a version suffix, the installed command name can be set in your
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
      elm-format-command <span class="org-string">"elm-format-0.17"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -371,13 +458,13 @@ has a version suffix, the installed command name can be set in your
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="basic-usage-tips"><a id="orgheadline13"></a><span class="section-number-2">3</span> Basic usage tips</h2>
+<div id="outline-container-org3c32a86" class="outline-2">
+<h2 id="basic-usage-tips"><a id="org3c32a86"></a><span class="section-number-2">3</span> Basic usage tips</h2>
 <div class="outline-text-2" id="text-basic-usage-tips">
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="compilation"><a id="orgheadline10"></a><span class="section-number-3">3.1</span> Compilation</h3>
+<div id="outline-container-orgfba4eb7" class="outline-3">
+<h3 id="compilation"><a id="orgfba4eb7"></a><span class="section-number-3">3.1</span> Compilation</h3>
 <div class="outline-text-3" id="text-compilation">
 <p>
 To control the name of the compiled JavaScript file, use <code>SPC m c B</code> instead of
@@ -387,8 +474,8 @@ To control the name of the compiled JavaScript file, use <code>SPC m c B</code> 
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="reactor"><a id="orgheadline11"></a><span class="section-number-3">3.2</span> Reactor</h3>
+<div id="outline-container-org7196f8b" class="outline-3">
+<h3 id="reactor"><a id="org7196f8b"></a><span class="section-number-3">3.2</span> Reactor</h3>
 <div class="outline-text-3" id="text-reactor">
 <p>
 <code>elm-reactor</code> is an interactive development tool, used to develop and debug Elm
@@ -415,7 +502,6 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span>
      elm-reactor-port <span class="org-string">"3000"</span>          <span class="org-comment-delimiter">; </span><span class="org-comment">default 8000</span>
      elm-reactor-address <span class="org-string">"0.0.0.0"</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">default 127.0.0.1</span>
@@ -424,30 +510,63 @@ can be controlled by passing in these variables in your <code>~/.spacemacs</code
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="sort-imports-on-save"><a id="orgheadline12"></a><span class="section-number-3">3.3</span> Sort imports on save</h3>
-<div class="outline-text-3" id="text-sort-imports-on-save">
+<div id="outline-container-org38eb3f8" class="outline-3">
+<h3 id="on-save-usage"><a id="org38eb3f8"></a><span class="section-number-3">3.3</span> On save usage</h3>
+<div class="outline-text-3" id="text-on-save-usage">
+</div>
+
+<div id="outline-container-org498e4d6" class="outline-4">
+<h4 id="imports-sort"><a id="org498e4d6"></a><span class="section-number-4">3.3.1</span> Imports sort</h4>
+<div class="outline-text-4" id="text-imports-sort">
 <p>
 Set <code>elm-sort-imports-on-save</code> to <code>t</code> to sort the imports in the current file on
 every save.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span> elm-sort-imports-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgce17a36" class="outline-4">
+<h4 id="file-format"><a id="orgce17a36"></a><span class="section-number-4">3.3.2</span> File format</h4>
+<div class="outline-text-4" id="text-file-format">
+<p>
+Set <code>elm-format-on-save</code> to <code>t</code> to format current file on every save.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>elm <span class="org-builtin">:variables</span> elm-format-on-save t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline22"></a><span class="section-number-2">4</span> Key bindings</h2>
+<div id="outline-container-org4b15a14" class="outline-3">
+<h3 id="indentation"><a id="org4b15a14"></a><span class="section-number-3">3.4</span> Indentation</h3>
+<div class="outline-text-3" id="text-indentation">
+<p>
+elm-mode indentation is based on cycling: every time you insert a new line there
+will be one or more indentation levels available for you to choose from. The
+exact number is printed in the minibuffer either as Sole indentation or Indent
+cycle (n)&#x2026; where n is the number of available indentations to choose from. If
+the automatic indentation level was not the one you expected simply hit TAB to
+cycle through the list (note that hitting any other key will cancel the cycle).
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbc6591e" class="outline-2">
+<h2 id="key-bindings"><a id="orgbc6591e"></a><span class="section-number-2">4</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="elm-make"><a id="orgheadline14"></a><span class="section-number-3">4.1</span> elm-make</h3>
+<div id="outline-container-orgf9dec8e" class="outline-3">
+<h3 id="elm-make"><a id="orgf9dec8e"></a><span class="section-number-3">4.1</span> elm-make</h3>
 <div class="outline-text-3" id="text-elm-make">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -483,8 +602,8 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="elm-repl"><a id="orgheadline15"></a><span class="section-number-3">4.2</span> elm-repl</h3>
+<div id="outline-container-org7faedd6" class="outline-3">
+<h3 id="elm-repl"><a id="org7faedd6"></a><span class="section-number-3">4.2</span> elm-repl</h3>
 <div class="outline-text-3" id="text-elm-repl">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -530,8 +649,8 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="elm-reactor"><a id="orgheadline16"></a><span class="section-number-3">4.3</span> elm-reactor</h3>
+<div id="outline-container-orgf0c422c" class="outline-3">
+<h3 id="elm-reactor"><a id="orgf0c422c"></a><span class="section-number-3">4.3</span> elm-reactor</h3>
 <div class="outline-text-3" id="text-elm-reactor">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -562,8 +681,8 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="elm-package"><a id="orgheadline18"></a><span class="section-number-3">4.4</span> elm-package</h3>
+<div id="outline-container-orgbad1e5b" class="outline-3">
+<h3 id="elm-package"><a id="orgbad1e5b"></a><span class="section-number-3">4.4</span> elm-package</h3>
 <div class="outline-text-3" id="text-elm-package">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -598,8 +717,8 @@ every save.
 </table>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-4">
-<h4 id="package-list-buffer"><a id="orgheadline17"></a><span class="section-number-4">4.4.1</span> package list buffer</h4>
+<div id="outline-container-org77e2412" class="outline-4">
+<h4 id="package-list-buffer"><a id="org77e2412"></a><span class="section-number-4">4.4.1</span> package list buffer</h4>
 <div class="outline-text-4" id="text-package-list-buffer">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -651,9 +770,9 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="elm-oracle"><a id="orgheadline19"></a><span class="section-number-3">4.5</span> elm-oracle</h3>
-<div class="outline-text-3" id="text-elm-oracle">
+<div id="outline-container-orgf9f0e52" class="outline-3">
+<h3 id="elm-oracle-1"><a id="orgf9f0e52"></a><span class="section-number-3">4.5</span> elm-oracle</h3>
+<div class="outline-text-3" id="text-elm-oracle-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -683,9 +802,9 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="elm-format"><a id="orgheadline20"></a><span class="section-number-3">4.6</span> elm-format</h3>
-<div class="outline-text-3" id="text-elm-format">
+<div id="outline-container-orge89eab5" class="outline-3">
+<h3 id="elm-format-1"><a id="orge89eab5"></a><span class="section-number-3">4.6</span> elm-format</h3>
+<div class="outline-text-3" id="text-elm-format-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -709,8 +828,8 @@ every save.
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="refactoring"><a id="orgheadline21"></a><span class="section-number-3">4.7</span> Refactoring</h3>
+<div id="outline-container-org6419b35" class="outline-3">
+<h3 id="refactoring"><a id="org6419b35"></a><span class="section-number-3">4.7</span> Refactoring</h3>
 <div class="outline-text-3" id="text-refactoring">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -738,8 +857,7 @@ every save.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

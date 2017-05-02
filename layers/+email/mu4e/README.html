@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mu4e layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -191,8 +275,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="install"><a id="orgheadline1"></a><span class="section-number-2">1</span> Install</h2>
+<div id="outline-container-org44a8c10" class="outline-2">
+<h2 id="install"><a id="org44a8c10"></a><span class="section-number-2">1</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 In order to use this layer you must install mu and mu4e separately. Typically
@@ -206,7 +290,6 @@ variable, as well as passing the &#x2013;with-emacs option:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-shell">brew install mu --with-emacs
 </pre>
 </div>
@@ -217,8 +300,7 @@ the layer variable <code>mu4e-installation-path</code>, for example:
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq-default dotspacemacs-configuration-layers
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq-default</span> dotspacemacs-configuration-layers
               '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span>mu4e <span class="org-builtin">:variables</span>
                       mu4e-installation-path <span class="org-string">"/usr/share/emacs/site-lisp"</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -231,14 +313,14 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="commands"><a id="orgheadline5"></a><span class="section-number-2">2</span> Commands</h2>
+<div id="outline-container-org828c0db" class="outline-2">
+<h2 id="commands"><a id="org828c0db"></a><span class="section-number-2">2</span> Commands</h2>
 <div class="outline-text-2" id="text-commands">
 </div>
 
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="global-bindings"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Global bindings</h3>
+<div id="outline-container-orga8929fd" class="outline-3">
+<h3 id="global-bindings"><a id="orga8929fd"></a><span class="section-number-3">2.1</span> Global bindings</h3>
 <div class="outline-text-3" id="text-global-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -256,7 +338,7 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </thead>
 <tbody>
 <tr>
-<td class="org-left">SPC a M</td>
+<td class="org-left"><code>SPC a M</code></td>
 <td class="org-left">Start mu4e</td>
 </tr>
 </tbody>
@@ -264,8 +346,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="headers-mode"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Headers mode</h3>
+<div id="outline-container-orgcd26dc8" class="outline-3">
+<h3 id="headers-mode"><a id="orgcd26dc8"></a><span class="section-number-3">2.2</span> Headers mode</h3>
 <div class="outline-text-3" id="text-headers-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -283,17 +365,17 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </thead>
 <tbody>
 <tr>
-<td class="org-left">J</td>
+<td class="org-left"><code>J</code></td>
 <td class="org-left">Go to next unread thread marking other mail read on the way</td>
 </tr>
 
 <tr>
-<td class="org-left">C-j</td>
+<td class="org-left"><code>C-j</code></td>
 <td class="org-left">Next header</td>
 </tr>
 
 <tr>
-<td class="org-left">C-k</td>
+<td class="org-left"><code>C-k</code></td>
 <td class="org-left">Previous header</td>
 </tr>
 </tbody>
@@ -301,8 +383,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="view-mode"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> View mode</h3>
+<div id="outline-container-org92c7ca0" class="outline-3">
+<h3 id="view-mode"><a id="org92c7ca0"></a><span class="section-number-3">2.3</span> View mode</h3>
 <div class="outline-text-3" id="text-view-mode">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -320,17 +402,17 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </thead>
 <tbody>
 <tr>
-<td class="org-left">J</td>
+<td class="org-left"><code>J</code></td>
 <td class="org-left">Go to next unread thread marking other mail read on the way</td>
 </tr>
 
 <tr>
-<td class="org-left">C-j</td>
+<td class="org-left"><code>C-j</code></td>
 <td class="org-left">Next header</td>
 </tr>
 
 <tr>
-<td class="org-left">C-k</td>
+<td class="org-left"><code>C-k</code></td>
 <td class="org-left">Previous header</td>
 </tr>
 </tbody>
@@ -339,8 +421,8 @@ existing <code>dotspacemacs-configuration-layers</code> list in this file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="configuration"><a id="orgheadline12"></a><span class="section-number-2">3</span> Configuration</h2>
+<div id="outline-container-org48124a6" class="outline-2">
+<h2 id="configuration"><a id="org48124a6"></a><span class="section-number-2">3</span> Configuration</h2>
 <div class="outline-text-2" id="text-configuration">
 <p>
 Configuration varies too much to give precise instructions.  What follows is one
@@ -349,8 +431,8 @@ instructions.
 </p>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="maildirs-extension"><a id="orgheadline6"></a><span class="section-number-3">3.1</span> Maildirs extension</h3>
+<div id="outline-container-org74d6681" class="outline-3">
+<h3 id="maildirs-extension"><a id="org74d6681"></a><span class="section-number-3">3.1</span> Maildirs extension</h3>
 <div class="outline-text-3" id="text-maildirs-extension">
 <p>
 The maildirs extension adds a list of all your maildirs to the main mu4e view
@@ -365,8 +447,8 @@ adding the package <code>= to your dotfile variable =dotspacemacs-excluded-packa
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="multiple-accounts"><a id="orgheadline7"></a><span class="section-number-3">3.2</span> Multiple Accounts</h3>
+<div id="outline-container-orge1804a2" class="outline-3">
+<h3 id="multiple-accounts"><a id="orge1804a2"></a><span class="section-number-3">3.2</span> Multiple Accounts</h3>
 <div class="outline-text-3" id="text-multiple-accounts">
 <p>
 This layer includes support for multiple sending accounts.
@@ -375,8 +457,7 @@ If you have multiple accounts, configure the <code>mu4e-account-alist</code> var
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq mu4e-account-alist
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-account-alist
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"gmail"</span>
          <span class="org-comment-delimiter">;; </span><span class="org-comment">Under each account, set the account-specific variables you want.</span>
          <span class="org-rainbow-delimiters-depth-4">(</span>mu4e-sent-messages-behavior delete<span class="org-rainbow-delimiters-depth-4">)</span>
@@ -407,7 +488,6 @@ setting in <code>dotspacemacs/layers</code>:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-account-alist t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -428,13 +508,12 @@ instead (see <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html#Cont
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="example-configuration"><a id="orgheadline8"></a><span class="section-number-3">3.3</span> Example configuration</h3>
+<div id="outline-container-org6b627ed" class="outline-3">
+<h3 id="example-configuration"><a id="org6b627ed"></a><span class="section-number-3">3.3</span> Example configuration</h3>
 <div class="outline-text-3" id="text-example-configuration">
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;;; </span><span class="org-comment">Set up some common mu4e variables</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq mu4e-maildir <span class="org-string">"~/.mail"</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-maildir <span class="org-string">"~/.mail"</span>
       mu4e-trash-folder <span class="org-string">"/Trash"</span>
       mu4e-refile-folder <span class="org-string">"/Archive"</span>
       mu4e-get-mail-command <span class="org-string">"mbsync -a"</span>
@@ -444,12 +523,12 @@ instead (see <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html#Cont
       mu4e-view-show-addresses t<span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">Mail directory shortcuts</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq mu4e-maildir-shortcuts
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-maildir-shortcuts
       '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"/gmail/INBOX"</span> . ?g<span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"/college/INBOX"</span> . ?c<span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;;; </span><span class="org-comment">Bookmarks</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq mu4e-bookmarks
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-bookmarks
       `<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"flag:unread AND NOT flag:trashed"</span> <span class="org-string">"Unread messages"</span> ?u<span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"date:today..now"</span> <span class="org-string">"Today's messages"</span> ?t<span class="org-rainbow-delimiters-depth-3">)</span>
         <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-string">"date:7d..now"</span> <span class="org-string">"Last 7 days"</span> ?w<span class="org-rainbow-delimiters-depth-3">)</span>
@@ -465,8 +544,8 @@ instead (see <a href="http://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html#Cont
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="notifications"><a id="orgheadline11"></a><span class="section-number-3">3.4</span> Notifications</h3>
+<div id="outline-container-orgb648634" class="outline-3">
+<h3 id="notifications"><a id="orgb648634"></a><span class="section-number-3">3.4</span> Notifications</h3>
 <div class="outline-text-3" id="text-notifications">
 <p>
 <code>mu4e-alert</code> is an extension that provides desktop notifications and adds the
@@ -481,12 +560,12 @@ count of unread messages to the modeline.
 
 <p>
 For an extended documentation of the available customizations please refer to
-<a href="https://github.com/iqbalansari/mu4e-alert#customizations">mu4e-alert's documentation</a>
+<a href="https://github.com/iqbalansari/mu4e-alert#user-content-customizations">mu4e-alert's documentation</a>
 </p>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="os-notifications"><a id="orgheadline9"></a><span class="section-number-4">3.4.1</span> OS notifications</h4>
+<div id="outline-container-org589beb6" class="outline-4">
+<h4 id="os-notifications"><a id="org589beb6"></a><span class="section-number-4">3.4.1</span> OS notifications</h4>
 <div class="outline-text-4" id="text-os-notifications">
 <p>
 To enable notifications about new messages, add the following line to your
@@ -494,8 +573,7 @@ To enable notifications about new messages, add the following line to your
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -505,7 +583,6 @@ or use layer variables when you add the layer to
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-notifications t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -518,7 +595,6 @@ installed libraries:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">with-eval-after-load</span> 'mu4e-alert
   <span class="org-comment-delimiter">;; </span><span class="org-comment">Enable Desktop notifications</span>
   <span class="org-rainbow-delimiters-depth-2">(</span>mu4e-alert-set-default-style 'notifications<span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span> <span class="org-comment-delimiter">; </span><span class="org-comment">For linux</span>
@@ -531,8 +607,8 @@ installed libraries:
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="mode-line-notifications"><a id="orgheadline10"></a><span class="section-number-4">3.4.2</span> Mode-line notifications</h4>
+<div id="outline-container-orgacdfeb7" class="outline-4">
+<h4 id="mode-line-notifications"><a id="orgacdfeb7"></a><span class="section-number-4">3.4.2</span> Mode-line notifications</h4>
 <div class="outline-text-4" id="text-mode-line-notifications">
 <p>
 To enable mode-line display about new messages, add the following line to
@@ -540,8 +616,7 @@ your <code>dotspacemacs/user-config</code>:
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>setq mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
+<pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -551,7 +626,6 @@ or use layer variables when you add the layer to
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-rainbow-delimiters-depth-1">(</span>mu4e <span class="org-builtin">:variables</span> mu4e-enable-mode-line t<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
@@ -560,8 +634,8 @@ or use layer variables when you add the layer to
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-2">
-<h2 id="see-also"><a id="orgheadline13"></a><span class="section-number-2">4</span> See also</h2>
+<div id="outline-container-orgb990090" class="outline-2">
+<h2 id="see-also"><a id="orgb990090"></a><span class="section-number-2">4</span> See also</h2>
 <div class="outline-text-2" id="text-see-also">
 <p>
 Refer to the official mu and mu4e documentation for additional info.
@@ -574,8 +648,7 @@ Refer to the official mu and mu4e documentation for additional info.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

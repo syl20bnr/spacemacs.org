@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:54 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Quick start</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -184,8 +268,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="configuration-layers"><a id="orgheadline1"></a><span class="section-number-2">1</span> Configuration layers</h2>
+<div id="outline-container-orga5cd0e4" class="outline-2">
+<h2 id="configuration-layers"><a id="orga5cd0e4"></a><span class="section-number-2">1</span> Configuration layers</h2>
 <div class="outline-text-2" id="text-configuration-layers">
 <p>
 Spacemacs divides its configuration into self-contained units called
@@ -214,7 +298,7 @@ The following command creates a layer in the <code>private</code> directory:
 </p>
 
 <pre class="example">
-SPC : configuration-layer/create-layer RET
+SPC SPC configuration-layer/create-layer RET
 </pre>
 
 <p>
@@ -229,8 +313,8 @@ the <a href="DOCUMENTATION.html">documentation</a>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="dotfile-spacemacs"><a id="orgheadline2"></a><span class="section-number-2">2</span> Dotfile (.spacemacs)</h2>
+<div id="outline-container-org778eb30" class="outline-2">
+<h2 id="dotfile-spacemacs"><a id="org778eb30"></a><span class="section-number-2">2</span> Dotfile (.spacemacs)</h2>
 <div class="outline-text-2" id="text-dotfile-spacemacs">
 <p>
 As mentioned <code>.spacemacs</code> controls which configuration layers to load and
@@ -242,7 +326,7 @@ The following command will create a <code>.spacemacs</code> file in your home di
 </p>
 
 <pre class="example">
-SPC : dotspacemacs/install RET
+SPC SPC dotspacemacs/install RET
 </pre>
 
 <p>
@@ -259,7 +343,6 @@ To load some configuration layers using the variable
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
 dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>auto-completion smex<span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
@@ -272,7 +355,6 @@ Variables can be directly set within <code>dotspacemacs-configuration-layers</co
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">List of configuration layers to load.</span>
 dotspacemacs-configuration-layers '<span class="org-rainbow-delimiters-depth-1">(</span>auto-completion
                                     <span class="org-rainbow-delimiters-depth-2">(</span>git <span class="org-builtin">:variables</span>
@@ -287,15 +369,15 @@ At anytime you can apply the changes made to the dotfile or layers
 </p>
 
 <p>
-The <a href="../core/templates/.spacemacs.template">dotfile template</a> contain further information about how to customize
-Spacemacs. See the dotfile configuration section of the <a href="DOCUMENTATION.html">documentation</a> for
+The <a href="https://github.com/syl20bnr/spacemacs/blob/master/core/templates/.spacemacs.template">dotfile template</a> contains further information about how to customize
+Spacemacs. See the dotfile configuration section of the <a href="DOCUMENTATION.html#dotfile-configuration">documentation</a> for
 more details.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="dotdirectory-spacemacsd"><a id="orgheadline3"></a><span class="section-number-2">3</span> Dotdirectory (~/.spacemacs.d)</h2>
+<div id="outline-container-orgf0b3906" class="outline-2">
+<h2 id="dotdirectory-spacemacsd"><a id="orgf0b3906"></a><span class="section-number-2">3</span> Dotdirectory (~/.spacemacs.d)</h2>
 <div class="outline-text-2" id="text-dotdirectory-spacemacsd">
 <p>
 Like <code>Emacs</code>, Spacemacs initialization can also be contained in an <code>init.el</code> file
@@ -311,7 +393,7 @@ initialization, and variable <code>user-emacs-directory</code> will still point
 to <code>~/.emacs.d/</code>, even if <code>~/.spacemacs.d</code> or <code>~/.spacemacs</code> are
 present. Only now <code>~/.emacs.d/init.el</code> is provided by Spacemacs
 (e.g. after cloning the Spacemacs git repo into an empty
-<code>~/.emacs.d/</code>), and your own personnal configurations go into
+<code>~/.emacs.d/</code>), and your own personal configurations go into
 <code>~/.spacemacs.d/init.el</code> (or <code>~/.spacemacs</code>).
 </p>
 
@@ -323,13 +405,13 @@ side-by-side without the need to rename and backup <code>~/.emacs.d/</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-2">
-<h2 id="learning-spacemacs"><a id="orgheadline11"></a><span class="section-number-2">4</span> Learning Spacemacs</h2>
+<div id="outline-container-orge12e37f" class="outline-2">
+<h2 id="learning-spacemacs"><a id="orge12e37f"></a><span class="section-number-2">4</span> Learning Spacemacs</h2>
 <div class="outline-text-2" id="text-learning-spacemacs">
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="editing-styles"><a id="orgheadline4"></a><span class="section-number-3">4.1</span> Editing Styles</h3>
+<div id="outline-container-org51d08ff" class="outline-3">
+<h3 id="editing-styles"><a id="org51d08ff"></a><span class="section-number-3">4.1</span> Editing Styles</h3>
 <div class="outline-text-3" id="text-editing-styles">
 <p>
 Spacemacs can be used by Vim users or Emacs users by setting the
@@ -339,8 +421,8 @@ in the dotfile <code>~/.spacemacs</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="the-leader-keys"><a id="orgheadline5"></a><span class="section-number-3">4.2</span> The leader keys</h3>
+<div id="outline-container-org28f8801" class="outline-3">
+<h3 id="the-leader-keys"><a id="org28f8801"></a><span class="section-number-3">4.2</span> The leader keys</h3>
 <div class="outline-text-3" id="text-the-leader-keys">
 <p>
 Spacemacs key bindings use a leader key which is by default bound to
@@ -360,15 +442,15 @@ For simplicity the documentation always refers to the leader key as
 </p>
 
 <p>
-There is secondary leader key called the major-mode leader key which is
+There is a secondary leader key called the major-mode leader key which is
 set to <code>​,​</code> by default. This key is a shortcut for <code>SPC m</code>
 where all the major-mode specific commands are bound.
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="evil-tutor"><a id="orgheadline6"></a><span class="section-number-3">4.3</span> Evil-tutor</h3>
+<div id="outline-container-org76aeaec" class="outline-3">
+<h3 id="evil-tutor"><a id="org76aeaec"></a><span class="section-number-3">4.3</span> Evil-tutor</h3>
 <div class="outline-text-3" id="text-evil-tutor">
 <p>
 If you are willing to learn the Vim key bindings (highly recommended since
@@ -378,8 +460,8 @@ to begin an Evil-adapted Vimtutor.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="universal-argument"><a id="orgheadline7"></a><span class="section-number-3">4.4</span> Universal argument</h3>
+<div id="outline-container-org4c78123" class="outline-3">
+<h3 id="universal-argument"><a id="org4c78123"></a><span class="section-number-3">4.4</span> Universal argument</h3>
 <div class="outline-text-3" id="text-universal-argument">
 <p>
 In <code>vim</code> editing style the universal argument defaults to <code>SPC u</code>
@@ -388,8 +470,8 @@ instead of <code>C-u</code> because the latter is used to scroll up as in Vim.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-3">
-<h3 id="configuration-layers-and-package-discovery"><a id="orgheadline8"></a><span class="section-number-3">4.5</span> Configuration layers and Package discovery</h3>
+<div id="outline-container-org1ba9dd5" class="outline-3">
+<h3 id="configuration-layers-and-package-discovery"><a id="org1ba9dd5"></a><span class="section-number-3">4.5</span> Configuration layers and Package discovery</h3>
 <div class="outline-text-3" id="text-configuration-layers-and-package-discovery">
 <p>
 By using <code>helm-spacemacs-help</code> with <code>SPC h SPC</code> you can quickly search
@@ -403,8 +485,8 @@ function of a package.
 </div>
 </div>
 
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="key-bindings-discovery"><a id="orgheadline9"></a><span class="section-number-3">4.6</span> Key bindings discovery</h3>
+<div id="outline-container-org328dfd9" class="outline-3">
+<h3 id="key-bindings-discovery"><a id="org328dfd9"></a><span class="section-number-3">4.6</span> Key bindings discovery</h3>
 <div class="outline-text-3" id="text-key-bindings-discovery">
 <p>
 Thanks to <a href="https://github.com/justbur/emacs-which-key">which-key</a>, whenever a prefix command is pressed (like <code>SPC</code>)
@@ -436,8 +518,8 @@ backslash, an actual space and a lowercase <code>b</code>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="describe-functions"><a id="orgheadline10"></a><span class="section-number-3">4.7</span> Describe functions</h3>
+<div id="outline-container-org9b88916" class="outline-3">
+<h3 id="describe-functions"><a id="org9b88916"></a><span class="section-number-3">4.7</span> Describe functions</h3>
 <div class="outline-text-3" id="text-describe-functions">
 <p>
 <code>Describe functions</code> are powerful Emacs introspection commands to get information
@@ -484,18 +566,17 @@ about functions, variables, modes etc. These commands are bound thusly:
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-2">
-<h2 id="how-tos"><a id="orgheadline12"></a><span class="section-number-2">5</span> How-To's</h2>
+<div id="outline-container-orgd20e3ca" class="outline-2">
+<h2 id="how-tos"><a id="orgd20e3ca"></a><span class="section-number-2">5</span> How-To's</h2>
 <div class="outline-text-2" id="text-how-tos">
 <p>
-Some quick <code>how-to's</code> are compiled in the <a href="FAQ.html#MissingReference">FAQ.org</a> file.
+Some quick <code>how-to's</code> are compiled in the <a href="FAQ.html#how-do-i">FAQ.</a>
 </p>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:54</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

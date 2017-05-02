@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:56 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gnus layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -180,8 +264,8 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="install"><a id="orgheadline1"></a><span class="section-number-2">1</span> Install</h2>
+<div id="outline-container-org8aca321" class="outline-2">
+<h2 id="install"><a id="org8aca321"></a><span class="section-number-2">1</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -191,8 +275,8 @@ file.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="basic-concepts"><a id="orgheadline2"></a><span class="section-number-2">2</span> Basic Concepts</h2>
+<div id="outline-container-org2b320e5" class="outline-2">
+<h2 id="basic-concepts"><a id="org2b320e5"></a><span class="section-number-2">2</span> Basic Concepts</h2>
 <div class="outline-text-2" id="text-basic-concepts">
 <p>
 Gnus is a news reading application. The Gnus terminology can be confusing for
@@ -207,8 +291,8 @@ the Group Buffer if Topic Mode is enabled(default).</dd>
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="adding-news-sources"><a id="orgheadline3"></a><span class="section-number-2">3</span> Adding news sources</h2>
+<div id="outline-container-orgc5382da" class="outline-2">
+<h2 id="adding-news-sources"><a id="orgc5382da"></a><span class="section-number-2">3</span> Adding news sources</h2>
 <div class="outline-text-2" id="text-adding-news-sources">
 <p>
 Adding news sources can be done in your <code>.spacemacs</code> file by adding the
@@ -216,9 +300,8 @@ following:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-secondary-select-methods
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
   '<span class="org-rainbow-delimiters-depth-2">(</span>
     <span class="org-rainbow-delimiters-depth-3">(</span>nntp <span class="org-string">"gmane"</span>
            <span class="org-rainbow-delimiters-depth-4">(</span>nntp-address <span class="org-string">"news.gmane.org"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
@@ -235,8 +318,8 @@ For adding RSS Feeds please see the <a href="#keybindings">keybindings section</
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="configuring-gmail"><a id="orgheadline4"></a><span class="section-number-2">4</span> Configuring gmail</h2>
+<div id="outline-container-org5e68705" class="outline-2">
+<h2 id="configuring-gmail"><a id="org5e68705"></a><span class="section-number-2">4</span> Configuring gmail</h2>
 <div class="outline-text-2" id="text-configuring-gmail">
 <p>
 To configure Gnus with gmail support you can add the following to your
@@ -244,9 +327,8 @@ To configure Gnus with gmail support you can add the following to your
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Get email, and store in nnml</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-secondary-select-methods
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-secondary-select-methods
 '<span class="org-rainbow-delimiters-depth-2">(</span>
   <span class="org-rainbow-delimiters-depth-3">(</span>nnimap <span class="org-string">"gmail"</span>
            <span class="org-rainbow-delimiters-depth-4">(</span>nnimap-address
@@ -256,23 +338,23 @@ To configure Gnus with gmail support you can add the following to your
   <span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Send email via Gmail:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq message-send-mail-function 'smtpmail-send-it
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-send-mail-function 'smtpmail-send-it
   smtpmail-default-smtp-server <span class="org-string">"smtp.gmail.com"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">Archive outgoing email in Sent folder on imap.gmail.com:</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-message-archive-method '<span class="org-rainbow-delimiters-depth-2">(</span>nnimap <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-2">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-message-archive-method '<span class="org-rainbow-delimiters-depth-2">(</span>nnimap <span class="org-string">"imap.gmail.com"</span><span class="org-rainbow-delimiters-depth-2">)</span>
     gnus-message-archive-group <span class="org-string">"[Gmail]/Sent Mail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">set return email address based on incoming email address</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq gnus-posting-styles
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> gnus-posting-styles
     '<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
        <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@outlook.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span>
   <span class="org-rainbow-delimiters-depth-3">(</span><span class="org-rainbow-delimiters-depth-4">(</span>header <span class="org-string">"to"</span> <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span>
      <span class="org-rainbow-delimiters-depth-4">(</span>address <span class="org-string">"address@gmail.com"</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
 
 <span class="org-comment-delimiter">;; </span><span class="org-comment">store email in ~/gmail directory</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq nnml-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
-<span class="org-rainbow-delimiters-depth-1">(</span>setq message-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> nnml-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
+<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-keyword">setq</span> message-directory <span class="org-string">"~/gmail"</span><span class="org-rainbow-delimiters-depth-1">)</span>
 </pre>
 </div>
 
@@ -293,8 +375,8 @@ password</a>.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="org-mime-in-org-layer"><a id="orgheadline5"></a><span class="section-number-2">5</span> Org MIME in Org layer</h2>
+<div id="outline-container-orge72495a" class="outline-2">
+<h2 id="org-mime-in-org-layer"><a id="orge72495a"></a><span class="section-number-2">5</span> Org MIME in Org layer</h2>
 <div class="outline-text-2" id="text-org-mime-in-org-layer">
 <p>
 It is possible to send beautiful HTML emails using org mode.
@@ -308,8 +390,8 @@ from org mode to html.  An org mode buffer can be sent via html email by pressin
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="keybindings"><a id="orgheadline6"></a><span class="section-number-2">6</span> Keybindings</h2>
+<div id="outline-container-org05a47cf" class="outline-2">
+<h2 id="keybindings"><a id="org05a47cf"></a><span class="section-number-2">6</span> Keybindings</h2>
 <div class="outline-text-2" id="text-keybindings">
 <p>
 Gnus has very modal default keybindings.
@@ -390,8 +472,7 @@ Basic and Spacemacs specific keybindings can be found in the following table.
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:56</p>
+<p class="date">Created: 2017-04-29 Sat 04:12</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

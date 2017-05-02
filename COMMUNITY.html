@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spacemacs Community</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script type="text/javascript"
+                  src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+               Date();a=s.createElement(o),
+               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+               })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+          </script>
+<link rel="stylesheet" type="text/css" href="../css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Spacemacs Community</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#philosophy">1. Philosophy</a>
+<ul>
+<li><a href="#for-contributors">1.1. For Contributors</a></li>
+<li><a href="#for-users">1.2. For Users</a></li>
+</ul>
+</li>
+<li><a href="#moderation">2. Moderation</a>
+<ul>
+<li><a href="#guidelines">2.1. Guidelines</a>
+<ul>
+<li><a href="#people">2.1.1. People</a></li>
+<li><a href="#issues">2.1.2. Issues</a></li>
+<li><a href="#pull-requests-and-commmits">2.1.3. Pull requests and Commmits</a></li>
+<li><a href="#messages">2.1.4. Messages</a></li>
+</ul>
+</li>
+<li><a href="#interpretation">2.2. Interpretation</a></li>
+<li><a href="#collaborators-privacy">2.3. Collaborators privacy</a></li>
+<li><a href="#maintainer">2.4. Maintainer</a></li>
+<li><a href="#log">2.5. Log</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgabeda52" class="outline-2">
+<h2 id="philosophy"><a id="orgabeda52"></a><span class="section-number-2">1</span> Philosophy</h2>
+<div class="outline-text-2" id="text-philosophy">
+</div>
+
+<div id="outline-container-org8d58ecd" class="outline-3">
+<h3 id="for-contributors"><a id="org8d58ecd"></a><span class="section-number-3">1.1</span> For Contributors</h3>
+<div class="outline-text-3" id="text-for-contributors">
+<ul class="org-ul">
+<li>This community is a community of hackers based on meritocracy and
+volunteering. Hackers strive for excellence to make the world a better place,
+so does the Spacemacs community.</li>
+<li>Be good in what you bring to the project be it code, documentation, typo
+fixes, art, humor, ideas, project management, web design, assurance quality,
+mentorship, you name it! We like to award achievements to people making a
+difference in a wide variety of domains and occasions, <a href="./doc/DOCUMENTATION.org#specials">see it for yourself</a>.
+Why not you? Make it happen, make history!</li>
+<li>Think you are not good enough? Find support and mentors by chatting on Gitter
+with fellow Spacemacs users or just open an issue on GitHub, you will find
+help to fulfil your desire of contribution. We welcome anyone with good
+intentions.</li>
+<li>In a nutshell: Be good, positive and/or with good intentions and focused on
+the project.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgf89d496" class="outline-3">
+<h3 id="for-users"><a id="orgf89d496"></a><span class="section-number-3">1.2</span> For Users</h3>
+<div class="outline-text-3" id="text-for-users">
+<ul class="org-ul">
+<li>Any question related to the project is welcomed and encouraged, the worst
+thing that can happen is that we redirect you to the documentation.</li>
+<li>The majority of the interactions with the community happens on GitHub via
+issues and on Gitter via the official Spacemacs channel. There is also an
+active official twitter account <code>spacemacs</code>.</li>
+<li>Any opinion on the project is valorized given it is constructive.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf28c148" class="outline-2">
+<h2 id="moderation"><a id="orgf28c148"></a><span class="section-number-2">2</span> Moderation</h2>
+<div class="outline-text-2" id="text-moderation">
+<p>
+We want the community to be judged based on its moderation actions instead of
+telling people how to behave. The golden rules of the community are to have good
+intentions and stay focused on the project, for anything else that requires
+moderation any future user or contributor can refer to this section to know
+about our past moderation actions. So readers won't find any example or
+definition of what collaborators judge offending or outrageous, instead they
+will find at the end of this section a log of all major moderation actions taken
+by the collaborators since the beginning of the project which started officially
+in August 2014. It should allow you to decide whether or not you want to be part
+of this community. If you are not convinced then be assured that the only evil
+part in Spacemacs is the evil mode :-)
+</p>
+</div>
+
+<div id="outline-container-org81c87fc" class="outline-3">
+<h3 id="guidelines"><a id="org81c87fc"></a><span class="section-number-3">2.1</span> Guidelines</h3>
+<div class="outline-text-3" id="text-guidelines">
+<p>
+These guidelines apply to all collaborators of the project, namely @syl20bnr,
+@TheBB, @d12frosted and @bmag.
+</p>
+</div>
+
+<div id="outline-container-org761b5b3" class="outline-4">
+<h4 id="people"><a id="org761b5b3"></a><span class="section-number-4">2.1.1</span> People</h4>
+<div class="outline-text-4" id="text-people">
+<ul class="org-ul">
+<li>Collaborators cannot ban any GitHub user from the repository but they can ban
+users from the official Gitter channel.</li>
+<li>A user can be banned if and only if all the collaborators agree to do so.</li>
+<li>The reasons of the ban are mentioned in the moderation actions log (see
+below).</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org29316d1" class="outline-4">
+<h4 id="issues"><a id="org29316d1"></a><span class="section-number-4">2.1.2</span> Issues</h4>
+<div class="outline-text-4" id="text-issues">
+<ul class="org-ul">
+<li>Issues can be locked if their contents are judged <span class="underline">inappropriate</span>, <span class="underline">offending</span>
+or if they deviate <span class="underline">dangerously</span> from the project.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org1350c39" class="outline-4">
+<h4 id="pull-requests-and-commmits"><a id="org1350c39"></a><span class="section-number-4">2.1.3</span> Pull requests and Commmits</h4>
+<div class="outline-text-4" id="text-pull-requests-and-commmits">
+<ul class="org-ul">
+<li>Collaborators can push to the repository without making a PR.</li>
+<li>PR can be rejected. Rejected PR always go with a reason explicitly written
+when closing the PR.</li>
+<li>Commits can be reverted if they compromise the stability of the project. The
+reason is contained in the commit comments.</li>
+<li>Pull request are also issues, thus issue guidelines also apply to pull
+requests.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga9c6957" class="outline-4">
+<h4 id="messages"><a id="orga9c6957"></a><span class="section-number-4">2.1.4</span> Messages</h4>
+<div class="outline-text-4" id="text-messages">
+<ul class="org-ul">
+<li>Only the form of a message can be edited, not its meaning, except if this
+meaning is <span class="underline">outrageous</span>.</li>
+<li>Moderators can add information to a message to improve its accuracy without
+altering its meaning,</li>
+<li><p>
+Any edition of a message is logged in the <code>edits log</code> located at the end of
+the edited message with the following format:
+</p>
+<pre class="example">
+EDIT: [@moderator] action (reason: xxx)
+</pre></li>
+<li>The reason is added only when needed (for instance we won't add a reason for
+formatting edits)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5deb4a2" class="outline-3">
+<h3 id="interpretation"><a id="org5deb4a2"></a><span class="section-number-3">2.2</span> Interpretation</h3>
+<div class="outline-text-3" id="text-interpretation">
+<p>
+Words used in these guidelines like <span class="underline">good</span>, <span class="underline">inappropriate</span>, <span class="underline">offending</span>,
+<span class="underline">dangerously</span> and <span class="underline">outrageous</span> are used without any explanation, their meanings
+and interpretations are left solely to the discretion of the collaborators who
+are educated persons working in the interest of the community.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org74d4f10" class="outline-3">
+<h3 id="collaborators-privacy"><a id="org74d4f10"></a><span class="section-number-3">2.3</span> Collaborators privacy</h3>
+<div class="outline-text-3" id="text-collaborators-privacy">
+<p>
+Life and actions of collaborators outside of the project (i.e. outside of the
+Spacemacs GitHub repository, official Spacemacs Gitter channels and Twitter
+official Spacemacs account timeline) are completely detached from their
+activities and roles in the project. They are free to express any opinion on the
+project or any other subjects and those opinions cannot be used to compromise
+their roles in the project as long as they follow the moderation guidelines with
+good intentions.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org69ac898" class="outline-3">
+<h3 id="maintainer"><a id="org69ac898"></a><span class="section-number-3">2.4</span> Maintainer</h3>
+<div class="outline-text-3" id="text-maintainer">
+<ul class="org-ul">
+<li>The maintainer @syl20bnr as a BDFL is free to demote a collaborator in extreme
+situations.</li>
+<li>When there is no consensus on a subject, the BDFL can decide to impose his
+view on the subject.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org18fe018" class="outline-3">
+<h3 id="log"><a id="org18fe018"></a><span class="section-number-3">2.5</span> Log</h3>
+<div class="outline-text-3" id="text-log">
+<p>
+For transparency and future reference any major moderation actions are recorded
+here. As of Sunday, April 10th 2016, 7200 issues have been opened and 2 major
+moderation actions have been taken:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">Date</th>
+<th scope="col" class="org-left">Moderator</th>
+<th scope="col" class="org-left">Action</th>
+<th scope="col" class="org-left">Issue</th>
+<th scope="col" class="org-left">Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">2016/01/27</td>
+<td class="org-left">syl20bnr</td>
+<td class="org-left">lock</td>
+<td class="org-left">#3484</td>
+<td class="org-left">comments judged to be offending towards the Spacemacs community</td>
+</tr>
+
+<tr>
+<td class="org-left">2016/01/27</td>
+<td class="org-left">syl20bnr</td>
+<td class="org-left">unlock</td>
+<td class="org-left">#3484</td>
+<td class="org-left">let's make it happen, i.e. this document</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

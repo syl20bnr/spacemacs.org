@@ -3,12 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-10-03 Mon 00:55 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2017-04-29 Sat 04:11 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Dash layer</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sylvain Benner" />
+<meta name="generator" content="Org mode" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +52,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +175,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -169,8 +253,9 @@ for the JavaScript code in this tag.
 <li><a href="#install">2. Install</a>
 <ul>
 <li><a href="#dash-os-x">2.1. Dash (OS X)</a></li>
-<li><a href="#zeal-linux--windows">2.2. Zeal (Linux &amp; Windows)</a></li>
-<li><a href="#check-documentation-for-x-at-point">2.3. Check Documentation for x-at-point</a></li>
+<li><a href="#sqlite3">2.2. Sqlite3</a></li>
+<li><a href="#zeal-linux--windows">2.3. Zeal (Linux &amp; Windows)</a></li>
+<li><a href="#check-documentation-for-x-at-point">2.4. Check Documentation for x-at-point</a></li>
 </ul>
 </li>
 <li><a href="#key-bindings">3. Key bindings</a>
@@ -193,18 +278,18 @@ for the JavaScript code in this tag.
 </p>
 </div>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="description"><a id="orgheadline1"></a><span class="section-number-2">1</span> Description</h2>
+<div id="outline-container-org969ce6a" class="outline-2">
+<h2 id="description"><a id="org969ce6a"></a><span class="section-number-2">1</span> Description</h2>
 <div class="outline-text-2" id="text-description">
 <dl class="org-dl">
-<dt><a href="http://kapeli.com/dash">dash</a></dt><dd>Is a great tool for quick access to various sets of documentation,
+<dt><a href="https://kapeli.com/dash">dash</a></dt><dd>Is a great tool for quick access to various sets of documentation,
 only available in OS X.</dd>
 
 <dt><a href="https://github.com/stanaka/dash-at-point">dash-at-point</a></dt><dd>Is the package used to integrate <code>dash</code> in Emacs. It will try
 to intelligently guess specific docsets to use based off of
 your current mode.</dd>
 
-<dt><a href="http://zealdocs.org/">zeal</a></dt><dd>Zeal is an offline documentation browser inspired by Dash,
+<dt><a href="https://zealdocs.org/">zeal</a></dt><dd>Zeal is an offline documentation browser inspired by Dash,
 available for Linux and Windows.</dd>
 
 <dt><a href="https://github.com/jinzhu/zeal-at-point">zeal-at-point</a></dt><dd>Run zeal-at-point to search the word at point (or string in
@@ -214,8 +299,8 @@ prefix argument C-u to edit the search string first.</dd>
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="install"><a id="orgheadline5"></a><span class="section-number-2">2</span> Install</h2>
+<div id="outline-container-org1bbc819" class="outline-2">
+<h2 id="install"><a id="org1bbc819"></a><span class="section-number-2">2</span> Install</h2>
 <div class="outline-text-2" id="text-install">
 <p>
 To use this configuration layer, add it to your <code>~/.spacemacs</code>. You will need to
@@ -224,11 +309,11 @@ file.
 </p>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="dash-os-x"><a id="orgheadline2"></a><span class="section-number-3">2.1</span> Dash (OS X)</h3>
+<div id="outline-container-org08a56d3" class="outline-3">
+<h3 id="dash-os-x"><a id="org08a56d3"></a><span class="section-number-3">2.1</span> Dash (OS X)</h3>
 <div class="outline-text-3" id="text-dash-os-x">
 <p>
-You have to install <a href="http://kapeli.com/dash">dash</a> on your machine.
+You have to install <a href="https://kapeli.com/dash">dash</a> on your machine.
 </p>
 
 <p>
@@ -238,11 +323,20 @@ when using this layer.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="zeal-linux--windows"><a id="orgheadline3"></a><span class="section-number-3">2.2</span> Zeal (Linux &amp; Windows)</h3>
+<div id="outline-container-org469ccf7" class="outline-3">
+<h3 id="sqlite3"><a id="org469ccf7"></a><span class="section-number-3">2.2</span> Sqlite3</h3>
+<div class="outline-text-3" id="text-sqlite3">
+<p>
+Helm Dash <a href="https://github.com/areina/helm-dash#user-content-requirements">requires</a> sqlite3 to be installed to function properly.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7d82df2" class="outline-3">
+<h3 id="zeal-linux--windows"><a id="org7d82df2"></a><span class="section-number-3">2.3</span> Zeal (Linux &amp; Windows)</h3>
 <div class="outline-text-3" id="text-zeal-linux--windows">
 <p>
-You have to install <a href="http://zealdocs.org/">zeal</a> on your machine.
+You have to install <a href="https://zealdocs.org/">zeal</a> on your machine.
 </p>
 
 <p>
@@ -251,8 +345,8 @@ Then install the docsets you use more frequently
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="check-documentation-for-x-at-point"><a id="orgheadline4"></a><span class="section-number-3">2.3</span> Check Documentation for x-at-point</h3>
+<div id="outline-container-org9c4e505" class="outline-3">
+<h3 id="check-documentation-for-x-at-point"><a id="org9c4e505"></a><span class="section-number-3">2.4</span> Check Documentation for x-at-point</h3>
 <div class="outline-text-3" id="text-check-documentation-for-x-at-point">
 <p>
 See the documentation <a href="https://github.com/stanaka/dash-at-point#Usage">dash-at-point-usage</a> , or <a href="https://github.com/jinzhu/zeal-at-point">zeal-at-point</a> for more
@@ -262,8 +356,8 @@ information on customizing specific docsets for modes.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="key-bindings"><a id="orgheadline7"></a><span class="section-number-2">3</span> Key bindings</h2>
+<div id="outline-container-orgc770c3e" class="outline-2">
+<h2 id="key-bindings"><a id="orgc770c3e"></a><span class="section-number-2">3</span> Key bindings</h2>
 <div class="outline-text-2" id="text-key-bindings">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
@@ -303,8 +397,8 @@ information on customizing specific docsets for modes.
 </table>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="helm-dash-and-counsel-dash"><a id="orgheadline6"></a><span class="section-number-3">3.1</span> helm-dash and counsel-dash</h3>
+<div id="outline-container-orgdd5b343" class="outline-3">
+<h3 id="helm-dash-and-counsel-dash"><a id="orgdd5b343"></a><span class="section-number-3">3.1</span> helm-dash and counsel-dash</h3>
 <div class="outline-text-3" id="text-helm-dash-and-counsel-dash">
 <p>
 <code>dash-at-point</code> is linked to the GUI app and is only available for OSX. On
@@ -322,8 +416,7 @@ which requires no additional application. You can use
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Author: Sylvain Benner</p>
-<p class="date">Created: 2016-10-03 Mon 00:55</p>
+<p class="date">Created: 2017-04-29 Sat 04:11</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
