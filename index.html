@@ -34,19 +34,6 @@
   </head>
 
   <body>
-  <!-- +Xpra stuff -->
-  <div id="xpra-wrapper" style="display:none;">
-    <div id="dpi" style="width: 1in; height: 1in; left: -100%; top: -100%; position: absolute;">
-    </div>
-    <div id="screen" style="width: 100%; height:100%; position: absolute;">
-    </div>
-    <div id="notifications" class="notifications">
-    </div>
-    <div>
-      <textarea id="pasteboard" onblur="this.focus()" autofocus style="display: block; position: absolute; left: -99em;"></textarea>
-    </div>
-  </div>
-  <!-- -Xpra stuff -->
     <nav class="navbar navbar-dark bg-inverse bg-inverse-custom navbar-fixed-top" id="totop">
       <a href="https://github.com/syl20bnr/spacemacs#fork-destination-box"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6286ade715e9bea433b4705870de482a654f78a/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"></a>
       <div class="container">
@@ -94,8 +81,6 @@
         <h1 class="logo-font">(spacemacs)</h1>
         <h4 class="wp wp-1 animated fadeInUp logo-subtitle">A community-driven <a href="https://www.gnu.org/software/emacs/">Emacs</a> distribution</h4>
         <h6 class="wp wp-3 animated fadeInUp logo-subtitle">The best editor is neither Emacs nor Vim, it's Emacs <em>and</em> Vim!</h6>
-        <br>
-        <a class="btn btn-success m-b-md" href="#" role="button" id="launchXpra">&nbsp;<span class="fa fa-desktop"></span>Try online!&nbsp;</a>
         <br>
         <a class="btn btn-secondary-outline m-b-md" href="https://github.com/syl20bnr/spacemacs/archive/master.zip" role="button"><span class="fa fa-download"></span>Download</a>
         <a class="btn btn-secondary-outline m-b-md" href="#" role="button" id="toggle">&nbsp;<span class="fa fa-arrow-circle-right"></span> Install  &nbsp;</a>
@@ -260,134 +245,5 @@
         };
     </script>
     <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
-
-  <!-- +Xpra stuff -->
-  <link rel="stylesheet" href="css/client.css">
-  <link rel="stylesheet" href="css/spinner.css">
-
-  <link rel="stylesheet" href="css/xpra-user.css">
-
-  <script type="text/javascript" src="js/lib/jquery-ui.js"></script>
-  <script type="text/javascript" src="js/lib/jquery.ba-throttle-debounce.js"></script>
-
-  <script type="text/javascript" src="js/lib/bencode.js"></script>
-  <script type="text/javascript" src="js/lib/zlib.js"></script>
-  <script type="text/javascript" src="js/lib/lz4.js"></script>
-  <script type="text/javascript" src="js/lib/forge.js"></script>
-
-  <script type="text/javascript" src="js/lib/broadway/Decoder.js"></script>
-  <script type="text/javascript" src="js/lib/aurora/aurora.js"></script>
-  <script type="text/javascript" src="js/lib/aurora/mp3.js"></script>
-  <script type="text/javascript" src="js/lib/aurora/aurora-xpra.js"></script>
-
-  <script type="text/javascript" src="js/Keycodes.js"></script>
-  <script type="text/javascript" src="js/Protocol.js"></script>
-  <script type="text/javascript" src="js/Window.js"></script>
-  <script type="text/javascript" src="js/Notifications.js"></script>
-  <script type="text/javascript" src="js/Utilities.js"></script>
-  <script type="text/javascript" src="js/MediaSourceUtil.js"></script>
-  <script type="text/javascript" src="js/Client.js"></script>
-
-  <script>
-    window.XClient = {};
-
-    function startXpra(_) {
-
-      $('#launchXpra').html("&nbsp;<span class=\"fa fa-heartbeat\"></span>Connecting...&nbsp;")
-        .switchClass("btn-success", "btn-danger", 1000, "easeInOutQuad")
-        .addClass("btn-blinky")
-        .css("cursor", "default");
-
-      var username = null;
-      var password = null;
-      var sound = null;
-      var audio_codec = null;
-      var encoding = "rgb";
-      var action = "connect";
-      var submit = null;
-      var server = "jaremko.tk";
-      var port = 10000;
-      var encryption = null;
-      var key = null;
-      var keyboard_layout = null;
-      var start = null;
-      var exit_with_children = "yes";
-      var exit_with_client = "yes";
-      var sharing = false;
-      var steal = false;
-      var reconnect = true;
-      var video = false;
-      var mediasource_video = false;
-      var normal_fullscreen = false;
-      var remote_logging = false;
-      var debug = false;
-      var insecure = false;
-      var ignore_audio_blacklist = false;
-      var clipboard = false;
-      var client = null;
-
-      client = new XpraClient('screen');
-
-      client.steal = steal;
-      client.reconnect = reconnect;
-
-      client.audio_enabled = false;
-
-      client.debug = debug;
-      client.remote_logging = remote_logging;
-      client.sharing = sharing;
-      client.insecure = insecure;
-      client.clipboard_enabled = clipboard;
-      client.HELLO_TIMEOUT = 60000;
-      client.PING_TIMEOUT = 15000;
-
-      client.callback_close = function(reason) {
-       // try {
-       //   if (XClient.protocol) {
-       //     XClient.protocol.terminate();
-       //   }
-       // } catch (e) {};
-      }
-
-      client.on_first_ui_event = function() {
-        XClient.reconnect =false;
-        $('#xpra-wrapper').show();
-        $('#launchXpra').html("&nbsp;<span class=\"fa fa-heart\"></span>Connected!&nbsp;")
-          .switchClass("btn-danger", "btn-success", 1000, "easeInOutQuad")
-          .removeClass("btn-blinky")
-          .css("cursor", "default");
-      }
-
-      client.on_last_window = function() {
-        $('#xpra-wrapper').hide();
-        $('#launchXpra').html("&nbsp;<span class=\"fa fa-desktop\"></span>Try online!&nbsp;")
-                        .css("cursor", "pointer");
-      }
-
-      client.enable_encoding(encoding);
-      client.disable_encoding("jpeg")
-      client.init(ignore_audio_blacklist);
-
-      client.host = server;
-      client.port = port;
-      client.ssl = false;
-
-      client.reconnect_count = 9001;
-      client.reconnect_delay = 5000;
-
-      client.connect();
-      window.XClient = client;
-      return false;
-    }
-
-    $("#launchXpra").off('click').on('click', function(_) {
-      if ($("#launchXpra").is(".btn-success")) {
-        startXpra();
-      }
-      return false;
-    });
-  </script>
-  <!-- -Xpra stuff -->
-
 </body>
 </html>
