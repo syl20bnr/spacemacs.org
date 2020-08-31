@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-08-30 Sun 23:37 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contribution guidelines</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Sylvain Benner" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+                 href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+          <script src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
+          <script>
+          // Google Analytics
+                     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new
+                         Date();a=s.createElement(o),
+                         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                     ga('create', 'UA-28326243-2', 'auto'); ga('send', 'pageview');
+
+          // Add permalinks to the documentation headings
+          $(document).ready(function() {
+              [".outline-2 h2", ".outline-3 h3", ".outline-4 h4", ".outline-5 h5"].forEach(function(i) {
+                  $(i).each(function() {
+                          var page_url = window.location.pathname;
+                          var node = $(this).attr("id");
+                          var full_url = page_url + "#" + node;
+                          $(this).contents().last().after('<span id="permalink"><a href="'
+                                                          + full_url + '">¶</a></span>');
+                  });
+              });
+          });
+          </script>
+<link rel="stylesheet" type="text/css" href="css/readtheorg.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="toggle-sidebar"><a href="#table-of-contents"><h2>Table of Contents</h2></a></div>
+<h1 class="title">Contribution guidelines</h1>
+<div id="table-of-contents">
+<h2>Table of Contents<a href="#">Close</a></h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#asking-for-help">1. Asking for help</a></li>
+<li><a href="#reporting-issues">2. Reporting issues</a></li>
+<li><a href="#contributing-code">3. Contributing code</a>
+<ul>
+<li><a href="#general-contribution-guidelines">3.1. General contribution guidelines</a>
+<ul>
+<li><a href="#license">3.1.1. License</a></li>
+<li><a href="#conventions">3.1.2. Conventions</a></li>
+<li><a href="#changelog-entry">3.1.3. Changelog entry</a></li>
+<li><a href="#pull-request">3.1.4. Pull Request</a>
+<ul>
+<li><a href="#ideally-for-simple-prs-most-of-them">3.1.4.1. Ideally for <i>simple</i> PRs (most of them):</a></li>
+<li><a href="#for-complex-prs-big-refactoring-etc">3.1.4.2. For complex PRs (big refactoring, etc):</a></li>
+</ul>
+</li>
+<li><a href="#commit-messages">3.1.5. Commit messages</a></li>
+</ul>
+</li>
+<li><a href="#contributing-a-layer">3.2. Contributing a layer</a>
+<ul>
+<li><a href="#file-header">3.2.1. File header</a></li>
+<li><a href="#author-of-a-new-layer">3.2.2. Author of a new layer</a>
+<ul>
+<li><a href="#readmeorg-tags">3.2.2.1. README.org tags</a></li>
+</ul>
+</li>
+<li><a href="#contributor-to-an-existing-layer">3.2.3. Contributor to an existing layer</a></li>
+</ul>
+</li>
+<li><a href="#contributing-a-key-binding">3.3. Contributing a key binding</a></li>
+<li><a href="#contributing-a-banner">3.4. Contributing a banner</a></li>
+</ul>
+</li>
+<li><a href="#reviewing-pull-requests">4. Reviewing Pull Requests</a>
+<ul>
+<li><a href="#using-magit-to-quickly-test-prs">4.1. Using Magit to quickly test PRs</a></li>
+</ul>
+</li>
+<li><a href="#additional-information">5. Additional information</a>
+<ul>
+<li><a href="#testing">5.1. Testing</a></li>
+</ul>
+</li>
+<li><a href="#credits">6. Credits</a></li>
+</ul>
+</div>
+</div>
+<p>
+Spacemacs is a volunteer effort. We encourage you to pitch in. The community
+makes Spacemacs what it is. We have a few guidelines, which we ask all
+contributors to follow.
+</p>
+
+<p>
+You can only consider reading the sections relevant to what you are going to do or just watch this video <a href="https://www.youtube.com/watch?v=OMS-3Jl05mE&amp;feature=youtu.be&amp;list=PLpr9V-R8ZxiCHMl2_dn1Fovcd34Oz45sua">here</a>:
+</p>
+<ul class="org-ul">
+<li><a href="#asking-for-help">Asking for help</a> if you are about to open an issue to ask a question.</li>
+<li><a href="#reporting-issues">Reporting issues</a> if you are about to open a new issue.</li>
+<li><a href="#contributing-code">Contributing code</a> if you are about to send a PR.</li>
+<li><a href="CONTRIBUTING.html#reviewing-pull-requests">Reviewing Pull Requests</a> if you are about to review a PR.</li>
+</ul>
+
+<p>
+Thanks! :heart: :heart: :heart:
+</p>
+
+<div id="outline-container-org604bb80" class="outline-2">
+<h2 id="asking-for-help"><span class="section-number-2">1</span> Asking for help</h2>
+<div class="outline-text-2" id="text-asking-for-help">
+<p>
+If you want to ask an usage question, be sure to look first into some places as
+it may hold the answer:
+</p>
+<ul class="org-ul">
+<li><a href="doc/FAQ.html">The FAQ</a>. Some of the most frequently asked questions are answered there.</li>
+<li><a href="doc/DOCUMENTATION.html">The documentation</a>. It's the general documentation of Spacemacs.</li>
+<li>You may also read the <code>README.org</code> of the <a href="doc/LAYERS.html">relevant layer(s)</a>.</li>
+</ul>
+
+<p>
+If your question is not answered there, then please come into our <a href="https://gitter.im/syl20bnr/spacemacs">gitter chat</a> to
+discuss it with us :relaxed:. We will direct you to a solution, or ask you to
+open an issue if it is needed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4850cc5" class="outline-2">
+<h2 id="reporting-issues"><span class="section-number-2">2</span> Reporting issues</h2>
+<div class="outline-text-2" id="text-reporting-issues">
+<p>
+Issues have to be reported on our <a href="https://github.com/syl20bnr/spacemacs/issues">issues tracker</a>. Please:
+</p>
+<ul class="org-ul">
+<li>Check that the issue has not already been reported.
+<ul class="org-ul">
+<li>This can be achieved by searching keywords on the <a href="https://github.com/syl20bnr/spacemacs/issues">issues tracker</a>.</li>
+</ul></li>
+<li>Check that the issue has not been fixed in the <code>develop</code> version of Spacemacs.
+<ul class="org-ul">
+<li>This can be achieved by running Spacemacs on the <code>develop</code> branch and trying
+to reproduce the bug here. You can also check at the <a href="https://github.com/syl20bnr/spacemacs/tree/develop">source code</a> to see if
+it has been changed/corrected.</li>
+</ul></li>
+<li>Try to use a clear title, and describe your problem with complete sentences.
+See also <a href="https://github.com/syl20bnr/spacemacs/wiki/Debugging#how-to-make-a-great-bug-report">How to make a great bug report</a> in the wiki.</li>
+<li>Include the following information in your issue:
+<ul class="org-ul">
+<li>The output of <code>SPC h d s</code> (<code>M-m h d s</code> in Emacs style), which gives the
+versions information about your installation.</li>
+<li>If relevant, include the mode in which the problem arise (e.g. javascript
+files, <code>org-mode</code>, etc…).</li>
+<li>If possible, try to include details on how to reproduce it, like a step by
+step guide.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org7b7a5b3" class="outline-2">
+<h2 id="contributing-code"><span class="section-number-2">3</span> Contributing code</h2>
+<div class="outline-text-2" id="text-contributing-code">
+<p>
+Code contributions are welcome. Please read the following sections carefully. In
+any case, feel free to join us on the <a href="https://gitter.im/syl20bnr/spacemacs">gitter chat</a> to ask questions about
+contributing!
+</p>
+</div>
+
+<div id="outline-container-org1c0e7a2" class="outline-3">
+<h3 id="general-contribution-guidelines"><span class="section-number-3">3.1</span> General contribution guidelines</h3>
+<div class="outline-text-3" id="text-general-contribution-guidelines">
+</div>
+
+<div id="outline-container-org61e5541" class="outline-4">
+<h4 id="license"><span class="section-number-4">3.1.1</span> License</h4>
+<div class="outline-text-4" id="text-license">
+<p>
+The license is <code>GPLv3</code> for all parts specific to Spacemacs, this includes:
+</p>
+<ul class="org-ul">
+<li>The initialization and core files</li>
+<li>All the layer files.</li>
+</ul>
+
+<p>
+For files not belonging to Spacemacs like local packages and libraries, refer
+to the header file. Those files should not have an empty header, we may not
+accept code without a proper header file.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf6b32a6" class="outline-4">
+<h4 id="conventions"><span class="section-number-4">3.1.2</span> Conventions</h4>
+<div class="outline-text-4" id="text-conventions">
+<p>
+Spacemacs is based on conventions, mainly for naming functions, keybindings
+definition and writing documentation. Please read the <a href="doc/CONVENTIONS.html">CONVENTIONS.org</a> file
+before your first contribution to get to know them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd294cfd" class="outline-4">
+<h4 id="changelog-entry"><span class="section-number-4">3.1.3</span> Changelog entry</h4>
+<div class="outline-text-4" id="text-changelog-entry">
+<p>
+Add a short entry describing your proposed change under a suitable subheading in
+<a href="https://github.com/syl20bnr/spacemacs/blob/develop/CHANGELOG.develop">CHANGELOG.develop</a>. Use the previous entries and <a href="CONTRIBUTING.html#commit-messages">commit messages instructions</a> as
+guidelines. You can add your name or github username in parentheses at the end
+of the entry if you want to. If an entry already exists describing your PR
+(small documentation improvements etc.), you can omit the changelog entry or add
+your name at the end of the pre-existing one.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org86e7657" class="outline-4">
+<h4 id="pull-request"><span class="section-number-4">3.1.4</span> Pull Request</h4>
+<div class="outline-text-4" id="text-pull-request">
+<p>
+Submit your contribution against the <code>develop</code> branch. You should not use
+your <code>master</code> branch to modify Spacemacs, this branch is considered to be
+read-only.
+</p>
+
+<p>
+You may want to <a href="https://github.com/syl20bnr/spacemacs/wiki/Beginner%27s-Guide-to-Contributing-a-Pull-Request-to-Spacemacs">read our beginner's guide for Pull Requests</a>.
+</p>
+
+<p>
+<i>PR = Pull Request</i>
+</p>
+</div>
+
+<div id="outline-container-orgdba8671" class="outline-5">
+<h5 id="ideally-for-simple-prs-most-of-them"><span class="section-number-5">3.1.4.1</span> Ideally for <i>simple</i> PRs (most of them):</h5>
+<div class="outline-text-5" id="text-ideally-for-simple-prs-most-of-them">
+<ul class="org-ul">
+<li>Branch from <code>develop</code></li>
+<li>One topic per PR</li>
+<li>One commit per PR</li>
+<li>If you have several commits on different topics, close the PR and
+create one PR per topic</li>
+<li>If you still have several commits, squash them into only one commit (<a href="https://github.com/syl20bnr/spacemacs/pull/13381#pullrequestreview-380313280">here's a guide</a>)</li>
+<li>Rebase your PR branch on top of upstream <code>develop</code> before submitting
+the PR</li>
+</ul>
+
+<p>
+Those PRs are usually <i>cherry-picked</i>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org18fe572" class="outline-5">
+<h5 id="for-complex-prs-big-refactoring-etc"><span class="section-number-5">3.1.4.2</span> For complex PRs (big refactoring, etc):</h5>
+<div class="outline-text-5" id="text-for-complex-prs-big-refactoring-etc">
+<ul class="org-ul">
+<li>Squash only the commits with uninteresting changes like typos, syntax fixes,
+etc&#x2026; and keep the important and <i>isolated</i> steps in different commits.</li>
+</ul>
+
+<p>
+Those PRs are <i>merged</i> and explicitly <i>not fast-forwarded</i>.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1dac4c2" class="outline-4">
+<h4 id="commit-messages"><span class="section-number-4">3.1.5</span> Commit messages</h4>
+<div class="outline-text-4" id="text-commit-messages">
+<p>
+Write commit messages according to adapted <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">Tim Pope's guidelines</a>:
+</p>
+<ul class="org-ul">
+<li>Use present tense and write in the imperative: "Fix bug", not "fixed bug" or
+"fixes bug".</li>
+<li>Start with a capitalized, short (72 characters or less) summary, followed by a
+blank line.</li>
+<li>If necessary, add one or more paragraphs with details, wrapped at 72
+characters.</li>
+<li>Separate paragraphs by blank lines.</li>
+</ul>
+
+<p>
+This is a model commit message:
+</p>
+
+<pre class="example">
+Capitalized, short (72 chars or less) summary
+
+More detailed explanatory text, if necessary.  Wrap it to about 72
+characters or so.  In some contexts, the first line is treated as the
+subject of an email and the rest of the text as the body.  The blank
+line separating the summary from the body is critical (unless you omit
+the body entirely); tools like rebase can get confused if you run the
+two together.
+
+Write your commit message in the imperative: "Fix bug" and not "Fixed bug"
+or "Fixes bug."  This convention matches up with commit messages generated
+by commands like git merge and git revert.
+
+Further paragraphs come after blank lines.
+
+- Bullet points are okay, too
+
+    - Typically a hyphen or asterisk is used for the bullet, followed by a
+      single space, with blank lines in between, but conventions vary here
+
+    - Use a hanging indent
+</pre>
+
+<p>
+<a href="https://github.com/magit/magit/">Git Commit</a> and <a href="https://github.com/magit/magit/">Magit</a> provide Emacs mode for Git commit messages, which helps you
+to comply to these guidelines.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd1b943e" class="outline-3">
+<h3 id="contributing-a-layer"><span class="section-number-3">3.2</span> Contributing a layer</h3>
+<div class="outline-text-3" id="text-contributing-a-layer">
+<p>
+Please read the <a href="doc/LAYERS.html">layers documentation</a> first.
+</p>
+
+<p>
+It is recommended to use the <code>configuration-layer/create-layer</code> command in order
+to create a layer, as it will take care of using the files templates and will
+also create the file headers correctly.
+</p>
+
+<p>
+Contributed configuration layers are stored in the <code>layers/</code> folder. The
+<code>layers/</code> folder also contains categories prefixed with <code>+</code> to put your layers
+in. For example a layer for a language would go in the <code>layers/+lang/</code> folder.
+</p>
+
+<p>
+Layer with no associated configuration will be rejected. For instance a layer
+with just a package and a hook can be easily replaced by the usage of the
+variable <code>dotspacemacs-additional-packages</code>.
+</p>
+</div>
+
+<div id="outline-container-org1c0977c" class="outline-4">
+<h4 id="file-header"><span class="section-number-4">3.2.1</span> File header</h4>
+<div class="outline-text-4" id="text-file-header">
+<p>
+The file header for <code>elisp</code> files should look like the following template:
+</p>
+
+<pre class="example">
+;;; FILENAME --- NAME Layer packages File for Spacemacs
+;;
+;; Copyright (c) 2012-2018 Sylvain Benner &amp; Contributors
+;;
+;; Author: YOUR_NAME &lt;YOUR_EMAIL&gt;
+;; URL: https://github.com/syl20bnr/spacemacs
+;;
+;; This file is not part of GNU Emacs.
+;;
+;;; License: GPLv3
+</pre>
+
+<p>
+You should replace <code>FILENAME</code> by the name of the file (e.g. <code>packages.el</code>)
+and <code>NAME</code> by the name of the layer you are creating, don't forget to replace
+<code>YOUR_NAME</code> and <code>YOUR_EMAIL</code> also. Some files already have a template inside
+<code>core/templates/</code>, so look in there first.
+Note that if you use <code>configuration-layer/create-layer</code>, spacemacs will prepare
+files and headers for you, and for free :smile: !
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc3665bd" class="outline-4">
+<h4 id="author-of-a-new-layer"><span class="section-number-4">3.2.2</span> Author of a new layer</h4>
+<div class="outline-text-4" id="text-author-of-a-new-layer">
+<p>
+In the files header, change the default author name (<code>Sylvain Benner</code>) to your
+name.
+</p>
+</div>
+
+<div id="outline-container-org44861d3" class="outline-5">
+<h5 id="readmeorg-tags"><span class="section-number-5">3.2.2.1</span> README.org tags</h5>
+<div class="outline-text-5" id="text-readmeorg-tags">
+<p>
+Every README.org file of a layer should have <code>#+TAGS:</code> line:
+</p>
+
+<pre class="example">
+#+TITLE: My layer
+
+#+TAGS: layer|web service
+
+* Table of Contents                     :TOC_5_gh:noexport:
+...
+</pre>
+
+<p>
+Individual tags are separated with "|" character.
+Example above has 2 tags: "layer" and "web service".
+Tags are listed in <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">&lt;spacemacs<sub>root</sub>&gt;/.ci/spacedoc-cfg.edn</a> configuration file.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-clojure">:spacetools.spacedoc.config/valid-tags
+{"chat" "Chats"
+...
+ &lt;TAG&gt; &lt;LABEL&gt;
+...
+ "completion" "Completion"}
+</pre>
+</div>
+
+<p>
+Labels are used to name headlines in <a href="layers/LAYERS.html">LAYERS.org</a> file and
+<a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">:spacetools.spacedoc.config/layers-org-query</a> defines structure of the file by
+chaining tags into a tree where every leaf turns into a list of
+descriptions pulled out of README.org files which tags match leaf's path in the tree.
+You can see how the shape of <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">&lt;spacemacs<sub>root</sub>&gt;/.ci/spacedoc-cfg.edn</a>
+repeats in <a href="layers/LAYERS.html#table-of-contents">TOC of LAYERS.org</a>.
+</p>
+
+<p>
+Important details:
+</p>
+<ul class="org-ul">
+<li>Every layer description will be displayed exacly one time.</li>
+<li>In the case when a README.org file of a layer doesn't have <code>#+TAGS:</code>
+documentation formatting tool will inster dummy tags <code>layer|uncategorized</code>,
+such files will be listed in <a href="layers/LAYERS.html#readmeorg-files-that-need-proper-tags">LAYERS.org#readmeorg-files-that-need-proper-tags</a>.</li>
+<li>Files which tag set has not being matched by <a href="https://github.com/syl20bnr/spacemacs/blob/develop/.ci/spacedoc-cfg.edn">:spacetools.spacedoc.config/layers-org-query</a>
+will appire in <a href="layers/LAYERS.html#skipped-layers">LAYERS.org#skipped-layers</a></li>
+<li>If <a href="layers/LAYERS.html">LAYERS.org</a> file has <code>Skipped layers:</code> and/or
+<code>README.org files that need proper tags</code> sections - someone is slacking :wink:</li>
+</ul>
+
+<p>
+If you want to experiment with the tool locally:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">docker run --rm <span class="org-sh-escaped-newline">\</span>
+  -v &lt;SPACEMACS_REPO_ROOT&gt;:/tmp/docs <span class="org-sh-escaped-newline">\</span>
+  -v &lt;PATH_TO_CONFIG_FILE&gt;:/opt/spacetools/spacedoc-cfg.edn <span class="org-sh-escaped-newline">\</span>
+  jare/spacetools docfmt /tmp/docs/
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb3b8030" class="outline-4">
+<h4 id="contributor-to-an-existing-layer"><span class="section-number-4">3.2.3</span> Contributor to an existing layer</h4>
+<div class="outline-text-4" id="text-contributor-to-an-existing-layer">
+<p>
+If you are contributing to an already existing layer, you should not modify any
+header file.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb214c55" class="outline-3">
+<h3 id="contributing-a-key-binding"><span class="section-number-3">3.3</span> Contributing a key binding</h3>
+<div class="outline-text-3" id="text-contributing-a-key-binding">
+<p>
+Key bindings are an important part of spacemacs.
+</p>
+
+<p>
+First if you want to have some personal key bindings, you can freely bind them
+inside the <code>SPC o</code> and <code>SPC m o</code> prefixes which are reserved for the user. This
+can be done from the <code>dotspacemacs/user-config</code> function of your <code>.spacemacs</code>
+file and don't require any contribution to Spacemacs.
+</p>
+
+<p>
+If you think it worth contributing a new key bindings then be sure to read
+the <a href="doc/CONVENTIONS.html">CONVENTIONS.org</a> file to find the best key bindings, then create a
+PR with your changes.
+</p>
+
+<p>
+<b>ALWAYS</b> document your new key bindings or key bindings changes inside the
+relevant documentation file. It should be the layer's <code>README.org</code> file for
+layer's key bindings, or <code>DOCUMENTATION.org</code> for general Spacemacs key
+bindings.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5339f1e" class="outline-3">
+<h3 id="contributing-a-banner"><span class="section-number-3">3.4</span> Contributing a banner</h3>
+<div class="outline-text-3" id="text-contributing-a-banner">
+<p>
+The startup banner is by default the Spacemacs logo but there are also ASCII
+banners available in the directory <code>core/banners/</code>.
+</p>
+
+<p>
+If you have some ASCII skills you can submit your artwork!
+</p>
+
+<p>
+You are free to choose a reasonable height size but the width size should be
+around 75 characters.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge9585ef" class="outline-2">
+<h2 id="reviewing-pull-requests"><span class="section-number-2">4</span> Reviewing Pull Requests</h2>
+<div class="outline-text-2" id="text-reviewing-pull-requests">
+<p>
+You can contribute by reviewing PRs created by others. This will help share the
+workload of the project maintainers by letting them know that a PR has been
+tested by an independent reviewer. The steps:
+</p>
+<ul class="org-ul">
+<li>Check that the PR complies with the guidelines in <a href="CONTRIBUTING.html#contributing-code">Contributing code</a>.</li>
+<li>Check that the PR complies with <a href="doc/CONVENTIONS.html">CONVENTIONS.org</a>.</li>
+<li>Check out the PR branch and test it. Remember to update your packages and your
+<code>~/.spacemacs</code> file. Testing means that you actually use the features touched
+by the PR, and the more complex or feature-rich the proposed changes are, the
+more testing is required. Be creative in trying to find bugs! Preferably, use
+the PR branch for hours or days to help stumble on unforeseen issues. Of
+course, common sense can be used and typo fixes do not need to be tested
+against bugs, but be thorough in actual code changes. Testing with a fresh
+spacemacs installation might be a good idea as well.</li>
+<li>Step back and think if the proposed changes could cause any other problems not
+covered by your testing. You should also ask yourself whether or not you feel
+that your testing is adequate to confidently state that this PR introduces no
+new bugs. If you feel that additional testing by more community members could
+be helpful, state so in your review.</li>
+</ul>
+
+<p>
+If you find something to improve, <a href="https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/">report</a> it constructively and politely so the
+contributor can update the PR accordingly. When you find that the PR is ready to
+merge, you can leave an approving <a href="https://help.github.com/articles/reviewing-proposed-changes-in-a-pull-request/">review</a>. Please report explicitly how you
+tested the PR for bugs, and confirm that you have checked its compliance with
+the code conventions. Copy the following line to your approving review to notify
+the collaborators:
+</p>
+
+<pre class="example">
+Ready to be merged! (@syl20bnr @TheBB @d12frosted @bmag @JAremko)
+</pre>
+
+<p>
+Now the collaborators who have write access to the repository will use their
+judgement to either merge the PR or require further review from another
+reviewer. This is done to ensure a thorough cross-referencing in case of complex
+changes, your review is very valuable in these cases as well!
+</p>
+</div>
+
+<div id="outline-container-orgb504c15" class="outline-3">
+<h3 id="using-magit-to-quickly-test-prs"><span class="section-number-3">4.1</span> Using Magit to quickly test PRs</h3>
+<div class="outline-text-3" id="text-using-magit-to-quickly-test-prs">
+<p>
+It is possible to manage PRs directly inside the Magit status buffer <code>SPC g s</code>.
+First add the <code>github</code> layer to your dotfile which will pull the package
+<code>forge</code>. Once installed you need to set it up with a <a href="https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started">GitHub personal access
+token</a> after which you can execute <code>M-x forge-pull</code>. It will fetch all the PRs
+which may take a few seconds as we have lot of PRs. Note also that all your
+Magit actions will get some additional delay due to the refresh of the PRs list.
+</p>
+
+<p>
+Now, from the magit status buffer you can:
+</p>
+<ul class="org-ul">
+<li>checkout a PR with <code>b y</code> and searching it by name or ID</li>
+<li>donate all commits to develop by doing <code>A d</code> and selecting your current branch
+first and the develop branch second</li>
+<li>switch to the develop branch by pressing <code>b b</code> and selecting it</li>
+<li>delete the PR branch and remote by doing <code>b x</code> and selecting it</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc67d42e" class="outline-2">
+<h2 id="additional-information"><span class="section-number-2">5</span> Additional information</h2>
+<div class="outline-text-2" id="text-additional-information">
+</div>
+
+<div id="outline-container-org0e8d29b" class="outline-3">
+<h3 id="testing"><span class="section-number-3">5.1</span> Testing</h3>
+<div class="outline-text-3" id="text-testing">
+<p>
+Tests live in the <code>tests/</code> folder, with a folder structure corresponding to the
+rest of the repository.
+</p>
+
+<p>
+To run tests locally, navigate to the relevant subfolder and run <code>make</code>.
+</p>
+
+<p>
+Spacemacs uses Travis CI to perform more comprehensive testing, where each
+testable layer is enabled in turn.
+</p>
+
+<p>
+To add tests for a layer, do the following:
+</p>
+<ol class="org-ol">
+<li>Create a subfolder of <code>tests/</code> corresponding to the layer you want to test.</li>
+<li>Write a file called <code>dotspacemacs.el</code> in that folder. It should be a minimal
+dotfile that enables the layer in question (and other layers it may depend
+on).</li>
+<li>Write a number of files with tests. Please try to separate unit and
+functional tests. Look at existing tests for clues.</li>
+<li><p>
+Write a <code>Makefile</code> in that folder. It should define three variables.
+</p>
+<ul class="org-ul">
+<li>a list of additional files to load before testing (relative
+to the root Spacemacs folder). This should typically be <code>init.el</code>.</li>
+<li>a list of unit test files in the current folder.</li>
+<li>a list of functional test files in the current folder.</li>
+</ul>
+
+<p>
+See existing tests for examples.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-makefile"><span class="org-variable-name">TEST_DIR</span> := $<span class="org-rainbow-delimiters-depth-1">(</span><span class="org-variable-name">shell</span> dirname $<span class="org-rainbow-delimiters-depth-2">(</span><span class="org-variable-name">realpath</span> $<span class="org-rainbow-delimiters-depth-3">(</span><span class="org-variable-name">lastword</span> $<span class="org-rainbow-delimiters-depth-4">(</span><span class="org-variable-name">MAKEFILE_LIST</span><span class="org-rainbow-delimiters-depth-4">)</span><span class="org-rainbow-delimiters-depth-3">)</span><span class="org-rainbow-delimiters-depth-2">)</span><span class="org-rainbow-delimiters-depth-1">)</span>
+
+<span class="org-variable-name">LOAD_FILES</span> = ...
+<span class="org-variable-name">UNIT_TEST_FILES</span> = ...
+<span class="org-variable-name">FUNC_TEST_FILES</span> = ...
+
+<span class="org-keyword">include</span> <span class="org-variable-name">../../spacemacs.mk</span>
+</pre>
+</div></li>
+
+<li>Add the new test to list of tests in <code>travis/run_build.sh</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org38cc238" class="outline-2">
+<h2 id="credits"><span class="section-number-2">6</span> Credits</h2>
+<div class="outline-text-2" id="text-credits">
+<p>
+This <code>CONTRIBUTING.org</code> file is partially based on the <a href="https://github.com/rails/rails/blob/master/CONTRIBUTING.md">Rails Contribution
+guidelines</a> and <a href="https://github.com/flycheck/flycheck/blob/master/doc/contributor/contributing.rst">Flycheck Contribution guidelines</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sylvain Benner</p>
+<p class="date">Created: 2020-08-30 Sun 23:37</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
